@@ -1,0 +1,30 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="page" class="desktop-12 tablet-6 mobile-3">
+  <h1 class="page-title" style="display: none;">{% if current_tags %}{% comment %}ly_code_replace_for_[ blog.title | link_to: blog.url ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation | link_to: blog.url }}{% comment %}ly_code_replace_end{% endcomment %} &raquo; {{ current_tags.first }}{% else %}{% comment %}ly_code_replace_for_[ blog.title ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}{% endif %}</h1>
+  
+  {% paginate blog.articles by 48 %}
+  
+  <div class="clear"></div>
+  
+  <div class="desktop-12 tablet-6 mobile-3">
+    <div id="article-loop">
+      {% if blog.handle == 'press' %}
+      
+        {% for article in blog.articles  %}   
+        {% include 'article-loop-press' %}
+        {% endfor %} 
+      
+      {% else %}
+ 
+        {% for article in blog.articles  %}   
+      	{% include 'article-loop' %}
+      	{% endfor %} 
+      
+      {% endif %}
+      
+    </div>
+  </div>
+  
+  {% include 'pagination' %}
+  
+  {% endpaginate %}
+</div>

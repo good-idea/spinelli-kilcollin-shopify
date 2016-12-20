@@ -1,0 +1,33 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="article-index press desktop-4 tablet-3 mobile-3{% cycle ' first', '', ' last' %}" id="article-{{ article.id }}" data-alpha="{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">   
+
+  <div class="article-info"> 
+
+    <div class="article-info-inner">
+
+      {% if template != 'index' %}
+      {% if article.comments_count > 0 %}
+      <p class="posted">{{ article.comments_count }} <ly-as-2929499>Comments</ly-as-2929499></p>
+      {% endif %} 
+      {% endif %}
+
+      <div class="article-content">
+        {% if article.image %}<a href="{{ article.url }}"><img class="article-image" src="{{ article.image | img_url: 'grande' }}" alt="{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}"></a>{% endif %}
+        <div class="clear"></div>
+      </div>
+
+      {% if false and template != 'index' %}
+      {% if article.tags.size > 0 %}
+      <p class="post-tags">{% comment %}ly_i18n_replace_for_[ 'blogs.article.tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.tags' | t }}{% endcapture %}{% include 'ly-static-string' with '2929500' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}:
+        {% for tag in article.tags %} 
+        <a href="{{ blog.url }}/{% comment %}ly_i18n_replace_for_[ 'blogs.article.tagged' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.tagged' | t }}{% endcapture %}{% include 'ly-static-string' with '2929501' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}/{{ tag | handle }}">
+          {{ tag }}
+        </a>
+        {% endfor %}
+      </p>
+      {% endif %}
+      {% endif %}
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,126 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="page" class="desktop-12 tablet-6 mobile-3">
+  <h1 class="page-title">{% if current_tags %}{% comment %}ly_code_replace_for_[ blog.title | link_to: blog.url ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation | link_to: blog.url }}{% comment %}ly_code_replace_end{% endcomment %} &raquo; {{ current_tags.first }}{% else %}{% comment %}ly_code_replace_for_[ blog.title ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}{% endif %}</h1>
+  {% paginate blog.articles by 50 %}
+
+  <ul id="blog-articles" class="desktop-9 tablet-6 mobile-3">
+    {% for article in blog.articles  %}
+    <li class="single-article">
+
+      <div class="article-body desktop-12 tablet-6 mobile-3">
+        <h2><a href="{{ article.url }}">{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h2>
+        {% assign published_at = article.published_at | date: format: 'month_date_year' %}
+        <p class="posted">{% comment %}ly_i18n_replace_for_[ 'blogs.article.posted_on_date_html' | t: date: published_at ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.posted_on_date_html' | t: date: published_at }}{% endcapture %}{% include 'ly-static-string' with '2929650' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = published_at  %}{% assign ly_template = ly_template | replace: '[[date]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+
+        {% if article.comments_count > 0 %}
+        <p class="posted">{{ article.comments_count }} {% comment %}ly_i18n_replace_for_[ 'blogs.article.comments' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.comments' | t }}{% endcapture %}{% include 'ly-static-string' with '2929651' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+        {% endif %} 
+
+        <div class="article-content">
+          {% if article.image %}<a href="{{ article.url }}"><img class="article-image" src="{{ article.image | img_url: 'grande' }}" alt="{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}"></a>{% endif %}
+          <div class="clear"></div>          
+          {% if article.excerpt == blank %}
+          {% comment %}ly_code_replace_for_[ article.content | strip_html | truncatewords: 30 ]_begin{% endcomment %}{% include 'ly-content' with article %}{{ ly_translation | strip_html | truncatewords: 30 }}{% comment %}ly_code_replace_end{% endcomment %}
+          {% else %}
+          {% comment %}ly_code_replace_for_[ article.excerpt ]_begin{% endcomment %}{% include 'ly-excerpt' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
+          {% endif %}
+        </div>        
+
+        {% if article.tags.size > 0 %}
+        <p class="post-tags">{% comment %}ly_i18n_replace_for_[ 'blogs.article.tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.tags' | t }}{% endcapture %}{% include 'ly-static-string' with '2929652' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}:
+          {% for tag in article.tags %} 
+          <a href="{{ blog.url }}/{% comment %}ly_i18n_replace_for_[ 'blogs.article.tagged' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.tagged' | t }}{% endcapture %}{% include 'ly-static-string' with '2929653' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}/{{ tag | handle }}">
+            {{ tag }}
+          </a>
+          {% endfor %}
+        </p>
+        {% endif %}
+
+        <div class="readmore">
+          <a href="{{ article.url }}">{% comment %}ly_i18n_replace_for_[ 'blogs.article.read_more' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.read_more' | t }}{% endcapture %}{% include 'ly-static-string' with '2929654' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+        </div>
+        {% include 'social' with article %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul> 
+
+  <div id="blog-sidebar" class="desktop-3 tablet-6 mobile-3">
+    <h2>{% comment %}ly_i18n_replace_for_[ 'blogs.sidebar.social_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.sidebar.social_title' | t }}{% endcapture %}{% include 'ly-static-string' with '2929655' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} <a target="_blank" href="{{ shop.url }}/blogs/{{ blog.handle }}.atom"><i class="icon-rss icon-2x"></i></a></h2>
+
+    <ul id="social-icons">
+      {% if settings.show_facebook %}<li><a href="{{ settings.facebook_url }}" target="_blank"><i class="icon-facebook icon-2x"></i></a></li>{% endif %}
+      {% if settings.show_twitter %}<li><a href="{% comment %}ly_new_settings_replace_for_[ settings.twittername ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929647"] %}{% assign ly_translation = shop.metafields[namespace]["id2929647"] %}{% else %}{% assign ly_translation = settings.twittername %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}" target="_blank"><i class="icon-twitter icon-2x"></i></a></li>{% endif %}
+      {% if settings.show_pinterest %}<li><a href="{{ settings.pinterest_url }}" target="_blank"><i class="icon-pinterest icon-2x"></i></a></li>{% endif %}
+      {% if settings.show_tumblr %}<li><a href="{{ settings.tumblr_url }}" target="_blank"><i class="icon-tumblr icon-2x"></i></a></li>{% endif %}
+      {% if settings.show_youtube %}<li><a href="{{ settings.youtube_url }}" target="_blank"><i class="icon-youtube icon-2x"></i></a></li>{% endif %}
+      {% if settings.show_googleplus %}<li><a href="{{ settings.googleplus_url }}" target="_blank"><i class="icon-google-plus icon-2x"></i></a></li>{% endif %}
+      {% if settings.show_instagram %}<li><a href="//instagram.com/{% comment %}ly_new_settings_replace_for_[ settings.instagram-id ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929646"] %}{% assign ly_translation = shop.metafields[namespace]["id2929646"] %}{% else %}{% assign ly_translation = settings.instagram-id %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}" target="_blank"><i class="icon-instagram icon-2x"></i></a></li>{% endif %}
+      {% if settings.mailchimp %}<li><a id="inline" href="#subscribe_popup" class="open_popup"><i class="icon-envelope icon-2x"></i></a></li>{% endif %}
+    </ul>
+
+
+    {% if settings.show-blog-instagram-feed %}    
+    {% assign url = '{{image}}' %}
+    {% assign caption = '{{caption}}' %}
+    <div id="instagram-card">
+      <h3><a href="//instagram.com/{% comment %}ly_new_settings_replace_for_[ settings.instagram-id ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929646"] %}{% assign ly_translation = shop.metafields[namespace]["id2929646"] %}{% else %}{% assign ly_translation = settings.instagram-id %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}" target="_blank">@{% comment %}ly_new_settings_replace_for_[ settings.instagram-id ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929646"] %}{% assign ly_translation = shop.metafields[namespace]["id2929646"] %}{% else %}{% assign ly_translation = settings.instagram-id %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</a> {% comment %}ly_i18n_replace_for_[ 'layout.homepage.instagram_follow_where' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.homepage.instagram_follow_where' | t }}{% endcapture %}{% include 'ly-static-string' with '2929656' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+      <div id="instafeed"></div>
+      <script type="text/javascript">
+        var userFeed = new Instafeed({
+          get: 'user',
+          userId: {{ settings.instagram-user-id }},
+          accessToken: '{{ settings.instagram-access-token }}',
+          template: '<a class="fancybox desktop-3 tablet-2 mobile-half" href="{{url}}" rel="ig"><img class="instagram-image" src="{{ url }}" /></a>'
+        });
+        userFeed.run();        
+      </script>
+    </div>
+    {% endif %}
+
+    {% if settings.show-twitter-feed %}    
+    <div id="twitter-card">
+      <h3><a href="//www.twitter.com/{% comment %}ly_new_settings_replace_for_[ settings.twittername ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929647"] %}{% assign ly_translation = shop.metafields[namespace]["id2929647"] %}{% else %}{% assign ly_translation = settings.twittername %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}" target="_blank">@{% comment %}ly_new_settings_replace_for_[ settings.twittername ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929647"] %}{% assign ly_translation = shop.metafields[namespace]["id2929647"] %}{% else %}{% assign ly_translation = settings.twittername %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</a> {% comment %}ly_i18n_replace_for_[ 'blogs.sidebar.twitter_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.sidebar.twitter_title' | t }}{% endcapture %}{% include 'ly-static-string' with '2929657' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+      <a class="twitter-timeline" href="https://twitter.com/{% comment %}ly_new_settings_replace_for_[ settings.twittername ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929647"] %}{% assign ly_translation = shop.metafields[namespace]["id2929647"] %}{% else %}{% assign ly_translation = settings.twittername %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}" data-widget-id="{{ settings.twitter-widget }}" data-chrome="noborders noheader transparent" data-tweet-limit="3"><ly-as-2929648>Recent Tweets</ly-as-2929648></a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>     
+    </div>  
+    {% endif %}
+
+    {% if settings.show-facebook-like %}        
+    <div id="facebook-card">
+      <h3>{% comment %}ly_i18n_replace_for_[ 'blogs.sidebar.facebook_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.sidebar.facebook_title' | t }}{% endcapture %}{% include 'ly-static-string' with '2929658' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+      <div class="fb-like-box" data-href="{{ settings.facebook_url }}" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div> 
+    </div>
+    {% endif %}
+
+  </div>
+
+  <div class="clear"></div>
+
+
+  <div id="pagination">
+
+    {% if paginate.previous %}
+    {{ '<' | link_to: paginate.previous.url }}
+    {% endif %}
+    {% for part in paginate.parts %}
+    {% if part.is_link %}
+    {% comment %}ly_code_replace_for_[ part.title | link_to: part.url ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation | link_to: part.url }}{% comment %}ly_code_replace_end{% endcomment %}
+    {% else %}
+    {% if part.title == '&hellip;' %}
+    {% comment %}ly_code_replace_for_[ part.title ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
+    {% else %}
+    <span class="current">{% comment %}ly_code_replace_for_[ part.title ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% if paginate.next %}
+    {{ '>' | link_to: paginate.next.url }}
+    {% endif %}
+  </div>
+
+  {% endpaginate %}
+
+</div>
+
+
+

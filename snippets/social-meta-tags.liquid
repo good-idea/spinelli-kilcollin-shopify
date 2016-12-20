@@ -1,0 +1,80 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% comment %}
+Open graph tags.
+{% endcomment %}
+{% if template == 'index' %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ langify_title }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:description" content="{{ langify_description }}">
+{% elsif template contains 'product' %}
+<meta property="og:type" content="product">
+<meta property="og:title" content="{% comment %}ly_code_replace_for_[ product.title | strip_html | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | strip_html | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:description" content="{% comment %}ly_code_replace_for_[ product.description | strip_html | escape ]_begin{% endcomment %}{% include 'ly-description' with product %}{{ ly_translation | strip_html | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+{% for image in product.images limit:3 %}
+<meta property="og:image" content="http:{{ image.src | img_url: 'grande' }}">
+<meta property="og:image:secure_url" content="https:{{ image.src | img_url: 'grande' }}">
+{% endfor %}
+<meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html | escape }}">
+<meta property="og:price:currency" content="{{ shop.currency }}">
+{% elsif template contains 'article' %}
+<meta property="og:type" content="article">
+<meta property="og:title" content="{% comment %}ly_code_replace_for_[ article.title | strip_html | escape ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation | strip_html | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:description" content="{% comment %}ly_code_replace_for_[ article.excerpt_or_content | strip_html | escape ]_begin{% endcomment %}{% include 'ly-excerpt_or_content' with article %}{{ ly_translation | strip_html | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+{% if article.image %}
+<meta property="og:image" content="http:{{ article | img_url: '1024x1024' }}">
+<meta property="og:image:secure_url" content="https:{{ article | img_url: '1024x1024' }}">
+{% endif %}
+{% elsif template == 'password' %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ langify_shop_name | escape }}">
+<meta property="og:url" content="{{ shop.url }}">
+<meta property="og:description" content="{% unless langify_shop_description == blank %}{{ langify_shop_description | escape }}{% else %}{{ langify_shop_name | escape }}{% endunless %}">
+{% if settings.use_logo_image %}
+<meta property="og:image" content="http:{% comment %}ly_asset_replace_for_[ 'logo.png' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}">
+<meta property="og:image:secure_url" content="https:{% comment %}ly_asset_replace_for_[ 'logo.png' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}">
+{% endif %}
+{% else %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ langify_title | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+{% if langify_description %}
+<meta property="og:description" content="{{ langify_description | escape }}">
+{% endif %}
+{% if settings.use_logo_image %}
+<meta property="og:image" content="http:{% comment %}ly_asset_replace_for_[ 'logo.png' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}">
+<meta property="og:image:secure_url" content="https:{% comment %}ly_asset_replace_for_[ 'logo.png' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'logo.png' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}">
+{% endif %}
+{% endif %}
+<meta property="og:site_name" content="{{ langify_shop_name }}">
+
+{% comment %}
+This snippet renders meta data needed to create a Twitter card.
+{% endcomment %}
+{% if template contains 'article' and article.image %}
+<meta name="twitter:card" content="summary_large_image">
+{% elsif template == 'index' and hero_enabled %}
+<meta name="twitter:card" content="summary_large_image">
+{% else %}
+<meta name="twitter:card" content="summary">
+{% endif %}
+{% unless settings.show_twitter == 'false' %}
+<meta name="twitter:site" content="@{{ settings.twittername | split: 'twitter.com/' | last }}">
+{% endunless %}
+{% if template == 'index' %}
+<meta name="twitter:title" content="{{ langify_title }}">
+<meta name="twitter:description" content="{{ langify_description | escape }}">
+{% elsif template contains 'product' %}
+<meta name="twitter:title" content="{% comment %}ly_code_replace_for_[ product.title | strip_html | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | strip_html | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+<meta name="twitter:description" content="{% comment %}ly_code_replace_for_[ product.description | strip_html | truncate: 200, '' | escape ]_begin{% endcomment %}{% include 'ly-description' with product %}{{ ly_translation | strip_html | truncate: 200, '' | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+<meta name="twitter:image" content="https:{{ product | img_url: 'large' }}">
+<meta name="twitter:image:width" content="480">
+<meta name="twitter:image:height" content="480">
+{% elsif template contains 'article' %}
+<meta name="twitter:title" content="{% comment %}ly_code_replace_for_[ article.title | strip_html | escape ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation | strip_html | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+<meta name="twitter:description" content="{% comment %}ly_code_replace_for_[ article.excerpt_or_content | strip_html | truncate: 200, '' | escape ]_begin{% endcomment %}{% include 'ly-excerpt_or_content' with article %}{{ ly_translation | strip_html | truncate: 200, '' | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+{% if article.image %}
+<meta property="twitter:image" content="https:{{ article | img_url: '1024x1024' }}">
+{% endif %}
+{% endif %}

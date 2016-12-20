@@ -1,0 +1,49 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="product-index-inner">
+  {% if product.available %}
+  {% for col in product.collections %}
+  {% if col.handle == 'new' %}
+  <div class="new icn">{% comment %}ly_i18n_replace_for_[ 'products.general.new' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.new' | t }}{% endcapture %}{% include 'ly-static-string' with '2929574' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
+  {% endif %}
+  {% endfor %}        
+  {% if product.price < product.compare_at_price %}
+  <div class="sale-item icn">{% comment %}ly_i18n_replace_for_[ 'products.general.sale' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.sale' | t }}{% endcapture %}{% include 'ly-static-string' with '2929575' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
+  {% endif %}
+  {% else %}
+  <div class="so icn">{% comment %}ly_i18n_replace_for_[ 'products.general.sold' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.sold' | t }}{% endcapture %}{% include 'ly-static-string' with '2929576' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</div>
+  {% endif %}   
+</div>
+
+<div class="prod-image">
+  <a href="{{ product.url | within: collection }}" title="{% comment %}ly_code_replace_for_[ product.title | escape ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}">
+    <img src="{{ product.featured_image | product_img_url: '1024x1024' }}" alt="{{ image.alt }}" />
+  </a>
+
+  {% if settings.quickview %}
+  <a class="fancybox.ajax product-modal" href="{{ product.url }}?view=quick">{% comment %}ly_i18n_replace_for_[ 'products.general.quick_view' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.quick_view' | t }}{% endcapture %}{% include 'ly-static-string' with '2929577' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+  {% endif %}
+</div>
+
+<div class="product-info"> 
+  <div class="product-info-inner">
+    <a href="{{ product.url | within: collection }}"> 
+      {% if settings.vendor %}<h4>{% comment %}ly_code_replace_for_[ product.vendor ]_begin{% endcomment %}{% include 'ly-vendor' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h4>{% endif %}
+      <h3>{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h3>       
+
+      <div class="price">
+        {% if product.price < product.compare_at_price %}
+        <div class="onsale">{{ product.price | money }}</div>
+        <div class="was">{{ product.compare_at_price | money }}</div>
+        {% else %}
+        <div class="prod-price">{% if product.price_varies %} {% comment %}ly_i18n_replace_for_[ 'products.general.from' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.general.from' | t }}{% endcapture %}{% include 'ly-static-string' with '2929578' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {{ product.price_min | money }} - {{ product.price_max | money }} {% else %}{{ product.price | money }}{% endif %}</div>
+        {% endif %}	
+      </div>
+    </a> 
+
+    {% if settings.alternate_colors %}
+    <div class="prod-colors">
+      {% include 'product-listing-swatches' %}
+    </div> 
+    {% endif %}    
+
+  </div>
+</div>

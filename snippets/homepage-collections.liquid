@@ -1,0 +1,31 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+<section class="homepage-section animate wow fadeIn no-fouc">
+  <div id="collection-loop" class="row">
+    {% if settings.homepage-collect-title ==  blank %}
+    <div class="section-title lines"><h2>{% comment %}ly_i18n_replace_for_[ 'layout.homepage.collections_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.homepage.collections_title' | t }}{% endcapture %}{% include 'ly-static-string' with '2929551' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2></div>
+    {% else %}
+    <div class="section-title lines"><h2>{{ settings.homepage-collect-title }}</h2></div>
+    {% endif %}    
+
+    {% for link in linklists[settings.home-collection-linklist].links %}
+    {% assign collection = link.object %}
+    <div class="collection-index desktop-3 tablet-half mobile-half{% cycle ' first', '', '', ' last' %}" data-alpha="{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">  
+      <div class="collection-image">
+        <a href="{{ collection.url }}" title="{{ collection_title }}">
+          {% if collection.image %}
+          {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}
+          {% else %}
+          {{ collection.products.first.featured_image | product_img_url: 'grande' | img_tag: collection_title }}
+          {% endif %}
+        </a>     
+      </div>
+      <div class="collection-info">
+        <a href="{{ collection.url }}" title="{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">
+          <h3>{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h3>
+                {% if settings.collection_count %}<p>{% comment %}ly_i18n_replace_for_[ 'collections.general.items_count' | t: count: collection.products_count ]_begin{% endcomment %}{% if collection.products_count  == 0 %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929552' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif collection.products_count  == 1 %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929553' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif collection.products_count  == 2 %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929554' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% else %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929554' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>{% endif %}
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

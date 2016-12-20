@@ -1,0 +1,45 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% form 'contact' %}
+
+{% if form.posted_successfully? %}
+<div class="successForm feedback">
+  <p><ly-as-2929579>Thanks for contacting us! We'll get back to you as soon as possible.</ly-as-2929579></p>
+</div>
+{% endif %}
+
+{% if form.errors %}
+<div class="errorForm feedback">
+  <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+  <p><ly-as-2929580>Oops, sorry. We were unable to submit your inquiry because it contained</ly-as-2929580> {{ form.errors | size | pluralize: '<ly-as-2929581>an error</ly-as-2929581>', '<ly-as-2929582>a few errors</ly-as-2929582>' }}<ly-as-2929583>. Please correct the following and submit again:</ly-as-2929583></p>
+  {% for field in form.errors %}
+    <p><ly-as-2929584>The</ly-as-2929584> {{ field | capitalize | replace: '<ly-as-2929585>Body</ly-as-2929585>', '<ly-as-2929586>Message</ly-as-2929586>' }} <ly-as-2929587>field</ly-as-2929587> {{ form.errors.messages[field] }}.</p>
+  {% endfor %}
+</div>
+{% endif %}
+ 
+<div id="contactFormWrapper">
+  <p>
+    <label><ly-as-2929588>Your Name:</ly-as-2929588></label>
+    <input type="text" id="contactFormName" name="contact[name]" placeholder="<ly-as-2929593>Name</ly-as-2929593>" />
+  </p>
+  <p>
+    <label><ly-as-2929589>Email:</ly-as-2929589></label>
+    <input type="email" id="contactFormEmail" name="contact[email]" placeholder="<ly-as-2929594>Email</ly-as-2929594>" />
+  </p>
+  <p>
+    <label><ly-as-2929590>Phone Number:</ly-as-2929590></label>
+    <input type="text" id="contactFormTelephone" name="contact[phone]" placeholder="<ly-as-2929595>Contact Number</ly-as-2929595>" />
+  </p> 
+
+  <input type="hidden" name="contact[product]" value="{% comment %}ly_code_replace_for_[product.title]_begin{% endcomment %}{% include 'ly-title' with product %}{{ly_translation}}{% comment %}ly_code_replace_end{% endcomment %}">
+  <input type="hidden" name="contact[producturl]" value="{{ shop.url}}/{{product.url}}">
+
+  <p>
+    <label><ly-as-2929591>Message:</ly-as-2929591></label>
+    <textarea rows="15" cols="150" id="contactFormMessage" name="contact[body]" placeholder="<ly-as-2929596>Your Message</ly-as-2929596>" style="min-width: 300px"></textarea>
+  </p>
+  <p>
+    <input type="submit" id="contactFormSubmit" class="secondary button" value="<ly-as-2929592>SEND</ly-as-2929592>" />
+  </p>            
+</div><!-- contactWrapper -->
+
+{% endform %}

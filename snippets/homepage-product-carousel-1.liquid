@@ -1,0 +1,12 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<section class="homepage-section animate wow fadeIn no-fouc">
+  <div class="row">
+    <div class="section-title lines desktop-12 tablet-6 mobile-3"><h2>{% comment %}ly_code_replace_for_[ collections[settings.homepage-collection1].title ]_begin{% endcomment %}{% include 'ly-title' with collections[settings.homepage-collection1] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h2></div>
+    <div class="collection-carousel desktop-12 tablet-6 mobile-3">
+      {% for product in collections[settings.homepage-collection1].products limit: settings.homepage-product-1-limit %}
+      <div class="lazyOwl" id="product-listing-{{ product.id }}" data-alpha="{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}" data-price="{{ product.price }}">
+        {% include 'product-listing' %}
+      </div>
+      {% endfor %}
+    </div>      
+  </div>
+</section>
