@@ -1,4 +1,5 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign number_of_comments = article.comments_count %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+{% assign number_of_comments = article.comments_count %}
 {% if comment and comment.created_at %}
 {% assign number_of_comments = article.comments_count | plus: 1 %}
 {% endif %}
@@ -17,6 +18,13 @@
 
       <div class="rte">{% comment %}ly_code_replace_for_[ article.content ]_begin{% endcomment %}{% include 'ly-content' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>
       
+      <h5 class="socials">
+        Share this post on
+        <a href="https://www.facebook.com/sharer/sharer.php?u=" target="blank" class="social"><i class="icon-facebook icon-2x"></i></a><a href="http://twitter.com/intent/tweet?url={{ shop.url }}{{ page.url }}&text={{ page.title | escape}}" target="blank" class="social"><i class="icon-twitter icon-2x"></i></a><a href="https://www.pinterest.com/pin/create/button/"
+           data-pin-do="buttonBookmark"
+           data-pin-custom="true"
+           class="social"><i class="icon-pinterest icon-2x"></i></a>
+      </h5>
       {% if blog.handle == 'press' and article.tags.size > 0 %}
 	    <h4 class="featured"><ly-as-2929628>Featured Items</ly-as-2929628></h4>
       	
@@ -151,3 +159,118 @@
 
   {% endpaginate %}        
 </div>
+
+<script>
+// Grab the initial images in the blog post and build them into a carousel.
+$(document).ready(function() {
+  var rte = $('#article-body .rte');
+  var children = rte.children();
+  var images = [];
+  for (var i = 0; i < children.length; i++) {
+    var child = children[i];
+    var childrenFound = 0;
+    for (var n = 0; n < child.childNodes.length; n++) {
+      var node = child.childNodes[n];
+      if (node.tagName === 'IMG' || node.nodeName === 'IMG') {
+        // if an image is found, remove it from the child and add it to our array.
+        var image = $(node);
+        images.push(image);
+        image.remove();
+        childrenFound++;
+      }
+    }
+    // remove empty parents
+    if (child.childNodes.length === 0) $(child).remove();
+    // if we didn't find any images, stop looking
+    if (childrenFound === 0) break;
+    console.log(images);
+  }
+  if (images.length) buildCarousel(rte, images);
+  rte.addClass('carousel-built');
+})
+
+function buildCarousel(body, sourceImages) {
+  var container = $('<div/>').addClass('carousel');
+  var slides = [];
+  var currentIndex = 1;
+
+  // Create slides, append them to container
+  for (var i = 0; i < sourceImages.length; i++) {
+    console.log(sourceImages[i]);
+    var slide = $('<div/>').addClass('carousel__slide')
+      // .css('background-image', 'url(' + sourceImages[i].attr('src') + ')')
+      .appendTo(container);
+    sourceImages[i].appendTo(slide);
+    slides.push(slide);
+  }
+
+  if (sourceImages.length === 1) {
+    slides[0].attr('data-position', 'active');
+    container.insertBefore(body);
+    return true;
+  }
+
+
+
+  // make some clones so we can swipe into before & after
+  var firstClone = slides[0].clone().addClass('clone').insertAfter(slides[slides.length - 1]);
+  var lastClone = slides[slides.length - 1].clone().addClass('clone').insertBefore(slides[0]);
+  slides.push(firstClone);
+  slides.unshift(lastClone);
+  var delay = 400;
+
+  function advance(count, disableTransition) {
+    var disableTranstion = disableTranstion || false;
+    var newIndex = currentIndex + count;
+    if (newIndex < 0) newIndex = slides.length + 1 - newIndex;
+    if (disableTransition) container.addClass('disableTransition');
+    for (var i = 0; i < slides.length; i++) {
+      var position = '';
+      if (i === newIndex) position = 'active';
+      if (i < newIndex) position = 'previous';
+      if (i > newIndex) position = 'next';
+      slides[i].attr('data-position', position)
+    }
+    if (disableTransition) {
+      setTimeout(function() {
+        container.removeClass('disableTransition');
+      }, 10)
+    }
+    if (newIndex === 0) {
+      currentIndex = slides.length - 2;
+      setTimeout(function() {
+        if (!disableTransition) advance(0, true);
+      }, delay);
+    } else if (newIndex === slides.length -1) {
+      currentIndex = 1;
+      setTimeout(function() {
+        if (!disableTransition) advance(0, true);
+      }, delay);
+    } else {
+      currentIndex = newIndex;
+    }
+  }
+
+  var prev = $('<div/>').addClass('carousel__button carousel__button--prev').prependTo(container);
+  var next = $('<div/>').addClass('carousel__button carousel__button--next').prependTo(container);
+
+  prev.on('click', function() {
+    advance(-1);
+  });
+  next.on('click', function() {
+    advance(1);
+  });
+
+  advance(0);
+  container.insertBefore(body);
+}
+
+</script>
+
+
+
+
+
+
+
+
