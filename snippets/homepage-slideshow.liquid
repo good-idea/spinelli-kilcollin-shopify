@@ -102,8 +102,7 @@
 		height: 100%;
 	}
 
-	/*ul.slides li:hover*/
-	svg foreignObject {
+	ul.slides li:hover svg foreignObject {
 		mask: url("#mask");
 	}
 
@@ -160,7 +159,7 @@
 			var pos = (overlayWidth / containerWidth);
 			console.log(overlayWidth, containerWidth, pos);
 			var newWidth = (pos > .5) ? containerWidth : 0;
-			setWidth(containerWidth / 2);
+			setWidth(newWidth)
 		})
 
 	}
