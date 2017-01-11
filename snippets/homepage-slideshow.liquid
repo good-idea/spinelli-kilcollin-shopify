@@ -13,6 +13,29 @@
       </div>
 
       {% elsif settings.homepage-display == 'slideshow' %}
+
+			<div id="slider-overlay" class="hidden">
+				<svg class="container">
+
+					<!-- Mask definition -->
+					<defs>
+						<mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+							<linearGradient id="g" gradientUnits="objectBoundingBox" x1="97%" x2="100%" y2="0">
+								<stop stop-color="white" stop-opacity="1" offset="0" />
+								<stop stop-color="white" stop-opacity="0" offset="1" />
+							</linearGradient>
+							<rect width="100%" height="100%" fill="url(#g)" />
+						</mask>
+					</defs>
+
+					<foreignObject width="100%" height="100%">
+						<!-- HTML code -->
+						<span></span>
+					</foreignObject>
+
+				</svg>
+			</div>
+
 	  <div class="flexslider">
 	        <ul class="slides">
 
@@ -28,76 +51,151 @@
 	          {% assign slide_title = 'slide-' | append: i | append: '-title' %}
 	          {% assign slide_caption = 'slide-' | append: i | append: '-caption' %}
 	          {% assign slide_button = 'slide-' | append: i | append: '-button' %}
-	          {% assign slide_button_text = 'slide-' | append: i | append: '-button-text' %}        
+	          {% assign slide_button_text = 'slide-' | append: i | append: '-button-text' %}
 
 	          <li>
 	            <a href="{{ settings[slide_link_url] }}">
 	              <img src="{% comment %}ly_asset_replace_for_[ slide_img_url | asset_url ]_begin{% endcomment %}{% assign ly_asset = slide_img_url %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}" alt="{{ settings[slide_img_alt] }}" />
 	            </a>
 	            <div class="flex-caption {{ index }}">
-	  			{% if settings[slide_title] != blank %}                        
+	  			{% if settings[slide_title] != blank %}
 	              <h2 class="slide-title">{{ settings[slide_title] }}</h2>
 	              {% endif %}
-	  			{% if settings[slide_caption] != blank %}            
+	  			{% if settings[slide_caption] != blank %}
 	              <p class="caption">{{ settings[slide_caption] }}</p>
 	              {% endif %}
 	              {% if settings[slide_button] %}
 	              <div class="cta">
 	                <a href="{{ settings[slide_link_url] }}">{{ settings[slide_button_text] }}</a>
 	              </div>
-	              {% endif %}            
+	              {% endif %}
 	            </div>
 	          </li>
 	          {% endif %}
 	          {% endfor %}
 	        </ul>
 	      </div>
-      {% endif %} 
+      {% endif %}
 
       {% if settings.display-wide %}
       {% else %}
     </div>
   </div>
-    {% endif %}    
-<div class="clear"></div>  
+    {% endif %}
+<div class="clear"></div>
 </section>
 
 <style>
 	.homepage-section li > a {
-    	display: block; 
-    }
-  
-  	.homepage-section li > a > span {
-      background: transparent url(https://cdn.shopify.com/s/files/1/1105/2238/t/14/assets/slide2.jpg?4491222695233331091) no-repeat scroll 0 0;
-      background-size: cover;
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      display: block;
-      width: 0px;
-      height: 100%;
-    }
+  	display: block;
+  }
+
+	#slider-overlay {
+		mask: url("#mask");
+	}
+
+	#slider-overlay, #slider-overlay svg, svg foreignObject {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	/*ul.slides li:hover*/
+	svg foreignObject {
+		mask: url("#mask");
+	}
+
+	#slider-overlay span {
+    background: transparent url({{ 'slide2.jpg' | asset_url }}) no-repeat scroll 0 0;
+    background-size: cover;
+    /*position: absolute;*/
+    left: 0px;
+    top: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+	#slider-overlay.hidden {
+		display: none;
+	}
 </style>
 
 <script>
-    var a = document.querySelector('.homepage-section li > a');
-   	var span = document.createElement('span');
-    a.appendChild(span);
-    
-    a.onmousemove = function(e) {
-      var pos = this.getBoundingClientRect();
-      var insidePos = Math.round(e.clientX - pos.left);
-      var innerWidth = (insidePos / pos.width) * 100;
-      span.style.width = innerWidth + '%';
+
+	function makeSlider() {
+		var container = $('.homepage-section li > a');
+		var span = $("#slider-overlay").clone();
+		var overlay = span.find('svg.container');
+		var rect = overlay.find('#mask rect');
+
+		span.appendTo(container).removeClass('hidden');
+
+		var containerLeft, containerWidth, overlayWidth;
+
+		function calculate() {
+			containerLeft = container.offset().left;
+			containerWidth = container.outerWidth();
+		}
+
+		function setWidth(newWidth) {
+			overlayWidth = Math.min(newWidth, containerWidth - 1);
+			console.log("New Width: ", overlayWidth);
+			overlay.css('width', overlayWidth + 'px');
+			rect.css('width', overlayWidth + 'px');
+		}
+
+		calculate();
+		$(window).on('resize', calculate);
+
+		container.on('mousemove', function (e) {
+			setWidth(Math.round(e.clientX - containerLeft));
+		})
+
+
+
+		container.on('mouseleave', function (e) {
+			var pos = (overlayWidth / containerWidth);
+			console.log(overlayWidth, containerWidth, pos);
+			var newWidth = (pos > .5) ? containerWidth : 0;
+			setWidth(containerWidth / 2);
+		})
+
 	}
 
-    a.onmouseleave = function(e) {
-      var width = parseInt(span.style.width);
+	$(window).on('load', makeSlider);
 
-      if (width > 50) {
-        span.style.width = '100%';
-      } else {
-        span.style.width = 0;   
-      }
-    }
+  //   var a = document.querySelector('.homepage-section li > a');
+  //  	var span = document.createElement('span');
+	// 	var span = document.getElementById('slider-overlay');
+  //   a.appendChild(span);
+	//
+	// 	var overlay = $(span).find('svg.container');
+	// 	var rect = overlay.find('#mask rect')
+	//
+  //   a.onmousemove = function(e) {
+  //     var pos = this.getBoundingClientRect();
+  //     var insidePos = Math.round(e.clientX - pos.left);
+  //     var innerWidth = (insidePos / pos.width) * 100;
+	// 		overlay.css('width', insidePos + 'px');
+	// 		rect.css('width', insidePos + 'px');
+  //     // span.style.width = innerWidth + '%';
+	// }
+	//
+  //   a.onmouseleave = function(e) {
+	// 		var width = parseInt(overlay.css('width'));
+  //     // var width = parseInt(span.style.width);
+	// 		console.log(width)
+  //     if (width > 50) {
+	// 			overlay.css('width', '550px');
+	// 			rect.css('width', '550px');
+	// 			// span.style.width = '100%';
+  //     } else {
+	// 			overlay.css('width', '45%');
+	// 			// rect.css('width', '45%');
+	// 			// span.style.width = 0;
+  //     }
+  //   }
 </script>
