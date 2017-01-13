@@ -23,9 +23,12 @@
       <label>{% comment %}ly_i18n_replace_for_[ 'contact.form.message' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'contact.form.message' | t }}{% endcapture %}{% include 'ly-static-string' with '2929521' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
       <textarea rows="15" cols="90" id="contactFormMessage" name="contact[body]" placeholder="{% comment %}ly_i18n_replace_for_[ 'contact.form.message' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'contact.form.message' | t }}{% endcapture %}{% include 'ly-static-string' with '2929521' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}"></textarea>
     </p>
-    <p>
-      <input type="submit" id="contactFormSubmit" class="secondary button" value="{% comment %}ly_i18n_replace_for_[ 'contact.form.send' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'contact.form.send' | t }}{% endcapture %}{% include 'ly-static-string' with '2929522' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
-    </p>
+		<div class="contact__row">
+			<p class="alternatively grey">Alternatively, contact <a href="mailto:floriana@spinellikilcollin.com">floriana@spinellikilcollin.com</a> for inquiries.</p>
+			<p>
+				<input type="submit" id="contactFormSubmit" class="secondary button" value="{% comment %}ly_i18n_replace_for_[ 'contact.form.send' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'contact.form.send' | t }}{% endcapture %}{% include 'ly-static-string' with '2929522' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
+			</p>
+		</div>
   </div>
 </div>
 

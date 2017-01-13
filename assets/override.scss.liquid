@@ -89,6 +89,10 @@ $zoomIcon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFIAAABWCAYAAABcvcGNAA
 	color: #777777;
 }
 
+.grey a:hover {
+	text-decoration: underline;
+}
+
 .button-override {
   width: 100%;
   max-width: 155px;
@@ -1664,6 +1668,24 @@ body.article #blog-article {
       text-transform: uppercase;
         -webkit-font-smoothing: antialiased;
     }
+
+		input[type="submit"] {
+			width: 155px;
+		}
+
+
+  @include breakpoint(mobile) {
+		.alternatively {
+			display: none;
+		}
+	}
+
+}
+
+.contact__row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 #password {
