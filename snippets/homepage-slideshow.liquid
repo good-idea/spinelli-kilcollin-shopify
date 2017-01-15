@@ -20,7 +20,7 @@
 					<!-- Mask definition -->
 					<defs>
 						<mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-							<linearGradient id="g" gradientUnits="objectBoundingBox" x1="98.5%" x2="100%" y2="0">
+							<linearGradient id="g" gradientUnits="objectBoundingBox" x1="98%" x2="100%" y2="0">
 								<stop stop-color="white" stop-opacity="1" offset="0" />
 								<stop stop-color="white" stop-opacity="0" offset="1" />
 							</linearGradient>
@@ -38,6 +38,8 @@
 
 	  <div class="flexslider">
 	        <ul class="slides">
+
+
 	          {% for i in (1..5) %}
 	          {% assign slide_show = 'slide-' | append: i | append: '-check' %}
 
@@ -88,9 +90,9 @@
   	display: block;
   }
 
-	#slider-overlay {
+	/*#slider-overlay {
 		mask: url("#mask");
-	}
+	}*/
 
 	#slider-overlay, #slider-overlay svg, svg foreignObject {
 		position: absolute;
@@ -100,7 +102,7 @@
 		height: 100%;
 	}
 
-	ul.slides li:hover svg foreignObject {
+	ul.slides li svg foreignObject {
 		mask: url("#mask");
 	}
 
@@ -130,34 +132,46 @@
 
 		span.appendTo(container).removeClass('hidden');
 
-		var containerLeft, containerWidth, overlayWidth;
+		var containerLeft, containerWidth, targetWidth;
+    var isAnimating = false;
+    var overlayWidth = 0;
 
 		function calculate() {
 			containerLeft = container.offset().left;
 			containerWidth = container.outerWidth();
 		}
 
-		function setWidth(newWidth) {
-			overlayWidth = Math.min(newWidth, containerWidth - 1);
-			console.log("New Width: ", overlayWidth);
-			overlay.css('width', overlayWidth + 'px');
-			rect.css('width', overlayWidth + 'px');
+		function setTargetWidth(newWidth) {
+			targetWidth = Math.min(newWidth, containerWidth - 1);
+      targetWidth = newWidth;
+      if (!isAnimating) window.requestAnimationFrame(moveSlider);
 		}
+
+    function moveSlider() {
+      isAnimating = true;
+      var diff = (targetWidth - overlayWidth);
+      overlayWidth = (overlayWidth + (diff * 0.15));
+      // overlayWidth = Math.max(2, overlayWidth);
+			// overlay.css('width', overlayWidth + 'px');
+			rect.css('width', overlayWidth + 'px');
+      if (Math.abs(diff) > .5) {
+        window.requestAnimationFrame(moveSlider)
+      } else {
+        isAnimating = false;
+      }
+    }
 
 		calculate();
 		$(window).on('resize', calculate);
 
 		container.on('mousemove', function (e) {
-			setWidth(Math.round(e.clientX - containerLeft));
+			setTargetWidth(Math.round(e.clientX - containerLeft));
 		})
-
-
 
 		container.on('mouseleave', function (e) {
 			var pos = (overlayWidth / containerWidth);
-			console.log(overlayWidth, containerWidth, pos);
-			var newWidth = (pos > .5) ? containerWidth : 0;
-			setWidth(newWidth)
+			var newWidth = (pos > .5) ? containerWidth * 1.1 : 0;
+			setTargetWidth(newWidth)
 		})
 
 	}
