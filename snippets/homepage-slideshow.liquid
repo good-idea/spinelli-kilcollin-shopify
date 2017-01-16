@@ -72,6 +72,7 @@
 <style>
 	.homepage-section li > a {
   	display: block;
+    overflow: hidden;
   }
 
 	/*#slider-overlay {
@@ -88,8 +89,8 @@
 
 
   .slider-container {
-    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(100% - 15px), rgba(0, 0, 0, 0) calc(100%));
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(100% - 15px), rgba(0, 0, 0, 0) calc(100%));
     overflow: hidden;
   }
 
@@ -165,7 +166,7 @@
 
     mainContainer.on('mouseleave', function(e) {
       var pos = (sliderWidth / containerWidth);
-      var newWidth = (pos > .5) ? containerWidth * 1.02 : 0;
+      var newWidth = (pos > .5) ? containerWidth + 15 : 0;
       setTargetWidth(newWidth);
       // setTargetWidth(containerWidth * .5);
     })
