@@ -14,26 +14,8 @@
 
       {% elsif settings.homepage-display == 'slideshow' %}
 
-			<div id="slider-overlay" class="hidden">
-				<svg class="container">
-
-					<!-- Mask definition -->
-					<defs>
-						<mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-							<linearGradient id="g" gradientUnits="objectBoundingBox" x1="98%" x2="100%" y2="0">
-								<stop stop-color="white" stop-opacity="1" offset="0" />
-								<stop stop-color="white" stop-opacity="0" offset="1" />
-							</linearGradient>
-							<rect width="100%" height="100%" fill="url(#g)" />
-						</mask>
-					</defs>
-
-					<foreignObject width="100%" height="100%">
-						<!-- HTML code -->
-						<span></span>
-					</foreignObject>
-
-				</svg>
+			<div id="slider-overlay" class="hidden slider-container">
+        <span></span>
 			</div>
 
 	  <div class="flexslider">
@@ -69,6 +51,8 @@
 	                <a href="{{ settings[slide_link_url] }}">{{ settings[slide_button_text] }}</a>
 	              </div>
 	              {% endif %}
+
+
 	            </div>
 	          </li>
 	          {% endif %}
@@ -102,9 +86,21 @@
 		height: 100%;
 	}
 
-	ul.slides li svg foreignObject {
+
+  .slider-container {
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0) 100%);
+    overflow: hidden;
+  }
+
+  svg mask {
+    /*position: absolute;*/
+  }
+
+	/*ul.slides li svg foreignObject {
 		mask: url("#mask");
-	}
+    -webkit-mask: url("#mask");
+  }*/
 
 	#slider-overlay span {
     background: transparent url({{ 'slide2.jpg' | asset_url }}) no-repeat scroll 0 0;
@@ -115,6 +111,7 @@
     display: block;
     width: 100%;
     height: 100%;
+    mask: url("#mask");
   }
 
 	#slider-overlay.hidden {
@@ -125,54 +122,53 @@
 <script>
 
 	function makeSlider() {
-		var container = $('.homepage-section li > a');
-		var span = $("#slider-overlay").clone();
-		var overlay = span.find('svg.container');
-		var rect = overlay.find('#mask rect');
+		var mainContainer = $('.homepage-section .row:first-of-type ul li a').first();
+    var sliderContainer = $('#slider-overlay').clone();
+    var span = sliderContainer.find('span');
 
-		span.appendTo(container).removeClass('hidden');
+    sliderContainer.appendTo(mainContainer).removeClass('hidden');
 
-		var containerLeft, containerWidth, targetWidth;
+    var containerLeft, containerWidth, targetWidth;
     var isAnimating = false;
-    var overlayWidth = 0;
+    var sliderWidth = 0;
 
-		function calculate() {
-			containerLeft = container.offset().left;
-			containerWidth = container.outerWidth();
-		}
+    function calculate() {
+      containerLeft = mainContainer.offset().left;
+      containerWidth = mainContainer.outerWidth();
+      span.css('width', containerWidth);
+    }
 
-		function setTargetWidth(newWidth) {
-			targetWidth = Math.min(newWidth, containerWidth - 1);
+    function setTargetWidth(newWidth) {
       targetWidth = newWidth;
       if (!isAnimating) window.requestAnimationFrame(moveSlider);
-		}
+    }
 
     function moveSlider() {
       isAnimating = true;
-      var diff = (targetWidth - overlayWidth);
-      overlayWidth = (overlayWidth + (diff * 0.15));
-      // overlayWidth = Math.max(2, overlayWidth);
-			// overlay.css('width', overlayWidth + 'px');
-			rect.css('width', overlayWidth + 'px');
+      var diff = (targetWidth - sliderWidth);
+      sliderWidth = (sliderWidth + (diff * 0.15));
+      sliderContainer.css('width', sliderWidth + 'px');
+      console.log(sliderWidth);
       if (Math.abs(diff) > .5) {
-        window.requestAnimationFrame(moveSlider)
+        window.requestAnimationFrame(moveSlider);
       } else {
         isAnimating = false;
       }
     }
 
-		calculate();
-		$(window).on('resize', calculate);
+    calculate();
+    $(window).on('resize', calculate);
 
-		container.on('mousemove', function (e) {
-			setTargetWidth(Math.round(e.clientX - containerLeft));
-		})
+    mainContainer.on('mousemove', function(e) {
+      setTargetWidth(Math.round(e.clientX - containerLeft));
+    })
 
-		container.on('mouseleave', function (e) {
-			var pos = (overlayWidth / containerWidth);
-			var newWidth = (pos > .5) ? containerWidth * 1.1 : 0;
-			setTargetWidth(newWidth)
-		})
+    mainContainer.on('mouseleave', function(e) {
+      var pos = (sliderWidth / containerWidth);
+      var newWidth = (pos > .5) ? containerWidth * 1.02 : 0;
+      setTargetWidth(newWidth);
+      // setTargetWidth(containerWidth * .5);
+    })
 
 	}
 
