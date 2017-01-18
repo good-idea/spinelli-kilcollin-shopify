@@ -37,7 +37,7 @@
           	{% assign product = nil %}
       	{% endfor %}
       	</div>
-      {% endif %}      
+      {% endif %}
 
       {% comment %}
       {% include 'social-text' with article %}
@@ -184,6 +184,7 @@ function buildCarousel(body, sourceImages) {
   var container = $('<div/>').addClass('carousel');
   var slides = [];
   var currentIndex = 1;
+  var animating = false;
 
   // Create slides, append them to container
   for (var i = 0; i < sourceImages.length; i++) {
@@ -211,6 +212,7 @@ function buildCarousel(body, sourceImages) {
   var delay = 400;
 
   function advance(count, disableTransition) {
+    animating = true;
     var disableTranstion = disableTranstion || false;
     var newIndex = currentIndex + count;
     if (newIndex < 0) newIndex = slides.length + 1 - newIndex;
@@ -231,14 +233,17 @@ function buildCarousel(body, sourceImages) {
       currentIndex = slides.length - 2;
       setTimeout(function() {
         if (!disableTransition) advance(0, true);
+        animating = false;
       }, delay);
     } else if (newIndex === slides.length -1) {
       currentIndex = 1;
       setTimeout(function() {
         if (!disableTransition) advance(0, true);
+        animating = false;
       }, delay);
     } else {
       currentIndex = newIndex;
+      animating = false;
     }
   }
 
@@ -246,10 +251,10 @@ function buildCarousel(body, sourceImages) {
   var next = $('<div/>').addClass('carousel__button carousel__button--next').prependTo(container);
 
   prev.on('click', function() {
-    advance(-1);
+    if (!animating) advance(-1);
   });
   next.on('click', function() {
-    advance(1);
+    if (!animating) advance(1);
   });
 
   advance(0);
