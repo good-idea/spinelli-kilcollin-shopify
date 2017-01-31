@@ -3,12 +3,13 @@
 <h1 class="desktop-6 desktop-push-3 tablet-3 mobile-3" style="display: none;">
   {% if collection.handle == 'all' %}{% comment %}ly_i18n_replace_for_[ 'collections.general.all_products' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.all_products' | t }}{% endcapture %}{% include 'ly-static-string' with '2929675' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}{% else %}{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}{% endif %}
 </h1>
-
-<div id="collection-description" class="desktop-12 tablet-6 mobile-3">
-  <div class="rte">
-    {% comment %}ly_code_replace_for_[ collection.description | remove: "[banner]" ]_begin{% endcomment %}{% include 'ly-description' with collection %}{{ ly_translation | remove: "[banner]" }}{% comment %}ly_code_replace_end{% endcomment %}
+{% if collection.description != blank%}
+  <div id="collection-description" class="collection-description desktop-12 tablet-6 mobile-3">
+    <div class="rte">
+      {% comment %}ly_code_replace_for_[ collection.description | remove: "[banner]" ]_begin{% endcomment %}{% include 'ly-description' with collection %}{{ ly_translation | remove: "[banner]" }}{% comment %}ly_code_replace_end{% endcomment %}
+    </div>
   </div>
-</div>
+{% endif %}
 
 <div class="clear"></div>
 
@@ -70,46 +71,46 @@
 </ul>
 
 {% elsif collection.handle == 'available-immediately' %}
-	
+
 	<ul id="available-immediately-filters" class="clearfix filters"></ul>
 
 	<script type="text/javascript">
       var ringSizes = { label: 'Ring Sizes', id: 'ring-sizes', sizes: [] };
       var braceletSizes = { label: 'Bracelet Sizes', id: 'bracelet-sizes', sizes: [] };
 	</script>
-	
+
 	{% for p in collection.products %}
 
 		{% for v in p.variants %}
-		
+
 			{% if p.type == 'Ring' %}
 
 			<script type="text/javascript">
               var key = '{{ p.id }}';
               var ringSize = '{% comment %}ly_code_replace_for_[ v.option1 ]_begin{% endcomment %}{% include 'ly-option1' with v %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}';
-             
+
               if (!ringSizes[key]) {
                 ringSizes[key] = [];
               }
-              
+
               if (ringSizes.sizes.indexOf(ringSize) < 0) {
                 ringSizes.sizes.push(ringSize);
               }
-              
+
               ringSizes[key].push(ringSize);
 
 			</script>
-			
+
 			{% elsif p.type == 'Bracelets' %}
 
 			<script type="text/javascript">
               var key = '{{ p.id }}';
               var braceletSize = '{% comment %}ly_code_replace_for_[ v.option1 ]_begin{% endcomment %}{% include 'ly-option1' with v %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}';
-              
+
               if (!braceletSizes[key]) {
                 braceletSizes[key] = [];
               }
-              
+
 			  if (braceletSizes.sizes.indexOf(braceletSize) < 0) {
                 braceletSizes.sizes.push(braceletSize);
               }
@@ -138,9 +139,9 @@
           var space = document.createTextNode(' ');
           var select = document.createElement('select');
           select.id = sizeObject.id;
-                    
+
           select.appendChild(document.createElement('option'));
-          
+
           sizeObject.sizes.sort();
           for (var i = 0; i < sizeObject.sizes.length; i++) {
           	var sizes = document.createElement('option');
@@ -148,22 +149,22 @@
             sizes.innerText = sizeObject.sizes[i];
             select.appendChild(sizes);
           }
-          
+
           div.appendChild(label);
           div.appendChild(space);
           div.appendChild(select);
           li.appendChild(div);
           ul.appendChild(li);
-          
+
           sizeFilters.push(select);
-          
+
           select.addEventListener('change', function(e) {
             for (var i = 0; i < sizeFilters.length; i++) {
               if (this !== sizeFilters[i]) {
-              	sizeFilters[i].selectedIndex = 0; 
+              	sizeFilters[i].selectedIndex = 0;
               }
             }
-            
+
           	var products = document.getElementById('product-loop');
             for (var i = 0; i < products.children.length; i++) {
              var id = products.children[i].id;
@@ -172,28 +173,28 @@
                 products.children[i].style.display = 'block';
                 products.children[i].style.clear = 'none';
               } else {
-               	products.children[i].style.display = 'none'; 
+               	products.children[i].style.display = 'none';
               }
             }
           });
       }
     }
-      
+
 	function generateFilters(sizes, ul) {
       var li = document.createElement('li');
       li.className = 'clearfix filter';
-      
+
       var div = document.createElement('div');
       div.className = 'select';
-      
+
       var label = document.createElement('label');
 	  label.htmlFor = 'grouped-sizes';
       label.textContent = 'Size';
-      
+
       var select = document.createElement('select');
       select.id = 'grouped-sizes';
       select.appendChild(document.createElement('option'));
-      
+
       for (var i = 0; i < sizes.length; i++) {
         if (sizes[i].sizes.length > 0) {
           var group = document.createElement('optgroup');
@@ -222,7 +223,7 @@
 			  }
             }
           });
-          
+
           for (var j = 0; j < sizes[i].sizes.length; j++) {
           	var option = document.createElement('option');
             option.value = sizes[i].sizes[j];
@@ -230,33 +231,33 @@
             group.label = sizes[i].label;
             group.appendChild(option);
           }
-          
+
           select.appendChild(group);
-          
+
         }
       }
-      
+
       div.appendChild(label);
       div.appendChild(document.createTextNode(' '));
       div.appendChild(select);
       li.appendChild(div);
       ul.appendChild(li);
-      
+
 	  select.addEventListener('change', function(e) {
         var products = document.getElementById('product-loop');
         for (var i = 0; i < products.children.length; i++) {
           var id = products.children[i].id;
           id = id.substring(id.lastIndexOf('-') + 1);
-          
+
           var match = sizes.find(function(s) {
             return s[id] && s[id].indexOf(e.target.value) >= 0;
           });
-          
+
           if (e.target.value === '' || match) {
             products.children[i].style.display = 'block';
             products.children[i].style.clear = 'none';
           } else {
-            products.children[i].style.display = 'none'; 
+            products.children[i].style.display = 'none';
           }
         }
 	  });
@@ -264,11 +265,11 @@
 
     var sizeFilters = [];
 	var ul = document.getElementById('available-immediately-filters');
-    
+
     //if separate drop downs
-    //generateFilterItem(ringSizes, ul); 
+    //generateFilterItem(ringSizes, ul);
 	//generateFilterItem(braceletSizes, ul);
-      
+
     //if one dropdown
     generateFilters([ringSizes, braceletSizes], ul);
 
@@ -344,18 +345,18 @@
   <div id="full-width-filter" class="desktop-12 tablet-6 mobile-3">
     {% include 'filter' %}
   </div>
-  {% endif %}  
+  {% endif %}
   {% endif %}
 
   <div id="product-loop">
 
     {% for product in collection.products %}
     {% assign products-per-row = settings.products-per-row %}
-    <div id="product-listing-{{ product.id }}" class="product-index {% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-full" data-alpha="{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}" data-price="{{ product.price }}">           
+    <div id="product-listing-{{ product.id }}" class="product-index {% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-full" data-alpha="{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}" data-price="{{ product.price }}">
       {% include 'product-listing' %}
     </div>
 
-    {% endfor %} 
+    {% endfor %}
 
   </div>
 </div>
