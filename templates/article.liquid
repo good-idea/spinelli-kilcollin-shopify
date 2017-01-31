@@ -153,8 +153,12 @@
 
 <script>
 // Grab the initial images in the blog post and build them into a carousel.
+//
+
 $(document).ready(function() {
+  return false; // disable for now
   var rte = $('#article-body .rte');
+  rte.addClass('carousel-init');
   var children = rte.children();
   var images = [];
   for (var i = 0; i < children.length; i++) {
@@ -177,6 +181,7 @@ $(document).ready(function() {
     console.log(images);
   }
   if (images.length) buildCarousel(rte, images);
+  rte.removeClass('carousel-init');
   rte.addClass('carousel-built');
 })
 
@@ -201,8 +206,6 @@ function buildCarousel(body, sourceImages) {
     container.insertBefore(body);
     return true;
   }
-
-
 
   // make some clones so we can swipe into before & after
   var firstClone = slides[0].clone().addClass('clone').insertAfter(slides[slides.length - 1]);
