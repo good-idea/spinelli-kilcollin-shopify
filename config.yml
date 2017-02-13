@@ -33,3 +33,15 @@ development:
     - package.json
     - _working/
     - gulpfile.js
+production:
+  password: 1655af638136d9a8b53e608d7528e639
+  theme_id: "160214531"
+  store: spinellikilcollin.myshopify.com
+  timeout: 60s
+  ignore_files:
+    - node_modules/
+    - src/
+    - .git/
+    - package.json
+    - _working/
+    - gulpfile.js
