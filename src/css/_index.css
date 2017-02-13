@@ -1,0 +1,152 @@
+
+.featured-items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.featured__item {
+  margin-bottom: 2rem;
+  flex-basis: calc(50% - 1rem);
+}
+
+
+/*
+  Featured Products
+ */
+
+.featured__item {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.featured__item:nth-of-type(4n + 2),
+.featured__item:nth-of-type(4n + 3) {
+  padding-bottom: 33%
+}
+
+.featured__item:nth-of-type(4n + 4),
+.featured__item:nth-of-type(4n + 5) {
+  padding-bottom: 50%
+}
+
+.featured__item .featured__caption {
+  @mixin abs-full-size;
+  @mixin flex-center;
+  z-index: 10;
+  color: white;
+  opacity: 0;
+  background-color: rgba(171, 144, 126, 0.45);
+  padding: 3rem;
+  transition: .4s ease-out;
+}
+
+.featured__item:hover .featured__caption {
+  opacity: 1;
+}
+
+/*
+  Slider
+ */
+
+.featured__item--slider {
+  flex-basis: 100%;
+  padding-bottom: 45%;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  padding-bottom: 45%;
+}
+
+.slider.initialized {
+  .featured__caption {
+    display: none;
+  }
+}
+
+.slider__item {
+  @mixin abs-full-size;
+  overflow: hidden;
+}
+
+.slider__anchor {
+  @mixin abs-full-size;
+  z-index: 10;
+}
+
+.featured__item img {
+  @mixin abs-center;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.slider__image-container {
+  @mixin abs-full-size;
+}
+
+.slider__overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(100% + 15px);
+
+  img {
+    width: calc(100% - 15px);
+    min-width: calc(100% - 15px);
+    left: calc(50% - 7.5px);
+  }
+}
+
+.slider__overlay {
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(100% - 15px), rgba(0, 0, 0, 0) calc(100%));
+  width: 0;
+  height: 100%;
+}
+
+.hasTouchEvents {
+  .slider__anchor {
+    display: none;
+  }
+
+  .slider__item {
+    position: relative;
+    width: 100%;
+    padding-bottom: 45%;
+
+    & + .slider__item {
+      margin-top: 2rem;
+    }
+  }
+
+  .slider__overlay {
+    mask-image: initial;
+  }
+}
+
+@media screen and (max-width: $break-medium) {
+  .featured__item {
+    flex-basis: 100%;
+  }
+
+  .featured__item--slider {
+    flex-basis: 100%;
+    padding-bottom: 66%;
+  }
+
+  .featured__item:nth-of-type(4n + 2),
+  .featured__item:nth-of-type(4n + 3) {
+    padding-bottom: 66%
+  }
+
+  .featured__item:nth-of-type(4n + 4),
+  .featured__item:nth-of-type(4n + 5) {
+    padding-bottom: 100%
+  }
+
+}

@@ -1,12 +1,15 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="page" class="desktop-12 tablet-6 mobile-3">
-  <div id="page-content" class="custom-orders">
-		<div class="heros">
-			<img src="{{ 'custom-hero.jpg' | asset_url }}" alt="" class="hero hero--desktop">
-			<img src="{{ 'custom-hero_mobile.jpg' | asset_url }}" alt="" class="hero hero--mobile">
-		</div>
-  	<div id="contact-form">
-    	<h2><ly-as-2929629>Custom Order Inquiry</ly-as-2929629></h2>
-			{% include 'contact' %}
-    </div>
-  </div>
-</div>
+{% assign image = 'custom-hero.jpg' %}
+
+<section class="page page--custom">
+	<div class="heros">
+		{% include 'product-image-srcset',
+			image: 'custom-hero.jpg',
+			asset: true,
+			class: "hero hero--desktop" %}
+		{% include 'product-image-srcset',
+			image: 'custom-hero_mobile.jpg',
+			asset: true,
+			class: "hero hero--mobile" %}
+	</div>
+	{% include 'contact-form' %}
+</section>

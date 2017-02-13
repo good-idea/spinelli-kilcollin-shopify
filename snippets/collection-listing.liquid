@@ -1,45 +1,46 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
-{% paginate collections by 30 %}
+{% comment %}
+  Be prepared to use this snippet to showcase collections specified in a link list as per this solution here: 
+  "Featuring collections using a Link List" http://docs.shopify.com/support/your-store/collections/featuring-collections-using-link-lists
+  If this snippet is called with an argument, we'll assume it is the handle of a link list, and we will use that list.
+  If this snippet is not called with an argument, we'll assume we are on the /collections page and will list all collections in the shop, all except the 'frontpage' and 'all' collections.
+  Merchants often create an 'all' collection to control their Catalog page at /collections/all as per these instructions:
+  "Taking Control of your Catalog Page" http://docs.shopify.com/support/your-store/collections/taking-control-of-your-catalog-page
+  and don't want that collection to appear on their /collections page.
+{% endcomment %}
 
-{% if collections.size > 0 %}
+{% assign products_per_page = settings.products_per_row | times: settings.number_of_rows %}
+{% assign numbers = 'one, two, three, four, five, six' | split: ',' %}
+{% assign products_per_row = settings.products_per_row | minus: 1 %}
+{% assign products_per_row = numbers[products_per_row] | strip | append: '-per-row' %}
 
-<div class="desktop-12 tablet-6 mobile-3">
-  <div id="product-loop">  
+{% assign using_link_list = false %}
 
-    <div id="product-loop">
-      {% for collection in collections %}
-    {% assign products-per-row = settings.products-per-row %}      
-      <div class="product-index {% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-half" data-alpha="{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">           
-        <div class="collection-image">
-          <a href="{{ collection.url }}" title="{{ collection_title }}">
-            {% if collection.image %}
-            {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}
-            {% else %}
-            {{ collection.products.first.featured_image | product_img_url: 'grande' | img_tag: collection_title }}
-            {% endif %}
-          </a>     
-        </div>
-
-        <div class="product-info">
-          <div class="product-info-inner">
-            <a href="{{ collection.url }}" title="{{ collection_title }} <ly-as-2929509>collection</ly-as-2929509>">
-              <h3>{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h3>
-              <p>{% comment %}ly_i18n_replace_for_[ 'collections.general.items_count' | t: count: collection.products_count ]_begin{% endcomment %}{% if collection.products_count  == 0 %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929510' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif collection.products_count  == 1 %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929511' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif collection.products_count  == 2 %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929512' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% else %}{% capture ly_template %}{{ 'collections.general.items_count' | t: count: collection.products_count }}{% endcapture %}{% include 'ly-static-string' with '2929512' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = collection.products_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
-            </a>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-  </div>
-</div>
-
-{% else %}
-<p>{% comment %}ly_i18n_replace_for_[ 'collections.general.no_matches' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.general.no_matches' | t }}{% endcapture %}{% include 'ly-static-string' with '2929515' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+{% if collection-listing != '' and linklists[collection-listing].handle == collection-listing and linklists[collection-listing].links.size > 0 %}
+  {% assign using_link_list = true %}
 {% endif %}
 
-{% include 'pagination' %}
+<h1>{% if using_link_list %}{{ linklists[collection-listing].title }}{% else %}Collections{% endif %}</h1>
 
+{% if using_link_list %}
+<ul class="grid clearfix">
+{% for link in linklists[collection-listing].links %}
+  {% if link.type == 'collection_link' %}
+  {% assign collection = link.object %}
+  {% include 'collection-grid-item' with products_per_row %}
+  {% endif %}
+{% endfor %}
+</ul>
+{% else %}
+{% paginate collections by products_per_page %}
+<ul class="grid clearfix">
+{% for collection in collections %}
+  {% include 'collection-grid-item' with products_per_row %}
+{% endfor %}
+</ul>
+{% if paginate.pages > 1 %}
+<div id="pagination">
+  {{ paginate | default_pagination }}
+</div>
+{% endif %}
 {% endpaginate %}
-
+{% endif %}

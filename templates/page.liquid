@@ -1,18 +1,16 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="page" class="desktop-12 tablet-6 mobile-3">
-  <div id="page-content"{% if linklists[settings.pagelist] != blank %} class="desktop-9 tablet-4 mobile-3{% endif %}">
-    <h1 class="page-title">{% comment %}ly_code_replace_for_[ page.title ]_begin{% endcomment %}{% include 'ly-title' with page %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h1>
-    <div class="rte">{% comment %}ly_code_replace_for_[ page.content ]_begin{% endcomment %}{% include 'ly-content' with page %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>
-  </div>
-  
-  {% if linklists[settings.pagelist] != blank %}
-  <div id="page-sidebar" class="desktop-3 tablet-2 mobile-3">
-    <h2>{{ settings.page-sidebar-title }}</h2>
-    <ul>
-      {% for link in linklists[settings.pagelist].links %}
-      <li>{% comment %}ly_code_replace_for_[ link.title | link_to: link.url ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | link_to: link.url }}{% comment %}ly_code_replace_end{% endcomment %}</li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-</div>
+{% comment %}
+Re-use the 'rte' class wherever you output content that was added by a merchant using
+the Rich Text Editor ( 'rte' stands for rich text editor ).
+Style all HTML elements in that content the same way across the board.
+Use the 'rte' class in your CSS to help maintain that consistency.
+Example: the h2 element should have the same size and color in:
+- product descriptions
+- collection descriptions
+- 'page' pages' content
+- blog post
+{% endcomment %}
 
+<h1>{{ page.title }}</h1>
+<div class="rte">
+  {{ page.content }}
+</div>

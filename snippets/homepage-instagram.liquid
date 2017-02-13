@@ -1,17 +1,0 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<section class="homepage-section animate wow fadeIn no-fouc">
-  {% assign url = '{{image}}' %}
-  {% assign caption = '{{caption}}' %}
-  <div id="instagram-card" class="row">
-    <div class="section-title lines"><h2><a href="http://instagram.com/{% comment %}ly_new_settings_replace_for_[ settings.instagram-id ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929560"] %}{% assign ly_translation = shop.metafields[namespace]["id2929560"] %}{% else %}{% assign ly_translation = settings.instagram-id %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}" target="_blank">{% comment %}ly_i18n_replace_for_[ 'layout.homepage.instagram' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.homepage.instagram' | t }}{% endcapture %}{% include 'ly-static-string' with '2929561' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} @{% comment %}ly_new_settings_replace_for_[ settings.instagram-id ]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign namespace = language | append: "as" %}{% if shop.metafields[namespace]["id2929560"] %}{% assign ly_translation = shop.metafields[namespace]["id2929560"] %}{% else %}{% assign ly_translation = settings.instagram-id %}{% endif %}{{ ly_translation }}{% comment %}ly_new_settings_replace_end{% endcomment %}</a> {% comment %}ly_i18n_replace_for_[ 'layout.homepage.instagram_follow_where' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.homepage.instagram_follow_where' | t }}{% endcapture %}{% include 'ly-static-string' with '2929562' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2></div>  
-    <div id="instafeed"></div>
-    <script type="text/javascript">
-      var userFeed = new Instafeed({
-        get: 'user',
-        userId: {{ settings.instagram-user-id }},
-        accessToken: '{{ settings.instagram-access-token }}',
-        template: '<a class="fancybox desktop-2 tablet-1 mobile-half padded" href="{{url}}" rel="ig" title="{{ caption }}"><img class="instagram-image" src="{{ url }}" /></a>'
-      });
-      userFeed.run();        
-    </script>
-  </div>
-</section>

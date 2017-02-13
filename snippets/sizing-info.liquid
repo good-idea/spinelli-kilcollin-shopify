@@ -1,0 +1,22 @@
+{% if product.type == 'Ring' %}
+	<div class="product__sizing rte toggle-container">
+		<h4 class="header toggle-trigger">Size Information <i class="icon-angle-down"></i></h4>
+		<div class="product__sizing-info">
+			{{ settings.sizing_rings }}
+		</div>
+	</div>
+{% elsif product.type == 'Bracelets' and product.tags contains "Bangle" %}
+	<div class="product__sizing rte toggle-container">
+		<h4 class="header toggle-trigger">Size Information <i class="icon-angle-down"></i></h4>
+		<div class="product__sizing-info">
+			{{ settings.sizing_bracelets_bangle }}
+		</div>
+	</div>
+{% elsif product.type == 'Bracelets' and product.tags contains "Chain Bracelet" %}
+	<div class="product__sizing rte toggle-container">
+		<h4 class="header toggle-trigger">Size Information <i class="icon-angle-down"></i></h4>
+		<div class="product__sizing-info">
+			{{ settings.sizing_bracelets_chain }}
+		</div>
+	</div>
+{% endif %}

@@ -1,0 +1,23 @@
+{% assign slug = 'homepage_featured_' | append:item %}
+{% assign product = all_products[settings[slug]] %}
+{% assign alt_image_slug = 'homepage_featured_' | append:item | append:'_alt_image' %}
+{% if settings[alt_image_id] == nil %}
+  {% assign image = product.featured_image %}
+{% else %}
+  {% assign image = settings[alt_image_id] %}
+{% endif %}
+{% assign alt_caption_id = 'homepage_featured_' | append:item | append:'_caption'%}
+{% if settings[alt_caption_id] == blank %}
+  {% assign caption = product.title %}
+{% else %}
+  {% assign caption = settings[alt_caption_slug] %}
+{% endif %}
+
+<div class="featured__item featured__item--single">
+  <a href="{{ product.url }}">
+    <div class="featured__caption">
+      <h2>{{ caption }}</h2>
+    </div>
+    {% include 'product-image-srcset', image: image %}
+  </a>
+</div>

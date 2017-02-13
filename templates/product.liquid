@@ -1,287 +1,71 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div itemscope itemtype="http://schema.org/Product" id="product-{{ product.id }}">
+{% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+{% assign on_sale = product.price < product.compare_at_price %}
 
-  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
-  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
-  
-<!-- For Mobile -->
-  <div id="mobile-product" class="desktop-12 tablet-6 mobile-3">
-    <ul class="bxslider">
-      {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-      {% comment %}
-      <li><img data-image-id="{{ image.id }}" src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"></li>
-	  {% endcomment %}
-      {% for image in product.images %}
-      <li><img data-image-id="{{ image.id }}" src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"></li>
-      {% endfor %}      
-    </ul>
-    
-    <ul class="bxpaging">
-    {% for image in product.images %}
-      <li><a data-slide-index="{{ forloop.index }}" data-image-id="{{ image.id }}">&bull;</a></li>
-    {% endfor %}
-    </ul>
-      
-    <div id="bx-pager" style="display: none">
-      {% for image in product.images %}
-      <a class="thumbnail" data-slide-index="{{ forloop.index }}" data-image-id="{{ image.id }}" href=""><img src="{{ image.src | product_img_url: 'compact' }}" /></a>
-      {% endfor %}
-    </div>
+<section class="product">
+	<meta itemprop="priceCurrency" content="{{ shop.currency }}">
+	<link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+	<meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+	<meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
 
-  </div>   
+	<div class="product__main">
+		<div class="product__images zoom-gallery">
+			<div class="zoom__main">
+				{% for image in product.images %}
+				{% include 'product-image-zoom', image: image, index: forloop.index %}
+				{% endfor %}
+			</div>
+			{% if product.images.size > 1 %}
+			<div class="zoom__thumbs">
+				{% for image in product.images %}
+					<div class="zoom__thumb">
+						<img src="{{ image.src | img_url: 'medium' }}" alt="">
+					</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
 
-  <!-- For Desktop -->
+		<div class="product__info product-update {% if on_sale %}on-sale {% endif %}">
+			<h2>{{ product.title }}</h2>
+			{% assign price = product.selected_or_first_available_variant.price %}
+			<h3 class="product__price product-update-field" data-update-field-id="price" itemprop="price">{{ price | money }}</h3>
+			{% if product.price < product.compare_at_price %}
+				<h3 class="product__sale-price" itemprop="price">{{ product.compare_at_price | money }}</h3>
+			{% endif %}
 
-  <div id="product-photos" class="desktop-7 tablet-3 mobile-3">
+			<form class="product__form" action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
 
+				{% if product.options.size > 1 or product.variants.size > 1 %}
+				<div class="product__option">
+					<label for="product-select-{{ product.id }}"><h5>{{ product.options[0] }}</h5></label>
+					<div class="select__wrapper">
+						<select id="product-select-{{ product.id }}" class="product-update-trigger" data-trigger-field="price" data-trigger-value="option" name='id'>
+							{% for variant in product.variants %}
+							<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+								value="{{ variant.id }}" data-sku="{{ variant.sku }}"
+								data-trigger-option-value="{{ variant.price | money | strip_html }}"
+								>{{ variant.title }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				{% endif  %}
+				<div class="product__option product__option--quantity">
+					<label for="quantity"><h5>Quantity</h5></label>
+					<button type="button" class="square quantity__button product-update-trigger" data-trigger-field="quantity" data-trigger-value="minus"><i class="icon-minus"></i></button>
+					<input type="number" class="product-update-field" min="1" value="1" name="quantity" data-update-field-id="quantity">
+					<button type="button" class="square quantity__button product-update-trigger" data-trigger-field="quantity" data-trigger-value="plus"><i class="icon-plus"></i></button>
+				</div>
 
-    {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+				<button class="dark primary" type="submit"><h4>Add to Cart</h4></button>
+			</form>
 
-    <div class="bigimage desktop-10 tablet-5">
-      <img id="{{ product.id }}" src="{{ featured_image | img_url: '1024x1024' }}" data-image-id="{{ image.id }}" data-zoom-image="{{ featured_image | img_url: 'master' }}" alt='{{ image.alt }}' title="{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}"/>
-    </div>
+			<div class="product__description rte">
+				{{ product.description }}
 
-    {% if product.images.size > 1 %}
-    <div id="{{ product.id }}-gallery" class="image-thumbnails desktop-2 tablet-1">	
-      <div class="thumbnail-slider">
-        {% for image in product.images %}
-        <div class="slide">
-          <a href="#" data-image="{{ image | product_img_url: '1024x1024' }}" data-image-id="{{ image.id }}" data-zoom-image="{{ image | product_img_url: 'master' }}">
-            <img class="thumbnail" src="{{ image | product_img_url: 'compact' }}" data-image-id="{{ image.id }}" alt="{{ image.alt }}" data-image-id="{{ image.id }}" />
-          </a>
-        </div>
-        {% endfor %} 
-      </div>
-    </div>
-    {% endif %}
-  </div>
-
-
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-
-      $('.bxslider').bxSlider({
-        pagerCustom: '#bx-pager'
-      });
-
-      $('.thumbnail-slider').bxSlider({
-        mode: 'vertical',
-        minSlides: 3,
-        slideMargin: 10,
-        infiniteLoop: false,
-        pager: false,
-        prevText: "",
-        nextText: "",
-        hideControlOnEnd: true
-      });    
-
-      {% if product.handle != 'gift-card' %}
-      //initiate the plugin and pass the id of the div containing gallery images
-      $("#{{ product.id }}").elevateZoom({
-        gallery:'{{ product.id }}-gallery',
-        cursor: 'pointer', 
-        galleryActiveClass: 'active', 
-        borderColour: '#eee', 
-        borderSize: '1' 
-        });
-
-
-      //pass the images to Fancybox
-      $("#{{ product.id }}").bind("click", function(e) {  
-        var ez =   $('#{{ product.id }}').data('elevateZoom');	
-        $.fancybox(ez.getGalleryList());
-      	return false;
-      });
-      {% endif %}
-
-    }); 
-  </script>
-
-
-
-  <div id="product-right" class="desktop-5 tablet-3 mobile-3">
-    <div id="product-description">
-      {% if settings.vendor %}<h3>{% comment %}ly_code_replace_for_[ product.vendor ]_begin{% endcomment %}{% include 'ly-vendor' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h3>{% endif %}
-      <h1 itemprop="name">{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h1>
-      {% if settings.subtitle %}<p>{{ langify_title }}</p>{% endif %}      
-	  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-      <p id="product-price">
-        {% if product.available %}
-        {% if product.compare_at_price > product.price %}
-        <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
-        {% else %}
-        <span class="product-price" itemprop="price">{{ product.price | money }}</span>
-        {% endif %}
-        {% else %}
-        <span class="product-price" itemprop="price">{% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t }}{% endcapture %}{% include 'ly-static-string' with '2929806' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
-        {% endif %}
-      </p> 
-        
-        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
-
-      {% include 'short-form' %}   
-
-        <dl class="accordion">
-          {% if product.type == 'Ring' %}
-          <dt class='heading'><ly-as-2929799>Size Information</ly-as-2929799></dt>
-		  <dd>
-            <div class="rte">
-	            <p>
-                  Our rings can be worn across several fingers, or stacked all on one.
-                  To wear stacked on one finger, order the true size of the finger you'd like to fit.
-                  To wear across several fingers, order the size of the largest finger.
-                  If you're unsure of your size, we are happy to send you a ring sizer.
-                  Email us your name and address to <a href="mailto:floriana@spinellikilcollin.com?subject=Size%20Inquiry"><ly-as-2929801>floriana@spinellikilcollin.com</ly-as-2929801></a>.
-            	</p>
-            </div>
-          </dd>
-          {% endif %}
-
-          {% if product.type == 'Bracelets' and product.tags contains "Bangle" %}
-          <dt class='heading'><ly-as-2929799>Size Information</ly-as-2929799></dt>
-		  <dd>
-            <div class="rte">
-	        	<p>
-                  Diameter sizing: If you're unsure of your size, we are happy to send you a sizer.
-                  Email your name and address to <a href="mailto:floriana@spinellikilcollin.com?subject=Bracelet%20Size%20Inquiry"><ly-as-2929801>floriana@spinellikilcollin.com</ly-as-2929801></a>.
-            	</p>
-            </div>
-          </dd>
-          {% endif %}
-
-          {% if product.type == 'Bracelets' and product.tags contains "Chain Bracelet" %}
-          <dt class='heading'><ly-as-2929799>Size Information</ly-as-2929799></dt>
-		  <dd>
-            <div class="rte">
-	        	<p>
-                  Standard size 8” length, custom sizes available. 
-                  Email <a href="mailto:floriana@spinellikilcollin.com?subject=Bracelet%20Size%20Inquiry"><ly-as-2929801>floriana@spinellikilcollin.com</ly-as-2929801></a> <ly-as-2929804>with any questions.</ly-as-2929804>
-            	</p>
-            </div>
-          </dd>
-          {% endif %}
-          
-          {% if settings.product-description == 'right' %}
-            <dt class='heading' data-type="description"><ly-as-2929805>Item Description</ly-as-2929805></dt>
-            <dd>  
-              <div class="rte" itemprop="description">
-                {% comment %}ly_code_replace_for_[ product.description ]_begin{% endcomment %}{% include 'ly-description' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
-              </div> 
-            </dd>
-          {% endif %} 
-        </dl>
-        
-        <script type="text/javascript">
-        	var accordion = document.querySelector('.accordion');
-			var sections = accordion.querySelectorAll('dt');
-            for (var i = 0; i < sections.length; i++) {
-              if ($(sections[i]).data('type') !== "description") {
-               sections[i].classList.add('inactive'); 
-              }
-            }
-        	accordion.addEventListener('click', function(e) {
-              	if (e.target.className.indexOf('heading') < 0) {
-               		return; 
-              	}
-
-              	e.target.classList.toggle('inactive');
-              
-              	/* if you wanna close all other items
-           		var sections = this.querySelectorAll('dt');
-              	for (var i = 0; i < sections.length; i++) {
-                  if (sections[i] === e.target) {
-                  	sections[i].classList.remove('inactive'); 
-                  } else {
-                  	sections[i].classList.add('inactive'); 
-                  }
-              	}
-                */
-        	});
-        </script>
-        
-      </div>
-      
-      {% comment %}
-      <div class="desc">
-        {% include 'social' with product %}
-      </div>
-      {% endcomment %}
-    </div>
-
-    {% if settings.popups %}
-    <ul id="popups">
-      {% if settings.popup-one != blank %}<li class="first"><a href="#pop-one" class="fancybox">{% comment %}ly_code_replace_for_[ pages[settings.popup-one].title ]_begin{% endcomment %}{% include 'ly-title' with pages[settings.popup-one] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>{% endif %}
-      {% if settings.popup-two != blank %}<li><a href="#pop-two" class="fancybox">{% comment %}ly_code_replace_for_[ pages[settings.popup-two].title ]_begin{% endcomment %}{% include 'ly-title' with pages[settings.popup-two] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>{% endif %}
-      {% if settings.popup-three != blank %}<li><a href="#pop-three" class="fancybox">{% comment %}ly_code_replace_for_[ pages[settings.popup-three].title ]_begin{% endcomment %}{% include 'ly-title' with pages[settings.popup-three] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>{% endif %}
-      {% if settings.popup-4 %}<li class="last"><a href="#pop-four" class="fancybox">{% comment %}ly_i18n_replace_for_[ 'products.product.popup_question' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.popup_question' | t }}{% endcapture %}{% include 'ly-static-string' with '2929807' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></li>{% endif %}
-    </ul>
-     {% if settings.popup-one != blank %}<div id="pop-one" style="display: none">{% comment %}ly_code_replace_for_[ pages[settings.popup-one].content ]_begin{% endcomment %}{% include 'ly-content' with pages[settings.popup-one] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>{% endif %}
-     {% if settings.popup-two != blank %}<div id="pop-two" style="display: none">{% comment %}ly_code_replace_for_[ pages[settings.popup-two].content ]_begin{% endcomment %}{% include 'ly-content' with pages[settings.popup-two] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>{% endif %}
-     {% if settings.popup-three != blank %}<div id="pop-three" style="display: none">{% comment %}ly_code_replace_for_[ pages[settings.popup-three].content ]_begin{% endcomment %}{% include 'ly-content' with pages[settings.popup-three] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div>{% endif %}
-     {% if settings.popup-4 %}<div id="pop-four" style="display: none">{% include 'question' %}</div>{% endif %}
-   {% endif %}
-  </div>
-
-
-  {% if settings.product-description == 'bottom' %}
-
-  <div class="clear"></div>
-
-  <div id="lower-description" class="desktop-8 desktop-push-2 tablet-6 mobile-3">
-    <div class="section-title lines"><h2>{% comment %}ly_i18n_replace_for_[ 'products.product.details' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.details' | t }}{% endcapture %}{% include 'ly-static-string' with '2929808' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2></div>  
-    <div class="rte" itemprop="description">{% comment %}ly_code_replace_for_[ product.description ]_begin{% endcomment %}{% include 'ly-description' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</div> 
-  </div>
-
-  {% endif %}
-
-
-  <div class="clear"></div>
-
-  {% if collection and collection.products.size > 1 %}
-  {% include 'related-products' %}
-  {% endif %}
-
-  <div class="clear"></div>
-
-  {% comment %}
-  {% if collection %}
-  <div id="product-navigation" class="desktop-12 tablet-6 mobile-3">
-    <span class="backto">
-      {% comment %}ly_i18n_replace_for_[ 'products.product.back_to' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.back_to' | t }}{% endcapture %}{% include 'ly-static-string' with '2929809' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {% comment %}ly_code_replace_for_[ collection.title | link_to: collection.url ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation | link_to: collection.url }}{% comment %}ly_code_replace_end{% endcomment %}
-    </span>
-
-
-
-    <div id="back-forth">
-      {% if collection.previous_product %}
-      {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
-      <span class="prev-prod"> 
-        {% comment %}ly_i18n_replace_for_[ 'products.product.previous_product_html' | t | link_to: prev_url ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.previous_product_html' | t | link_to: prev_url }}{% endcapture %}{% include 'ly-static-string' with '2929810' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | link_to: prev_url }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
-        <img id="previous-product-image" />
-        {% endif %}
-      </span>
-      {% if collection.next_product %} 
-      {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
-      <span class="next-prod">
-        <img id="next-product-image" />
-        {% comment %}ly_i18n_replace_for_[ 'products.product.next_product_html' | t | link_to: next_url ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.next_product_html' | t | link_to: next_url }}{% endcapture %}{% include 'ly-static-string' with '2929811' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | link_to: next_url }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
-      </span>
-      {% endif %}
-    </div>
-  </div>
-
-  <script>
-    jQuery.getJSON('{{ collection.next_product | append: '.js' }}', function(product) {
-                   jQuery('#next-product-image').attr('src', product.images[0].replace(/(\.jpg|\.png|\.jpeg|\.gif)/, '_small$1'));
-    });
-    jQuery.getJSON('{{ collection.previous_product | append: '.js' }}', function(product) {
-                   jQuery('#previous-product-image').attr('src', product.images[0].replace(/(\.jpg|\.png|\.jpeg|\.gif)/, '_small$1'));
-    });
-  </script>   
-
-  {% endif %}
-  {% endcomment %}
-
-
-</div>
+			</div>
+			{% include 'sizing-info' %}
+		</div>
+	</div>
+	{% include 'related-items' %}
+</section>

@@ -1,0 +1,67 @@
+{% assign id_one = 'homepage_featured_' | append:item_one %}
+{% assign product_one = all_products[settings[id_one]] %}
+{% assign alt_image_one_id = 'homepage_featured_' | append:item_one | append:'_alt_image' %}
+{% if settings[alt_image_one_id] == nil %}
+  {% assign image_one = product_one.featured_image %}
+{% else %}
+  {% assign image_one = settings[alt_image_one_id] %}
+{% endif %}
+{% assign alt_caption_id = 'homepage_featured_' | append:item_one | append:'_caption'%}
+{% if settings[alt_caption_id] == blank %}
+  {% assign caption_one = product_one.title %}
+{% else %}
+  {% assign caption_one = settings[alt_caption_slug] %}
+{% endif %}
+
+
+{% assign id_two = 'homepage_featured_' | append:item_two %}
+{% assign product_two = all_products[settings[id_two]] %}
+{% assign alt_image_two_id = 'homepage_featured_' | append:item_two | append:'_alt_image' %}
+{% if settings[alt_image_two_id] == nil %}
+  {% assign image_two = product_two.featured_image %}
+{% else %}
+  {% assign image_two = settings[alt_image_two_id] %}
+{% endif %}
+{% assign alt_caption_id = 'homepage_featured_' | append:item_two | append:'_caption'%}
+{% if settings[alt_caption_id] == blank %}
+  {% assign caption_two = product_two.title %}
+{% else %}
+  {% assign caption_two = settings[alt_caption_slug] %}
+{% endif %}
+
+
+<div class="slider featured__item featured__item--slider">
+  <a class="slider__anchor"
+     data-href-primary="{{ product_one.url }}"
+     data-href-secondary="{{ product_two.url }}"
+  ></a>
+  <div class="slider__item">
+    <a href="{{ product_one.url }}">
+      <div class="featured__caption">
+        <h2>{{ caption_one }}</h2>
+      </div>
+
+      <div class="slider__image-container">
+        {% include 'product-image-srcset',
+        class: 'slide__image'
+        image: image_one %}
+      </div>
+    </a>
+  </div>
+
+  <div class="slider__item slider__item-alt">
+    <a href="{{ product_two.url }}">
+      <div class="slider__image-container slider__overlay-container">
+        <div class="featured__caption">
+          <h2>{{ caption_two }}</h2>
+        </div>
+        <div class="slider__overlay">
+          {% include 'product-image-srcset',
+          class: 'slide__image'
+          image: image_two %}
+        </div>
+      </div>
+    </a>
+  </div>
+
+</div>

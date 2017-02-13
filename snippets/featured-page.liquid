@@ -1,0 +1,60 @@
+
+{% assign slug = 'homepage_block_' | append:item %}
+{% assign url_id = slug | append:'_url' %}
+{% assign url = settings[url_id] %}
+
+{% comment %}
+  If it's a collection, product, or page, assign some defaults
+{% endcomment %}
+
+{% assign arr = url | split: '/' %}
+{% if arr[0] == 'http:' or arr[0] == 'https:' %}
+  {% assign target = "blank" %}
+{% else %}
+  {% assign target = "" %}
+{% endif %}
+
+{% assign type = arr[1] %}
+{% if type == "collections" %}
+  {% assign collection = collections[arr[2]] %}
+  {% assign caption = collection.title %}
+  {% assign image = collection.image %}
+{% elsif type == "blogs" %}
+  {% assign blog = blogs[arr[2]] %}
+  {% assign article_handle = blog.handle | append: '/' | append: arr[3] %}
+  {% for i in blog.articles %}
+    {% if i.handle == article_handle %}
+      {% assign article = i %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% assign caption = article.title %}
+  {% assign image = article.image %}
+{% elsif type == "products" %}
+  {% assign product = all_products[arr[2]] %}
+  {% assign caption = product.title %}
+  {% assign image = product.image %}
+{% elsif type == "pages" %}
+  {% assign page = pages[arr[1]] %}
+  {% assign caption = page.title %}
+{% endif %}
+
+{% assign image_id = slug | append:'_image' %}
+{% if settings[image_id] != nil %}
+  {% assign image = settings[image_id] %}
+{% endif %}
+
+{% assign caption_id = slug | append:'_caption' %}
+{% if settings[caption_id] != blank %}
+  {% assign caption = settings[caption_id] %}
+{% endif %}
+
+<div class="featured__item featured__item--single">
+
+  <a href="{{ url }}" target="{{ target }}">
+    <div class="featured__caption">
+      <h2>{{ caption }}</h2>
+    </div>
+    {% include 'product-image-srcset', image: image %}
+  </a>
+</div>

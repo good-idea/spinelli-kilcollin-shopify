@@ -1,0 +1,55 @@
+
+/**
+ * Custom Orders
+ */
+
+
+.page--custom {
+
+	.heros {
+		margin-bottom: 2rem;
+	}
+
+	.contact__form {
+		margin-top: 3rem;
+	}
+
+	.hero--mobile {
+		display: none;
+	}
+}
+
+@media screen and (max-width: $break-medium) {
+	.hero--mobile {
+		display: block
+	}
+	.hero--desktop {
+		display: none;
+	}
+}
+
+
+.contact__form form {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 2rem;
+	color: $grey2;
+
+	.form__title {
+		margin-bottom: 2rem;
+	}
+
+	.form__field {
+		flex-basis: calc(33% - 1rem);
+	}
+
+	.contact__message, h2, h3 {
+		flex-basis: 100%;
+	}
+
+	.form__feedback {
+		margin: 2rem 0;
+	}
+}

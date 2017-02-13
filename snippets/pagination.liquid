@@ -1,24 +1,16 @@
-{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div id="pagination" class="desktop-12 tablet-6 mobile-3">
+{% assign first = paginate.current_offset | plus: 1 %}
+{% assign last = paginate.current_offset | plus: paginate.page_size %}
 
-  <span class="count">{% comment %}ly_i18n_replace_for_[ 'general.pagination.showing_items' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.pagination.showing_items' | t }}{% endcapture %}{% include 'ly-static-string' with '2929565' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {{ paginate.current_offset | plus: 1 }}-{% if paginate.next %}{{ paginate.current_offset | plus: paginate.page_size }}{% else %}{{ paginate.items }}{% endif %} {% comment %}ly_i18n_replace_for_[ 'general.pagination.of' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.pagination.of' | t }}{% endcapture %}{% include 'ly-static-string' with '2929566' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {{ paginate.items }}.</span>
-
-  <div class="clear"></div>
-  
-  {% if paginate.previous %}
-  {{ '<i class="fa fa-caret-left"></i>' | link_to: paginate.previous.url }}
-  {% endif %}
-  {% for part in paginate.parts %}
-  {% if part.is_link %}
-  {% comment %}ly_code_replace_for_[ part.title | link_to: part.url ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation | link_to: part.url }}{% comment %}ly_code_replace_end{% endcomment %}
-  {% else %}
-  {% if part.title == '&hellip;' %}
-  {% comment %}ly_code_replace_for_[ part.title ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
-  {% else %}
-  <span class="current">{% comment %}ly_code_replace_for_[ part.title ]_begin{% endcomment %}{% include 'ly-title' with part %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
-  {% endif %}
-  {% endif %}
-  {% endfor %}
-  {% if paginate.next %}
-  {{ '<i class="fa fa-caret-right"></i>' | link_to: paginate.next.url }}
-  {% endif %}
+<div class="pagination">
+  <h5 class="pagination__count">
+    Showing items {{ first }}-{{ last }} of {{ paginate.items }}
+  </h5>
+  <h5 class="pagination__links">
+    {% if paginate.previous.is_link %}
+      <a class="pagination__link pagination__previous" href="{{ paginate.previous.url }}">{{ paginate.previous.title }}</a>
+    {% endif %}
+    {% if paginate.next.is_link %}
+      <a class="pagination__link pagination__next" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a>
+    {% endif %}
+  </h5>
 </div>

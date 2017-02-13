@@ -1,0 +1,66 @@
+<footer>
+  <div class="column">
+    {% if linklists.footer.links.size > 0 %}
+    <div class="footer__nav">
+      {% for link in linklists.footer.links %}
+      <h4>
+        <a href="{{ link.url }}" title="{{ link.title }}"{% if link.active %} class="active"{% endif %}>{{ link.title }}</a>
+      </h4>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="footer__signup">
+      <form action="{{ settings.mailchimp }}">
+        <input type="email" name="EMAIL" required placeholder="email address">
+        <button class="primary" type="submit"><h4>Join</h4></button>
+      </form>
+    </div>
+
+    <div class="footer__icons">
+      {% if settings.show_facebook %}
+        <h4 class="footer__icon" >
+          <a href="{{ settings.facebook_url }}" target="_blank"><i class="icon-facebook icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+      {% if settings.show_twitter %}
+        <h4 class="footer__icon" >
+          <a href="{{ settings.twitter_url }}" target="_blank"><i class="icon-twitter icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+      {% if settings.show_pinterest %}
+        <h4 class="footer__icon" >
+          <a href="{{ settings.pinterest_url }}" target="_blank"><i class="icon-pinterest icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+      {% if settings.show_tumblr %}
+        <h4 class="footer__icon" >
+          <a href="{{ settings.tumblr_url }}" target="_blank"><i class="icon-tumblr icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+      {% if settings.show_youtube %}
+        <h4 class="footer__icon" >
+          <a href="{{ settings.youtube_url }}" target="_blank"><i class="icon-youtube icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+      {% if settings.show_googleplus %}
+        <h4 class="footer__icon" >
+          <a href="{{ settings.googleplus_url }}" target="_blank"><i class="icon-google-plus icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+      {% if settings.show_instagram %}
+        <h4 class="footer__icon" >
+          <a href="//instagram.com/{{ settings.instagram_url }}" target="_blank"><i class="icon-instagram icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+      {% if settings.show_rss %}
+        <h4 class="footer__icon" >
+          <a href="{{ shop.url }}/blogs/news.atom" target="_blank"><i class="icon-instagram icon-1-5x"></i></a>
+        </h4>
+      {% endif %}
+    </div>
+
+    <h5 class="footer__copyright">Copyright &copy; {{ "now" | date: "%Y" }} {{ shop.name }}</h5>
+
+  </div>
+</footer>

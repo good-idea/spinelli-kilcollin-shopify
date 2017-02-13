@@ -1,0 +1,26 @@
+{% if product.price < product.compare_at_price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+
+<div class="collection__grid-item {% if on_sale %} on-sale{% endif %}">
+  <a href="{{ product.url }}">
+    <div class="grid__image">
+      {% include 'product-image-srcset',
+         sizes: '(max-width: 780px) 100vw, 50vw'
+         image: product.featured_image %}
+    </div>
+    <div class="grid__caption">
+      <h4>{{ product.title }} |
+        <span class="regular-price">
+          {{ product.price | money }}
+        </span>
+        {% if on_sale %}
+        <span class="sale-price">
+          {{ product.compare_at_price | money }}
+        </span>
+        {% endif %}
+      </h4>
+    </div>
+  </a>
+</div>

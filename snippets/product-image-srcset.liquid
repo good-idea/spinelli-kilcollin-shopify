@@ -1,0 +1,135 @@
+{% comment %}
+Shopify responsive product images with srcset.
+
+Example:
+
+	Include this snippet on a product page or within a products loop:
+
+	{% include 'product-image-srcset',
+		sizes: '(max-width: 640px) 50vw, (min-width: 641px) and (max-width: 960px) 33vw, 25vw' %}
+
+	Output:
+
+		<img src="//cdn.shopify.com/.../products/IMG_medium.jpg"
+			srcset="
+				//cdn.shopify.com/.../products/IMG_small.jpg     100w,
+				//cdn.shopify.com/.../products/IMG_compact.jpg   160w,
+				//cdn.shopify.com/.../products/IMG_medium.jpg    240w,
+				//cdn.shopify.com/.../products/IMG_large.jpg     480w,
+				//cdn.shopify.com/.../products/IMG_grande.jpg    600w,
+				//cdn.shopify.com/.../products/IMG_1024x1024.jpg 1024w"
+			sizes="(max-width: 640px) 50vw, (min-width: 641px) and (max-width: 960px) 33vw, 25vw"
+			alt="Product title"
+		/>
+
+Options:
+
+	sizes         - Media queries describing how large the image will be at various screen sizes.
+									REQUIRED
+									Default: '50vw' (the image will always occupy 50% of the viewport width)
+
+	image         - Product image to display
+									OPTIONAL
+									Default: product.featured_image
+
+	default_size  - Shopify image size to load as default <img> src
+									OPTIONAL
+									Default: 'medium'
+
+	attributes    - String of additional HTML attributes for the <img> tag
+									OPTIONAL
+									Default: ""
+
+More information about srcset and sizes:
+- https://ericportis.com/posts/2014/srcset-sizes/
+- http://martinwolf.org/2014/05/07/the-new-srcset-and-sizes-explained/
+
+{% endcomment %}
+
+{% assign default_default_size = "medium" %}
+{% assign default_sizes = "100vw" %}
+{% assign default_image = product.featured_image %}
+
+{% if default_size == nil %}{% assign default_size = default_default_size %}{% endif %}
+{% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
+{% if image == nil %}{% assign image = default_image %}{% endif %}
+
+{% comment %}
+srcset needs to know the width of each image to work accurately, but Shopify
+only tell us the length of its longest side. So we need to run this bit of
+Javascript on each image to determine its width and update the srcset attribute.
+<script>
+	if (typeof Shopify === 'undefined') { Shopify = {}; }
+	if (typeof Shopify.scaleSrcset === 'undefined') {
+		Shopify.scaleSrcset = function(img) {
+			var srcset,
+					srcset_orig,
+					srcset_json,
+					scale = img.naturalWidth / img.naturalHeight,
+					is_portrait = (scale < 1);
+			if (!is_portrait) { return; }
+			if (img.getAttribute('data-srcset-scaled')) { return; }
+			// parse the original srcset attribute into a JSON object
+			srcset_orig = img.getAttribute('srcset') || (img.picturefill || {}).srcset;
+			srcset_json = srcset_orig.split(',').map(function(rule){
+				return rule.trim().split(/\s+/).map(function(s) { return s.trim(); });
+			});
+			// scale srcset sizes and convert back to a string
+			srcset = srcset_json.map(function(rule) {
+				var url = rule[0],
+						width = parseInt(rule[1].slice(0,-1));
+				if (width > 160) { width = Math.floor(width * scale); } // don't scale square thumbnails
+				return [url, width.toString()+"w"].join(" ");
+			}).join(',');
+			img.setAttribute('srcset', srcset);
+			img.setAttribute('data-srcset-scaled', true); // prevent rescaling if <img> load event is triggered again
+			Shopify.triggerPictureFill(img);
+		}
+	}
+	if (typeof Shopify.triggerPictureFill === 'undefined') {
+		Shopify.triggerPictureFill = function(img) {
+			if (typeof picturefill === 'undefined') { return; }
+			if (img) {
+				picturefill({ reevaluate: true, elements: [img] });
+			} else {
+				picturefill({ reevaluate: true });
+			}
+		}
+		$(window).load(function(){
+			Shopify.triggerPictureFill();
+		});
+	}
+</script>
+{% endcomment %}
+
+{% if asset == true %}
+	<img src="{{ image | asset_img_url: '300x' }}"
+		srcset="
+			{{ image | asset_img_url: 'small' }}     100w,
+			{{ image | asset_img_url: 'compact' }}   160w,
+			{{ image | asset_img_url: 'medium' }}    240w,
+			{{ image | asset_img_url: 'large' }}     480w,
+			{{ image | asset_img_url: 'grande' }}    600w,
+			{{ image | asset_img_url: '1024x1024' }} 1024w,
+			{{ image | asset_img_url: '2048x2048' }} 2048w,"
+		sizes="{{ sizes }}"
+		alt="{{ image.alt | escape }}"
+		{% if attributes != nil %}{{ attributes }}{% endif %}
+		class="{{ class }}"
+	/>
+{% else %}
+	<img src="{{ image.src | img_url: default_size }}"
+		srcset="
+			{{ image.src | img_url: 'small' }}     100w,
+			{{ image.src | img_url: 'compact' }}   160w,
+			{{ image.src | img_url: 'medium' }}    240w,
+			{{ image.src | img_url: 'large' }}     480w,
+			{{ image.src | img_url: 'grande' }}    600w,
+			{{ image.src | img_url: '1024x1024' }} 1024w,
+			{{ image.src | img_url: '2048x2048' }} 2048w,"
+		sizes="{{ sizes }}"
+		alt="{{ image.alt | escape }}"
+		{% if attributes != nil %}{{ attributes }}{% endif %}
+		class="{{ class }}"
+	/>
+{% endif %}
