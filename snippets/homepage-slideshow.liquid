@@ -75,9 +75,9 @@
     overflow: hidden;
   }
 
-	/*#slider-overlay {
-		mask: url("#mask");
-	}*/
+	#slider-overlay {
+		width: 0;
+	}
 
 	.slider-container, #slider-overlay svg, svg foreignObject {
 		position: absolute;
@@ -127,6 +127,8 @@
 		var mainContainer = $('.homepage-section .row:first-of-type ul li a').first();
     var sliderContainer = $('#slider-overlay').clone();
     var span = sliderContainer.find('span');
+    var initialUrl = mainContainer.attr('href');
+    var altUrl = "https://www.spinellikilcollin.com/collections/stellar-collection/products/nova-rose-sp?variant=30014210243";
 
     sliderContainer.appendTo(mainContainer).removeClass('hidden');
 
@@ -150,7 +152,6 @@
       var diff = (targetWidth - sliderWidth);
       sliderWidth = (sliderWidth + (diff * 0.15));
       sliderContainer.css('width', sliderWidth + 'px');
-      console.log(sliderWidth);
       if (Math.abs(diff) > .5) {
         window.requestAnimationFrame(moveSlider);
       } else {
@@ -158,11 +159,20 @@
       }
     }
 
+    function setUrl(newUrl) {
+      mainContainer.attr('href', newUrl);
+      console.log(newUrl);
+    }
+
     calculate();
     $(window).on('resize', calculate);
 
     mainContainer.on('mousemove', function(e) {
       setTargetWidth(Math.round(e.clientX - containerLeft));
+      var pos = (sliderWidth / containerWidth);
+      console.log(pos);
+      var newUrl = (pos > .5) ? altUrl : initialUrl;
+      setUrl(newUrl);
     })
 
     mainContainer.on('mouseleave', function(e) {
@@ -174,6 +184,6 @@
 
 	}
 
-	// $(window).on('load', makeSlider);
+	$(window).on('load', makeSlider);
 
 </script>
