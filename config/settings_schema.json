@@ -418,13 +418,13 @@
 			},
 			{
 				"type": "checkbox",
-				"id": "email_popup_image",
+				"id": "popup-image_enabled",
 				"label": "Add Image to Popup",
 				"info": "Include an image with the email signup popup"
 			},
 			{
 				"type": "image",
-				"id": "popup-image.jpg",
+				"id": "popup-image",
 				"label": "Email Popup image",
 				"max-width": 480,
 				"info": "Upload an email signup popup image. Max width 480px. For best results, use landscape orientation."

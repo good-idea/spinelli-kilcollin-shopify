@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import { lory } from 'lory.js';
 
 function toggles() {
 	$('.toggle-container').each((i, element) => {
@@ -11,9 +10,26 @@ function toggles() {
 	});
 }
 
-function carousels() {
-	const selector = document.querySelector('.js_slider');
-	lory(selector);
+function overlays(publisher) {
+	$('.overlay').each((i, element) => {
+		const container = $(element);
+		const id = container.attr('id');
+		const closeButton = container.find('.overlay-close');
+
+		function close() {
+			container.removeClass('visible');
+			publisher.emit('overlayClosed', { id });
+			$(document).unbind('.overlay');
+		}
+
+		$(closeButton).on('click', () => {
+			close();
+		});
+
+		$(document).on('keyup.overlay', (e) => {
+			if (e.keyCode === 27) close();
+		});
+	});
 }
 
 function lazies() {
@@ -26,12 +42,22 @@ function lazies() {
 	});
 }
 
-function buildUx() {
+function mobileNav() {
+	const header = $('header');
+	const burger = header.find('.burger');
+	const body = $('body');
+	burger.on('click', () => {
+		body.toggleClass('menu-open nav-open');
+	});
+}
+
+function buildUx(publisher) {
 	toggles();
+	mobileNav();
+	overlays(publisher);
 
 	$(window).on('load', () => {
 		lazies();
-		// carousels();
 	});
 }
 

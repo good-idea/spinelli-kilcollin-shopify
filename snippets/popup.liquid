@@ -1,0 +1,18 @@
+<div id="newsletter-overlay" class="overlay">
+	<div class="overlay__background overlay-close"></div>
+	<div class="overlay__content">
+		{% if settings.popup-image_enabled %}
+			<img src="{{ 'popup-image' | asset_url }}" alt="Join our Mailing List">
+		{% endif %}
+		<span class="overlay__ex overlay-close"></span>
+		<div class="overlay__inner">
+			<h3>Join our Mailing List</h3>
+			<h4>Sign up to receive our email updates</h4>
+			<form action="{{ settings.mailchimp }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+				<input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email Address">
+				<button type="submit" class="primary">Join</button>
+			</form>
+		</div>
+
+	</div>
+</div>

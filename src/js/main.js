@@ -7,6 +7,7 @@ import buildZooms from './components/zoom';
 import watchProducts from './components/product';
 import buildUx from './components/uxbits';
 import buildCarousels from './components/carousel';
+import mailerPopup from './components/mailer';
 
 const windo = $(window);
 
@@ -24,7 +25,8 @@ $(() => {
 	buildZooms(publisher);
 	buildCarousels(publisher);
 	watchProducts();
-	buildUx();
+	buildUx(publisher);
+	mailerPopup(publisher);
 });
 
 /*

@@ -1,9 +1,14 @@
 {% assign first = paginate.current_offset | plus: 1 %}
 {% assign last = paginate.current_offset | plus: paginate.page_size %}
+{% if paginate.items < last %}
+  {% assign max = paginate.items %}
+{% else %}
+  {% assign max = last %}
+{% endif %}
 
 <div class="pagination">
   <h5 class="pagination__count">
-    Showing items {{ first }}-{{ last }} of {{ paginate.items }}
+    Showing items {{ first }}-{{ max }} of {{ paginate.items }}
   </h5>
   <h5 class="pagination__links">
     {% if paginate.previous.is_link %}

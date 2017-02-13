@@ -1,11 +1,11 @@
 <div class="zoom__frame {% if index == 1 %}active {% endif %}">
-  {% include 'product-image-srcset',
-     sizes: '(max-width: 780px) 100vw, 50vw',
-     class: 'zoom__display'
-     image: image %}
+	{% include 'product-image-srcset',
+		 sizes: '(max-width: 860px) 100vw, 50vw',
+		 class: 'zoom__display'
+		 image: image %}
 
-  {% include 'product-image-srcset',
-     sizes: '100vw',
-     class: 'zoom__zoom',
-     image: image %}
+	{% include 'product-image-srcset',
+		 sizes: '100vw',
+		 class: 'zoom__zoom',
+		 image: image %}
 </div>

@@ -52,7 +52,9 @@
   <div id="main" role="main" class="column main-content">
     {{ content_for_layout }}
   </div>
-
+  {% if settings.popup %}
+    {% include 'popup' %}
+  {% endif %}
   {% include 'footer' %}
 
   <!--[if lt IE 8]>

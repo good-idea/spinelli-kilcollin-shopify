@@ -26,12 +26,14 @@
 		</div>
 
 		<div class="product__info product-update {% if on_sale %}on-sale {% endif %}">
-			<h2>{{ product.title }}</h2>
-			{% assign price = product.selected_or_first_available_variant.price %}
-			<h3 class="product__price product-update-field" data-update-field-id="price" itemprop="price">{{ price | money }}</h3>
-			{% if product.price < product.compare_at_price %}
-				<h3 class="product__sale-price" itemprop="price">{{ product.compare_at_price | money }}</h3>
-			{% endif %}
+			<div class="product__top">
+				<h2>{{ product.title }}</h2>
+				{% assign price = product.selected_or_first_available_variant.price %}
+				<h3 class="product__price product-update-field" data-update-field-id="price" itemprop="price">{{ price | money }}</h3>
+				{% if product.price < product.compare_at_price %}
+					<h3 class="product__sale-price" itemprop="price">{{ product.compare_at_price | money }}</h3>
+				{% endif %}
+			</div>
 
 			<form class="product__form" action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
 

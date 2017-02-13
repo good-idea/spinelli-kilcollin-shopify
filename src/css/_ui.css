@@ -1,3 +1,46 @@
+.burger {
+	position: relative;
+	width: 2rem;
+	height: 1.6rem;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	.line {
+		// position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		background-color: $grey3;
+		transform-origin: center center;
+		transition: .3s;
+		transform: translateZ(0);
+	}
+
+	.line:nth-of-type(3) {
+		position: absolute;
+		left: 0;
+		top: calc(50% - 1px);
+	}
+}
+
+.menu-open .burger {
+	.line:nth-of-type(1),
+	.line:nth-of-type(4) {
+		opacity: 0;
+	}
+
+	.line:nth-of-type(2) {
+		transform: rotate(-45deg);
+	}
+
+	.line:nth-of-type(3) {
+		transform: rotate(45deg);
+	}
+}
+
+
 label {
 	color: $grey2;
 	text-transform: uppercase;
@@ -46,6 +89,7 @@ button, .button-like {
 	color: $grey3;
 	transition: .2s;
 	cursor: pointer;
+	margin-top: 1rem;
 
 	&:hover {
 		border-color: $grey2;
@@ -81,13 +125,15 @@ button, .button-like {
 }
 
 input, textarea {
+	text-align: inherit;
+	margin-top: 2rem;
 	background: $grey1;
 	color: $grey3;
 	padding: .75rem;
 }
 
 input {
-	min-height: 4rem;
+	min-height: 5rem;
 
 	&::placeholder {
 		color: $grey2;

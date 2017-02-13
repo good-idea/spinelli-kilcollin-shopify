@@ -115,3 +115,25 @@
 		border-left: 1px solid;
 	}
 }
+
+@media screen and (max-width: $break-medium) {
+	.blogBlock {
+		flex-direction: column;
+	}
+
+	.blogBlock__summary {
+		padding: 0;
+		margin-bottom: 3rem;
+	}
+
+	.article__share {
+		text-align: center;
+
+		.share__icons {
+			margin-top: 1rem;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+}

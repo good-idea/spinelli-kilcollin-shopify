@@ -25,6 +25,7 @@
 	max-width: 15rem;
 	margin-top: 2rem;
 
+
 	button[type="submit"] {
 		width: 100%;
 	}
@@ -36,11 +37,16 @@
 	width: 100%;
 	flex-wrap: wrap;
 
+	button, input, select {
+		margin-top: 1rem;
+		min-height: 4rem;
+		height: 4rem;
+	}
+
 	label {
 		width: 100%;
 		display: block;
 		text-transform: uppercase;
-		margin-bottom: 1rem;
 	}
 
 	select {
@@ -100,5 +106,39 @@
 	.related__items {
 		display: flex;
 		justify-content: space-between;
+	}
+}
+
+@media screen and (max-width: $break-medium) {
+	.product__main {
+		flex-direction: column;
+
+		.zoom-gallery {
+			pointer-events: none;
+		}
+
+		.zoom__thumbs {
+			margin: 2rem auto 0;
+			justify-content: center;
+		}
+
+		.zoom__thumb {
+			width: 20%;
+			padding: 0 1rem;
+		}
+	}
+
+
+	.product__info {
+		padding: 3rem 0;
+	}
+
+	.product__top {
+		text-align: center;
+	}
+
+	.product__form {
+		margin: 2rem auto 0;
+		text-align: center;
 	}
 }
