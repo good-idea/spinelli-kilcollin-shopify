@@ -1,0 +1,7 @@
+section.page {
+	padding-top: 3rem;
+
+	.title {
+		text-align: center;
+	}
+}

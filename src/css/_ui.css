@@ -36,7 +36,7 @@ select {
 	}
 }
 
-button {
+button, .button-like {
 	@mixin flex-center;
 	padding: 0.25rem 1rem;
 	border: 1px solid $grey1;
@@ -45,6 +45,7 @@ button {
 	letter-spacing: 0.15em;
 	color: $grey3;
 	transition: .2s;
+	cursor: pointer;
 
 	&:hover {
 		border-color: $grey2;
@@ -73,6 +74,10 @@ button {
 			background-color: black;
 		}
 	}
+}
+
+.button-like {
+	display: inline-flex;
 }
 
 input, textarea {

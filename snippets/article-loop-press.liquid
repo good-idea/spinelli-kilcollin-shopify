@@ -1,0 +1,11 @@
+{% assign published_at = article.published_at | date: format: 'month_date_year' %}
+
+{% if article.image %}
+<div class="pressBlock">
+	<a href="{{ article.url }}">
+		{% include 'product-image-srcset',
+		sizes: '(max-width: 550px) 50vw, 40vw'
+		image: article.image %}
+	</a>
+</div>
+{% endif %}
