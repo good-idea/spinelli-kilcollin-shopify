@@ -7,16 +7,34 @@
 {% endif %}
 <section class="article">
 	<div class="column--narrow">
-		<div class="carousel__placeholder"></div>
-		<div class="rte">
-			<div class="article__header">
-				<h2>{{ article.title }}</h2>
-				<h5>Posted on {{ published_at }}</h5>
-			</div>
-			<div class="article__body rte">
-				{{ article.content }}
-			</div>
+		<div class="article__header">
+			<h2>{{ article.title }}</h2>
+			<h5>Posted on {{ published_at }}</h5>
 		</div>
+	</div>
+	<div class="carousel__placeholder carousel"></div>
+	<div class="column--narrow">
+		<div class="article__body rte">
+			{{ article.content }}
+		</div>
+		{% if blog.handle == 'press' and article.tags.size > 0 %}
+			<div class="article__items">
+				<h2>Featured Items</h2>
+				{% for tag in article.tags %}
+				{% assign product = all_products[tag] %}
+				{% if product %}
+					<div class="article__item">
+						<a href="{{ product.url }}">
+							{% include 'product-image-srcset',
+								sizes: '50vw'
+								image: product.featured_image %}
+							<h4>{{ product.title }}</h4>
+						</a>
+					</div>
+				{% endif %}
+				{% endfor %}
+			</div>
+		{% endif %}
 		<div class="article__share">
 			<h5>Share this post on</h5>
 			<div class="share__icons">

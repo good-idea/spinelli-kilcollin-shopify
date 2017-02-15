@@ -14,10 +14,15 @@
 {% endif %}
 
 <div class="featured__item featured__item--single">
-  <a href="{{ product.url }}">
-    <div class="featured__caption">
-      <h2>{{ caption }}</h2>
+    <div class="featured__image-frame">
+      <a href="{{ product.url }}">
+        {% include 'product-image-srcset', image: image %}
+      </a>
     </div>
-    {% include 'product-image-srcset', image: image %}
+    <div class="featured__caption">
+      <h2>
+        <a href="{{ product.url }}">{{ caption }}</a>
+      </h2>
+    </div>
   </a>
 </div>

@@ -50,11 +50,14 @@
 {% endif %}
 
 <div class="featured__item featured__item--single">
-
-  <a href="{{ url }}" target="{{ target }}">
-    <div class="featured__caption">
-      <h2>{{ caption }}</h2>
-    </div>
-    {% include 'product-image-srcset', image: image %}
-  </a>
+  <div class="featured__image-frame">
+    <a href="{{ url }}">
+      {% include 'product-image-srcset', image: image %}
+    </a>
+  </div>
+  <div class="featured__caption">
+    <h2>
+      <a href="{{ url }}" target="{{ target }}">{{ caption }}</a>
+    </h2>
+  </div>
 </div>

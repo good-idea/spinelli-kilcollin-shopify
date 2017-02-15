@@ -1,6 +1,7 @@
 .product__main {
 	display: flex;
 	justify-content: space-around;
+	padding-bottom: 2rem;
 }
 
 .product__images, .product__info {
@@ -69,6 +70,8 @@
 }
 
 .product__sizing {
+	margin-top: 2rem;
+
 	i {
 		display: inline-block;
 		transform: rotate(-90deg);
@@ -113,7 +116,7 @@
 	.product__main {
 		flex-direction: column;
 
-		.zoom-gallery {
+		.zoom__main {
 			pointer-events: none;
 		}
 
@@ -140,5 +143,15 @@
 	.product__form {
 		margin: 2rem auto 0;
 		text-align: center;
+	}
+}
+
+@media screen and (max-width: $break-small) {
+	.product__main {
+
+		.zoom__thumb {
+			width: 33%;
+			padding: 0 1rem;
+		}
 	}
 }

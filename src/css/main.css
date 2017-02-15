@@ -79,6 +79,7 @@ body {
 //-------------------------------------------------- */
 
 @import "header";
+@import "cart";
 @import "footer";
 @import "index";
 @import "collection";

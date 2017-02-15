@@ -199,20 +199,28 @@ input[type="number"] {
 	transition-timing-function: cubic-bezier(.17, .67, .43, .97);
 }
 
-.carousel__slides, .carousel__slide {
-	display: inline-block;
+.carousel__slide {
+	display: block;
 }
 
 .carousel__slide {
 	width: 20%;
 	white-space: normal;
 	padding: 1rem 1rem 0 1rem;
-	display: inline-flex;
+	display: inline-block;
 	flex-direction: column;
 	justify-content: flex-start;
 
+	.slide__background {
+		@mixin abs-full-size;
+		background-size: cover;
+	}
+
 	img {
+		display: block;
+		width: 100%;
 		margin-bottom: 1rem;
+		object-fit: contain;
 	}
 }
 
@@ -239,6 +247,10 @@ input[type="number"] {
 	transform: rotate(-90deg);
 }
 
+.hasTouchEvents {
+	@import "disable-slider";
+}
+
 @media screen and (max-width: $break-large) {
 	.carousel__slide {
 		width: 25%;
@@ -249,4 +261,8 @@ input[type="number"] {
 	.carousel__slide {
 		width: calc(100% / 3);
 	}
+}
+
+@media screen and (max-width: $break-min) {
+	@import "disable-slider";
 }

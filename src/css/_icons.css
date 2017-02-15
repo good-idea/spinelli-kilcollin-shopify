@@ -13,6 +13,7 @@ $cart: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22
 
 /* FONT AWESOME CORE
  * -------------------------- */
+.fa-icon,
 [class^="icon-"],
 [class*=" icon-"] {
 	font-family: FontAwesome;
@@ -81,6 +82,10 @@ a [class*=" icon-"] {
 .icon-cart:before {
 	width: 2em;
 	content: $cart;
+}
+
+.icon-trash:before {
+	content: "\f014"
 }
 
 .icon-customer:before {

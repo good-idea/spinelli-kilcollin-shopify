@@ -103,7 +103,7 @@ Javascript on each image to determine its width and update the srcset attribute.
 {% endcomment %}
 
 {% if asset == true %}
-	<img src="{{ image | asset_img_url: '300x' }}"
+	<img src="{{ image | asset_img_url: '1024x1024' }}"
 		srcset="
 			{{ image | asset_img_url: 'small' }}     100w,
 			{{ image | asset_img_url: 'compact' }}   160w,
@@ -118,7 +118,7 @@ Javascript on each image to determine its width and update the srcset attribute.
 		class="{{ class }}"
 	/>
 {% else %}
-	<img src="{{ image.src | img_url: default_size }}"
+	<img src="{{ image.src | img_url: '1024x1024' }}"
 		srcset="
 			{{ image.src | img_url: 'small' }}     100w,
 			{{ image.src | img_url: 'compact' }}   160w,

@@ -14,10 +14,12 @@
 		<div class="carousel__frame">
 			<div class="carousel__slides">
 				{% for item in collection.products limit: 24 %}
-					<div class="carousel__slide slide">
-						<img src="{{ item.featured_image | product_img_url: 'large' }}" alt="" class="related__image">
-						<h4>{{ item.title }}</h4>
-					</div>
+					<a href="{{ item.url }}">
+						<div class="carousel__slide slide">
+							<img src="{{ item.featured_image | product_img_url: 'large' }}" alt="" class="related__image">
+							<h4>{{ item.title }}</h4>
+						</div>
+					</a>
 				{% endfor %}
 			</div>
 		</div>

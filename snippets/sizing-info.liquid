@@ -2,21 +2,23 @@
 	<div class="product__sizing rte toggle-container">
 		<h4 class="header toggle-trigger">Size Information <i class="icon-angle-down"></i></h4>
 		<div class="product__sizing-info">
-			{{ settings.sizing_rings }}
+			<p>Our rings can be worn across several fingers, or stacked all on one. To wear stacked on one finger, order the true size of the finger you'd like to fit. To wear across several fingers, order the size of the largest finger. If you're unsure of your size, we are happy to send you a ring sizer. Email us your name and address to <a href="mailto:floriana@spinellikilcollin.com">floriana@spinellikilcollin.com</a>.</p>
 		</div>
 	</div>
 {% elsif product.type == 'Bracelets' and product.tags contains "Bangle" %}
 	<div class="product__sizing rte toggle-container">
 		<h4 class="header toggle-trigger">Size Information <i class="icon-angle-down"></i></h4>
 		<div class="product__sizing-info">
-			{{ settings.sizing_bracelets_bangle }}
+			<p>
+				Diameter sizing: If you're unsure of your size, we are happy to send you a sizer. Email your name and address to <a href="mailto:floriana@spinellikilcollin.com">floriana@spinellikilcollin.com</a>.
+			</p>
 		</div>
 	</div>
 {% elsif product.type == 'Bracelets' and product.tags contains "Chain Bracelet" %}
 	<div class="product__sizing rte toggle-container">
 		<h4 class="header toggle-trigger">Size Information <i class="icon-angle-down"></i></h4>
 		<div class="product__sizing-info">
-			{{ settings.sizing_bracelets_chain }}
+			<p>Standard size 8” length, custom sizes available. Email <a href="mailto:floriana@spinellikilcollin.com">floriana@spinellikilcollin.com</a> with any questions.</p>
 		</div>
 	</div>
 {% endif %}

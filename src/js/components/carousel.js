@@ -1,6 +1,6 @@
 import $ from 'npm-zepto';
 
-function buildCarousel(element, publisher) {
+export function buildCarousel(element, publisher) {
 	const mainContainer = (element instanceof $) ? element : $(element);
 	const frame = $(mainContainer.find('.carousel__frame'));
 	const slidesContainer = $(mainContainer.find('.carousel__slides'));
@@ -19,16 +19,13 @@ function buildCarousel(element, publisher) {
 		mainContainer.toggleClass('carousel--disabled', !bool);
 		if (bool === false) slidesContainer.css('transform', 'none');
 		enabled = bool;
-		console.log(enabled);
 	}
-	console.log(enabled);
 
 	function calculate() {
 		slideWidth = slides[0].element.width();
 		frameWidth = frame.width();
 		slidesInFrame = Math.round(frameWidth / slideWidth);
 		const hasEnoughSlides = (slides.length > slidesInFrame);
-		console.log(slides.length, slidesInFrame);
 		toggle(hasEnoughSlides);
 		lastSlide = slides.length - slidesInFrame;
 	}
@@ -95,17 +92,16 @@ function buildCarousel(element, publisher) {
 		controls.push(button);
 	});
 
-	publisher.subscribe('calculate', calculate);
-
-	calculate();
-	watchTouch();
-	moveToSlide(0);
+	if (slides.length > 0) {
+		publisher.subscribe('calculate', calculate);
+		calculate();
+		watchTouch();
+		moveToSlide(0);
+	}
 }
 
-function buildCarousels(publisher) {
+export function buildCarousels(publisher) {
 	$('.carousel').each((i, element) => {
 		buildCarousel(element, publisher);
 	});
 }
-
-export default buildCarousels;

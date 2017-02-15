@@ -535,46 +535,5 @@
 				"default": true
 			}
 		]
-	},
-	{
-		"name": "Sizing Info",
-		"settings": [
-			{
-				"type": "header",
-				"content": "Rings"
-			},
-			{
-				"type": "paragraph",
-				"content": "Applied to all items with a product type of 'Ring'"
-			},
-			{
-				"id": "sizing_rings",
-				"type": "richtext"
-			},
-			{
-				"type": "header",
-				"content": "Bracelets - Chain Bracelets"
-			},
-			{
-				"type": "paragraph",
-				"content": "Applied to all items with a product type of 'Bracelets' and the tag 'Chain Bracelet'"
-			},
-			{
-				"id": "sizing_bracelets_chain",
-				"type": "richtext"
-			},
-			{
-				"type": "header",
-				"content": "Bracelets - Bangles"
-			},
-			{
-				"type": "paragraph",
-				"content": "Applied to all items with a product type of 'Bracelets' and the tag 'Bangle'"
-			},
-			{
-				"id": "sizing_bracelets_bangle",
-				"type": "richtext"
-			}
-		]
 	}
 ]

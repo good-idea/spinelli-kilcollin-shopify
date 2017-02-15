@@ -16,12 +16,46 @@
 					</a>
 				</div>
 				{% endif %}
+		</div>
+	</div>
+	<div class="header__top with-cart">
+		<div class="column">
 			<div class="cart">
-				<a href="/cart">
-					<i class="icon-cart"></i>
-					<h4><span id="item_count">{{ cart.item_count }}</span></h4>
-				</a>
+		<a href="/cart">
+			<i id="cart-icon" class="icon-cart"></i>
+			<h4><span id="cart-count">{{ cart.item_count }}</span></h4>
+		</a>
+		<div id="cart-menu" class="cart__menu {% if cart.item_count > 0 %} has-items{% endif %}">
+			<div class="cart__menu-items">
+				{% for item in cart.items %}
+					<div class="cart__menu-item" data-line-item="{{ item.id }}">
+						<img src="{{ item.image | img_url: 'medium' }}" alt="">
+						<div class="cart__menu-item-info">
+							<h6 class="">
+								<span class="cart__menu-item-title">{{ item.title }}</span>
+								<span class="cart__menu-item-quantity {% if item.quantity > 1 %}has-quantity {% endif %}">({{ item.quantity}})</span>
+							</h6>
+							<h6 class="cart__menu-item-price">${{ item.line_price | money_without_currency }}</h6>
+						</div>
+					</div>
+				{% endfor %}
+				<div class="cart__menu-item prototype">
+					<img src="" alt="">
+					<div class="cart__menu-item-info">
+						<h6>
+							<span class="cart__menu-item-title"></span>
+							<span class="cart__menu-item-quantity"></span>
+						</h6>
+						<h6 class="cart__menu-item-price"></h6>
+					</div>
+				</div>
 			</div>
+			<div class="cart__menu-bottom">
+				<h5 id="cart-total">${{ cart.total_price | money_without_currency }}</h5>
+				<a href="/cart">Checkout</a>
+			</div>
+		</div>
+	</div>
 		</div>
 	</div>
 	<nav>

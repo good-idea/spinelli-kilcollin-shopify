@@ -65,11 +65,6 @@ const valueFunctions = {
 	},
 };
 
-// function applyValue() {
-// 	console.log(this);
-// 	this.target.update(this.value);
-// }
-
 function buildTrigger(element) {
 	const trigger = {};
 	const valueType = element.getAttribute('data-trigger-value');
