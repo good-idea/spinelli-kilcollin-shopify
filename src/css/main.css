@@ -72,8 +72,6 @@ body {
 	}
 }
 
-
-
 /*
 // :::Specific to component or section
 //-------------------------------------------------- */
@@ -89,6 +87,7 @@ body {
 @import "blogs";
 @import "pages";
 @import "overlay";
+@import "customer";
 
 /*
 // :::Debug

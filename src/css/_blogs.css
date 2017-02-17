@@ -10,9 +10,10 @@
 }
 
 .blogBlock__summary, .blogBlock__image {
-	flex-basis: 50%;
+	width: 50%;
 
 	img {
+		width: 100%;
 		display: block;
 	}
 }
@@ -223,6 +224,10 @@ section.article {
 @media screen and (max-width: $break-medium) {
 	.blogBlock {
 		flex-direction: column;
+	}
+
+	.blogBlock__summary, .blogBlock__image {
+		width: 100%;
 	}
 
 	.blogBlock__image {

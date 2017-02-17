@@ -1,4 +1,4 @@
-import $ from 'npm-zepto';
+import $ from 'jquery';
 import axios from 'axios';
 
 /**
@@ -69,6 +69,25 @@ $(() => {
 			});
 		}).catch((error) => {
 			console.log(error);
+			form.submit();
 		});
+
+		// axios.post('/cart/add.js', data).then((addResponse) => {
+		// 	axios.get('/cart.js').then((cartResponse) => {
+		// 		button.attr('data-state', 'success');
+		// 		cartElement.addClass('has-items');
+		// 		cartIcon.addClass('success');
+		// 		cartCount.text(cartResponse.data.item_count);
+		// 		const total = formatDollars(cartResponse.data.total_price);
+		// 		cartTotal.text(total);
+		// 		appendToCart(addResponse.data);
+		// 		setTimeout(() => {
+		// 			cartIcon.removeClass('success');
+		// 			button.attr('data-state', '');
+		// 		}, 4000);
+		// 	});
+		// }).catch((error) => {
+		// 	console.log(error);
+		// });
 	});
 });

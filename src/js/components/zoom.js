@@ -101,9 +101,11 @@ function buildGallery(element, publisher) {
 
 
 function buildZooms(publisher) {
-	const galleries = $('.zoom-gallery');
-	galleries.each((index, gallery) => {
-		buildGallery(gallery, publisher);
+	$(window).on('load', () => {
+		const galleries = $('.zoom-gallery');
+		galleries.each((index, gallery) => {
+			buildGallery(gallery, publisher);
+		});
 	});
 }
 

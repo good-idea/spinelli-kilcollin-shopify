@@ -1,0 +1,41 @@
+<section class="customer-account">
+	<h2>Account</h2>
+
+	<div class="account__sidebar">
+		<h4>{{ customer.name }}</h4>
+		<h4>{{ customer.email }}</h4>
+		<div class="account__addresses">
+			{% if customer.default_address != nil %}
+			<p>{{ customer.default_address.address1 }}</p>
+			{% if customer.default_address.address2 != "" %}
+			<p>{{ customer.default_address.address2 }}</p>
+			{% endif %}
+			<p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
+			<p>{{ customer.default_address.zip}}</p>
+			<p>{{ customer.default_address.phone }}</p>
+			{% endif %}
+		</div>
+		<p><a href="/account/addresses">View Addresses ({{ customer.addresses_count }})</a></p>
+	</div>
+
+	<div class="account__orders">
+		{% if customer.orders.size != 0 %}
+			<div class="account__header">
+				<h4 class="order__number">Order No.</h4>
+				<h4 class="order__date">Date</h4>
+				<h4 class="order__payment-status">Payment Status</h4>
+				<h4 class="order__fulfillment-status">Fulfillment Status</h4>
+				<h4 class="order__total">Order Total</h4>
+			</div>
+			{% for order in customer.orders %}
+				<div class="order__number">{{ order.order_number }}</div>
+				<div class="order__date">{{ order.created_at | date }}</div>
+				<div class="order__payment-status">{{ order.financial_status }}</div>
+				<div class="order__fulfillment-status">{{ order.fulfillment_status }}</div>
+				<div class="order__total">{{ order.total_price }}</div>
+			{% endfor %}
+		{% else %}
+			<h4 class="help">You haven't placed any orders yet.</h4>
+		{% endif %}
+	</div>
+</section>

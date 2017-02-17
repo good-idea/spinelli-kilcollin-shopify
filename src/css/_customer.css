@@ -1,0 +1,29 @@
+section.customer-login {
+	padding-top: 3rem;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+	form {
+		width: 35rem;
+	}
+}
+
+.customer__recover-form {
+	display: none;
+}
+
+section.show-recover {
+	.customer__recover-form {
+		display: block;
+	}
+
+	.customer__login-form,
+	.customer__create-form {
+		display: none;
+	}
+}
+
+section.customer-account {
+	padding-top: 3rem;
+}

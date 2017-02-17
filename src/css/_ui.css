@@ -8,7 +8,6 @@
 	justify-content: space-around;
 
 	.line {
-		// position: absolute;
 		width: 100%;
 		height: 2px;
 		left: 0;
@@ -16,27 +15,33 @@
 		transform-origin: center center;
 		transition: .3s;
 		transform: translateZ(0);
+		position: relative;
 	}
 
-	.line:nth-of-type(3) {
+	.line__double {
 		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: inherit;
+		transform-origin: center center;
 		left: 0;
-		top: calc(50% - 1px);
+		top: 0;
+		transition: inherit;
 	}
 }
 
 .menu-open .burger {
 	.line:nth-of-type(1),
-	.line:nth-of-type(4) {
+	.line:nth-of-type(3) {
 		opacity: 0;
 	}
 
 	.line:nth-of-type(2) {
-		transform: rotate(-45deg);
+		transform: rotate(45deg);
 	}
 
-	.line:nth-of-type(3) {
-		transform: rotate(45deg);
+	.line__double {
+		transform: rotate(-90deg);
 	}
 }
 
@@ -80,7 +85,6 @@ select {
 }
 
 button, .button-like {
-	@mixin flex-center;
 	padding: 0.25rem 1rem;
 	border: 1px solid $grey1;
 	min-height: 4rem;

@@ -24,12 +24,16 @@
 
 .featured__item:nth-of-type(4n + 2),
 .featured__item:nth-of-type(4n + 3) {
-	padding-bottom: 33%
+	.featured__inner {
+		padding-bottom: 66%
+	}
 }
 
 .featured__item:nth-of-type(4n + 4),
 .featured__item:nth-of-type(4n + 5) {
-	padding-bottom: 50%
+	.featured__inner {
+		padding-bottom: 100%
+	}
 }
 
 .featured__item .featured__caption {
@@ -53,16 +57,22 @@
 
 .featured__item--slider {
 	flex-basis: 100%;
-	padding-bottom: 45%;
+
+	.featured__inner {
+		padding-bottom: 45%;
+	}
 }
 
 .slider {
 	position: relative;
 	width: 100%;
-	padding-bottom: 45%;
+
+	.featured__inner {
+		padding-bottom: 45%;
+	}
 }
 
-.slider.initialized {
+.slider {
 	.featured__caption {
 		display: none;
 	}
@@ -87,6 +97,7 @@
 
 .featured__caption {
 	text-align: center;
+	pointer-events: none;
 }
 
 .slider__image-container {
@@ -100,6 +111,18 @@
 	height: 100%;
 	width: calc(100% + 15px);
 
+	.featured__caption {
+		display: none;
+	}
+
+	svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
 	img {
 		width: calc(100% - 15px);
 		min-width: calc(100% - 15px);
@@ -107,13 +130,25 @@
 	}
 }
 
-.slider__overlay {
-	mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(100% - 15px), rgba(0, 0, 0, 0) calc(100%));
-	width: 0;
-	height: 100%;
+
+.slider__item-alt {
+	.slide__image {
+		clip-path: url("#clip");
+	}
 }
 
-
+@supports (mask-image: linear-gradient(0deg, #fff, #fff) {
+	.slider__item-alt {
+		.slide__image {
+			clip-path: initial;
+		}
+	}
+	.slider__overlay {
+		mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(100% - 15px), rgba(0, 0, 0, 0) calc(100%));
+		width: 0;
+		height: 100%;
+	}
+}
 
 
 @media screen and (max-width: $break-medium) {
@@ -139,17 +174,44 @@
 }
 
 .hasTouchEvents {
-	.featured__item .featured__caption {
+		.featured__item .featured__caption {
 		position: static;
 		color: $grey3;
 		background-color: initial;
+		pointer-events: initial;
 		padding: 1rem;
 		opacity: 1;
+		display: block;
+	}
+
+	.slider .featured__caption {
+		display: block;
+	}
+
+	.slider__anchor {
+		pointer-events: none;
+	}
+
+	.slider__item {
+		position: relative;
 	}
 
 	.slider__item,
 	.featured__item:nth-of-type(n) {
 		padding-bottom: 0;
+
+		.featured__inner {
+			padding-bottom: 0;
+		}
+	}
+
+	.slider__item-alt {
+		.slider__overlay {
+			mask-image: none;
+		}
+		.slide__image {
+			clip-path: none;
+		}
 	}
 
 	.slider .slider__image-container,

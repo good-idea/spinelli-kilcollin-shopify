@@ -4,6 +4,7 @@ function makeSlider(slider, publisher) {
 	const mainContainer = (slider instanceof $) ? slider : $(slider);
 	const overlayContainer = mainContainer.find('.slider__overlay-container');
 	const altOverlay = mainContainer.find('.slider__item-alt .slider__overlay');
+	const altMask = mainContainer.find('.slider__item-alt .slider__overlay-svg rect');
 	const sliderLink = mainContainer.find('a');
 	const primaryUrl = sliderLink.attr('data-href-primary');
 	const secondaryUrl = sliderLink.attr('data-href-secondary');
@@ -22,11 +23,13 @@ function makeSlider(slider, publisher) {
 		overlayWidth = overlayContainer.width();
 	}
 
+
 	function moveSlider() {
 		isAnimating = true;
 		const diff = (targetWidth - sliderWidth);
 		sliderWidth += diff * 0.15;
 		altOverlay.css('width', sliderWidth);
+		altMask.attr('width', sliderWidth);
 		if (Math.abs(diff) > 0.5) {
 			window.requestAnimationFrame(moveSlider);
 		} else {
@@ -51,7 +54,7 @@ function makeSlider(slider, publisher) {
 	mainContainer.on('mousemove', (e) => {
 		percentage = Math.round(e.clientX - containerLeft) / containerWidth;
 		setTargetWidth(percentage);
-		const newUrl = ((sliderWidth / containerWidth) > 0.5) ? primaryUrl : secondaryUrl;
+		const newUrl = ((sliderWidth / containerWidth) < 0.5) ? primaryUrl : secondaryUrl;
 		setUrl(newUrl);
 	});
 

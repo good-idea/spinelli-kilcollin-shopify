@@ -105,13 +105,14 @@ Javascript on each image to determine its width and update the srcset attribute.
 {% if asset == true %}
 	<img src="{{ image | asset_img_url: '1024x1024' }}"
 		srcset="
-			{{ image | asset_img_url: 'small' }}     100w,
-			{{ image | asset_img_url: 'compact' }}   160w,
-			{{ image | asset_img_url: 'medium' }}    240w,
-			{{ image | asset_img_url: 'large' }}     480w,
-			{{ image | asset_img_url: 'grande' }}    600w,
-			{{ image | asset_img_url: '1024x1024' }} 1024w,
-			{{ image | asset_img_url: '2048x2048' }} 2048w,"
+			{{ image | asset_img_url: '2048x' }} 2048w,
+			{{ image | asset_img_url: '1024x' }} 1024w,
+			{{ image | asset_img_url: '600x' }}  600w,
+			{{ image | asset_img_url: '480x' }}  480w,
+			{{ image | asset_img_url: '240x' }}  240w,
+			{{ image | asset_img_url: '160x' }}  160w,
+			{{ image | asset_img_url: '100x' }}  100w,
+			"
 		sizes="{{ sizes }}"
 		alt="{{ image.alt | escape }}"
 		{% if attributes != nil %}{{ attributes }}{% endif %}
@@ -120,13 +121,13 @@ Javascript on each image to determine its width and update the srcset attribute.
 {% else %}
 	<img src="{{ image.src | img_url: '1024x1024' }}"
 		srcset="
-			{{ image.src | img_url: 'small' }}     100w,
-			{{ image.src | img_url: 'compact' }}   160w,
-			{{ image.src | img_url: 'medium' }}    240w,
-			{{ image.src | img_url: 'large' }}     480w,
-			{{ image.src | img_url: 'grande' }}    600w,
-			{{ image.src | img_url: '1024x1024' }} 1024w,
-			{{ image.src | img_url: '2048x2048' }} 2048w,"
+			{{ image.src | img_url: '2048x' }} 2048w,
+			{{ image.src | img_url: '1024x' }} 1024w,
+			{{ image.src | img_url: '600x' }}  600w,
+			{{ image.src | img_url: '480x' }}  480w,
+			{{ image.src | img_url: '240x' }}  240w,
+			{{ image.src | img_url: '160x' }}  160w,
+			{{ image.src | img_url: '100x' }}  100w,"
 		sizes="{{ sizes }}"
 		alt="{{ image.alt | escape }}"
 		{% if attributes != nil %}{{ attributes }}{% endif %}
