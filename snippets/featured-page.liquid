@@ -2,6 +2,7 @@
 {% assign slug = 'homepage_block_' | append:item %}
 {% assign url_id = slug | append:'_url' %}
 {% assign url = settings[url_id] %}
+{% assign caption_id = slug | append:'_caption' %}
 
 {% comment %}
 	If it's a collection, product, or page, assign some defaults
@@ -37,6 +38,8 @@
 {% elsif type == "pages" %}
 	{% assign page = pages[arr[1]] %}
 	{% assign caption = page.title %}
+{% else %}
+	{% assign caption = settings[caption_id] %}
 {% endif %}
 
 {% assign image_id = slug | append:'_image' %}
@@ -44,7 +47,6 @@
 	{% assign image = settings[image_id] %}
 {% endif %}
 
-{% assign caption_id = slug | append:'_caption' %}
 {% if settings[caption_id] != blank %}
 	{% assign caption = settings[caption_id] %}
 {% endif %}
