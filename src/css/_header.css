@@ -128,11 +128,13 @@ header nav {
 		bottom: 0;
 		left: 50%;
 		width: 100%;
+		z-index: 10;
 		height: 1px;
 		transform: translateX(-50%);
 		background-color: $grey3;
 		transition: .3s;
 		transition-timing-function: ease-out;
+		pointer-events: none;
 	}
 
 	&:before {
@@ -149,6 +151,7 @@ header nav {
 .nav__item {
 	position: relative;
 	display: flex;
+	z-index: 50;
 	height: 100%;
 	flex-direction: column;
 	justify-content: center;
@@ -195,7 +198,7 @@ header .search {
 	.nav__submenu {
 		@mixin invisible;
 		position: absolute;
-		top: 100%;
+		top: calc(100% - 1px);
 		left: calc(50% - 10rem);
 		background: white;
 		border: 1px solid $grey3;
