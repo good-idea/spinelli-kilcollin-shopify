@@ -60,7 +60,7 @@ gulp.task('css', function () {
 	var processors = [
 		precss,
 		math,
-		autoprefixer({ browsers: ['last 3 versions']}),
+		autoprefixer({ browsers: ['last 4 versions']}),
 		nano
 	];
 	return gulp.src(['./src/css/*.css', '!./src/css/_*.css'])

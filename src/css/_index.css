@@ -174,57 +174,9 @@
 }
 
 .hasTouchEvents {
-		.featured__item .featured__caption {
-		position: static;
-		color: $grey3;
-		background-color: initial;
-		pointer-events: initial;
-		padding: 1rem;
-		opacity: 1;
-		display: block;
-	}
+	@import "index-touchAndSmall"
+}
 
-	.slider .featured__caption {
-		display: block;
-	}
-
-	.slider__anchor {
-		pointer-events: none;
-	}
-
-	.slider__item {
-		position: relative;
-	}
-
-	.slider__item,
-	.featured__item:nth-of-type(n) {
-		padding-bottom: 0;
-
-		.featured__inner {
-			padding-bottom: 0;
-		}
-	}
-
-	.slider__item-alt {
-		.slider__overlay {
-			mask-image: none;
-		}
-		.slide__image {
-			clip-path: none;
-		}
-	}
-
-	.slider .slider__image-container,
-	.featured__image-frame {
-		position: relative;
-		top: 0;
-		left: 0;
-		width: 100%;
-		padding-bottom: 70%;
-		overflow: hidden;
-	}
-
-	.slider .featured__caption {
-		display: block;
-	}
+@media screen and (max-width: $break-small) {
+	@import "index-touchAndSmall"
 }

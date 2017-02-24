@@ -19,16 +19,6 @@
 	}
 }
 
-@media screen and (max-width: $break-medium) {
-	.hero--mobile {
-		display: block
-	}
-	.hero--desktop {
-		display: none;
-	}
-}
-
-
 .contact__form form {
 	width: 100%;
 	display: flex;
@@ -51,5 +41,21 @@
 
 	.form__feedback {
 		margin: 2rem 0;
+	}
+}
+
+
+@media screen and (max-width: $break-medium) {
+	.hero--mobile {
+		display: block
+	}
+	.hero--desktop {
+		display: none;
+	}
+}
+
+@media screen and (max-width: $break-small) {
+	.contact__form form .form__field {
+		flex-basis: 100%;
 	}
 }

@@ -324,6 +324,7 @@ header {
 
 		.logotype img {
 			max-width: 21rem;
+			width: calc(100% - 11rem);
 		}
 
 		.column {
@@ -439,6 +440,7 @@ header {
 	}
 
 	header {
+
 		.nav__item {
 			height: auto;
 

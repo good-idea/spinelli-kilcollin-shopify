@@ -114,7 +114,7 @@
 
 @media screen and (max-width: $break-medium) {
 	.product__main {
-		flex-direction: column;
+		display: block;
 
 		.zoom__main {
 			pointer-events: none;
@@ -129,6 +129,10 @@
 			width: 20%;
 			padding: 0 1rem;
 		}
+	}
+
+	.product__images {
+		flex-basis: initial;
 	}
 
 
@@ -152,6 +156,17 @@
 		.zoom__thumb {
 			width: 33%;
 			padding: 0 1rem;
+		}
+	}
+
+	.product__sizing-info {
+		display: none;
+		min-height: initial;
+	}
+
+	.product__sizing.toggle-on {
+		.product__sizing-info {
+			display: block;
 		}
 	}
 }

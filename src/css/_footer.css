@@ -82,3 +82,18 @@ footer .column {
 		}
 	}
 }
+
+@media screen and (max-width: $break-small) {
+	.footer__signup {
+		form {
+			flex-direction: column;
+		}
+		input[type="email"],
+		button[type="submit"] {
+			width: 100%;
+		}
+	}
+	.share__icon {
+		margin: 0 1.5rem;
+	}
+}
