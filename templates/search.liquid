@@ -1,72 +1,58 @@
-{% comment %}
-The search.liquid template is not a required template.
-That search.liquid template is included in the current theme to make it easier for you 
-to customize your /search page.
-Whether you are using your own template for the search page or not,
-the {{ content_for_header }} tag in theme.liquid will always output the following on the /search page:
-<link rel="stylesheet" href="//cdn.shopify.com/s/global/search.css" type="text/css" />
-So the /search page is always styled by a globally-hosted stylesheet called search.css.
-You may override and complement that CSS in your theme's stylesheet.
-We are using a div#searchresults below so that the styles defined in search.css get
-applied to the elements on this page; the 'searchresults' id is used in the CSS
-selectors inside search.css.
-{% endcomment %}
-
-<div id="searchresults">
-  
-  <div class="centered">
-    <form action="/search" method="get" class="search-form" role="search">
-      <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
-      <input type="submit" id="search-submit" value="Search" />
-    </form>
-  </div>
-  
-  {% comment %}
-  search.performed is false when accessing the /search page without a 'q' parameter set
-  in the URL. A shop-owner can link to the /search page from one of his link lists.
-  It is important to show a search form on that page if search.performed is false.
-  {% endcomment %}
-  
+{% paginate search.results by 48 %}
+<section class="collection search-results">
   {% if search.performed %}
-    
-    {% paginate search.results by 10 %}
-    
-    {% comment %}
-    Common pitfall to avoid: search.results should never be accessed before the opening 
-    paginate tag. Move the opening and closing paginate tags to the very top and bottom of your
-    search.liquid template if you need to.
-    If you fail to do the above, the pagination of search results will be broken.
-    search.results_count is fine to access in or out of the paginate block.
-    {% endcomment %}
-  
-    {% if search.results_count == 0 %}  
-    <p class="centered">Your search for "{{ search.terms }}" did not yield any results.</p>              
-    {% else %}
-    <ol>
-      {% for item in search.results %}      
-      <li class="clearfix">
-        <h3>{{ item.title | link_to: item.url }}</h3>
-        {% if item.vendor %}
-        <div class="result-image">
-          <a href="{{ item.url }}" title="{{ item.title | escape }}">
-            {{ item | img_url: 'small' | img_tag: item.featured_image.alt }}
+    <h4 class="collection__description">
+      Search results for '{{ search.terms }}'
+    </h4>
+
+    <div class="grid">
+      {% for item in search.results %}
+        <div class="grid__item search__result search__result--{{ item.object_type }}">
+
+          <a href="{{ item.url }}">
+            {% if item.object_type == 'product' or item.object_type == 'collection' %}
+              {% assign caption = item.description | strip_html | truncate: 200 %}
+            {% elsif item.object_type == 'page' %}
+              {% assign caption = item.content | strip_html | truncate: 200 %}
+            {% else %}
+              {% assign caption = item.excerpt_or_content | strip_html | truncate: 200 %}
+            {% endif %}
+
+            {% if item.object_type == 'product' or item.object_type == 'article' or item.object_type == 'collection' %}
+              {% if item.object_type == 'product' %}
+                {% assign image = item.featured_image %}
+              {% elsif item.object_type == 'article' or item.object_type = 'collection' %}
+                {% assign image = item.image %}
+              {% endif %}
+              <div class="result__image">
+                {% include 'product-image-srcset',
+                   sizes: '(max-width: 860px) 100vw, 30vw'
+                   image: image %}
+              </div>
+            {% endif %}
+            <div class="result__text">
+              <h3 class="result__title"><span class="result__title-inner">{{ item.title }}</span></h3>
+              <h4 class="result__caption">{{ caption }}</h4>
+            </div>
           </a>
         </div>
-        {% endif %}
-        <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>        
-      </li>
+      {% else %}
+        <p>Your search returned 0 results.</p>
       {% endfor %}
-    </ol>
-    {% endif %}    
-    
-    {% if paginate.pages > 1 %}
-    <div id="pagination">
-      {{ paginate | default_pagination }}
     </div>
-    {% endif %}
-    
-    {% endpaginate %}    
-    
-  {% endif %}  
+  {% else %}
 
-</div>
+    <div class="column">
+      <form action="/search" method="get" class="search-form" role="search">
+        <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
+        <button class="primary"><h4>Search</h4></button>
+      </form>
+    </div>
+
+  {% endif %}
+
+{% include 'pagination' %}
+
+</section>
+
+{% endpaginate %}
