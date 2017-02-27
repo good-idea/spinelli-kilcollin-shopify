@@ -163,6 +163,10 @@ header nav {
 
 header .search {
 	position: relative;
+
+	h4 {
+		cursor: pointer;
+	}
 }
 
 
