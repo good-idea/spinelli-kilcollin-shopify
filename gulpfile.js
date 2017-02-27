@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 	precss = require('precss'),
 	autoprefixer = require('autoprefixer'),
 	cssnext = require('postcss-cssnext'),
-	nano = require('gulp-cssnano'),
+	cssnano = require('cssnano'),
 	math = require('postcss-math'),
 
 	// js
@@ -60,13 +60,13 @@ gulp.task('css', function () {
 	var processors = [
 		precss,
 		math,
-		autoprefixer({ browsers: ['last 4 versions']}),
-		nano
+		autoprefixer({ browsers: ['last 2 versions', 'Safari >= 8']}),
+		cssnano
 	];
 	return gulp.src(['./src/css/*.css', '!./src/css/_*.css'])
 		.pipe(sourcemaps.init())
 		.pipe(postcss(processors).on('error', mapError))
-		.pipe(nano().on('error', mapError))
+		// .pipe(nano().on('error', mapError))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./assets/'))
 	 	.pipe(filter("**/*.css"))

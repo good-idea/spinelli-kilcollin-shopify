@@ -169,8 +169,6 @@ header .search {
 	}
 }
 
-
-
 @media screen and (min-width: $break-medium-min) {
 	header nav.stuck {
 		position: fixed;
