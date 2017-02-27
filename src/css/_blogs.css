@@ -209,6 +209,7 @@ section.article {
 	text-align: center;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-between;
 
 	h2, h3 {
 		text-align: center;
@@ -218,6 +219,7 @@ section.article {
 
 .article__item {
 	flex-basis: calc(33% - 1rem);
+	margin-bottom: 2rem;
 }
 
 

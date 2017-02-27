@@ -230,7 +230,7 @@ input[type="number"] {
 	position: absolute;
 	top: 1rem;
 	cursor: pointer;
-	padding-top: calc(25% - 3.5rem);
+	padding-top: calc(25% - 7.5rem);
 
 	&:before {
 		position: absolute;
