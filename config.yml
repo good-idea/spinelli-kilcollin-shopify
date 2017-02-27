@@ -9,6 +9,7 @@ development-archive:
     - package.json
     - _working/
     - gulpfile.js
+    - config/settings_data.json
 production-archive:
   password: 1655af638136d9a8b53e608d7528e639
   theme_id: "91902467"
@@ -21,6 +22,7 @@ production-archive:
     - package.json
     - _working/
     - gulpfile.js
+    - config/settings_data.json
 development:
   password: 1655af638136d9a8b53e608d7528e639
   theme_id: "159401539"
@@ -33,6 +35,7 @@ development:
     - package.json
     - _working/
     - gulpfile.js
+    - config/settings_data.json
 production:
   password: 1655af638136d9a8b53e608d7528e639
   theme_id: "160214531"
@@ -45,3 +48,4 @@ production:
     - package.json
     - _working/
     - gulpfile.js
+    - config/settings_data.json
