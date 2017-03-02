@@ -27,11 +27,14 @@ $grey3: rgb(75, 75, 75);
 // :::Global Components
 //-------------------------------------------------- */
 
+html,
 body {
+	height: 100%;
+	position: relative;
 	background-color: white;
 }
 
-body.menu-open {
+html.menu-open, html.menu-open body {
 	overflow: hidden;
 }
 

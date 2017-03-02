@@ -9,11 +9,6 @@
 
 	<div class="product__main">
 		<div class="product__images zoom-gallery">
-			<div class="zoom__main">
-				{% for image in product.images %}
-				{% include 'product-image-zoom', image: image, index: forloop.index %}
-				{% endfor %}
-			</div>
 			{% if product.images.size > 1 %}
 			<div class="zoom__thumbs">
 				{% for image in product.images %}
@@ -23,6 +18,11 @@
 				{% endfor %}
 			</div>
 			{% endif %}
+			<div class="zoom__main">
+				{% for image in product.images %}
+				{% include 'product-image-zoom', image: image, index: forloop.index %}
+				{% endfor %}
+			</div>
 		</div>
 
 		<div class="product__info product-update {% if on_sale %}on-sale {% endif %}">

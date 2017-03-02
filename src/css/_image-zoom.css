@@ -30,7 +30,11 @@
 }
 
 .zoom__frame {
-  @mixin abs-full-size;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding-bottom: 100%;
   display: none;
 
   &.active {
@@ -39,14 +43,21 @@
 }
 
 .zoom__thumbs {
-  margin: 2rem auto 2rem -2rem;
+  margin-top: 2rem;
+  padding-right: 1rem;
+  width: 11rem;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  flex-direction: column;
+
+  img {
+    display: block;
+  }
 }
 
 .zoom__thumb {
   cursor: pointer;
-  width: 25%;
-  padding: 0 0 2rem 2rem;
+  width: 100%;
+  margin-bottom: 1rem;
 }

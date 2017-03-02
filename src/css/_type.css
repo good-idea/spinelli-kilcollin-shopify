@@ -7,13 +7,17 @@
 
 $leitura: "Leitura News Roman", "Big Caslon", "Book Antiqua", "Palatino", serif;
 
-body { font-family: $leitura; font-weight: 300; letter-spacing: 0.1em; }
-h1 { font-size: 4.2rem; }
+body { font-family: $leitura; font-weight: 300; letter-spacing: 0.01em; }
+h1 { font-size: 3rem; }
 h2 { font-size: 2.4rem; }
 h3 { font-size: 1.6rem; }
 h4, button, select { font-size: 1.3rem; }
 p, li, input, textarea, label, .rte { font-size: 1.2rem; }
 h5 { font-size: 1.2rem; }
+
+h1, h2, h3, h4, h5 {
+	letter-spacing: 0.1em;
+}
 
 p + p { margin-top: 0.9em; }
 
@@ -49,7 +53,7 @@ ul {
 	p {
 		margin-bottom: 0.9em;
 	}
-	
+
 	p + p {
 		margin-top: 0;
 	}

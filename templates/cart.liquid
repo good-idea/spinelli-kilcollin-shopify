@@ -10,8 +10,8 @@
 						<h4 class="checkout__title">Item</h4>
 						<h4 class="checkout__price">Price</h4>
 						<h4 class="checkout__quantity">Quantity</h4>
-						<h4 class="checkout__total">Total</h4>
 						<h4 class="checkout__remove">Remove</h4>
+						<h4 class="checkout__total">Total</h4>
 					</div>
 					{% for item in cart.items %}
 						<div class="checkout__item cf">
@@ -23,8 +23,8 @@
 							<h4 class="checkout__title">{{ item.title }}</h4>
 							<h4 class="checkout__price"><span class="label">Price:</span>${{ item.price | money_without_currency }}</h4>
 							<h4 class="checkout__quantity"><span class="label">Quantity:</span><input type="number" name="updates[]" id="updates_{{ item.id }}" class="quantity" value="{{ item.quantity }}" /></h4>
+							<h4 class="checkout__remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0"><i class="icon-trash icon-2x inline"></i><span class="label">Remove</span></a></h4>
 							<h4 class="checkout__total"><span class="label">Total:</span>${{ item.line_price | money_without_currency }}</h4>
-							<h4 class="checkout__remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0"><span class="label">Remove Item</span><i class="icon-trash"></i></a></h4>
 						</div>
 					{% endfor %}
 				</div>

@@ -9,6 +9,23 @@ section.customer-login {
 	}
 }
 
+.customer__form {
+	.help {
+		margin-top: 1.5rem;
+		text-align: right;
+	}
+
+	button {
+		display: block;
+		margin-left: auto;
+	}
+}
+
+.form__title {
+	margin-bottom: 2rem;
+	color: $grey2;
+}
+
 .customer__recover-form {
 	display: none;
 }
@@ -26,4 +43,20 @@ section.show-recover {
 
 section.customer-account {
 	padding-top: 3rem;
+}
+
+@media screen and (max-width: $break-medium) {
+	.customer__create-form {
+		margin-top: 4rem;
+	}
+
+	.customer__form {
+		.help {
+			text-align: center;
+		}
+
+		button {
+			margin-right: auto;
+		}
+	}
 }

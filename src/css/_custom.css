@@ -8,6 +8,10 @@
 
 	.heros {
 		margin-bottom: 2rem;
+
+		img {
+			width: 100%;
+		}
 	}
 
 	.contact__form {
@@ -46,11 +50,13 @@
 
 
 @media screen and (max-width: $break-medium) {
-	.hero--mobile {
-		display: block
-	}
-	.hero--desktop {
-		display: none;
+	.page--custom {
+		.hero--mobile {
+			display: block
+		}
+		.hero--desktop {
+			display: none;
+		}
 	}
 }
 

@@ -11,7 +11,7 @@
          image: product.featured_image %}
     </div>
     <div class="grid__caption">
-      <h4>{{ product.title }} |
+      <p>{{ product.title }} |
         <span class="regular-price">
           {{ product.price | money }}
         </span>
@@ -20,7 +20,7 @@
           {{ product.compare_at_price | money }}
         </span>
         {% endif %}
-      </h4>
+      </p>
     </div>
   </a>
 </div>

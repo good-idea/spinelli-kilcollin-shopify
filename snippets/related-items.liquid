@@ -8,22 +8,24 @@
 	{% endfor %}
 {% endif %}
 
-<div class="related">
-	<h2>More in this collection</h2>
-	<div class="related__items carousel">
-		<div class="carousel__frame">
-			<div class="carousel__slides">
-				{% for item in collection.products limit: 24 %}
-					<a href="{{ item.url }}">
-						<div class="carousel__slide slide">
-							<img src="{{ item.featured_image | product_img_url: 'large' }}" alt="" class="related__image">
-							<h4>{{ item.title }}</h4>
-						</div>
-					</a>
-				{% endfor %}
+{% if found_a_collection %}
+	<div class="related">
+		<h2>More in this collection</h2>
+		<div class="related__items carousel">
+			<div class="carousel__frame">
+				<div class="carousel__slides">
+					{% for item in collection.products limit: 24 %}
+						<a href="{{ item.url }}">
+							<div class="carousel__slide slide">
+								<img src="{{ item.featured_image | product_img_url: 'large' }}" alt="" class="related__image">
+								<h4>{{ item.title }}</h4>
+							</div>
+						</a>
+					{% endfor %}
+				</div>
 			</div>
+			<i class="carousel__button carousel__button--previous icon-angle-down" data-action="previous"></i>
+			<i class="carousel__button carousel__button--next icon-angle-down" data-action="next"></i>
 		</div>
-		<i class="carousel__button carousel__button--previous icon-angle-down" data-action="previous"></i>
-		<i class="carousel__button carousel__button--next icon-angle-down" data-action="next"></i>
 	</div>
-</div>
+{% endif %}

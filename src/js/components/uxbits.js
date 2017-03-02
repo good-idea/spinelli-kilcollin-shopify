@@ -45,9 +45,9 @@ function lazies() {
 function mobileNav() {
 	const header = $('header');
 	const burger = header.find('.burger');
-	const body = $('body');
+	const html = $('html');
 	burger.on('click', () => {
-		body.toggleClass('menu-open nav-open');
+		html.toggleClass('menu-open nav-open');
 	});
 }
 

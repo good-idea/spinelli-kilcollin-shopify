@@ -44,8 +44,9 @@
 }
 
 .article .rte {
-	line-height: 1.6em;
-	font-size: 2.1rem;
+	line-height: 1.5em;
+	font-size: 1.6rem;
+	letter-spacing: 0.02em;
 	padding-top: 3rem;
 
 	p {
@@ -133,7 +134,8 @@ section.article {
 		padding-bottom: $caption-height;
 	}
 
-	.carousel__button {
+	.top-carousel .carousel__button {
+		height: 4rem;
 		top: calc(($carousel-height / 2) - ($caption-height / 2));
 	}
 
@@ -145,6 +147,10 @@ section.article {
 		.carousel__frame {
 			width: calc(100% - 6rem);
 			margin-left: 3rem;
+		}
+
+		.carousel__button {
+			height: calc(100% - $caption-height);
 		}
 
 		.column--narrow {
@@ -244,7 +250,7 @@ section.article {
 	}
 
 	.article .rte {
-		font-size: 1.4rem;
+		font-size: 1.3rem;
 	}
 
 	.article__share {
@@ -268,7 +274,7 @@ section.article {
 			height: calc($carousel-height + $caption-height);
 		}
 
-		.carousel__button {
+		.top-carousel .carousel__button {
 			top: calc(($carousel-height / 2) - ($caption-height / 2));
 		}
 

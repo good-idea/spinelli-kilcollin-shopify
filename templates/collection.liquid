@@ -1,9 +1,9 @@
 {% paginate collection.products by 48 %}
 <section class="collection">
   {% if collection.description != blank %}
-    <h4 class="collection__description">
+    <p class="collection__description">
       {{ collection.description }}
-    </h4>
+    </p>
   {% endif %}
 
   <div class="grid">

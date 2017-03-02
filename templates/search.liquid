@@ -1,9 +1,9 @@
 {% paginate search.results by 48 %}
 <section class="collection search-results">
   {% if search.performed %}
-    <h4 class="collection__description">
+    <p class="collection__description">
       Search results for '{{ search.terms }}'
-    </h4>
+    </p>
 
     <div class="grid">
       {% for item in search.results %}
@@ -32,7 +32,7 @@
             {% endif %}
             <div class="result__text">
               <h3 class="result__title"><span class="result__title-inner">{{ item.title }}</span></h3>
-              <h4 class="result__caption">{{ caption }}</h4>
+              <p class="result__caption">{{ caption }}</p>
             </div>
           </a>
         </div>

@@ -8,6 +8,10 @@
 	flex-basis: calc(50% - 1rem);
 }
 
+.product__images {
+	display: flex;
+}
+
 .product__info {
 	padding: 3rem 0 0 3rem;
 	color: $grey3;
@@ -98,12 +102,20 @@
 	}
 }
 
+section.product {
+	.carousel__button {
+		height: calc(100% - 2rem);
+	}
+}
+
 .related {
 	text-align: center;
 
 	h2 {
 		text-transform: uppercase;
-		color: $grey3;
+		color: $grey2;
+		margin-bottom: 1rem;
+		font-size: 2.2rem;
 	}
 
 	.related__items {
@@ -113,6 +125,12 @@
 }
 
 @media screen and (max-width: $break-medium) {
+	section.product {
+		.carousel__button {
+			/*padding-top: calc(33% - 4rem);*/
+		}
+	}
+
 	.product__main {
 		display: block;
 
@@ -151,8 +169,13 @@
 }
 
 @media screen and (max-width: $break-small) {
-	.product__main {
+	section.product {
+		.carousel__button {
+			/*padding-top: calc(50% - 2rem);*/
+		}
+	}
 
+	.product__main {
 		.zoom__thumb {
 			width: 33%;
 			padding: 0 1rem;

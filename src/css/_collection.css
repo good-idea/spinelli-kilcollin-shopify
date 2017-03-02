@@ -21,7 +21,9 @@ section.collection {
   margin-bottom: 2rem;
 }
 
+.result__caption,
 .grid__caption {
+  color: $grey3;
   text-align: center;
   padding: 1rem;
 }

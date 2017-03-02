@@ -1,6 +1,7 @@
 <section id="customer-login" class="customer-login">
 
-	<div class="customer__login-form">
+	<div class="customer__form customer__login-form">
+		<h2 class="form__title">Login</h2>
 		{% form 'customer_login' %}
 		{{ form.errors | default_errors }}
 		<div class="form__field">
@@ -12,14 +13,15 @@
 				<label for="customer_password"><h4>Password</h4></label>
 				<input type="password" name="customer[password]" id="customer_password">
 			</div>
-			<p class="help"><a href="#" onclick="showRecoverPasswordForm();">Forgot your password?</a></p>
 		{% endif %}
 		<button type="submit" class="primary">Login</button>
+		<p class="help"><a href="#" onclick="showRecoverPasswordForm();">Forgot your password?</a></p>
 		{% endform %}
 	</div>
 
 
-	<div class="customer__recover-form">
+	<div class="customer__form customer__recover-form">
+		<h2 class="form__title">Reset your password</h2>
 
 		{% form 'recover_customer_password' %}
 		{{ form.errors | default_errors }}
@@ -36,7 +38,8 @@
 
 
 
-	<div class="customer__create-form">
+	<div class="customer__form customer__create-form">
+		<h2 class="form__title">Create Account</h2>
 		{% form 'create_customer' %}
 		{{ form.errors | default_errors }}
 
