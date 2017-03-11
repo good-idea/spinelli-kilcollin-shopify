@@ -139,8 +139,11 @@ section.product {
 		}
 
 		.zoom__thumbs {
+			width: 100%;
+			order: 2;
 			margin: 2rem auto 0;
 			justify-content: center;
+			flex-direction: row;
 		}
 
 		.zoom__thumb {
@@ -151,6 +154,7 @@ section.product {
 
 	.product__images {
 		flex-basis: initial;
+		flex-direction: column;
 	}
 
 

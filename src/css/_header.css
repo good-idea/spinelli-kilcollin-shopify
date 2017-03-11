@@ -307,6 +307,11 @@ header {
 			z-index: 100;
 		}
 
+		.logotype a {
+			@mixin flex-center;
+			height: $nav-height;
+		}
+
 		.logotype img {
 			max-width: 21rem;
 			width: calc(100% - 11rem);
