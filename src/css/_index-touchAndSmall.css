@@ -20,42 +20,6 @@
 	}
 }
 
-.slider .featured__caption {
-	display: block;
-}
-
-.slider__anchor {
-	pointer-events: none;
-}
-
-.slider__item {
-	position: relative;
-}
-
-.slider__item,
-.featured__item:nth-of-type(n) {
-	padding-bottom: 0;
-
-	.featured__inner {
-		padding-bottom: 0;
-	}
-}
-
-.slider__item-alt {
-	.slider__overlay {
-		mask-image: none;
-	}
-	.slide__image {
-		clip-path: none;
-	}
-}
-
-.slider .slider__image-container,
-.featured__image-frame {
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding-bottom: 70%;
-	overflow: hidden;
+.featured__item:hover .featured__caption {
+	transition-delay: 0s;
 }

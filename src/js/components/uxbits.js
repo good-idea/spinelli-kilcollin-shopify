@@ -1,5 +1,7 @@
 import $ from 'jquery';
 
+const inViewEvent = new Event('in-view');
+
 function inView(publisher = false) {
 	$('.watch-in-view').each((i, element) => {
 		const outerContainer = (element instanceof $) ? element : $(element);
@@ -28,6 +30,7 @@ function inView(publisher = false) {
 			percentage = Math.max(0, percentage); // nor less than 0
 
 			if (percentage === 1) outerContainer.addClass('in-view');
+			outerContainer[0].dispatchEvent(inViewEvent);
 		}
 
 

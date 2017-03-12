@@ -30,7 +30,7 @@
 {% endif %}
 
 
-<div class="slider featured__item featured__item--slider">
+<div class="slider featured__item featured__item--slider watch-in-view">
 	<a class="slider__anchor"
 		 href="{{ product_one.url }}"
 		 data-href-primary="{{ product_one.url }}"
@@ -38,36 +38,41 @@
 	></a>
 	<div class="featured__inner">
 		<div class="slider__item">
-			<a href="{{ product_one.url }}">
-				<div class="slider__image-container">
+			<div class="slider__image-container">
+				<a href="{{ product_one.url }}">
 					{% include 'product-image-srcset',
 					class: 'slide__image'
 					image: image_one %}
-				</div>
-				<div class="featured__caption">
-					<h1>{{ caption_one }}</h1>
-				</div>
-			</a>
-		</div>
-
-		<div class="slider__item slider__item-alt">
-				<a href="{{ product_two.url }}">
-					<div class="slider__image-container slider__overlay-container">
-						<svg class="slider__overlay-svg">
-							<clipPath id="clip">
-								<rect x="0" y="0" height="100%" width="100%" fill="none"></rect>
-							</clipPath>
-						</svg>
-						<div class="slider__overlay">
-							{% include 'product-image-srcset',
-							class: 'slide__image'
-							image: image_two %}
-						</div>
-					</div>
-					<div class="featured__caption">
-						<h1>{{ caption_two }}</h1>
-					</div>
 				</a>
+			</div>
+			<div class="featured__caption">
+				<h1>{{ caption_one }}</h1>
+			</div>
+		</div>
+		<div class="slider__scrubber-container slider-set-width">
+			<div class="slider__scrubber">
+				<span></span>
+			</div>
+		</div>
+		<div class="slider__item slider__item-alt">
+			<div class="slider__image-container slider__overlay-container">
+				<svg class="slider__overlay-svg">
+					<clipPath id="clip">
+						<rect class="slider-set-width" x="0" y="0" height="100%" width="0%" fill="none"></rect>
+					</clipPath>
+				</svg>
+
+				<div class="slider__overlay slider-set-width">
+					<a href="{{ product_two.url }}">
+						{% include 'product-image-srcset',
+						class: 'slide__image'
+						image: image_two %}
+					</a>
+				</div>
+			</div>
+			<div class="featured__caption">
+				<h1>{{ caption_two }}</h1>
+			</div>
 		</div>
 	</div>
 
