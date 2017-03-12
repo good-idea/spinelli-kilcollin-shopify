@@ -93,7 +93,7 @@ export function buildCarousel(element, publisher) {
 	});
 
 	if (slides.length > 0) {
-		publisher.subscribe('calculate', calculate);
+		publisher.subscribe('Calculate', calculate);
 		calculate();
 		watchTouch();
 		moveToSlide(0);

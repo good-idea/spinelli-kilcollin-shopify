@@ -63,8 +63,8 @@ function buildZoom(element, publisher) {
 		if (activate) calculate();
 	};
 
-	publisher.subscribe('calculate', calculate);
-	publisher.subscribe('windowScrolled', calculateScroll);
+	publisher.subscribe('Calculate', calculate);
+	publisher.subscribe('WindowScrolled', calculateScroll);
 
 	return zoom;
 }

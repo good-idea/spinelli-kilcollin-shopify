@@ -42,17 +42,17 @@ windo.on('load', () => {
 
 windo.on('scroll', () => {
 	const ypos = windo.scrollTop();
-	publisher.emit('windowScrolled', ypos);
+	publisher.emit('WindowScrolled', ypos);
 });
 
 document.fonts.ready.then(() => {
-	publisher.emit('calculate');
+	publisher.emit('Calculate');
 });
 
 let resizeTimer = null;
 windo.on('resize', () => {
 	clearTimeout(resizeTimer);
 	resizeTimer = setTimeout(() => {
-		publisher.emit('calculate');
+		publisher.emit('Calculate');
 	}, 250);
 });

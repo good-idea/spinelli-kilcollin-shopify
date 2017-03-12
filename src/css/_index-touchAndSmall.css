@@ -1,12 +1,23 @@
-
 .featured__item .featured__caption {
-	position: static;
+	position: absolute;
+	top: initial;
+	bottom: -4rem;
+	opacity: 0;
 	color: $grey3;
-	background-color: initial;
 	pointer-events: initial;
 	padding: 1rem;
-	opacity: 1;
+	opacity: 0;
 	display: block;
+	transition: .4s;
+	transition-delay: .3s;
+}
+
+.featured__item.in-view,
+.featured__item:hover {
+	.featured__caption {
+		opacity: 1;
+		bottom: 0;
+	}
 }
 
 .slider .featured__caption {
@@ -47,8 +58,4 @@
 	width: 100%;
 	padding-bottom: 70%;
 	overflow: hidden;
-}
-
-.slider .featured__caption {
-	display: block;
 }

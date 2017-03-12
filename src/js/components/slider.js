@@ -65,7 +65,7 @@ function makeSlider(slider, publisher) {
 	});
 
 	// Subscribe
-	publisher.subscribe('calculate', calculate);
+	publisher.subscribe('Calculate', calculate);
 
 	// Initialize
 	calculate();

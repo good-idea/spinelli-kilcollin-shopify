@@ -35,7 +35,7 @@ function buildHeader(publisher) {
 	}
 
 	publisher.subscribe('windowLoaded', calculate);
-	publisher.subscribe('windowScrolled', checkScroll);
+	publisher.subscribe('WindowScrolled', checkScroll);
 
 	calculate();
 	checkScroll($(window).scrollTop());
