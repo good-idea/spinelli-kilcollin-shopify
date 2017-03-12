@@ -30,20 +30,18 @@
 	max-width: 15rem;
 	margin-top: 2rem;
 
-
 	button[type="submit"] {
 		width: 100%;
 	}
 }
 
-
 .product__option {
+	display: none;
 	margin-bottom: 2rem;
 	width: 100%;
 	flex-wrap: wrap;
 
 	button, input, select {
-		margin-top: 1rem;
 		min-height: 4rem;
 		height: 4rem;
 	}
@@ -58,6 +56,11 @@
 		width: 100%;
 	}
 }
+
+.product__form.has-options .product__select {
+	display: block;
+}
+
 
 .product__option--quantity {
 	display: flex;

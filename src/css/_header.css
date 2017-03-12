@@ -12,7 +12,7 @@ header {
 
 	.logotype {
 		position: relative;
-		z-index: 90;
+		z-index: 75;
 
 		img {
 			max-width: 33.2rem;
@@ -51,6 +51,7 @@ header {
 
 		h4 {
 			margin-left: .5em;
+			text-transform: uppercase;
 		}
 	}
 
@@ -101,7 +102,7 @@ header nav {
 	.logotype--sk {
 		position: absolute;
 		left: 2rem;
-		top: 0;
+		top: .2rem;
 		line-height: $nav-height;
 		opacity: 0;
 		pointer-events: none;

@@ -145,9 +145,14 @@ section.checkout {
 }
 
 .checkout__header {
-	margin: 2rem auto;
+	margin: 4rem auto;
 	text-align: left;
 	color: $grey2;
+}
+
+.checkout__headers {
+	text-transform: uppercase;
+	padding-bottom: 1rem;
 }
 
 .checkout__item, .checkout__headers {

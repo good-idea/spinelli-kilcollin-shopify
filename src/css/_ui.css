@@ -94,7 +94,6 @@ button, .button-like {
 	color: $grey3;
 	transition: .2s;
 	cursor: pointer;
-	margin-top: 1rem;
 
 	&:hover {
 		border-color: $grey2;
@@ -131,7 +130,7 @@ button, .button-like {
 
 input, textarea {
 	text-align: inherit;
-	margin-top: 2rem;
+	/*margin-top: 2rem;*/
 	background: $grey1;
 	color: $grey3;
 	border-radius: 0;

@@ -35,10 +35,10 @@
 				{% endif %}
 			</div>
 
-			<form class="product__form" action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
+			<form class="product__form {% if product.options.size > 1 or product.variants.size > 1 %} has-options{% endif %}"
+				action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
 
-				{% if product.options.size > 1 or product.variants.size > 1 %}
-				<div class="product__option">
+				<div class="product__option product__select">
 					<label for="product-select-{{ product.id }}"><h5>{{ product.options[0] }}</h5></label>
 					<div class="select__wrapper">
 						<select id="product-select-{{ product.id }}" class="product-update-trigger" data-trigger-field="price" data-trigger-value="option" name='id'>
@@ -51,7 +51,7 @@
 						</select>
 					</div>
 				</div>
-				{% endif  %}
+
 				<div class="product__option product__option--quantity">
 					<label for="quantity"><h5>Quantity</h5></label>
 					<button type="button" class="square quantity__button product-update-trigger" data-trigger-field="quantity" data-trigger-value="minus"><i class="icon-minus"></i></button>
