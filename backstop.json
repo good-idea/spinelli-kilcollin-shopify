@@ -1,0 +1,75 @@
+{
+  "id": "staging_test",
+  "viewports": [
+    {
+      "name": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "name": "tablet_v",
+      "width": 568,
+      "height": 1024
+    },
+    {
+      "name": "tablet_h",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 700
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "BackstopJS Homepage",
+      "url": "https://spinellikilcollin.myshopify.com?preview_theme_id=159401539",
+      "hideSelectors": [],
+      "removeSelectors": [
+        ".shopify-preview-bar",
+        "#newsletter-overlay"
+      ],
+      "selectorExpansion": true,
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 500,
+      "misMatchThreshold" : 0.1,
+      "onBeforeScript": "onBefore.js",
+      "onReadyScript": "onReady.js"
+    },
+    {
+      "label": "BackstopJS Homepage",
+      "url": "https://spinellikilcollin.myshopify.com/collections/core-collection?preview_theme_id=159401539",
+      "hideSelectors": [],
+      "removeSelectors": [
+        ".shopify-preview-bar",
+        "#newsletter-overlay"
+      ],
+      "selectorExpansion": true,
+      "selectors": [
+        "body",
+        "#main"
+      ],
+      "readyEvent": null,
+      "delay": 500,
+      "misMatchThreshold" : 0.1,
+      "onBeforeScript": "onBefore.js",
+      "onReadyScript": "onReady.js"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "casper_scripts": "backstop_data/casper_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "casperFlags": [],
+  "engine": "phantomjs",
+  "report": ["browser"],
+  "debug": false
+}

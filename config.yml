@@ -1,28 +1,3 @@
-development-archive:
-  password: 1655af638136d9a8b53e608d7528e639
-  theme_id: "156385027"
-  store: spinellikilcollin.myshopify.com
-  ignore_files:
-    - node_modules/
-    - src/
-    - .git/
-    - package.json
-    - _working/
-    - gulpfile.js
-    - config/settings_data.json
-production-archive:
-  password: 1655af638136d9a8b53e608d7528e639
-  theme_id: "91902467"
-  store: spinellikilcollin.myshopify.com
-  timeout: 60s
-  ignore_files:
-    - node_modules/
-    - src/
-    - .git/
-    - package.json
-    - _working/
-    - gulpfile.js
-    - config/settings_data.json
 development:
   password: 1655af638136d9a8b53e608d7528e639
   theme_id: "159401539"
@@ -36,6 +11,8 @@ development:
     - _working/
     - gulpfile.js
     - config/settings_data.json
+    - backstop.json
+    - backstop_data
 production:
   password: 1655af638136d9a8b53e608d7528e639
   theme_id: "160214531"
@@ -49,3 +26,31 @@ production:
     - _working/
     - gulpfile.js
     - config/settings_data.json
+    - backstop.json
+    - backstop_data
+
+# development-archive:
+#   password: 1655af638136d9a8b53e608d7528e639
+#   theme_id: "156385027"
+#   store: spinellikilcollin.myshopify.com
+#   ignore_files:
+#     - node_modules/
+#     - src/
+#     - .git/
+#     - package.json
+#     - _working/
+#     - gulpfile.js
+#     - config/settings_data.json
+# production-archive:
+#   password: 1655af638136d9a8b53e608d7528e639
+#   theme_id: "91902467"
+#   store: spinellikilcollin.myshopify.com
+#   timeout: 60s
+#   ignore_files:
+#     - node_modules/
+#     - src/
+#     - .git/
+#     - package.json
+#     - _working/
+#     - gulpfile.js
+#     - config/settings_data.json
