@@ -22,6 +22,15 @@
 	overflow: hidden;
 }
 
+.featured__inner {
+	position: relative;
+}
+
+.featured__image-frame {
+	@mixin abs-full-size;
+	overflow: hidden;
+}
+
 .featured__item:nth-of-type(4n + 2),
 .featured__item:nth-of-type(4n + 3) {
 	.featured__inner {
@@ -158,19 +167,24 @@
 
 	.featured__item--slider {
 		flex-basis: 100%;
-		padding-bottom: 66%;
+		.featured__inner {
+			padding-bottom: 66%;
+		}
 	}
 
 	.featured__item:nth-of-type(4n + 2),
 	.featured__item:nth-of-type(4n + 3) {
-		padding-bottom: 66%
+		.featured__inner {
+			padding-bottom: 66%
+		}
 	}
 
 	.featured__item:nth-of-type(4n + 4),
 	.featured__item:nth-of-type(4n + 5) {
-		padding-bottom: 100%
+		.featured__inner {
+			padding-bottom: 100%
+		}
 	}
-
 }
 
 .hasTouchEvents {
