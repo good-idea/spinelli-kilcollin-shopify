@@ -16,6 +16,8 @@ $break-small: 550px;
 $grey1: rgb(241, 241, 241);
 $grey2: rgb(119, 119, 119);
 $grey3: rgb(75, 75, 75);
+$grey3: rgb(75, 75, 75);
+$grey4: rgb(33, 33, 33);
 
 .grey3 { color: $grey3; }
 

@@ -6,6 +6,7 @@
 {% else %}
 	{% assign image_one = settings[alt_image_one_id] %}
 {% endif %}
+
 {% assign alt_caption_id = 'homepage_featured_' | append:item_one | append:'_caption'%}
 {% if settings[alt_caption_id] == blank %}
 	{% assign caption_one = product_one.title %}
@@ -13,6 +14,12 @@
 	{% assign caption_one = settings[alt_caption_slug] %}
 {% endif %}
 
+{% assign alt_url_id = 'homepage_featured_' | append:item_one | append:'_alt_url'%}
+{% if settings[alt_url_id] == blank %}
+	{% assign url_one = product_one.url %}
+{% else %}
+	{% assign url_one = settings[alt_url_id] %}
+{% endif %}
 
 {% assign id_two = 'homepage_featured_' | append:item_two %}
 {% assign product_two = all_products[settings[id_two]] %}
@@ -28,13 +35,18 @@
 {% else %}
 	{% assign caption_two = settings[alt_caption_slug] %}
 {% endif %}
-
+{% assign alt_url_id = 'homepage_featured_' | append:item_two | append:'_alt_url'%}
+{% if settings[alt_url_id] == blank %}
+	{% assign url_two = product_one.url %}
+{% else %}
+	{% assign url_two = settings[alt_url_id] %}
+{% endif %}
 
 <div class="slider featured__item featured__item--slider">
 	<a class="slider__anchor"
-		 href="{{ product_one.url }}"
-		 data-href-primary="{{ product_one.url }}"
-		 data-href-secondary="{{ product_two.url }}"
+		 href="{{ url_one }}"
+		 data-href-primary="{{ url_one }}"
+		 data-href-secondary="{{ url_two }}"
 	></a>
 	<div class="featured__inner">
 		<div class="slider__item">
@@ -51,7 +63,7 @@
 		</div>
 
 		<div class="slider__item slider__item-alt">
-				<a href="{{ product_two.url }}">
+				<a href="{{ url_two }}">
 					<div class="slider__image-container slider__overlay-container">
 						<svg class="slider__overlay-svg">
 							<clipPath id="clip">

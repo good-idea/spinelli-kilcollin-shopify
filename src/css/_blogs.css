@@ -44,10 +44,11 @@
 }
 
 .article .rte {
-	line-height: 1.5em;
+	line-height: 1.7em;
 	font-size: 1.6rem;
 	letter-spacing: 0.02em;
 	padding-top: 3rem;
+	color: $grey4;
 
 	p {
 		font-size: inherit;
