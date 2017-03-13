@@ -103,6 +103,11 @@
 				"info": "Recommended: 2400 x 1040px"
 			},
 			{
+				"type": "url",
+				"label": "Alternate URL",
+				"id": "homepage_featured_1_alt_url"
+			},
+			{
 				"type": "header",
 				"content": "Featured Item 2"
 			},
@@ -129,6 +134,12 @@
 				"info": "Recommended: 2400 x 1040px"
 			},
 			{
+				"type": "url",
+				"label": "Alternate URL",
+				"id": "homepage_featured_2_alt_url"
+			},
+
+			{
 				"type": "header",
 				"content": "Featured Item 3"
 			},
@@ -153,6 +164,11 @@
 				"id": "homepage_featured_3_alt_image",
 				"label": "Alternate Image",
 				"info": "Recommended: 2400 x 1040px"
+			},
+			{
+				"type": "url",
+				"label": "Alternate URL",
+				"id": "homepage_featured_3_alt_url"
 			},
 			{
 				"type": "header",
@@ -181,6 +197,12 @@
 				"info": "Recommended: 2400 x 1040px"
 			},
 			{
+				"type": "url",
+				"label": "Alternate URL",
+				"id": "homepage_featured_4_alt_url"
+			},
+
+			{
 				"type": "header",
 				"content": "Featured Item 5"
 			},
@@ -207,6 +229,12 @@
 				"info": "Recommended: 2400 x 1040px"
 			},
 			{
+				"type": "url",
+				"label": "Alternate URL",
+				"id": "homepage_featured_5_alt_url"
+			},
+
+			{
 				"type": "header",
 				"content": "Featured Item 6"
 			},
@@ -231,6 +259,11 @@
 				"id": "homepage_featured_6_alt_image",
 				"label": "Alternate Image",
 				"info": "Recommended: 2400 x 1040px"
+			},
+			{
+				"type": "url",
+				"label": "Alternate URL",
+				"id": "homepage_featured_6_alt_url"
 			}
 		]
 	},

@@ -1,10 +1,5 @@
 import $ from 'npm-zepto';
 
-$('a').on('click', (e) => {
-	e.preventDefault();
-	console.log(e.target.parentElement.getAttribute('href'));
-});
-
 function makeSlider(slider, publisher) {
 	const mainContainer = (slider instanceof $) ? slider : $(slider);
 	const overlayContainer = mainContainer.find('.slider__overlay-container');
