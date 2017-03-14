@@ -10,7 +10,7 @@ development:
     - package.json
     - _working/
     - gulpfile.js
-    - config/settings_data.json
+    # - config/settings_data.json
     - backstop.json
     - backstop_data
 production:

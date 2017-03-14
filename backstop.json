@@ -24,7 +24,7 @@
   ],
   "scenarios": [
     {
-      "label": "BackstopJS Homepage",
+      "label": "Homepage",
       "url": "https://spinellikilcollin.myshopify.com?preview_theme_id=159401539",
       "hideSelectors": [],
       "removeSelectors": [
@@ -42,7 +42,7 @@
       "onReadyScript": "onReady.js"
     },
     {
-      "label": "BackstopJS Homepage",
+      "label": "Collection Page",
       "url": "https://spinellikilcollin.myshopify.com/collections/core-collection?preview_theme_id=159401539",
       "hideSelectors": [],
       "removeSelectors": [
@@ -51,8 +51,61 @@
       ],
       "selectorExpansion": true,
       "selectors": [
-        "body",
-        "#main"
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 500,
+      "misMatchThreshold" : 0.1,
+      "onBeforeScript": "onBefore.js",
+      "onReadyScript": "onReady.js"
+    },
+    {
+      "label": "Product Page",
+      "url": "https://www.spinellikilcollin.com/products/sonny-gold?preview_theme_id=159401539",
+      "hideSelectors": [],
+      "removeSelectors": [
+        ".shopify-preview-bar",
+        "#newsletter-overlay"
+      ],
+      "selectorExpansion": true,
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 500,
+      "misMatchThreshold" : 0.1,
+      "onBeforeScript": "onBefore.js",
+      "onReadyScript": "onReady.js"
+    },
+    {
+      "label": "Journal Page",
+      "url": "https://www.spinellikilcollin.com/blogs/news/sk-field-trips-spiral-jetty?preview_theme_id=159401539",
+      "hideSelectors": [],
+      "removeSelectors": [
+        ".shopify-preview-bar",
+        "#newsletter-overlay"
+      ],
+      "selectorExpansion": true,
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 500,
+      "misMatchThreshold" : 0.1,
+      "onBeforeScript": "onBefore.js",
+      "onReadyScript": "onReady.js"
+    },
+    {
+      "label": "Custom Page",
+      "url": "https://www.spinellikilcollin.com/pages/custom?preview_theme_id=159401539",
+      "hideSelectors": [],
+      "removeSelectors": [
+        ".shopify-preview-bar",
+        "#newsletter-overlay"
+      ],
+      "selectorExpansion": true,
+      "selectors": [
+        "document"
       ],
       "readyEvent": null,
       "delay": 500,

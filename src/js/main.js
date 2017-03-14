@@ -17,7 +17,14 @@ const windo = $(window);
 	Initialization
  */
 
-const hasTouchEvents = 'ountouchstart' in window || navigator.msMaxTouchPoints;
+function testForTouch() {
+	const el = document.createElement('div');
+	el.setAttribute('ontouchstart', 'return;');
+	if (typeof el.ontouchstart === 'function') return true;
+	return 'ountouchstart' in window || navigator.msMaxTouchPoints;
+}
+
+const hasTouchEvents = testForTouch();
 if (hasTouchEvents) document.documentElement.classList.add('hasTouchEvents');
 document.documentElement.classList.remove('no-js');
 

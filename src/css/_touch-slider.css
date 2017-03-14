@@ -4,7 +4,7 @@
 }
 
 .slider__overlay {
-	mask-image: initial;
+	/*mask-image: initial;*/
 }
 
 .slider__item-alt {
@@ -15,7 +15,7 @@
 	}
 
 	.slide__image {
-		clip-path: url("#clip");
+		/*clip-path: url("#clip");*/
 	}
 }
 

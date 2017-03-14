@@ -1,15 +1,17 @@
 .featured__item .featured__caption {
+	display: flex;
 	position: absolute;
 	top: initial;
 	bottom: -4rem;
+	height: 100%;
 	opacity: 0;
 	color: $grey3;
 	pointer-events: initial;
 	padding: 1rem;
 	opacity: 0;
-	display: block;
 	transition: .4s;
 	transition-delay: .3s;
+	color: white;
 }
 
 .featured__item.in-view,

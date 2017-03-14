@@ -21,6 +21,11 @@
 	.hero--mobile {
 		display: none;
 	}
+
+}
+
+.contact__alternatively {
+	margin-bottom: 2rem;
 }
 
 .contact__form form {

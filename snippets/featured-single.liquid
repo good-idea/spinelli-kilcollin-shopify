@@ -20,10 +20,12 @@
 				{% include 'product-image-srcset', image: image %}
 			</a>
 		</div>
-		<div class="featured__caption">
-			<h1>
-				<a href="{{ product.url }}">{{ caption }}</a>
-			</h1>
-		</div>
+		{% if caption != blank %}
+			<div class="featured__caption">
+				<h1>
+					<a href="{{ product.url }}">{{ caption }}</a>
+				</h1>
+			</div>
+		{% endif %}
 	</div>
 </div>
