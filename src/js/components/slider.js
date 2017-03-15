@@ -78,6 +78,7 @@ function makeSlider(slider, publisher) {
 	if (scrubber.parent().css('display') !== 'none') {
 		mainContainer.on('in-view', () => {
 			setTimeout(() => {
+				mainContainer.off('in-view');
 				setTargetWidth(0.5);
 			}, 800);
 		});

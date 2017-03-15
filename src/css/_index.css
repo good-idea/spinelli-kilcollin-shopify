@@ -103,5 +103,8 @@
 }
 
 @media screen and (max-width: $break-small) {
+	.featured__caption h1 {
+		font-size: 2.4rem;
+	}
 	@import "index-touchAndSmall"
 }
