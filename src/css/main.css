@@ -12,6 +12,7 @@ $break-large: 990px;
 $break-medium-min: 861px;
 $break-medium: 860px;
 $break-small: 550px;
+$break-vsmall: 360px;
 
 $grey1: rgb(241, 241, 241);
 $grey2: rgb(119, 119, 119);

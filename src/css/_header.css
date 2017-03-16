@@ -418,6 +418,12 @@ header {
 	}
 }
 
+@media screen and (max-width: $break-vsmall) {
+	header .logotype {
+		transform: translateX(-2px);
+	}
+}
+
 @media screen and (max-width: $break-small) {
 	.header__top .my-account {
 		display: none;

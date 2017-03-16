@@ -64,6 +64,7 @@
 	background-color: rgba(171, 144, 126, 0.45);
 	padding: 3rem;
 	transition: .4s ease-out;
+	-webkit-font-smoothing: antialiased;
 }
 
 .featured__item:hover .featured__caption {
