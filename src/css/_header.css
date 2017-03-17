@@ -212,6 +212,10 @@ header .search {
 		transition: .4s;
 		width: 20rem;
 
+		.submenu__return {
+			display: none;
+		}
+
 		h4 {
 			margin: .9rem 0;
 		}
@@ -308,14 +312,25 @@ header {
 		}
 
 		.logotype a {
-			@mixin flex-center;
-			height: $nav-height;
 		}
 
-		.logotype img {
-			max-width: 21rem;
+		.logotype {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			height: $nav-height;
 			width: calc(100% - 13rem);
+
+			a {
+				display: flex;
+				height: 100%;
+			}
+
+			img {
+				max-width: 21rem;
+			}
 		}
+
 
 		.column {
 			max-width: initial;
@@ -345,10 +360,18 @@ header {
 			justify-content: flex-start;
 			flex-direction: column;
 			border-bottom: 0;
+			position: absolute;
+			left: 0;
+			transition: .4s;
+
+			&.submenu-open {
+				left: -100%;
+			}
 		}
 
 		.nav__item {
 			height: auto;
+			position: static;
 
 			h4 {
 				font-size: 2.4rem;
@@ -364,8 +387,9 @@ header {
 		}
 
 		.nav__item.has-submenu {
-			i {
-				display: none;
+			.submenu__open {
+				display: inline-block;
+				transform: rotate(-90deg);
 			}
 		}
 
@@ -375,10 +399,26 @@ header {
 		}
 
 		.nav__submenu {
-			h4 {
-				font-size: 1.6rem;
-				color: $grey3;
+			position: absolute;
+			top: 0;
+			left: 100%;
+			width: 100%;
+			opacity: 0;
+			transition-delay: .4s;
+
+			.submenu__return {
+				cursor: pointer;
+				display: block;
+				transform: rotate(90deg) translateX(-50%);
+				position: absolute;
+				left: 1rem;
+				top: 50%;
 			}
+		}
+
+		.nav__submenu.visible {
+			opacity: 1;
+			transition-delay: 0s;
 		}
 	}
 
@@ -436,13 +476,6 @@ header {
 
 			h4 {
 				font-size: 1.6rem;
-			}
-		}
-
-		.nav__submenu {
-			h4 {
-				font-size: 1.3rem;
-				color: $grey3;
 			}
 		}
 	}

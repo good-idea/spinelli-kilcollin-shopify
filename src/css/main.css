@@ -100,6 +100,28 @@ section.four-oh-four {
 	text-align: center;
 }
 
+#bp-medium,
+#bp-small {
+	display: none;
+}
+
+@media screen and (max-width: $break-medium) {
+	#bp-medium {
+		position: fixed;
+		top: -100px;
+		left: -100px;
+		display: initial;
+	}
+}
+
+@media screen and (max-width: $break-small) {
+	#bp-small {
+		position: fixed;
+		top: -100px;
+		left: -100px;
+		display: initial;
+	}
+}
 /*
 // :::Debug
 //-------------------------------------------------- */

@@ -93,18 +93,10 @@ function lazies() {
 	});
 }
 
-function mobileNav() {
-	const header = $('header');
-	const burger = header.find('.burger');
-	const html = $('html');
-	burger.on('click', () => {
-		html.toggleClass('menu-open nav-open');
-	});
-}
+
 
 function buildUx(publisher) {
 	toggles();
-	mobileNav();
 	overlays(publisher);
 
 	$(window).on('load', () => {

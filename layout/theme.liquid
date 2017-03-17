@@ -48,6 +48,8 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+  <div id="bp-medium"></div>
+  <div id="bp-small"></div>
   {% include 'header' %}
 
   <div id="main" role="main" class="column main-content">
