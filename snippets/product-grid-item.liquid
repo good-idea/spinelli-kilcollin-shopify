@@ -11,16 +11,20 @@
          image: product.featured_image %}
     </div>
     <div class="grid__caption">
-      <p>{{ product.title }} |
-        <span class="regular-price">
-          {{ product.price | money }}
-        </span>
-        {% if on_sale %}
-        <span class="sale-price">
-          {{ product.compare_at_price | money }}
-        </span>
-        {% endif %}
-      </p>
+      {% if collection.metafields.c_f.price_hide == 'true' %}
+        <p>{{ product.title }}</p>
+      {% else %}
+        <p>{{ product.title }} |
+          <span class="regular-price">
+            {{ product.price | money }}
+          </span>
+          {% if on_sale %}
+          <span class="sale-price">
+            {{ product.compare_at_price | money }}
+          </span>
+          {% endif %}
+        </p>
+      {% endif %}
     </div>
   </a>
 </div>
