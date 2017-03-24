@@ -5,4 +5,15 @@
       url('LeituraNewsRoman.woff2') format('woff2'),
       url('LeituraNewsRoman.woff') format('woff'),
       url('LeituraNewsRoman.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Leitura News Roman';
+  src: url('LeituraNewsRomanItalic.eot');
+  src: url('LeituraNewsRomanItalic.eot?#iefix') format('embedded-opentype'),
+    url('LeituraNewsRomanItalic.woff2') format('woff2'),
+    url('LeituraNewsRomanItalic.woff') format('woff'),
+    url('LeituraNewsRomanItalic.ttf') format('truetype');
+  font-style: oblique;
 }
