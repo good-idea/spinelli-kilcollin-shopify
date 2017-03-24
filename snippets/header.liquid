@@ -76,8 +76,8 @@
 					<div class="nav__submenu">
 						<h4><i class="submenu__return icon-angle-down"></i></h4>
 						{% for child in linklists[child_list_handle].links %}
-						<h4>
-							<a class="nav__link--submenu href="{{ child.url }}">{{ child.title }}</a>
+						<h4 class="nav__item">
+							<a class="nav__link--submenu" href="{{ child.url }}">{{ child.title }}</a>
 						</h4>
 						{% endfor %}
 					</div>
