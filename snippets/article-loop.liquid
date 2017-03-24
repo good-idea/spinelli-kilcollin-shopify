@@ -3,7 +3,7 @@
 <div class="blogBlock">
 	<div class="blogBlock__summary">
 		<p>Posted on {{ published_at }}</p>
-		<h2>{{ article.title }}</h2>
+		<h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
 		<p>{{ article.excerpt_or_content | strip_html | truncatewords: 50 }}</p>
 		<h4 class="button-like primary"><a href="{{ article.url }}">Read More</a></h4>
 	</div>

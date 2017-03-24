@@ -485,8 +485,7 @@
 			{
 				"type": "text",
 				"id": "twittername",
-				"label": "Your Twitter URL",
-				"info": "https:\/\/twitter.com\/shopify"
+				"label": "Your Twitter Handle"
 			},
 			{
 				"type": "checkbox",
@@ -497,8 +496,7 @@
 			{
 				"type": "text",
 				"id": "facebook_url",
-				"label": "Your Facebook URL",
-				"info": "https:\/\/www.facebook.com\/shopify"
+				"label": "Your Facebook URL"
 			},
 			{
 				"type": "checkbox",
@@ -509,8 +507,7 @@
 			{
 				"type": "text",
 				"id": "pinterest_url",
-				"label": "Your Pinterest URL",
-				"info": "https:\/\/www.pinterest.com\/shopify"
+				"label": "Your Pinterest URL"
 			},
 			{
 				"type": "checkbox",
@@ -521,8 +518,7 @@
 			{
 				"type": "text",
 				"id": "tumblr_url",
-				"label": "Your Tumblr URL",
-				"info": "http:\/\/shopify.tumblr.com"
+				"label": "Your Tumblr URL"
 			},
 			{
 				"type": "checkbox",
@@ -533,8 +529,7 @@
 			{
 				"type": "text",
 				"id": "youtube_url",
-				"label": "Your YouTube URL",
-				"info": "https:\/\/www.youtube.com\/user\/shopify"
+				"label": "Your YouTube URL"
 			},
 			{
 				"type": "checkbox",
@@ -545,8 +540,7 @@
 			{
 				"type": "text",
 				"id": "googleplus_url",
-				"label": "Your Goolge+ URL",
-				"info": "https:\/\/plus.google.com\/+shopify"
+				"label": "Your Goolge+ URL"
 			},
 			{
 				"type": "checkbox",
