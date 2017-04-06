@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'npm-zepto';
 
 const inViewEvent = new Event('in-view');
 
@@ -92,8 +92,6 @@ function lazies() {
 		element.setAttribute('src', src);
 	});
 }
-
-
 
 function buildUx(publisher) {
 	toggles();
