@@ -12,7 +12,7 @@ function inView(publisher = false) {
 
 		function calculate() {
 			top = outerContainer.offset().top;
-			height = outerContainer.outerHeight();
+			height = outerContainer.height();
 			wheight = $(window).height();
 			oversize = Math.max(1, (height / wheight));
 		}
