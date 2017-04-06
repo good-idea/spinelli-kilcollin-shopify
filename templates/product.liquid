@@ -1,5 +1,7 @@
 {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
 {% assign on_sale = product.price < product.compare_at_price %}
+{% assign price_override = product.metafields.c_f.price_override %}
+{% assign price_override_action = product.metafields.c_f.price_override_action %}
 
 <section class="product">
 	<meta itemprop="priceCurrency" content="{{ shop.currency }}">
@@ -28,47 +30,68 @@
 		<div class="product__info product-update {% if on_sale %}on-sale {% endif %}">
 			<div class="product__top">
 				<h2>{{ product.title }}</h2>
-				{% assign price = product.selected_or_first_available_variant.price %}
-				<h3 class="product__price product-update-field" data-update-field-id="price" itemprop="price">{{ price | money }}</h3>
-				{% if product.price < product.compare_at_price %}
-					<h3 class="product__sale-price" itemprop="price">{{ product.compare_at_price | money }}</h3>
-				{% endif %}
+				{% unless price_override %}
+					{% assign price = product.selected_or_first_available_variant.price %}
+					<h3 class="product__price product-update-field" data-update-field-id="price" itemprop="price">{{ price | money }}</h3>
+					{% if product.price < product.compare_at_price %}
+						<h3 class="product__sale-price" itemprop="price">{{ product.compare_at_price | money }}</h3>
+					{% endif %}
+				{% endunless %}
 			</div>
 
-			<form class="product__form {% if product.options.size > 1 or product.variants.size > 1 %} has-options{% endif %}"
-				action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
-
-				<div class="product__option product__select">
-					<label for="product-select-{{ product.id }}"><h5>{{ product.options[0] }}</h5></label>
-					<div class="select__wrapper">
-						<select id="product-select-{{ product.id }}" class="product-update-trigger" data-trigger-field="price" data-trigger-value="option" name='id'>
-							{% for variant in product.variants %}
-							<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
-								value="{{ variant.id }}" data-sku="{{ variant.sku }}"
-								data-trigger-option-value="{{ variant.price | money | strip_html }}"
-								>{{ variant.title }}</option>
-							{% endfor %}
-						</select>
+			{% if price_override %}
+				{% unless price_override_action == 'contact' %}
+					<div class="product__price--override">
+						{% if price_override_action %}
+							<button class="primary">
+								<h4><a href="{{ price_override_action}}">{{ price_override }}</a></h4>
+							</button>
+						{% else %}
+							<h4 class="header">{{ price_override }}</h4>
+						{% endif %}
 					</div>
-				</div>
+				{% endunless %}
+			{% else %}
 
-				<div class="product__option product__option--quantity">
-					<label for="quantity"><h5>Quantity</h5></label>
-					<button type="button" class="square quantity__button product-update-trigger" data-trigger-field="quantity" data-trigger-value="minus"><i class="icon-minus"></i></button>
-					<input type="number" class="product-update-field" min="1" value="1" name="quantity" data-update-field-id="quantity">
-					<button type="button" class="square quantity__button product-update-trigger" data-trigger-field="quantity" data-trigger-value="plus"><i class="icon-plus"></i></button>
-				</div>
+				<form class="product__form {% if product.options.size > 1 or product.variants.size > 1 %} has-options{% endif %}"
+					action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
 
-				<button class="dark primary" type="submit">
-					<h4 class="add">Add to Cart</h4>
-					<h4 class="fa-icon success">&#xf00c;</h4>
-				</button>
-			</form>
+					<div class="product__option product__select">
+						<label for="product-select-{{ product.id }}"><h5>{{ product.options[0] }}</h5></label>
+						<div class="select__wrapper">
+							<select id="product-select-{{ product.id }}" class="product-update-trigger" data-trigger-field="price" data-trigger-value="option" name='id'>
+								{% for variant in product.variants %}
+								<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+									value="{{ variant.id }}" data-sku="{{ variant.sku }}"
+									data-trigger-option-value="{{ variant.price | money | strip_html }}"
+									>{{ variant.title }}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+
+					<div class="product__option product__option--quantity">
+						<label for="quantity"><h5>Quantity</h5></label>
+						<button type="button" class="square quantity__button product-update-trigger" data-trigger-field="quantity" data-trigger-value="minus"><i class="icon-minus"></i></button>
+						<input type="number" class="product-update-field" min="1" value="1" name="quantity" data-update-field-id="quantity">
+						<button type="button" class="square quantity__button product-update-trigger" data-trigger-field="quantity" data-trigger-value="plus"><i class="icon-plus"></i></button>
+					</div>
+
+					<button class="dark primary" type="submit">
+						<h4 class="add">Add to Cart</h4>
+						<h4 class="fa-icon success">&#xf00c;</h4>
+					</button>
+				</form>
+
+			{% endif %}
 
 			<div class="product__description rte">
 				{{ product.description }}
-
 			</div>
+
+			{% if price_override and price_override_action == 'contact' %}
+				{% include 'product-contact-form' %}
+			{% endif %}
 			{% include 'sizing-info' %}
 		</div>
 	</div>

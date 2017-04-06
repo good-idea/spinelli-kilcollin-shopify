@@ -1,0 +1,35 @@
+<div class="contact__form">
+
+	{% form 'contact' %}
+
+		<h4 class="form__title header">Custom Order Inquiry</h4>
+		{% if form.posted_successfully? %}
+			<h3 class="form__feedback">{{ 'contact.form.post_success' | t }}</h3>
+		{% elsif form.errors %}
+			<h3 class="form__feedback">{{ 'general.forms.post_error' | t }}</h3>
+		{% endif %}
+		<input type="hidden" name="contact[product_name]" readonly value="{{ product.title }}">
+
+		<div class="form__field contact__name">
+			<label>Name</label>
+			<input type="text" name="contact[name]" placeholder="">
+		</div>
+
+		<div class="form__field contact__email">
+			<label>Email</label>
+			<input type="email" name="contact[email]" placeholder="">
+		</div>
+
+		<div class="form__field contact__telephone">
+			<label>Phone Number</label>
+			<input type="tel" name="contact[phone]" placeholder="">
+		</div>
+
+		<div class="form__field contact__message">
+			<label>Message</label>
+			<textarea type="text" name="contact[body]" placeholder=""></textarea>
+		</div>
+
+		<button class="dark primary" type="submit"><h4>Send</h4></button>
+	{% endform %}
+</div>

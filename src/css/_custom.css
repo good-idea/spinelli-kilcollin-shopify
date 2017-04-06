@@ -44,7 +44,7 @@
 		flex-basis: calc(33% - 1rem);
 	}
 
-	.contact__message, h2, h3 {
+	.contact__message, .form__title {
 		flex-basis: 100%;
 	}
 

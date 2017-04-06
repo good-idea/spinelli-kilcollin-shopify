@@ -19,9 +19,16 @@
 	p {
 		color: $grey2;
 	}
+
+	.header {
+		text-transform: uppercase;
+		color: $grey3;
+	}
 }
 
-.product__price {
+
+.product__price,
+.product__price--override {
 	margin-top: 1rem;
 }
 
@@ -29,6 +36,7 @@
 	width: 100%;
 	max-width: 15rem;
 	margin-top: 2rem;
+	margin-bottom: 2rem;
 
 	button[type="submit"] {
 		width: 100%;
@@ -73,7 +81,7 @@
 }
 
 .product__description {
-	margin-top: 4rem;
+	margin-top: 2rem;
 }
 
 .product__sizing {
