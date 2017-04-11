@@ -25,11 +25,35 @@
 			<input type="tel" name="contact[phone]" placeholder="">
 		</div>
 
+		<div class="form__field contact__city">
+			<label>City</label>
+			<input type="tel" name="contact[city]" placeholder="">
+		</div>
+
 		<div class="form__field contact__message">
 			<label>Message</label>
 			<textarea type="text" name="contact[body]" placeholder=""></textarea>
 		</div>
 
-		<button class="dark primary" type="submit"><h4>Send</h4></button>
+		{% if product.options %}
+			<div class="form__field contact__option">
+				<label for="">{{ product.options[0] }}</label>
+				<div class="select__wrapper">
+					<select name="contact[size]" id="">
+						{% for variant in product.variants %}
+						<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+						value="{{ variant.id }}" data-sku="{{ variant.sku }}"
+						data-trigger-option-value="{{ variant.price | money | strip_html }}"
+						>{{ variant.title }}</option>
+
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="form__row">
+			<button class="dark primary" type="submit"><h4>Send</h4></button>
+		</div>
 	{% endform %}
 </div>

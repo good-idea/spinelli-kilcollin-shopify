@@ -2,6 +2,9 @@
 {% assign on_sale = product.price < product.compare_at_price %}
 {% assign price_override = product.metafields.c_f.price_override %}
 {% assign price_override_action = product.metafields.c_f.price_override_action %}
+{% if price_override_action == 'contact' %}
+	{% assign price_override = true %}
+{% endif %}
 
 <section class="product">
 	<meta itemprop="priceCurrency" content="{{ shop.currency }}">

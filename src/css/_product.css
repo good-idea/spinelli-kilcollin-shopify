@@ -43,6 +43,16 @@
 	}
 }
 
+section.product .contact__form {
+	.contact__email,
+	.contact__name,
+	.contact__telephone,
+	.contact__city,
+	.contact__option {
+		flex-basis: calc(50% - 1rem);
+	}
+}
+
 .product__option {
 	display: none;
 	margin-bottom: 2rem;

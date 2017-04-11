@@ -169,6 +169,10 @@ input[type="number"] {
 	}
 }
 
+.form__row {
+	width: 100%;
+}
+
 /*
 	Slider
  */
