@@ -24,7 +24,7 @@ function buildHeader(publisher) {
 
 	const burger = header.find('.burger');
 	const html = $('html');
-	const tabletCheck = $("#bp-medium");
+	const tabletCheck = $('#bp-medium');
 	const submenuOrigins = header.find('.nav__item.has-submenu');
 	const mainMenu = header.find('.nav__inner');
 
@@ -49,7 +49,7 @@ function buildHeader(publisher) {
 			mainMenu.removeClass('submenu-open');
 			submenu.removeClass('visible');
 		});
-	})
+	});
 
 
 	/*

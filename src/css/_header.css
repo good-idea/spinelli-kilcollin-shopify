@@ -406,6 +406,7 @@ header {
 			width: 100%;
 			opacity: 0;
 			transition-delay: .4s;
+			pointer-events: none;
 
 			.submenu__return {
 				cursor: pointer;
@@ -419,6 +420,7 @@ header {
 
 		.nav__submenu.visible {
 			opacity: 1;
+			pointer-events: initial;
 			transition-delay: 0s;
 		}
 	}
