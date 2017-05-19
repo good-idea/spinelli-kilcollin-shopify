@@ -43,6 +43,7 @@
 			</div>
 
 			{% if price_override %}
+
 				{% unless price_override_action == 'contact' %}
 					<div class="product__price--override">
 						{% if price_override_action %}
@@ -54,6 +55,7 @@
 						{% endif %}
 					</div>
 				{% endunless %}
+				
 			{% else %}
 
 				<form class="product__form {% if product.options.size > 1 or product.variants.size > 1 %} has-options{% endif %}"

@@ -41,11 +41,17 @@
 				<div class="select__wrapper">
 					<select name="contact[size]" id="">
 						{% for variant in product.variants %}
-						<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
-						value="{{ variant.id }}" data-sku="{{ variant.sku }}"
-						data-trigger-option-value="{{ variant.price | money | strip_html }}"
-						>{{ variant.title }}</option>
-
+							{% capture value %}{{ product.options[0] }}: {{ variant.option1 }}{% endcapture %}
+							{% if product.options[1] %}
+								{% capture value %}{{ value }} | {{ product.options[1] }}: {{ variant.option2 }}{% endcapture %}
+							{% endif %}
+							{% if product.options[2] %}
+								{% capture value %}{{ value }} | {{ product.options[2] }}: {{ variant.option3 }}{% endcapture %}
+							{% endif %}
+							<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+							value="{{ value }}" data-sku="{{ variant.sku }}"
+							data-trigger-option-value="{{ variant.price | money | strip_html }}"
+							>{{ variant.title }}</option>
 						{% endfor %}
 					</select>
 				</div>
