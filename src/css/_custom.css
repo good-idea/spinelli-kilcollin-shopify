@@ -4,7 +4,8 @@
  */
 
 
-.page--custom {
+section.page--custom {
+	padding-top: 0;
 
 	.heros {
 		margin-bottom: 2rem;
