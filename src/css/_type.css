@@ -47,6 +47,11 @@ ul {
 	}
 }
 
+.help-text {
+	color: $grey2;
+}
+
+
 .rte {
 	color: $grey2;
 
