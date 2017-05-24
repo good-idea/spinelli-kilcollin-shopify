@@ -1,29 +1,38 @@
 {% assign slug = 'homepage_featured_' | append:item %}
 {% assign product = all_products[settings[slug]] %}
 {% assign alt_image_slug = 'homepage_featured_' | append:item | append:'_alt_image' %}
-{% if settings[alt_image_id] == nil %}
+{% if settings[alt_image_slug] == nil %}
 	{% assign image = product.featured_image %}
 {% else %}
-	{% assign image = settings[alt_image_id] %}
+	{% assign image = settings[alt_image_slug] %}
 {% endif %}
-{% assign alt_caption_id = 'homepage_featured_' | append:item | append:'_caption'%}
-{% if settings[alt_caption_id] == blank %}
+{% assign alt_caption_slug = 'homepage_featured_' | append:item | append:'_caption'%}
+{% if settings[alt_caption_slug] == blank %}
 	{% assign caption = product.title %}
 {% else %}
 	{% assign caption = settings[alt_caption_slug] %}
 {% endif %}
 
+{% assign alt_url_slug = 'homepage_featured_' | append:item | append:'_alt_url'%}
+{% if settings[alt_url_slug] == blank %}
+	{% assign url = product.url %}
+{% else %}
+	{% assign url = settings[alt_url_slug] %}
+{% endif %}
+
+
 <div class="featured__item featured__item--single watch-in-view">
 	<div class="featured__inner">
 		<div class="featured__image-frame">
-			<a href="{{ product.url }}">
+			<p>{{ slug }}</p>
+			<a href="{{ url }}">
 				{% include 'product-image-srcset', image: image %}
 			</a>
 		</div>
 		{% if caption != blank %}
 			<div class="featured__caption">
 				<h1>
-					<a href="{{ product.url }}">{{ caption }}</a>
+					<a href="{{ url }}">{{ caption }}</a>
 				</h1>
 			</div>
 		{% endif %}

@@ -32,7 +32,9 @@
       {% include 'featured-single', item: '6' %}
     {% endif %}
   {% endif %}
+</section>
 
+<section class="featured-items">
   {% for i in (1..6) %}
     {% assign page_slug = 'homepage_block_' | append: i %}
     {% assign page_activated = page_slug | append: '_activated'%}
@@ -40,5 +42,4 @@
       {% include 'featured-page', item: i %}
     {% endif %}
   {% endfor %}
-
 </section>
