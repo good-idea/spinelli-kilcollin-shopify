@@ -26,6 +26,14 @@ section.collection {
   text-align: center;
   flex-basis: calc(33% - 1rem);
   margin-bottom: 2rem;
+  position: relative;
+}
+
+.grid__image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  overflow: hidden;
 }
 
 .result__caption,

@@ -53,9 +53,10 @@
 		<div class="slider__item">
 			<div class="slider__image-container">
 				<a href="{{ url_one }}">
-					{% include 'product-image-srcset',
-					class: 'slide__image'
-					image: image_one %}
+					{% include 'product-image-srcset' with
+					class: 'slide__image',
+					image: image_one,
+					preload: true %}
 				</a>
 			</div>
 			<!-- <div class="featured__caption">
@@ -77,9 +78,10 @@
 
 				<div class="slider__overlay slider-set-width">
 					<a href="{{ url_two }}">
-						{% include 'product-image-srcset',
-						class: 'slide__image'
-						image: image_two %}
+						{% include 'product-image-srcset' with
+						class: 'slide__image',
+						image: image_two,
+						preload: true %}
 					</a>
 				</div>
 			</div>

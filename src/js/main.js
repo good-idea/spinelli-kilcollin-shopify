@@ -5,6 +5,7 @@ import buildHeader from './components/header';
 import buildSliders from './components/slider';
 import buildZooms from './components/zoom';
 import watchProducts from './components/product';
+import watchImages from './components/imageLoad';
 import buildUx from './components/uxbits';
 import { buildCarousels } from './components/carousel';
 import mailerPopup from './components/mailer';
@@ -35,6 +36,7 @@ $(() => {
 	buildCarousels(publisher);
 	articlePages(publisher);
 	watchProducts();
+	watchImages();
 	buildUx(publisher);
 	mailerPopup(publisher);
 });
