@@ -1,5 +1,13 @@
 {% paginate collection.products by 48 %}
 <section class="collection">
+  {% if collection.image != blank %}
+    <div class="collection__hero">
+      {% include 'product-image-srcset' with
+      image: collection.image,
+      preload: true %}
+
+    </div>
+  {% endif %}
   {% if collection.description != blank %}
     <div class="collection__description">
       {{ collection.description }}
