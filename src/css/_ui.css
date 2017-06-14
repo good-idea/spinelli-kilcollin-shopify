@@ -376,6 +376,12 @@ input[type="number"] {
 	.carousel__slide {
 		width: calc(100% / 3);
 	}
+
+	.slider.featured__item.featured__item--slider {
+		.featured__inner {
+			padding-bottom: 66%;
+		}
+	}
 }
 
 @media screen and (max-width: $break-small) {

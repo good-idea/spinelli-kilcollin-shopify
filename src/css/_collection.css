@@ -80,6 +80,9 @@ section.collection {
   .grid__item {
     flex-basis: calc(50% - 1rem);
   }
+  .collection__hero {
+    padding-bottom: calc(55% - 1rem);
+  }
 }
 
 @media screen and (max-width: $break-medium) {

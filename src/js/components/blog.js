@@ -39,19 +39,31 @@ function transformTable(tableElement, publisher, config) {
 	table.remove();
 }
 
+function stripEmptyBeginningTags(article) {
+	const children = article.children();
+	for (let i = 0; i < children.length; i += 1) {
+		const child = children[i];
+		if (child.innerHTML === '' || child.innerText.trim() === '') {
+			child.remove();
+		} else {
+			return true;
+		}
+	}
+}
+
 function buildBlogCarousels(publisher) {
+	const article = $('.article__body');
+	stripEmptyBeginningTags(article);
 	const placeholder = $('section.article .carousel__placeholder');
 	$('section.article table').each((i, table) => {
-		const config = (i === 0) ? { container: placeholder, class: 'top-carousel' } : {};
+		const isFirstChild = (table === article.children()[0]);
+		const config = (isFirstChild) ? { container: placeholder, class: 'top-carousel' } : {};
 		transformTable(table, publisher, config);
 	});
 }
 
 function articlePages(publisher) {
 	buildBlogCarousels(publisher);
-	$('section.article .rte').each((i, el) => {
-		console.log(el);
-	});
 }
 
 export default articlePages;
