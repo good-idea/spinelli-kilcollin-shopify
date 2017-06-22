@@ -82,11 +82,26 @@ section.collection {
   }
   .collection__hero {
     padding-bottom: calc(55% - 1rem);
+
+    img {
+      top: 50%;
+      left: 50%;
+      height: auto;
+      transform: translate(-50%, -50%);
+      width: 190%;
+      max-width: initial;
+      object-fit: initial;
+    }
   }
+
 }
 
 @media screen and (max-width: $break-medium) {
   .grid__item {
     flex-basis: 100%;
+  }
+
+  .collection__hero img {
+    width: 285%;
   }
 }

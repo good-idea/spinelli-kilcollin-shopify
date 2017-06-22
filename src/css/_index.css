@@ -59,7 +59,7 @@
 	flex-basis: 100%;
 
 	.featured__inner {
-		/*padding-bottom: 33%;*/
+		padding-bottom: 33%;
 	}
 }
 
@@ -84,14 +84,8 @@
 		flex-basis: 100%;
 	}
 
-	.featured__item--slider {
-		flex-basis: 100%;
-
-		.featured__inner {
-			padding-bottom: 66%;
-		}
-	}
-
+	.featured__item--slider,
+	.featured__item.featured__item--single,
 	.featured__item:nth-of-type(4n + 2),
 	.featured__item:nth-of-type(4n + 3) {
 		.featured__inner {
