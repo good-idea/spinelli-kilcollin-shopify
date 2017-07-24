@@ -51,6 +51,9 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+  {% if settings.popup %}
+    {% include 'popup' %}
+  {% endif %}
   <div id="bp-medium"></div>
   <div id="bp-small"></div>
   {% include 'header' %}
@@ -58,9 +61,7 @@
   <div id="main" role="main" class="column main-content">
     {{ content_for_layout }}
   </div>
-  {% if settings.popup %}
-    {% include 'popup' %}
-  {% endif %}
+
   {% include 'footer' %}
 
   <!--[if lt IE 8]>
@@ -75,6 +76,17 @@
   {{ 'stepsForm.js' | asset_url | script_tag }}
   {{ 'main.js'  | asset_url | script_tag }}
 
+  <script>
+  			var theForm = document.getElementById( 'theForm' );
+  			new stepsForm( theForm, {
+  				onSubmit : function( form ) {
+  					classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+  					$('.modal-container').addClass('hide');
+
+  					console.log("done!");
+  				}
+  			} );
+  		</script>
 
 </body>
 </html>

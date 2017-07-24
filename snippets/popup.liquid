@@ -1,4 +1,4 @@
-<div id="newsletter-overlay" class="overlay">
+<!-- <div id="newsletter-overlay" class="overlay">
 	<div class="overlay__background overlay-close"></div>
 	<div class="overlay__content">
 		{% if settings.popup-image_enabled %}
@@ -6,26 +6,40 @@
 		{% endif %}
 		<span class="overlay__ex overlay-close"></span>
 		<div class="overlay__inner">
-			<form action="{{ settings.mailchimp }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="simform validate" target="_blank">
-				<div class="simform-inner">
-					<ol class="questions">
-						<li>
-							<span><label for="q1" >Never miss an update. Sign up to subscribe!</label></span>
-							<input type="email" name="EMAIL" id="mce-EMAIL q1" placeholder="Email Address">
-						</li>
-					</ol>
-							<button type="submit" class="primary next submit">Join</button>
-							<div class="controls">
-							<div class="progress"></div>
-							<span class="number">
-								<span class="number-current"></span>
-								<span class="number-total"></span>
-							</span>
-							<span class="error-message"></span>
-						</div><!-- / controls -->
-			</div>
+			<h3>Join our Mailing List</h3>
+			<h4>Sign up to receive our email updates</h4>
+			<form action="{{ settings.mailchimp }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+				<input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email Address">
+				<button type="submit" class="primary">Join</button>
 			</form>
 		</div>
 
 	</div>
+</div> -->
+<div class="overlay-container">
+	<div class="modal-container">
+		<span class="close hairline"></span>
+		<form id="theForm" class="simform" autocomplete="off">
+			<div class="simform-inner">
+				<ol class="questions">
+					<li>
+						<span><label for="q1" >Never miss an update. Sign up to subscribe!</label></span>
+						<input id="q1" name="q1" type="text"/>
+					</li>
+				</ol><!-- /questions -->
+				<button class="submit" type="submit">Send answers</button>
+				<div class="controls">
+					<button class="next">Submit</button>
+					<div class="progress"></div>
+					<span class="number">
+						<span class="number-current"></span>
+						<span class="number-total"></span>
+					</span>
+					<span class="error-message"></span>
+				</div><!-- / controls -->
+			</div><!-- /simform-inner -->
+
+		</form><!-- /simform -->
+</div>
+
 </div>

@@ -65,14 +65,3 @@ windo.on('resize', () => {
 		publisher.emit('Calculate');
 	}, 250);
 });
-
-
-// init popup stepForm
-
-var theForm = document.getElementById( 'theForm' );
-new stepsForm( theForm, {
-	onSubmit : function( form ) {
-		// classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
-		console.log("submit form!");
-	}
-});

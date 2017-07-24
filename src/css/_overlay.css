@@ -58,7 +58,31 @@
 }
 
 
-/* simForm! */
+
+
+
+
+
+/** SIMFORM **/
+
+.overlay-container {
+font-family: 'SangBleu Serif';
+font-weight: 300;
+height: 100vh;
+width: 100%;
+margin: 0;
+font-size: 67%;
+
+
+display: -webkit-flex;
+display: flex;
+-webkit-flex-direction: row /* works with row or column */
+flex-direction: row;
+-webkit-align-items: center;
+align-items: center;
+-webkit-justify-content: center;
+justify-content: center;
+}
 
 
 .modal-container {
