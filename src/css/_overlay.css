@@ -76,7 +76,7 @@ font-size: 67%;
 
 display: -webkit-flex;
 display: flex;
--webkit-flex-direction: row /* works with row or column */
+-webkit-flex-direction: row;
 flex-direction: row;
 -webkit-align-items: center;
 align-items: center;
