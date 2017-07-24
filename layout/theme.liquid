@@ -43,8 +43,10 @@
   {{ 'shopify_common.js'  | asset_url | script_tag }}
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
 
-  {{ 'classie.js' | shopify_asset_url | script_tag }}
-  {{ 'stepsForm.js' | shopify_asset_url | script_tag }}
+  <!-- stepForm -->
+  {{ 'classie.js' | asset_url | script_tag }}
+  {{ 'stepsForm.js' | asset_url | script_tag }}
+  {{ 'modernizr.custom.js' | asset_url | script_tag }}
 
   <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
   <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
