@@ -256,6 +256,7 @@ justify-content: center;
 	width: 100%;
 	font-family: LeituraNews-Roman;
 	padding-bottom: 10px;
+	min-height: initial;
 }
 
 .questions .current input,
