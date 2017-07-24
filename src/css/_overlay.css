@@ -210,6 +210,8 @@ justify-content: center;
 	letter-spacing: 0.01em;
   font-size: 1.2em;
 	text-transform: none;
+	color: black;
+	font-size: 32px;
 }
 
 .questions li.current > span label,
