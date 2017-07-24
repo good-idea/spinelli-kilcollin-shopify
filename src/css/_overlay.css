@@ -163,6 +163,7 @@ justify-content: center;
 	-webkit-transition: height 0.4s;
 	transition: height 0.4s;
 	border-bottom: 1px solid black;
+	margin-bottom: 20px;
 }
 
 .simform ol:before {
