@@ -60,6 +60,63 @@
 
 /* simForm! */
 
+
+.modal-container {
+	background-color: #f1f1f1;
+	max-width: 290px;
+	padding: 15%;
+	display: block;
+	position: relative;
+	opacity: 1;
+}
+
+.modal-container.hide {
+	opacity: 0;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+.close {
+	position: absolute;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	top: 20px;
+	right: 20px;
+}
+.close:hover::before, .close:hover::after {
+  background: #000000;
+}
+.close::before, .close::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: #000000;
+}
+.close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.close.hairline::before, .close.hairline::after {
+  height: 1px;
+}
+
 .simform {
 	position: relative;
 	margin: 0 auto;
