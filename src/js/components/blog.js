@@ -43,7 +43,7 @@ function stripEmptyBeginningTags(article) {
 	const children = article.children();
 	for (let i = 0; i < children.length; i += 1) {
 		const child = children[i];
-		if (child.innerHTML === '' || child.innerText.trim() === '') {
+		if (child.children.length === 0 && (child.innerHTML === '' || child.innerText.trim() === '')) {
 			child.remove();
 		} else {
 			return true;
