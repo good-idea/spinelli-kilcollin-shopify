@@ -19,10 +19,11 @@
 <div class="overlay-container">
 	<div class="modal-container">
 		<span class="close hairline"></span>
-		<form id="theForm" class="simform" autocomplete="off">
+
+		<form action="{{ settings.mailchimp }}" method="post" id="theForm" class="simform" autocomplete="off" target="_blank">
 			<div class="simform-inner">
 				<ol class="questions">
-					<li>
+					<li class="current">
 						<span><label for="q1" >Never miss an update. Sign up to subscribe!</label></span>
 						<input id="q1" name="q1" type="text"/>
 					</li>
@@ -37,6 +38,7 @@
 					</span>
 					<span class="error-message"></span>
 				</div><!-- / controls -->
+				<span class="final-message">Thanks!</span>
 			</div><!-- /simform-inner -->
 
 		</form><!-- /simform -->

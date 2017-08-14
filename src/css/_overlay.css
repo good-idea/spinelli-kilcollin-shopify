@@ -111,6 +111,7 @@ z-index: 9999;
 	overflow: hidden;
 	top: 20px;
 	right: 20px;
+	z-index: 999;
 }
 .close:hover::before, .close:hover::after {
   background: #000000;
