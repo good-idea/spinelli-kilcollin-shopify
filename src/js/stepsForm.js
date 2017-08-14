@@ -37,8 +37,7 @@
 		this.current = 0;
 
 		// questions
-		this.questions = 1;
-		// this.questions = [].slice.call( this.el.querySelectorAll( 'ol.questions > li' ) );
+		this.questions = [].slice.call( this.el.querySelectorAll( 'ol.questions > li' ) );
 		// total questions
 		this.questionsCount = this.questions.length;
 		// show first question

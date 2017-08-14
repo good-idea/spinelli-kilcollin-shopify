@@ -58,7 +58,15 @@
 }
 
 
+#newsletter-overlay {
+	visibility: hidden;
+	opacity: 0;
+}
 
+#newsletter-overlay  .visible {
+	visibility: visible;
+	opacity: 1;
+}
 
 
 
