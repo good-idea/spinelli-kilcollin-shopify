@@ -17,20 +17,22 @@
 	</div>
 </div> -->
 <div id="newsletter-overlay" class="overlay-container">
+	<div class="overlay-click"></div>
 	<div class="modal-container">
 		<span class="close hairline"></span>
 
-		<form action="{{ settings.mailchimp }}" method="post" id="theForm" class="simform" autocomplete="off" target="_blank">
+		<form action="https://formkeep.com/f/ba941bffdcfe" method="post" id="theForm" name="shopify" class="simform" autocomplete="off">
+			<input type="hidden" name="utf8" value="✓">
 			<div class="simform-inner">
 				<ol class="questions">
 					<li class="current">
-						<span><label for="q1" >Never miss an update. Sign up to subscribe!</label></span>
-						<input id="q1" name="q1" type="text"/>
+						<span><label for="EMAIL" >Never miss an update. Sign up to subscribe!</label></span>
+						<input id="mce-EMAIL" name="EMAIL" type="email"/>
 					</li>
 				</ol><!-- /questions -->
-				<button class="submit" type="submit">Send answers</button>
+				<!-- <button class="submit" type="submit">Send answers</button> -->
 				<div class="controls">
-					<button class="next">Submit</button>
+					<button class="next" type="submit">Submit</button>
 					<div class="progress"></div>
 					<span class="number">
 						<span class="number-current"></span>
@@ -39,9 +41,7 @@
 					<span class="error-message"></span>
 				</div><!-- / controls -->
 			</div><!-- /simform-inner -->
-
 				<span class="final-message">Thanks!</span>
-
 		</form><!-- /simform -->
 </div>
 

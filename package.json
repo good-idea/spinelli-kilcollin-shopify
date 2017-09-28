@@ -40,6 +40,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.11",
     "guppy-pre-commit": "^0.3.0",
     "jquery": "^3.1.0",
     "js-cookie": "^2.1.3",

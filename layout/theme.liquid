@@ -28,9 +28,11 @@
 
   {{ content_for_header }}
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {{ 'modernizr.custom.min.js'  | asset_url | script_tag }}
   {{ 'main.css' | asset_url | stylesheet_tag }}
   {{ 'main.js'  | asset_url | script_tag }}
-  {{ 'modernizr.custom.js'  | asset_url | script_tag }}
+
 
   <!--[if lt IE 9]>
   {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
@@ -68,12 +70,11 @@
   <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
 
-  </div><!-- end of #container -->
+  </div> <!-- end of #container -->
 
   <!-- stepForm -->
   {{ 'classie.js' | asset_url | script_tag }}
   {{ 'stepsForm.js' | asset_url | script_tag }}
-
 
   <script>
 
@@ -86,12 +87,9 @@
 				onSubmit : function( form ) {
 					// hide form
 					classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
-					/*
-					form.submit()
-					or
-					AJAX request (maybe show loading indicator while we don't have an answer..)
-					*/
-					// let's just simulate something...
+					
+					form.submit();
+
 
 					var messageEl = theForm.querySelector( '.final-message' );
 					messageEl.innerHTML = 'Thank you! We\'ll be in touch.';
@@ -102,7 +100,16 @@
           },1000);
 
 				}
-			} );
+			});
+
+      $( ".close" ).click(function() {
+        $('#newsletter-overlay').toggleClass('visible');
+      });
+
+      $( ".overlay-click" ).click(function() {
+        $('#newsletter-overlay').toggleClass('visible');
+      });
+
   		</script>
 
 </body>
