@@ -16,7 +16,7 @@
   {% endif %}
 
   <div class="grid">
-    {% for product in collection.products %}{% if product.type == 'Product Fee' %}{% continue %}{% endif %}
+    {% for product in collection.products %}
       {% include 'product-grid-item' with products_per_row %}
     {% else %}
       <p>There are no products in this view.</p>
