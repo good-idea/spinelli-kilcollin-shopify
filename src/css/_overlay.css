@@ -61,11 +61,13 @@
 #newsletter-overlay {
 	visibility: hidden;
 	opacity: 0;
+	pointer-events: none;
 }
 
 #newsletter-overlay.visible {
 	visibility: visible;
 	opacity: 1;
+	pointer-events: initial;
 }
 
 
@@ -74,28 +76,20 @@
 /** SIMFORM **/
 
 .overlay-container {
-font-family: 'SangBleu Serif';
-font-weight: 300;
-height: 100vh;
-width: 100%;
-margin: 0;
-font-size: 67%;
-
-display: -webkit-flex;
-display: flex;
--webkit-flex-direction: row;
-flex-direction: row;
--webkit-align-items: center;
-align-items: center;
--webkit-justify-content: center;
-justify-content: center;
-background-color: rgba(0, 0, 0, 0.50);
-position: fixed;
-z-index: 9999;
-
-
+	font-family: 'SangBleu Serif';
+	font-weight: 300;
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	font-size: 67%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.50);
+	position: fixed;
+	z-index: 9999;
 }
-
 
 .modal-container {
 	background-color: #f1f1f1;
@@ -121,7 +115,7 @@ z-index: 9999;
 	top: 20px;
 	right: 20px;
 	z-index: 999;
-	cursor: pointer; 
+	cursor: pointer;
 }
 .close:hover::before, .close:hover::after {
   background: #000000;
