@@ -50,6 +50,7 @@
     "postcss-math": "0.0.5",
     "precss": "^1.4.0",
     "q": "^1.4.1",
+    "ramda": "^0.25.0",
     "require-dir": "^0.3.2",
     "scroll-to": "0.0.2",
     "utils-merge": "^1.0.0",

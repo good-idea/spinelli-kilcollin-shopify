@@ -1,3 +1,4 @@
+import { reject, equals, clone } from 'ramda'
 
 class PubSubEmitter {
 	constructor() {
@@ -13,23 +14,10 @@ class PubSubEmitter {
 	}
 
 	unsubscribe(topic, callback) {
-		const listeners = this.listeners.get(topic);
-		let index;
+		const listenersOfTopic = this.listeners.get(topic);
 
-		if (listeners && listeners.length) {
-			// find the index of the callback we're removing
-			index = listeners.reduce((i, listener, currentIndex) => {
-				(typeof(listener) === 'function' && listener === callback) ?
-					i = currentIndex :
-					i;
-			}, -1);
-
-			if (index > -1) {
-				// if we found a match, splice it out, and resupply the map with the spliced array
-				listeners.splice(index, 1);
-				this.listeners.set(topic, listeners);
-				return true; // return true if we removed something
-			}
+		if (listenersOfTopic && listenersOfTopic.length) {
+			this.listeners.set(topic, reject(equals(callback), listenersOfTopic))
 		}
 		return false; // return false if we didn't
 	}

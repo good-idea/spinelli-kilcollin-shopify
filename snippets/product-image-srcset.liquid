@@ -7,7 +7,7 @@
 
 {% if preload == true %}
 	{% assign class= 'img-preload' %}
-	<div class="img-preload">
+	<div class="img-preload" data-lazy="{{ lazy }}">
 		{% if asset == true %}
 			<div class="img-preload-initial">
 				<img src="{{ image | asset_img_url: '100x' }}" alt="">
@@ -26,6 +26,7 @@
 						"
 					sizes="{{ sizes }}"
 					alt="{{ image.alt | escape }}"
+					lazy="{{ lazy }}"
 					{% if attributes != nil %}{{ attributes }}{% endif %}
 					class=""
 				/>
