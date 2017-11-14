@@ -82,9 +82,9 @@ section.collection {
 }
 
 @media screen and (max-width: $break-large) {
-  .grid__item {
-    flex-basis: calc(50% - 1rem);
-  }
+	.grid {
+		grid-template-columns: 1fr 1fr;
+	}
   .collection__hero {
     padding-bottom: calc(55% - 1rem);
 
@@ -102,9 +102,9 @@ section.collection {
 }
 
 @media screen and (max-width: $break-medium) {
-  .grid__item {
-    flex-basis: 100%;
-  }
+	.grid {
+		grid-template-columns: 1fr;
+	}
 
   .collection__hero img {
     width: 250%;
