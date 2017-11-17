@@ -31,9 +31,9 @@ section.collection {
 }
 
 .grid {
-  display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .grid__item {
@@ -48,11 +48,6 @@ section.collection {
   width: 100%;
   padding-bottom: 100%;
   overflow: hidden;
-
-	img {
-		@mixin abs-full-size;
-		object-fit: cover;
-	}
 }
 
 .result__caption,
@@ -82,9 +77,9 @@ section.collection {
 }
 
 @media screen and (max-width: $break-large) {
-	.grid {
-		grid-template-columns: 1fr 1fr;
-	}
+  .grid__item {
+    flex-basis: calc(50% - 1rem);
+  }
   .collection__hero {
     padding-bottom: calc(55% - 1rem);
 
@@ -102,9 +97,9 @@ section.collection {
 }
 
 @media screen and (max-width: $break-medium) {
-	.grid {
-		grid-template-columns: 1fr;
-	}
+  .grid__item {
+    flex-basis: 100%;
+  }
 
   .collection__hero img {
     width: 250%;
