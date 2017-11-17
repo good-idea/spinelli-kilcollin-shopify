@@ -79,6 +79,32 @@ body {
 	}
 }
 
+span.bar {
+	display: block;
+	width: 14.5rem;
+	height: 1px;
+	background-color: black;
+	position: relative;
+
+	&:before,
+	&:after {
+		content: "";
+		background-color: inherit;
+		position: absolute;
+		width: 3px;
+		height: 3px;
+		top: -1px;
+		border-radius: 3px;
+	}
+
+	&:before {
+		left: 0;
+	}
+	&:after {
+		right: 0;
+	}
+}
+
 /*
 // :::Specific to component or section
 //-------------------------------------------------- */

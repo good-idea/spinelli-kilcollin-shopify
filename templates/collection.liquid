@@ -5,13 +5,16 @@
       {% include 'product-image-srcset' with
       image: collection.image,
       sizes: '(max-width: 990px) 200vw, (max-width: 860px) 225vw, 100vw'
-      preload: true %}
+      preload: true
+			%}
 
-    </div>
-  {% endif %}
-  {% if collection.description != blank %}
-    <div class="collection__description">
-      {{ collection.description }}
+			{% if collection.description != blank %}
+			<div class="collection__description">
+				<h1 class="collection__description__title">{{ collection.title }}</h1>
+				<span class="bar"></span>
+				<h5 class="collection__description__body">{{ collection.description }}</h5>
+			</div>
+			{% endif %}
     </div>
   {% endif %}
 
