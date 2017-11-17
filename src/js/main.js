@@ -18,6 +18,7 @@ const windo = $(window);
 	Initialization
  */
 
+
 function testForTouch() {
 	const el = document.createElement('div');
 	el.setAttribute('ontouchstart', 'return;');
@@ -38,7 +39,7 @@ $(() => {
 	watchProducts();
 	watchImages();
 	buildUx(publisher);
-	mailerPopup(publisher);
+	// mailerPopup(publisher); // Uncomment
 });
 
 /*

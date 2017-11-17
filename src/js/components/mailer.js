@@ -2,6 +2,11 @@ import $ from 'npm-zepto';
 import Cookie from 'js-cookie';
 
 
+/**
+ * MAILER IS DISABLED
+ * to re-enable, un-comment the import in main.js
+ */
+
 function mailerPopup(publisher) {
 	const notified = (Cookie.get('newsletter-notified') === 'true');
 
