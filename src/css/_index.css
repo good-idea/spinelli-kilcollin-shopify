@@ -1,4 +1,5 @@
 
+
 .featured-items {
 	width: 100%;
 	display: flex;
@@ -10,8 +11,6 @@
 	margin-bottom: 2rem;
 	flex-basis: calc(50% - 1rem);
 }
-
-
 
 /*
 	Featured Products
@@ -48,6 +47,7 @@
 	}
 }
 
+
 .featured__item:nth-of-type(4n + 3),
 .featured__item:nth-of-type(4n + 4) {
 	.featured__inner {
@@ -61,6 +61,10 @@
 	.featured__inner {
 		padding-bottom: 33%;
 	}
+}
+
+.featured__item--single:first-of-type .featured__inner {
+	padding-bottom: 41%;
 }
 
 .featured__item .featured__caption {
