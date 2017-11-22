@@ -11,7 +11,7 @@
     {% endif %}
 
     <div class="footer__signup">
-      <form action="{{ settings.mailchimp }}">
+      <form action="{{ settings.mailchimp }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
         <input type="email" name="EMAIL" required placeholder="email address">
         <button class="primary" type="submit"><h4>Join</h4></button>
       </form>

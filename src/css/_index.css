@@ -47,7 +47,6 @@
 	}
 }
 
-
 .featured__item:nth-of-type(4n + 3),
 .featured__item:nth-of-type(4n + 4) {
 	.featured__inner {
