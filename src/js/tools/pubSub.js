@@ -3,18 +3,18 @@ import { reject, equals, clone } from 'ramda'
 class PubSubEmitter {
 	constructor() {
 		// create a new Map to hold all of the topics
-		this.listeners = new Map();
+		this.listeners = new Map()
 	}
 
 	subscribe(topic, callback) {
 		// if the listener does not hae the topic yet, add it.
-		if (!this.listeners.has(topic)) this.listeners.set(topic, []);
+		if (!this.listeners.has(topic)) this.listeners.set(topic, [])
 		// push the callback to the topic's array
-		this.listeners.get(topic).push(callback);
+		this.listeners.get(topic).push(callback)
 	}
 
 	unsubscribe(topic, callback) {
-		const listenersOfTopic = this.listeners.get(topic);
+		const listenersOfTopic = this.listeners.get(topic)
 
 		if (listenersOfTopic && listenersOfTopic.length) {
 			this.listeners.set(topic, reject(equals(callback), listenersOfTopic))
@@ -24,19 +24,19 @@ class PubSubEmitter {
 
 	emit(topic, ...args) {
 		// get the listeners subscribed to the topic
-		const listeners = this.listeners.get(topic);
+		const listeners = this.listeners.get(topic)
 
 		if (listeners && listeners.length) {
 			// execute each callback with any supplied arguments
 			listeners.forEach((listener) => {
-				listener(...args);
-			});
-			return true;
+				listener(...args)
+			})
+			return true
 		}
-		return false;
+		return false
 	}
 }
 
-const publisher = new PubSubEmitter();
+const publisher = new PubSubEmitter()
 
-export default publisher;
+export default publisher
