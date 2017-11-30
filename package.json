@@ -4,7 +4,9 @@
   "description": "Spinelli Kilcollin shopify theme rebuild",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm-run-all --parallel dev:watch dev:theme",
+		"dev:watch": "gulp",
+		"dev:theme": "theme open -e development -v && theme watch -e development"	
   },
   "repository": {
     "type": "git",
