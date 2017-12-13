@@ -79,8 +79,8 @@ body {
 	}
 }
 
-span.bar {
-	display: block;
+.bar {
+	display: inline-block;
 	width: 14.5rem;
 	height: 1px;
 	background-color: black;

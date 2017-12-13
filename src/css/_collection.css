@@ -116,6 +116,7 @@ section.collection {
     }
   }
 
+
 }
 
 @media screen and (max-width: $break-medium) {
@@ -123,7 +124,14 @@ section.collection {
     flex-basis: 100%;
   }
 
+	.collection__hero {
+		padding-bottom: initial;
+	}
   .collection__hero img {
     width: 250%;
   }
+	.collection__description {
+		padding: 3rem 1rem;
+		position: relative;
+	}
 }
