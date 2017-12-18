@@ -11,7 +11,7 @@
     {% endif %}
   {% endif %}
 
-	{% if settings.mobile_cta_url != "" and settings.mobile_cta_text = "" %}
+	{% if settings.mobile_cta_url != "" and settings.mobile_cta_text != "" %}
 		<a class="homepage__cta button-like" href={{settings.mobile_cta_url}}>
 			<h4>{{settings.mobile_cta_text}}</h4>
 		</a>
