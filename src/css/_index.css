@@ -12,6 +12,13 @@
 	flex-basis: calc(50% - 1rem);
 }
 
+.homepage__cta {
+	display: none;
+	border: 1px solid black;
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
 /*
 	Featured Products
  */
@@ -112,5 +119,10 @@
 	.featured__caption h1 {
 		font-size: 2.4rem;
 	}
+
+	.homepage__cta {
+		display: flex;
+	}
+
 	@import "index-touchAndSmall"
 }

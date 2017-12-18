@@ -40,8 +40,8 @@ $(() => {
 	watchProducts()
 	watchImages()
 	buildUx(publisher)
-	mailerSignup(publisher)
-	// mailerPopup(publisher); // Uncomment
+	// mailerSignup(publisher)
+	// mailerPopup(publisher); // Uncomment to re-enable popup
 })
 
 /*

@@ -39,6 +39,25 @@
       }
     ]
   },
+	{
+		"name": "Homepage - Miscellaneous",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Mobile CTA"
+			},
+			{
+				"id": "mobile_cta_text",
+				"type": "text",
+				"label": "Mobile CTA Button Text"
+			},
+			{
+				"id": "mobile_cta_url",
+				"type": "text",
+				"label": "Mobile CTA Button URL"
+			}
+		]
+	},
   {
     "name": "Homepage - Featured Items",
     "settings": [
