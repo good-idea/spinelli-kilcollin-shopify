@@ -14,7 +14,7 @@
 
 .homepage__cta {
 	display: none;
-	border: 1px solid black;
+	border: 1px solid $grey2;
 	width: 100%;
 	margin-bottom: 2rem;
 }
