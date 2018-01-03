@@ -19,7 +19,6 @@ const windo = $(window)
 	Initialization
  */
 
-
 function testForTouch() {
 	const el = document.createElement('div')
 	el.setAttribute('ontouchstart', 'return;')

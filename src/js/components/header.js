@@ -38,7 +38,7 @@ function buildHeader(publisher) {
 		const link = origin.find('.nav__link')
 		const submenu = origin.find('.nav__submenu')
 		const returnButton = submenu.find('.submenu__return')
-		link.on('click', (e) => {
+		link.on('click', e => {
 			if (tabletCheck.css('display') !== 'none') {
 				e.preventDefault()
 				submenu.addClass('visible')
@@ -50,7 +50,6 @@ function buildHeader(publisher) {
 			submenu.removeClass('visible')
 		})
 	})
-
 
 	/*
 	 Sticky Nav
@@ -64,7 +63,7 @@ function buildHeader(publisher) {
 	}
 
 	function checkScroll(ypos) {
-		const shouldStick = (ypos > min)
+		const shouldStick = ypos > min
 		nav.toggleClass('stuck', shouldStick)
 	}
 

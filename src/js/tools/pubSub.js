@@ -19,7 +19,7 @@ class PubSubEmitter {
 		if (listenersOfTopic && listenersOfTopic.length) {
 			this.listeners.set(topic, reject(equals(callback), listenersOfTopic))
 		}
-		return false; // return false if we didn't
+		return false // return false if we didn't
 	}
 
 	emit(topic, ...args) {
@@ -28,7 +28,7 @@ class PubSubEmitter {
 
 		if (listeners && listeners.length) {
 			// execute each callback with any supplied arguments
-			listeners.forEach((listener) => {
+			listeners.forEach(listener => {
 				listener(...args)
 			})
 			return true

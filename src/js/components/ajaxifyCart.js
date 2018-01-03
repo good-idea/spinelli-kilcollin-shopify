@@ -27,9 +27,13 @@ const cartIcon = $('#cart-icon')
 const cartTotal = $('#cart-total')
 
 function appendToCart(newItem) {
-	const existingItem = cartElement.find(`.cart__menu-item[data-line-item="${newItem.id}"]`)
-	const isNew = (existingItem.length === 0)
-	const item = (isNew) ? cartItemPrototype.clone().removeClass('prototype') : existingItem
+	const existingItem = cartElement.find(
+		`.cart__menu-item[data-line-item="${newItem.id}"]`,
+	)
+	const isNew = existingItem.length === 0
+	const item = isNew
+		? cartItemPrototype.clone().removeClass('prototype')
+		: existingItem
 	item.addClass('test')
 	const price = formatDollars(newItem.line_price)
 	item.find('.cart__menu-item-price').text(price)
@@ -49,28 +53,31 @@ function appendToCart(newItem) {
 }
 
 $(() => {
-	form.on('submit', (e) => {
+	form.on('submit', e => {
 		e.preventDefault()
 		button.attr('data-state', 'thinking')
 		const data = form.serialize()
-		axios.post('/cart/add.js', data).then((addResponse) => {
-			axios.get('/cart.js').then((cartResponse) => {
-				button.attr('data-state', 'success')
-				cartElement.addClass('has-items')
-				cartIcon.addClass('success')
-				cartCount.text(cartResponse.data.item_count)
-				const total = formatDollars(cartResponse.data.total_price)
-				cartTotal.text(total)
-				appendToCart(addResponse.data)
-				setTimeout(() => {
-					cartIcon.removeClass('success')
-					button.attr('data-state', '')
-				}, 4000)
+		axios
+			.post('/cart/add.js', data)
+			.then(addResponse => {
+				axios.get('/cart.js').then(cartResponse => {
+					button.attr('data-state', 'success')
+					cartElement.addClass('has-items')
+					cartIcon.addClass('success')
+					cartCount.text(cartResponse.data.item_count)
+					const total = formatDollars(cartResponse.data.total_price)
+					cartTotal.text(total)
+					appendToCart(addResponse.data)
+					setTimeout(() => {
+						cartIcon.removeClass('success')
+						button.attr('data-state', '')
+					}, 4000)
+				})
 			})
-		}).catch((error) => {
-			console.log(error)
-			form.off('submit')
-			form.submit()
-		})
+			.catch(error => {
+				console.log(error)
+				form.off('submit')
+				form.submit()
+			})
 	})
 })

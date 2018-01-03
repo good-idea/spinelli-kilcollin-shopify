@@ -1,7 +1,7 @@
 import $ from 'npm-zepto'
 
 function makeSlider(slider, publisher) {
-	const mainContainer = (slider instanceof $) ? slider : $(slider)
+	const mainContainer = slider instanceof $ ? slider : $(slider)
 	const overlayContainer = mainContainer.find('.slider__overlay-container')
 	const sliderLink = mainContainer.find('a')
 	const scrubber = mainContainer.find('.slider__scrubber')
@@ -25,7 +25,7 @@ function makeSlider(slider, publisher) {
 
 	function moveSlider() {
 		isAnimating = true
-		const diff = (targetWidth - sliderWidth)
+		const diff = targetWidth - sliderWidth
 		sliderWidth += diff * 0.15
 		// sliderWidth = Math.max(0, Math.min(containerWidth, sliderWidth))
 		setWidth.css('width', sliderWidth)
@@ -50,24 +50,26 @@ function makeSlider(slider, publisher) {
 	}
 
 	// Events
-	mainContainer.on('mousemove', (e) => {
+	mainContainer.on('mousemove', e => {
 		const percentage = Math.round(e.clientX - containerLeft) / containerWidth
 		setTargetWidth(percentage)
-		const newUrl = ((sliderWidth / containerWidth) < 0.5) ? primaryUrl : secondaryUrl
+		const newUrl =
+			sliderWidth / containerWidth < 0.5 ? primaryUrl : secondaryUrl
 		setUrl(newUrl)
 	})
 
-	mainContainer.on('mouseleave', (e) => {
+	mainContainer.on('mouseleave', e => {
 		const percentage = Math.round(e.clientX - containerLeft) / containerWidth
-		const isPrimary = (percentage > 0.5)
-		const newWidth = (isPrimary) ? 1 : 0
+		const isPrimary = percentage > 0.5
+		const newWidth = isPrimary ? 1 : 0
 		setTargetWidth(newWidth)
 	})
 
 	scrubber.on('touchstart', () => {
-		scrubber.on('touchmove', (e) => {
+		scrubber.on('touchmove', e => {
 			mainContainer.unbind('mouseleave mousemove')
-			const percentage = Math.round(e.touches[0].clientX - containerLeft) / containerWidth
+			const percentage =
+				Math.round(e.touches[0].clientX - containerLeft) / containerWidth
 			setTargetWidth(percentage)
 		})
 		scrubber.on('touchend', () => {

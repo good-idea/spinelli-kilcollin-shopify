@@ -8,7 +8,7 @@ function buildZoom(element, publisher) {
 	const windo = $(window)
 	const zoom = {}
 	const calc = {}
-	const mainContainer = (element instanceof $) ? element : $(element)
+	const mainContainer = element instanceof $ ? element : $(element)
 	const zoomImage = mainContainer.find('.zoom__zoom')
 
 	function calculateScroll() {
@@ -54,7 +54,7 @@ function buildZoom(element, publisher) {
 		mainContainer.removeClass('zoom-active')
 	})
 
-	mainContainer.on('mousemove', (e) => {
+	mainContainer.on('mousemove', e => {
 		getPosition(e)
 	})
 
@@ -70,7 +70,7 @@ function buildZoom(element, publisher) {
 }
 
 function buildGallery(element, publisher) {
-	const mainContainer = (element instanceof $) ? element : $(element)
+	const mainContainer = element instanceof $ ? element : $(element)
 	const frames = []
 	const frameDivs = mainContainer.find('.zoom__frame')
 	const frameThumbs = mainContainer.find('.zoom__thumb')
@@ -78,7 +78,7 @@ function buildGallery(element, publisher) {
 
 	function activateFrame(activateIndex) {
 		for (let i = 0; i < frameDivs.length; i += 1) {
-			const activate = (i === activateIndex)
+			const activate = i === activateIndex
 			frames[i].element.toggle(activate)
 		}
 	}
@@ -98,7 +98,6 @@ function buildGallery(element, publisher) {
 
 	activateFrame(currentFrame)
 }
-
 
 function buildZooms(publisher) {
 	$(window).on('load', () => {

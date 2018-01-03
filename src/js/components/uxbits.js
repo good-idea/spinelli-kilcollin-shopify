@@ -4,7 +4,7 @@ const inViewEvent = new Event('in-view')
 
 function inView(publisher = false) {
 	$('.watch-in-view').each((i, element) => {
-		const outerContainer = (element instanceof $) ? element : $(element)
+		const outerContainer = element instanceof $ ? element : $(element)
 		let top = 0
 		let height = 0
 		let wheight = 0
@@ -14,26 +14,25 @@ function inView(publisher = false) {
 			top = outerContainer.offset().top
 			height = outerContainer.height()
 			wheight = $(window).height()
-			oversize = Math.max(1, (height / wheight))
+			oversize = Math.max(1, height / wheight)
 		}
 
 		function check(ypos = $(window).scrollTop()) {
 			let percentage = 1
 			const hiddenBefore = ypos - top
-			const hiddenAfter = (top + height) - (ypos + wheight)
+			const hiddenAfter = top + height - (ypos + wheight)
 
 			if (hiddenBefore > 0) percentage -= hiddenBefore / height
 			if (hiddenAfter > 0) percentage -= hiddenAfter / height
 
 			percentage *= oversize
-			percentage = Math.min(1, percentage); // not greater than 1
-			percentage = Math.max(0, percentage); // nor less than 0
+			percentage = Math.min(1, percentage) // not greater than 1
+			percentage = Math.max(0, percentage) // nor less than 0
 
 			if (percentage === 1) outerContainer.addClass('in-view')
 			if (percentage === 0) outerContainer.removeClass('in-view')
 			outerContainer[0].dispatchEvent(inViewEvent)
 		}
-
 
 		if (publisher) {
 			publisher.subscribe('WindowScrolled', check)
@@ -77,7 +76,7 @@ function overlays(publisher) {
 			close()
 		})
 
-		$(document).on('keyup.overlay', (e) => {
+		$(document).on('keyup.overlay', e => {
 			if (e.keyCode === 27) close()
 		})
 	})

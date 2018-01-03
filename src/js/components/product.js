@@ -1,7 +1,7 @@
 import $ from 'npm-zepto'
 
 function watchCart(element) {
-	const mainContainer = (element instanceof $) ? element : $(element)
+	const mainContainer = element instanceof $ ? element : $(element)
 	const product = {}
 
 	return product
@@ -17,16 +17,16 @@ function updateText(value) {
 
 function buildUpdateField(element) {
 	const field = {}
-	field.element = (element instanceof $) ? element : $(element)
+	field.element = element instanceof $ ? element : $(element)
 	field.id = field.element.attr('data-update-field-id')
 
 	const type = element.tagName || element.nodeName
 	switch (type.toLowerCase()) {
-	case 'input':
-		field.update = updateInput
-		break
-	default:
-		field.update = updateText
+		case 'input':
+			field.update = updateInput
+			break
+		default:
+			field.update = updateText
 	}
 
 	if (element.type === 'number') {
@@ -69,17 +69,18 @@ function buildTrigger(element) {
 	const trigger = {}
 	const valueType = element.getAttribute('data-trigger-value')
 
-	trigger.element = (element instanceof $) ? element : $(element)
+	trigger.element = element instanceof $ ? element : $(element)
 	trigger.value = valueFunctions[valueType].bind(trigger) || valueType
 
 	const elementType = (element.tagName || element.nodeName).toLowerCase()
-	trigger.event = (elementType === 'input' || elementType === 'select') ? 'change' : 'click'
+	trigger.event =
+		elementType === 'input' || elementType === 'select' ? 'change' : 'click'
 
 	return trigger
 }
 
 function watchProduct(element) {
-	const mainContainer = (element instanceof $) ? element : $(element)
+	const mainContainer = element instanceof $ ? element : $(element)
 	const product = {}
 
 	const fields = []

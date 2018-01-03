@@ -4,7 +4,7 @@ import publisher from '../tools/pubSub'
 const windo = $(window)
 
 function watchImage(element, onLoadCallback) {
-	const mainContainer = (element instanceof $) ? element : $(element)
+	const mainContainer = element instanceof $ ? element : $(element)
 	const fullImage = mainContainer.find('.img-preload-full img')
 
 	fullImage.on('load', () => {
@@ -33,10 +33,9 @@ function watchImage(element, onLoadCallback) {
 	function loadFullImage() {
 		const src = fullImage.attr('data-full-src')
 		const srcset = fullImage.attr('data-full-srcset')
-		fullImage.attr('src', src)
-			.attr('srcset', srcset)
-			// .removeAttr('data-full-src')
-			// .removeAttr('data-full-srcset')
+		fullImage.attr('src', src).attr('srcset', srcset)
+		// .removeAttr('data-full-src')
+		// .removeAttr('data-full-srcset')
 	}
 
 	if (mainContainer.attr('data-lazy') === 'true') {
@@ -44,7 +43,6 @@ function watchImage(element, onLoadCallback) {
 		handleScroll(windo.scrollTop())
 		publisher.subscribe('WindowScrolled', handleScroll)
 		publisher.subscribe('Calculate', calculate)
-
 	} else {
 		publisher.subscribe('windowLoaded', loadFullImage)
 	}

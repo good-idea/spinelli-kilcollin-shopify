@@ -1,7 +1,7 @@
 import $ from 'npm-zepto'
 
 export function buildCarousel(element, publisher) {
-	const mainContainer = (element instanceof $) ? element : $(element)
+	const mainContainer = element instanceof $ ? element : $(element)
 	const frame = $(mainContainer.find('.carousel__frame'))
 	const slidesContainer = $(mainContainer.find('.carousel__slides'))
 	const controls = []
@@ -25,7 +25,7 @@ export function buildCarousel(element, publisher) {
 		slideWidth = slides[0].element.width()
 		frameWidth = frame.width()
 		slidesInFrame = Math.round(frameWidth / slideWidth)
-		const hasEnoughSlides = (slides.length > slidesInFrame)
+		const hasEnoughSlides = slides.length > slidesInFrame
 		toggle(hasEnoughSlides)
 		lastSlide = slides.length - slidesInFrame
 	}
@@ -44,7 +44,7 @@ export function buildCarousel(element, publisher) {
 		if (index === 'previous') newIndex = currentIndex - 1
 		if (newIndex < 0) newIndex = lastSlide
 		if (newIndex > lastSlide) newIndex = 0
-		const newLeft = -(slides[newIndex].element[0].offsetLeft)
+		const newLeft = -slides[newIndex].element[0].offsetLeft
 		const translate = `translateX(${newLeft}px)`
 		if (enabled) slidesContainer.css('transform', translate)
 		currentIndex = newIndex
@@ -64,10 +64,10 @@ export function buildCarousel(element, publisher) {
 	let xDown = 0
 	let dragLeft = 0
 	function watchTouch() {
-		frame.on('touchstart', (e) => {
+		frame.on('touchstart', e => {
 			xDown = e.touches[0].clientX
 		})
-		frame.on('touchmove', (e) => {
+		frame.on('touchmove', e => {
 			const xTouch = e.touches[0].clientX
 			const xDiff = xDown - xTouch
 			dragLeft = currentPosition - xDiff
