@@ -4,7 +4,7 @@
 {% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
 {% if image == nil %}{% assign image = default_image %}{% endif %}
 
-
+<div style="display: none">{{ something }}</div>
 {% if preload == true %}
 	{% assign class= 'img-preload' %}
 	<div class="img-preload" data-lazy="{{ lazy }}">
@@ -18,11 +18,11 @@
 					data-full-srcset="
 						{{ image | asset_img_url: '2048x' }} 2048w,
 						{{ image | asset_img_url: '1024x' }} 1024w,
-						{{ image | asset_img_url: '600x' }}  600w,
-						{{ image | asset_img_url: '480x' }}  480w,
-						{{ image | asset_img_url: '240x' }}  240w,
-						{{ image | asset_img_url: '160x' }}  160w,
-						{{ image | asset_img_url: '100x' }}  100w,
+						{{ image | asset_img_url: '600x' }} 600w,
+						{{ image | asset_img_url: '480x' }} 480w,
+						{{ image | asset_img_url: '240x' }} 240w,
+						{{ image | asset_img_url: '160x' }} 160w,
+						{{ image | asset_img_url: '100x' }} 100w,
 						"
 					sizes="{{ sizes }}"
 					alt="{{ image.alt | escape }}"
@@ -42,11 +42,11 @@
 					data-full-srcset="
 						{{ image.src | img_url: '2048x' }} 2048w,
 						{{ image.src | img_url: '1024x' }} 1024w,
-						{{ image.src | img_url: '600x' }}  600w,
-						{{ image.src | img_url: '480x' }}  480w,
-						{{ image.src | img_url: '240x' }}  240w,
-						{{ image.src | img_url: '160x' }}  160w,
-						{{ image.src | img_url: '100x' }}  100w,"
+						{{ image.src | img_url: '600x' }} 600w,
+						{{ image.src | img_url: '480x' }} 480w,
+						{{ image.src | img_url: '240x' }} 240w,
+						{{ image.src | img_url: '160x' }} 160w,
+						{{ image.src | img_url: '100x' }} 100w,"
 					sizes="{{ sizes }}"
 					alt="{{ image.alt | escape }}"
 					{% if attributes != nil %}{{ attributes }}{% endif %}
@@ -63,11 +63,11 @@
 			srcset="
 				{{ image | asset_img_url: '2048x' }} 2048w,
 				{{ image | asset_img_url: '1024x' }} 1024w,
-				{{ image | asset_img_url: '600x' }}  600w,
-				{{ image | asset_img_url: '480x' }}  480w,
-				{{ image | asset_img_url: '240x' }}  240w,
-				{{ image | asset_img_url: '160x' }}  160w,
-				{{ image | asset_img_url: '100x' }}  100w,
+				{{ image | asset_img_url: '600x' }} 600w,
+				{{ image | asset_img_url: '480x' }} 480w,
+				{{ image | asset_img_url: '240x' }} 240w,
+				{{ image | asset_img_url: '160x' }} 160w,
+				{{ image | asset_img_url: '100x' }} 100w,
 				"
 			sizes="{{ sizes }}"
 			alt="{{ image.alt | escape }}"
@@ -79,11 +79,11 @@
 			srcset="
 				{{ image.src | img_url: '2048x' }} 2048w,
 				{{ image.src | img_url: '1024x' }} 1024w,
-				{{ image.src | img_url: '600x' }}  600w,
-				{{ image.src | img_url: '480x' }}  480w,
-				{{ image.src | img_url: '240x' }}  240w,
-				{{ image.src | img_url: '160x' }}  160w,
-				{{ image.src | img_url: '100x' }}  100w,"
+				{{ image.src | img_url: '600x' }} 600w,
+				{{ image.src | img_url: '480x' }} 480w,
+				{{ image.src | img_url: '240x' }} 240w,
+				{{ image.src | img_url: '160x' }} 160w,
+				{{ image.src | img_url: '100x' }} 100w,"
 			sizes="{{ sizes }}"
 			alt="{{ image.alt | escape }}"
 			{% if attributes != nil %}{{ attributes }}{% endif %}

@@ -54,8 +54,8 @@
 <div class="featured__item watch-in-view">
 	<div class="featured__inner">
 		<div class="featured__image-frame">
-			<a href="{{ url }}" test="hi">
-				{% include 'product-image-srcset', with image, preload: true %}
+			<a href="{{ url }}">
+				{% include 'product-image-srcset', with image, preload: true, sizes: "max-width(860px) 480px, 50vw" %}
 			</a>
 		</div>
 		{% if caption != blank %}
