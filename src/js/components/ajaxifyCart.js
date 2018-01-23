@@ -6,15 +6,11 @@ import axios from 'axios'
  * tailored to SPK. Requires some custom CSS -- See cart.css
  */
 
-const money = new Intl.NumberFormat('en-US', {
-	style: 'currency',
-	currency: 'USD',
-	minimumFractionDigits: 2,
-})
-
 function formatDollars(num) {
-	const formatted = money.format(num / 100)
-	return formatted
+	return (num / 100).toLocaleString('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
 }
 
 const form = $('form[action="/cart/add"]')

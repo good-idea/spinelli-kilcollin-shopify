@@ -4,16 +4,12 @@ import axios from 'axios'
 
 const emailRegex = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,})$/
 
-window.$ = $
-
 const ajaxifyMailer = inputContainer => {
 	const container =
 		inputContainer instanceof $ ? inputContainer : $(inputContainer)
 	const form = container.find('form.signup__form')
 	const input = form.find('input[name="EMAIL"]')
 	const errors = container.find('.signup__errors')
-
-	console.log(input)
 
 	const forceSubmit = () => {
 		form.off('submit')
@@ -51,8 +47,12 @@ const ajaxifyMailer = inputContainer => {
 	form.on('submit', handleSubmit)
 }
 
-const forms = $('.signup')
+const init = () => {
+	const forms = $('.signup')
 
-forms.map((index, element) => {
-	ajaxifyMailer(element)
-})
+	forms.map((index, element) => {
+		ajaxifyMailer(element)
+	})
+}
+
+export default init

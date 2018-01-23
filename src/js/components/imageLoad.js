@@ -6,7 +6,6 @@ const windo = $(window)
 function watchImage(element, onLoadCallback) {
 	const mainContainer = element instanceof $ ? element : $(element)
 	const fullImage = mainContainer.find('.img-preload-full img')
-
 	fullImage.on('load', () => {
 		onLoadCallback(mainContainer)
 	})
@@ -21,6 +20,14 @@ function watchImage(element, onLoadCallback) {
 		windowHeight = windo.height()
 	}
 
+	function loadFullImage() {
+		const src = fullImage.attr('data-full-src')
+		const srcset = fullImage.attr('data-full-srcset')
+		fullImage.attr('src', src).attr('srcset', srcset)
+		// .removeAttr('data-full-src')
+		// .removeAttr('data-full-srcset')
+	}
+
 	function handleScroll(ypos) {
 		// console.log(imageTop < ypos + windowHeight)
 		if (ypos - 500 < imageBottom && imageTop - 500 < ypos + windowHeight) {
@@ -28,14 +35,6 @@ function watchImage(element, onLoadCallback) {
 			publisher.unsubscribe('Calculate', calculate)
 			loadFullImage()
 		}
-	}
-
-	function loadFullImage() {
-		const src = fullImage.attr('data-full-src')
-		const srcset = fullImage.attr('data-full-srcset')
-		fullImage.attr('src', src).attr('srcset', srcset)
-		// .removeAttr('data-full-src')
-		// .removeAttr('data-full-srcset')
 	}
 
 	if (mainContainer.attr('data-lazy') === 'true') {
@@ -49,6 +48,7 @@ function watchImage(element, onLoadCallback) {
 }
 
 function watchImages() {
+	console.log('?')
 	const images = $('.img-preload')
 	const unBlurElements = []
 	const delay = 200
