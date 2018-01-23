@@ -48,7 +48,6 @@ function watchImage(element, onLoadCallback) {
 }
 
 function watchImages() {
-	console.log('?')
 	const images = $('.img-preload')
 	const unBlurElements = []
 	const delay = 200

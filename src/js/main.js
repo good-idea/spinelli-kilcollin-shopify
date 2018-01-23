@@ -31,7 +31,6 @@ if (hasTouchEvents) document.documentElement.classList.add('hasTouchEvents')
 document.documentElement.classList.remove('no-js')
 
 $(() => {
-	console.log('!')
 	buildHeader(publisher)
 	buildSliders(publisher)
 	buildZooms(publisher)
@@ -57,9 +56,11 @@ windo.on('scroll', () => {
 	publisher.emit('WindowScrolled', ypos)
 })
 
-document.fonts.ready.then(() => {
-	publisher.emit('Calculate')
-})
+if (document.fonts) {
+	document.fonts.ready.then(() => {
+		publisher.emit('Calculate')
+	})
+}
 
 let resizeTimer = null
 windo.on('resize', () => {
