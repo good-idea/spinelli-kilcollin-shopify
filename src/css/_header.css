@@ -33,7 +33,7 @@ header {
 	width: 100%;
 	display: none;
 	opacity: 0;
-	transition: .2s;
+	transition: 0.2s;
 	pointer-events: none;
 
 	.column {
@@ -43,7 +43,8 @@ header {
 		height: $nav-height;
 	}
 
-	.my-account, .cart {
+	.my-account,
+	.cart {
 		pointer-events: initial;
 	}
 
@@ -51,7 +52,7 @@ header {
 		margin-right: $cart-width;
 
 		h4 {
-			margin-left: .5em;
+			margin-left: 0.5em;
 			text-transform: uppercase;
 		}
 	}
@@ -82,7 +83,6 @@ header .cart {
 	}
 }
 
-
 header.initialized {
 	.header__top {
 		display: block;
@@ -98,19 +98,18 @@ header nav {
 	height: $nav-height;
 	width: 100%;
 	perspective: 15rem;
-	transition: .3s;
+	transition: 0.3s;
 
 	.logotype--sk {
 		position: absolute;
 		left: 2rem;
-		top: .2rem;
+		top: 0.2rem;
 		line-height: $nav-height;
 		opacity: 0;
 		pointer-events: none;
 		transition-delay: 0s;
-		transition: .4s;
+		transition: 0.4s;
 	}
-
 }
 
 .nav__inner {
@@ -134,7 +133,7 @@ header nav {
 		height: 1px;
 		transform: translateX(-50%);
 		background-color: $grey3;
-		transition: .3s;
+		transition: 0.3s;
 		transition-timing-function: ease-out;
 		pointer-events: none;
 	}
@@ -171,7 +170,7 @@ header .search {
 		.logotype--sk {
 			opacity: 1;
 			pointer-events: initial;
-			transition-delay: .4s;
+			transition-delay: 0.4s;
 		}
 
 		.nav__inner:after {
@@ -180,13 +179,18 @@ header .search {
 	}
 
 	.nav__inner:before {
-			content: '';
-			position: absolute;
-			bottom: 1px;
-			height: 200%;
-			right: $cart-width;
-			width: 15rem;
-			background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%,  rgba(255, 255, 255, 1) 60%,  rgba(255, 255, 255, 0) 100%);
+		content: '';
+		position: absolute;
+		bottom: 1px;
+		height: 200%;
+		right: $cart-width;
+		width: 15rem;
+		background: linear-gradient(
+			to top,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(255, 255, 255, 1) 60%,
+			rgba(255, 255, 255, 0) 100%
+		);
 	}
 
 	.nav__item.has-submenu {
@@ -210,7 +214,7 @@ header .search {
 		border-top-color: white;
 		transform-origin: 50% 0;
 		transform: rotateX(40deg);
-		transition: .4s;
+		transition: 0.4s;
 		width: 20rem;
 
 		.submenu__return {
@@ -218,11 +222,10 @@ header .search {
 		}
 
 		h4 {
-			margin: .9rem 0;
+			margin: 0.9rem 0;
 		}
 	}
 }
-
 
 header .search form {
 	@mixin invisible;
@@ -230,7 +233,7 @@ header .search form {
 	width: 0;
 	height: 2.5rem;
 	background: white;
-	transition: .4s;
+	transition: 0.4s;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -239,7 +242,7 @@ header .search form {
 		min-height: initial;
 		text-align: center;
 		border-bottom: 1px solid $grey2;
-		padding: .1rem .3rem;
+		padding: 0.1rem 0.3rem;
 		margin-top: 0;
 		width: 100%;
 		background: inherit;
@@ -299,7 +302,7 @@ header {
 			z-index: 10;
 			height: 1px;
 			background-color: $grey3;
-			transition: .3s;
+			transition: 0.3s;
 			transition-timing-function: ease-out;
 			pointer-events: none;
 		}
@@ -332,7 +335,6 @@ header {
 			}
 		}
 
-
 		.column {
 			max-width: initial;
 			width: 100%;
@@ -348,12 +350,13 @@ header {
 
 		nav {
 			@mixin invisible;
-			transition: .3s;
+			transition: 0.3s;
 			background: white;
 			bottom: initial;
 			top: $nav-height;
 			height: calc(100vh - $nav-height);
-			overflow: scroll;
+			overflow-x: hidden;
+			overflow-y: scroll;
 			padding-top: 2rem;
 		}
 
@@ -363,7 +366,7 @@ header {
 			border-bottom: 0;
 			position: absolute;
 			left: 0;
-			transition: .4s;
+			transition: 0.4s;
 
 			&.submenu-open {
 				left: -100%;
@@ -405,7 +408,7 @@ header {
 			left: 100%;
 			width: 100%;
 			opacity: 0;
-			transition-delay: .4s;
+			transition-delay: 0.4s;
 			pointer-events: none;
 
 			.submenu__return {
@@ -442,7 +445,7 @@ header {
 		input {
 			text-align: left;
 			width: 100%;
-			padding: .3rem 2rem;
+			padding: 0.3rem 2rem;
 		}
 
 		button {
@@ -450,7 +453,7 @@ header {
 			min-width: 4rem;
 			width: 4rem;
 			margin-top: 0;
-			transition: .3s;
+			transition: 0.3s;
 		}
 	}
 
@@ -473,7 +476,6 @@ header {
 	}
 
 	header {
-
 		.nav__item {
 			height: auto;
 
