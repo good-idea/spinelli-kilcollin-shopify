@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/j0die/spk-rebuild#readme",
   "devDependencies": {
+    "@vimeo/player": "^2.2.1",
     "autoprefixer": "^6.4.0",
     "axios": "^0.15.3",
     "babel-eslint": "^8.0.2",

@@ -12,6 +12,7 @@ import { buildCarousels } from './components/carousel'
 import mailerSignup from './components/mailerSignup'
 import articlePages from './components/blog'
 import './components/ajaxifyCart'
+import video from './components/video'
 
 const windo = $(window)
 
@@ -41,6 +42,7 @@ $(() => {
 	watchImages()
 	buildUx(publisher)
 	mailerSignup()
+	video(publisher)
 	// mailerPopup(publisher); // Uncomment to re-enable popup
 })
 
@@ -57,9 +59,11 @@ windo.on('scroll', () => {
 	publisher.emit('WindowScrolled', ypos)
 })
 
-document.fonts.ready.then(() => {
-	publisher.emit('Calculate')
-})
+if (document.fonts) {
+	document.fonts.ready.then(() => {
+		publisher.emit('Calculate')
+	})
+}
 
 let resizeTimer = null
 windo.on('resize', () => {

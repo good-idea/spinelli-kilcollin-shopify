@@ -1,0 +1,25 @@
+{% if audio == true %}
+	{% assign muted = false %}
+{% else %}
+	{% assign muted = true %}
+{% endif %}
+
+{% if video.id %}
+	{% assign id = video.id %}
+{% else %}
+	{% assign id = videoId %}
+{% endif %}
+
+{% if loop != false %}
+	{% assign loop = true%}
+{% endif %}
+
+{% if interaction != true %}
+	{% assign interaction = false %}
+{% endif %}
+
+<div class="video__container">
+	<div class="video__wrapper">
+		<div class="video__frame {% if interaction == false %} video__frame--notouch {% endif %}" data-vimeo-video-id="{{ id }}" data-muted="{{ muted }}" data-loop="{{ loop }}" data-autoplay="{{ autoplay }}"></div>
+	</div>
+</div>
