@@ -85,10 +85,9 @@
 					image: image_one,
 					preload: true %}
 					{% if video_one != false %}
-						<h2>{{ audio_one}}</h2>
 						<div class="featured__video">
 							{% assign video = video_one %}
-							{% include 'video' with video, audio: audio_one, autoplay: true %}
+							{% include 'video' with video, audio: audio_one, background: true, autoplay: true %}
 							{% assign video = false %}
 						</div>
 					{% endif %}
@@ -120,7 +119,7 @@
 						{% if video_two != false %}
 							<div class="featured__video">
 								{% assign video = video_two %}
-								{% include 'video' with video, audio: audio_two, autoplay: true %}
+								{% include 'video' with video, audio: audio_two, background: true, autoplay: true %}
 								{% assign video = false %}
 							</div>
 						{% endif %}

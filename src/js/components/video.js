@@ -1,63 +1,24 @@
 import $ from 'npm-zepto'
-import VimeoPlayer from '@vimeo/player'
 
 const buildVideo = (element, publisher) => {
 	const container = element instanceof $ ? element : $(element)
-	const frame = $(container.find('.video__frame'))
-	const wrapper = $(container.find('.video__wrapper'))
-	const id = frame.attr('data-vimeo-video-id')
-	const autoplay = frame.attr('data-autoplay') === 'true'
-	const loop = frame.attr('data-loop') === 'true'
-	const background = autoplay
-	const muted = frame.attr('data-muted') === 'true'
-	let videoWidth
-	let videoHeight
-	const options = {
-		id,
-		background,
-		autoplay,
-		loop,
-		width: 'auto',
-		height: 'auto',
-		title: false,
+	const video = container.find('video')[0]
+
+	const show = () => setTimeout(() => container.addClass('visible'), 300)
+	const hide = () => container.removeClass('visible')
+
+	const setLazySrc = () => {
+		const src = video.getAttribute('data-src')
+		video.setAttribute('src', src)
 	}
 
-	const calculateSizing = () => {
-		const containerRatio = container.height() / container.width()
-		const videoRatio = videoHeight / videoWidth
-		const widthDiff = 2 * (containerRatio - videoRatio)
-		const newWidth = widthDiff > 0 ? 100 + widthDiff * 100 : 100
-		wrapper.css({ width: `${newWidth}%` })
-		frame.css({ 'padding-bottom': `${videoRatio * 100}%` })
+	video.addEventListener('playing', show)
+	video.addEventListener('error', hide)
+	if (!video.paused) show()
+
+	if (video.getAttribute('data-lazy') === 'true') {
+		publisher.subscribe('windowLoaded', setLazySrc)
 	}
-
-	const player = new VimeoPlayer(frame[0], options)
-	Promise.all([player.getVideoHeight(), player.getVideoWidth()]).then(
-		([height, width]) => {
-			videoHeight = height
-			videoWidth = width
-			calculateSizing()
-		},
-	)
-
-	if (muted) player.setVolume(0)
-
-	if (autoplay) {
-		player.on('play', () => {
-			setTimeout(() => {
-				frame.addClass('visible')
-			}, 700)
-		})
-		player.play()
-	}
-
-	player.on('error', () => {
-		frame.removeClass('visible')
-	})
-
-	document.documentElement.addEventListener('click', () => player.play())
-
-	publisher.subscribe('Calculate', calculateSizing)
 }
 
 const buildVideos = publisher => {

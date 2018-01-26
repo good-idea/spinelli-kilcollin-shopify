@@ -72,10 +72,10 @@
 		<div class="featured__image-frame">
 			<a href="{{ url }}">
 				{% include 'product-image-srcset', with image, preload: true, sizes: "max-width(860px) 480px, 50vw" %}
-				
 				{% if video != false %}
 					<div class="featured__video">
-						{% include 'video' with video, audio: audio, autoplay: true %}
+						{% comment %} {% capture poster %}{{ image.src | img_url: }}{% endcapture %} {% endcomment %}
+						{% include 'video' with video, audio: audio, autoplay: true, width: 1200, background: true, lazy: true %}
 					</div>
 				{% endif %}
 			</a>

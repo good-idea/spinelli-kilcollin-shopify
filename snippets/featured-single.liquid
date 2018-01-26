@@ -42,7 +42,7 @@
 				{% include 'product-image-srcset' with image, preload: true %}
 				{% if video != false %}
 					<div class="featured__video">
-						{% include 'video' with video, audio: audio, autoplay: true %}
+						{% include 'video' with video, audio: audio, background: true, autoplay: true %}
 					</div>
 				{% endif %}
 			</a>

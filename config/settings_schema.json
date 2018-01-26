@@ -124,11 +124,10 @@
 				"info": "Recommended: 2400 x 1040px"
 			},
 			{
-				"type": "video_url",
-				"label": "Video",
+				"type": "text",
+				"label": "Cloudinary Video ID",
 				"id": "homepage_featured_1_video",
-				"accept": ["vimeo"],
-				"info": "Normal vimeo URL, not the embed code."
+				"info": "Just the filename, without the extension."
 			},
 			{
 				"type": "checkbox",
@@ -338,11 +337,10 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
-				"type": "video_url",
-				"label": "Video",
+				"type": "text",
+				"label": "Cloudinary Video ID",
 				"id": "homepage_block_1_video",
-				"accept": ["vimeo"],
-				"info": "Normal vimeo URL, not the embed code."
+				"info": "Just the filename, without the extension."
 			},
 			{
 				"type": "checkbox",
@@ -377,11 +375,10 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
-				"type": "video_url",
-				"label": "Video",
+				"type": "text",
+				"label": "Cloudinary Video ID",
 				"id": "homepage_block_2_video",
-				"accept": ["vimeo"],
-				"info": "Normal vimeo URL, not the embed code."
+				"info": "Just the filename, without the extension."
 			},
 			{
 				"type": "checkbox",
@@ -416,11 +413,10 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
-				"type": "video_url",
-				"label": "Video",
+				"type": "text",
+				"label": "Cloudinary Video ID",
 				"id": "homepage_block_3_video",
-				"accept": ["vimeo"],
-				"info": "Normal vimeo URL, not the embed code."
+				"info": "Just the filename, without the extension."
 			},
 			{
 				"type": "checkbox",
@@ -455,11 +451,10 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
-				"type": "video_url",
-				"label": "Video",
+				"type": "text",
+				"label": "Cloudinary Video ID",
 				"id": "homepage_block_4_video",
-				"accept": ["vimeo"],
-				"info": "Normal vimeo URL, not the embed code."
+				"info": "Just the filename, without the extension."
 			},
 			{
 				"type": "checkbox",
@@ -494,11 +489,10 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
-				"type": "video_url",
-				"label": "Video",
+				"type": "text",
+				"label": "Cloudinary Video ID",
 				"id": "homepage_block_5_video",
-				"accept": ["vimeo"],
-				"info": "Normal vimeo URL, not the embed code."
+				"info": "Just the filename, without the extension."
 			},
 			{
 				"type": "checkbox",
@@ -533,11 +527,10 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
-				"type": "video_url",
-				"label": "Video",
+				"type": "text",
+				"label": "Cloudinary Video ID",
 				"id": "homepage_block_6_video",
-				"accept": ["vimeo"],
-				"info": "Normal vimeo URL, not the embed code."
+				"info": "Just the filename, without the extension."
 			},
 			{
 				"type": "checkbox",

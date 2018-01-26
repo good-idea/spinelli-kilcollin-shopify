@@ -9,13 +9,13 @@
 			%}
 
       {% if collection.metafields.c_f.video_banner != nil %}
-        {% assign videoId = collection.metafields.c_f.video_banner | split:'/' | last %}
+        {% assign video = collection.metafields.c_f.video_banner %}
         {% if collection.metafields.c_f.video_audio == 'true' %}
           {% assign audio = true %}
         {% else %}
           {% assign audio = false %}
         {% endif %}
-        {% include 'video', audio: audio, autoplay: true %}
+        {% include 'video', video: video, audio: audio, autoplay: true, background: true %}
       {% endif %}
 
   			{% if collection.description != blank %}
