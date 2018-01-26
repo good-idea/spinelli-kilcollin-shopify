@@ -8,7 +8,7 @@
 {% endif %}
 
 {% assign video_one_slug = 'homepage_featured_' | append:item_one | append:'_video' %}
-{% if settings[video_one_slug] == nil %}
+{% if settings[video_one_slug] == nil or settings[video_one_slug] == '' %}
 	{% assign video_one = false %}
 {% else %}
 	{% assign video_one = settings[video_one_slug] %}
@@ -57,7 +57,7 @@
 {% endif %}
 
 {% assign video_two_slug = 'homepage_featured_' | append:item_two | append:'_video' %}
-{% if settings[video_two_slug] == nil %}
+{% if settings[video_two_slug] == nil or settings[video_two_slug] == '' %}
 	{% assign video_two = false %}
 {% else %}
 	{% assign video_two = settings[video_two_slug] %}

@@ -52,7 +52,7 @@
 {% endif %}
 
 {% assign video_slug = slug | append:'_video' %}
-{% if settings[video_slug] == nil %}
+{% if settings[video_slug] == nil or settings[video_slug] == '' %}
 	{% assign video = false %}
 {% else %}
 	{% assign video = settings[video_slug] %}

@@ -14,7 +14,8 @@
 {% if poster == nil %}
 	{% assign poster = src | append: "/" | append: video | append:'.jpeg'%}
 {% endif %}
-{% assign src = src | append: "/" | append: video | append:'.webm' %}
+{% assign src_webm = src | append: "/" | append: video | append:'.webm' %}
+{% assign src_mp4 = src | append: "/" | append: video | append:'.mp4' %}
 
 {% if lazy == false %}
 	{% assign lazy_load = false %}
@@ -36,13 +37,17 @@
 		{% if audio != true%}muted{% endif %}
 		{% if background != true %}controls{% endif %}
 		{% if loop %}loop{% endif %}
+		{% if lazy == true %}data-lazy="true"{% endif %}
 		playsinline
-		{% if lazy == true %}
-			data-lazy="true"
-			data-src={{src}}
-		{% else %}
-			src={{src}}
-		{% endif %}
 		poster={{poster}}
-	></video>
+	>
+		<source
+			src={{src_webm}}
+			type="video/webm"
+		/>
+		<source
+			src={{src_mp4}}
+			type="video/mp4"
+		/>
+	</video>
 </div>
