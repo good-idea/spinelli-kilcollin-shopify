@@ -32,7 +32,6 @@ if (hasTouchEvents) document.documentElement.classList.add('hasTouchEvents')
 document.documentElement.classList.remove('no-js')
 
 $(() => {
-	console.log('!')
 	buildHeader(publisher)
 	buildSliders(publisher)
 	buildZooms(publisher)

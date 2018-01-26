@@ -48,7 +48,14 @@ const buildVideo = (element, publisher) => {
 				frame.addClass('visible')
 			}, 700)
 		})
+		player.play()
 	}
+
+	player.on('error', () => {
+		frame.removeClass('visible')
+	})
+
+	document.documentElement.addEventListener('click', () => player.play())
 
 	publisher.subscribe('Calculate', calculateSizing)
 }
