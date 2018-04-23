@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:watch dev:theme",
     "dev:watch": "gulp",
-    "dev:theme": "theme open -e development -v && theme watch -e development"
+    "dev:theme": "theme open -e development -v && theme watch -e development",
+    "build": "gulp production"
   },
   "repository": {
     "type": "git",
