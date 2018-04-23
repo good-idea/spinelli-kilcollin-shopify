@@ -148,7 +148,7 @@ config/settings.html:
   production: 2017-02-22T17:02:09-08:00   2190fe943d597ba953d5ffc7620bfff2
 config/settings_data.json:
   development: 2018-01-26T12:06:04-08:00   8a8f699a0a2902d78fe36178a6ca0733
-  production: 2018-01-17T05:34:29-08:00   1ac4861b170a6450b65f4debed154806
+  production: 2018-04-19T08:32:46-07:00   d0182264a5bb16d59e9595d80192b613
 config/settings_schema.json:
   development: 2018-04-23T12:19:02-07:00   d1ad1cc1aa80c2dce482d2437ce35574
   production: 2017-12-18T14:48:08-08:00   ac68cf3cab62d98aa0d1c33bea2cc60f
