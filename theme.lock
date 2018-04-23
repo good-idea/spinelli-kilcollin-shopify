@@ -93,16 +93,16 @@ assets/main copy.js:
   development: 2017-02-02T21:40:39-08:00
   production: 2017-02-13T12:20:05-08:00
 assets/main.css:
-  development: 2018-01-26T13:02:03-08:00   2a1898dbe4e1cb234d00f8c5f70decf2
+  development: 2018-04-23T12:19:10-07:00   5571c806d2192ecb8d09fa86b35c62a2
   production: 2018-01-23T13:58:45-08:00   c3e81c81944d42a87b6dd6335523b0d0
 assets/main.css.map:
-  development: 2018-01-26T13:02:04-08:00   00848e564e8355b9c33894822dd375f0
+  development: 2018-04-23T12:18:59-07:00   ca715eb87cba1b8d40703751efc9bff4
   production: 2018-01-23T13:58:44-08:00   b8096422e7c546a5977135d51a940265
 assets/main.js:
-  development: 2018-01-26T13:54:47-08:00   be480332535cc93996d42886fc58d899
+  development: 2018-04-23T12:19:29-07:00   be480332535cc93996d42886fc58d899
   production: 2018-01-23T13:53:13-08:00   2765d2f66f54ad6458acc6fc83673966
 assets/main.js.map:
-  development: 2018-01-26T13:54:48-08:00   f9e7a49fb1f94a75c5d88121785cf42e
+  development: 2018-04-23T12:19:30-07:00   f9e7a49fb1f94a75c5d88121785cf42e
   production: 2018-01-23T13:53:12-08:00   5d2f399018944402cb2658173ec405c0
 assets/modernizr.custom.js:
   development: 2018-01-26T13:54:36-08:00   09a8d3ced3e35cdf147544e19acb5701
@@ -123,7 +123,7 @@ assets/popup-image.jpg:
   development: 2017-02-12T23:21:48-08:00   8ffc90252d2b1bc923ef3dda792afb0f
   production: 2017-02-13T12:20:06-08:00   8ffc90252d2b1bc923ef3dda792afb0f
 assets/shop.js.liquid:
-  development: 2017-11-16T16:26:27-08:00   3c980e47c1503bf7460d9d5845a6fbd6
+  development: 2018-04-23T12:19:23-07:00   3c980e47c1503bf7460d9d5845a6fbd6
   production: 2017-11-06T18:32:02-08:00   3c980e47c1503bf7460d9d5845a6fbd6
 assets/shopify_common.js:
   development: 2017-02-02T13:12:06-08:00   bf001459d7d6c7c05491db53511b03b1
@@ -138,7 +138,7 @@ assets/stepsForm.js.map:
   development: 2018-01-26T13:54:35-08:00   d6c05d4853a1d06a954c03a9cb4a7dac
   production: 2018-01-03T13:15:18-08:00   d6c05d4853a1d06a954c03a9cb4a7dac
 assets/style.scss.liquid:
-  development: 2017-11-16T16:26:30-08:00   15238e7dc4e524e3b148665de0b4943c
+  development: 2018-04-23T12:18:47-07:00   15238e7dc4e524e3b148665de0b4943c
   production: 2017-11-06T18:04:10-08:00   15238e7dc4e524e3b148665de0b4943c
 assets/zoom.svg:
   development: 2017-03-11T19:52:16-08:00   1eea0ccea0c978dfb4b25a0a43bc78f0
@@ -150,10 +150,10 @@ config/settings_data.json:
   development: 2018-01-26T12:06:04-08:00   8a8f699a0a2902d78fe36178a6ca0733
   production: 2018-01-17T05:34:29-08:00   1ac4861b170a6450b65f4debed154806
 config/settings_schema.json:
-  development: 2018-01-26T13:05:45-08:00   d1ad1cc1aa80c2dce482d2437ce35574
+  development: 2018-04-23T12:19:02-07:00   d1ad1cc1aa80c2dce482d2437ce35574
   production: 2017-12-18T14:48:08-08:00   ac68cf3cab62d98aa0d1c33bea2cc60f
 layout/theme.liquid:
-  development: 2017-11-16T16:26:30-08:00   76792eb0f798b967607ea5c8fd96a1b6
+  development: 2018-04-23T12:19:17-07:00   76792eb0f798b967607ea5c8fd96a1b6
   production: 2017-11-06T20:00:54-08:00   76792eb0f798b967607ea5c8fd96a1b6
 locales/en.default.json:
   development: 2017-02-12T22:15:26-08:00   6fe253911c40ea512cdd66cfcb34dfac
@@ -174,19 +174,19 @@ snippets/collection-listing.liquid:
   development: 2017-02-13T01:30:57-08:00
   production: 2017-02-13T12:20:07-08:00
 snippets/contact-form.liquid:
-  development: 2017-11-16T16:26:25-08:00   fe3abad582aafdd18edc7e715358eb09
+  development: 2018-04-23T12:19:21-07:00   fe3abad582aafdd18edc7e715358eb09
   production: 2017-11-08T12:15:25-08:00   fe3abad582aafdd18edc7e715358eb09
 snippets/featured-page.liquid:
-  development: 2018-01-26T13:52:26-08:00   5394f152c2bbaa7d34d12aa25fdf5de5
+  development: 2018-04-23T12:19:22-07:00   5394f152c2bbaa7d34d12aa25fdf5de5
   production: 2018-01-19T13:28:26-08:00   f612e355f550b5dcd8b8eb0649c6833d
 snippets/featured-single.liquid:
-  development: 2018-01-26T13:53:05-08:00   712f5966852c00debf1f14ca3ea558bd
+  development: 2018-04-23T12:18:54-07:00   712f5966852c00debf1f14ca3ea558bd
   production: 2017-06-23T13:09:23-07:00   dafc8706090b10ab6b7efc1f170d75d2
 snippets/featured-slider.liquid:
-  development: 2018-01-26T13:53:45-08:00   ba7efc16dbe167be738f61960c1e6b8c
+  development: 2018-04-23T12:19:06-07:00   ba7efc16dbe167be738f61960c1e6b8c
   production: 2017-06-23T13:09:25-07:00   36295df9881938873b4c3904be395d26
 snippets/footer.liquid:
-  development: 2018-01-03T13:04:21-08:00   d79db1a7461577f4367e6c91bb147325
+  development: 2018-04-23T12:19:18-07:00   d79db1a7461577f4367e6c91bb147325
   production: 2018-01-03T13:15:14-08:00   d79db1a7461577f4367e6c91bb147325
 snippets/header.liquid:
   development: 2017-05-19T12:40:19-07:00   5d176d8e0feefc7c9bd62edea99daf10
@@ -207,10 +207,10 @@ snippets/product-contact-form.liquid:
   development: 2017-05-19T13:12:01-07:00   7dfff6f99c556386cf617f16206c647e
   production: 2017-05-19T13:17:41-07:00   7dfff6f99c556386cf617f16206c647e
 snippets/product-grid-item.liquid:
-  development: 2017-11-16T16:26:28-08:00   380297b4c15ee520f9023ead071a92cf
+  development: 2018-04-23T12:18:54-07:00   380297b4c15ee520f9023ead071a92cf
   production: 2017-11-14T15:45:07-08:00   380297b4c15ee520f9023ead071a92cf
 snippets/product-image-srcset.liquid:
-  development: 2018-01-24T12:20:01-08:00   17134c53480c92eba2d71a6ac7bfe0f0
+  development: 2018-04-23T12:19:23-07:00   17134c53480c92eba2d71a6ac7bfe0f0
   production: 2018-01-19T13:28:26-08:00   54de24311fbc357282aa6a81fcdb246a
 snippets/product-image-zoom.liquid:
   development: 2017-02-13T01:25:40-08:00   9016bbec0d1aaac518556e401c45388b
@@ -222,7 +222,7 @@ snippets/site-nav.liquid:
   development: 2017-02-02T13:12:06-08:00   a6d977dc61bd322ced21e2bec7df62ea
   production: 2017-02-13T12:20:07-08:00   a6d977dc61bd322ced21e2bec7df62ea
 snippets/sizing-info.liquid:
-  development: 2017-11-16T16:26:29-08:00   a5cf38b5dd29af48f507c6c507eb150a
+  development: 2018-04-23T12:18:46-07:00   a5cf38b5dd29af48f507c6c507eb150a
   production: 2017-11-08T12:15:25-08:00   a5cf38b5dd29af48f507c6c507eb150a
 snippets/social-links.liquid:
   development: 2017-02-02T13:12:06-08:00   4a6dfe2a44e76037b90aa9eafc1c4b62
@@ -248,7 +248,7 @@ templates/cart.liquid:
   development: 2017-03-02T12:15:37-08:00   76615a4b1acf569947e505106bc96e08
   production: 2017-03-02T15:23:48-08:00   76615a4b1acf569947e505106bc96e08
 templates/collection.liquid:
-  development: 2018-01-26T13:09:29-08:00   7f7e41670a27c08a61fb035b27358321
+  development: 2018-04-23T12:19:28-07:00   7f7e41670a27c08a61fb035b27358321
   production: 2017-12-13T14:33:44-08:00   e1cd9ff9e0d0b82ec09b15f756a1efe8
 templates/collection_MW_BACKUP_3026_2.liquid:
   development: 2017-11-16T16:26:27-08:00   d834df588a04142c5dda043838a3f903
@@ -257,13 +257,13 @@ templates/customers/account.liquid:
   development: 2017-02-17T00:38:00-08:00   04cc254cd3ef10e2ae0411c27fe166d1
   production: 2017-02-22T17:01:57-08:00   04cc254cd3ef10e2ae0411c27fe166d1
 templates/customers/login.liquid:
-  development: 2017-03-02T12:48:00-08:00   e7e9b86c37a4eff6d3a820fe63fdddc0
+  development: 2018-04-23T11:56:09-07:00   e7e9b86c37a4eff6d3a820fe63fdddc0
   production: 2017-03-02T15:23:52-08:00   e7e9b86c37a4eff6d3a820fe63fdddc0
 templates/gift_card.liquid:
   development: 2017-02-02T13:12:07-08:00   b01bce4d6b8a5b4620b34ef67c99071c
   production: 2017-02-13T12:20:08-08:00   b01bce4d6b8a5b4620b34ef67c99071c
 templates/index.liquid:
-  development: 2018-01-19T13:26:56-08:00   d0e15492effec415cdf3405bd36cdc7f
+  development: 2018-04-23T12:19:09-07:00   d0e15492effec415cdf3405bd36cdc7f
   production: 2017-12-18T14:48:09-08:00   d0e15492effec415cdf3405bd36cdc7f
 templates/list-collections.liquid:
   development: 2017-02-02T13:12:06-08:00   d011f72b56eebbfce957d52067967a8e
@@ -278,7 +278,7 @@ templates/product-original.liquid:
   development: 2017-02-08T16:29:12-08:00   3407b598b3614e5fa92e9740c2982d33
   production: 2017-02-13T12:20:08-08:00   3407b598b3614e5fa92e9740c2982d33
 templates/product.liquid:
-  development: 2017-11-16T16:26:30-08:00   e706b57a7d0ced0ab0a7a3d3abaaefdf
+  development: 2018-04-23T12:19:13-07:00   e706b57a7d0ced0ab0a7a3d3abaaefdf
   production: 2017-11-01T05:46:07-07:00   e706b57a7d0ced0ab0a7a3d3abaaefdf
 templates/search.liquid:
   development: 2017-03-02T14:56:47-08:00   a0f4ae876bd76728a3e4e6e664160294
