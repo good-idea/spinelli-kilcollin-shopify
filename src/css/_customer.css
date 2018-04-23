@@ -45,6 +45,15 @@ section.customer-account {
 	padding-top: 3rem;
 }
 
+.shopify-challenge__container {
+	padding-top: 3rem;
+}
+
+.account__logout {
+	margin-top: 1rem;
+	color: $grey2;
+}
+
 @media screen and (max-width: $break-medium) {
 	.customer__create-form {
 		margin-top: 4rem;
