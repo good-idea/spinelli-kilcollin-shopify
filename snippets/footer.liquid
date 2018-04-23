@@ -10,11 +10,26 @@
     </div>
     {% endif %}
 
-    <div class="footer__signup">
-      <form action="{{ settings.mailchimp }}">
+    <div class="footer__signup signup">
+      <form action="{{ settings.mailchimp }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate signup__form">
         <input type="email" name="EMAIL" required placeholder="email address">
-        <button class="primary" type="submit"><h4>Join</h4></button>
+        <button class="primary" type="submit">
+          <h4 class="signup__buttonText">Join</h4>
+          <div class="signup__thinking">
+            <div class="thinking__line">
+              <div class="thinking__dot"></div>
+              <div class="thinking__dot"></div>
+            </div>
+            <div class="thinking__line">
+              <div class="thinking__dot"></div>
+            </div>
+          </div>
+        </button>
       </form>
+      <div class="signup__messages">
+        <h4 class="signup__message">THANK YOU!</h4>
+      </div>
+      <h4 class="signup__errors"></h4>
     </div>
 
     <div class="share__icons">
@@ -36,7 +51,7 @@
       {% if settings.show_tumblr %}
         <h4 class="share__icon" >
           <a href="{{ settings.tumblr_url }}" target="_blank"><i class="icon-tumblr icon-1-5x"></i></a>
-        </h4>
+        </h4>cd
       {% endif %}
       {% if settings.show_youtube %}
         <h4 class="share__icon" >

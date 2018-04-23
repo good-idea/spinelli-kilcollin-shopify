@@ -11,6 +11,12 @@
     {% endif %}
   {% endif %}
 
+	{% if settings.mobile_cta_url != "" and settings.mobile_cta_text != "" %}
+		<a class="homepage__cta button-like" href={{settings.mobile_cta_url}}>
+			<h4>{{settings.mobile_cta_text}}</h4>
+		</a>
+	{% endif %}
+
   {% if settings.homepage_combine_34 == true and settings.homepage_featured_3_activated == true and settings.homepage_featured_4_activated == true %}
     {% include 'featured-slider', item_one: '3', item_two: '4' %}
   {% else %}

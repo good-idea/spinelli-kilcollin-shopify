@@ -45,6 +45,7 @@
 
   <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
   <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+  {% if template contains 'product' %} {% for image in product.images limit:3 %} <meta property="product-image" content="http:{{ image.src | product_img_url: 'grande' }}"> {% endfor %} {% endif %}
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
@@ -67,6 +68,8 @@
   </div><!-- end of #container -->
 
   {{ 'main.js'  | asset_url | script_tag }}
+
+
 
 </body>
 </html>

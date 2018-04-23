@@ -86,6 +86,7 @@
 						<h4 class="add">Add to Cart</h4>
 						<h4 class="fa-icon success">&#xf00c;</h4>
 					</button>
+                  <span class="drophint-link"></span>
 				</form>
 
 			{% endif %}
@@ -102,3 +103,30 @@
 	</div>
 	{% include 'related-items' %}
 </section>
+<script>
+  var labelsInterval = null;
+  
+ 
+    labelsInterval=setInterval(function(){
+      var jquery = null;
+
+    if (window.jQuery) {
+      jquery = window.jQuery;
+    } else if (window.Checkout && window.Checkout.$) {
+      jquery = window.Checkout.$;
+    }
+    if(jquery && jquery('#dropaform').size()){
+      jquery('.form-drophint .form input.senderName').attr('placeholder','YOUR NAME');
+      jquery('.form-drophint .form input.senderEmail').attr('placeholder','YOUR EMAIL');
+      jquery('.form-drophint .form input.recName').attr('placeholder','RECIPIENT NAME');
+      jquery('.form-drophint .form input.recEmail').attr('placeholder','RECIPIENT EMAIL');
+      
+      jquery('.drophint-area .drophint-popup .clz').attr('src','{{ 'close_ico_dropahint.png' | asset_url }}');
+      
+      clearInterval(labelsInterval);
+    }
+  },100); 
+</script>
+<style>
+  .drophint-link a{ padding: 10px 0; text-align: center;  border: 1px solid #000; width: 100%; margin-top: 5px;}
+</style>

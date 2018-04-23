@@ -1,0 +1,53 @@
+{% assign src='https://res.cloudinary.com/spinelli-kilcollin/video/upload' %}
+
+{% if audio != true %}
+	{% assign src = src | append:"/ac_none" %}
+{% endif %}
+
+{% comment %} set a default width of 1200 unless something else is specified {% endcomment %}
+{% if width == nil %}
+	{% assign src = src | append:'/c_scale,w_2000'%}
+{% else %}
+	{% assign src = src | append:'/c_scale,w_' | append: width %}
+{% endif %}
+
+{% if poster == nil %}
+	{% assign poster = src | append: "/" | append: video | append:'.jpeg'%}
+{% endif %}
+{% assign src_webm = src | append: "/" | append: video | append:'.webm' %}
+{% assign src_mp4 = src | append: "/" | append: video | append:'.mp4' %}
+
+{% if lazy == false %}
+	{% assign lazy_load = false %}
+{% else %}
+	{% assign lazy_load = true %}
+{% endif %}
+
+{% if loop != false %}
+	{% assign loop = true%}
+{% endif %}
+
+{% if interaction != true %}
+	{% assign interaction = false %}
+{% endif %}
+
+<div class="video__container {% if background == true%}video__container--notouch{% endif %}">
+	<video
+		{% if autoplay %}autoplay{% endif %}
+		{% if audio != true%}muted{% endif %}
+		{% if background != true %}controls{% endif %}
+		{% if loop %}loop{% endif %}
+		{% if lazy == true %}data-lazy="true"{% endif %}
+		playsinline
+		poster={{poster}}
+	>
+		<source
+			src={{src_webm}}
+			type="video/webm"
+		/>
+		<source
+			src={{src_mp4}}
+			type="video/mp4"
+		/>
+	</video>
+</div>

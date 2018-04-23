@@ -40,6 +40,25 @@
 		]
 	},
 	{
+		"name": "Homepage - Miscellaneous",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Mobile CTA"
+			},
+			{
+				"id": "mobile_cta_text",
+				"type": "text",
+				"label": "Mobile CTA Button Text"
+			},
+			{
+				"id": "mobile_cta_url",
+				"type": "text",
+				"label": "Mobile CTA Button URL"
+			}
+		]
+	},
+	{
 		"name": "Homepage - Featured Items",
 		"settings": [
 			{
@@ -48,7 +67,8 @@
 			},
 			{
 				"type": "paragraph",
-				"content": "Featured items can appear one at a time, or you can combine two of them into a slider. They will only be combined if both items are activated."
+				"content":
+					"Featured items can appear one at a time, or you can combine two of them into a slider. They will only be combined if both items are activated."
 			},
 			{
 				"type": "checkbox",
@@ -74,7 +94,8 @@
 			},
 			{
 				"type": "paragraph",
-				"content": "By default, featured items show the primary product image. If you want to use an alternate image, you can upload it here. Images should be 2400px x 1040px."
+				"content":
+					"By default, featured items show the primary product image. If you want to use an alternate image, you can upload it here. Images should be 2400px x 1040px."
 			},
 			{
 				"type": "header",
@@ -87,9 +108,9 @@
 				"default": false
 			},
 			{
-				"type":      "product",
-				"id":        "homepage_featured_1",
-				"label":     "Featured Item 1"
+				"type": "product",
+				"id": "homepage_featured_1",
+				"label": "Featured Item 1"
 			},
 			{
 				"type": "text",
@@ -101,6 +122,18 @@
 				"id": "homepage_featured_1_alt_image",
 				"label": "Alternate Image",
 				"info": "Recommended: 2400 x 1040px"
+			},
+			{
+				"type": "text",
+				"label": "Cloudinary Video ID",
+				"id": "homepage_featured_1_video",
+				"info": "Just the filename, without the extension."
+			},
+			{
+				"type": "checkbox",
+				"label": "Allow audio",
+				"id": "homepage_featured_1_audio_enabled",
+				"default": false
 			},
 			{
 				"type": "url",
@@ -118,9 +151,9 @@
 				"default": false
 			},
 			{
-				"type":      "product",
-				"id":        "homepage_featured_2",
-				"label":     "Featured Item 2"
+				"type": "product",
+				"id": "homepage_featured_2",
+				"label": "Featured Item 2"
 			},
 			{
 				"type": "text",
@@ -149,9 +182,9 @@
 				"default": false
 			},
 			{
-				"type":      "product",
-				"id":        "homepage_featured_3",
-				"label":     "Featured Item 3"
+				"type": "product",
+				"id": "homepage_featured_3",
+				"label": "Featured Item 3"
 			},
 			{
 				"type": "text",
@@ -180,9 +213,9 @@
 				"default": false
 			},
 			{
-				"type":      "product",
-				"id":        "homepage_featured_4",
-				"label":     "Featured Item 4"
+				"type": "product",
+				"id": "homepage_featured_4",
+				"label": "Featured Item 4"
 			},
 			{
 				"type": "text",
@@ -200,7 +233,6 @@
 				"label": "Alternate URL",
 				"id": "homepage_featured_4_alt_url"
 			},
-
 			{
 				"type": "header",
 				"content": "Featured Item 5"
@@ -212,9 +244,9 @@
 				"default": false
 			},
 			{
-				"type":      "product",
-				"id":        "homepage_featured_5",
-				"label":     "Featured Item 5"
+				"type": "product",
+				"id": "homepage_featured_5",
+				"label": "Featured Item 5"
 			},
 			{
 				"type": "text",
@@ -232,7 +264,6 @@
 				"label": "Alternate URL",
 				"id": "homepage_featured_5_alt_url"
 			},
-
 			{
 				"type": "header",
 				"content": "Featured Item 6"
@@ -244,9 +275,9 @@
 				"default": false
 			},
 			{
-				"type":      "product",
-				"id":        "homepage_featured_6",
-				"label":     "Featured Item 6"
+				"type": "product",
+				"id": "homepage_featured_6",
+				"label": "Featured Item 6"
 			},
 			{
 				"type": "text",
@@ -271,11 +302,13 @@
 		"settings": [
 			{
 				"type": "paragraph",
-				"content": "Here you can configure and enable the blocks that will appear on the homepage. In the URL field you can search for internal pages, or paste in an external link."
+				"content":
+					"Here you can configure and enable the blocks that will appear on the homepage. In the URL field you can search for internal pages, or paste in an external link."
 			},
 			{
 				"type": "paragraph",
-				"content": "Links to Collections, Products, and Blog Entries will use that page's image by default. If you assign an alternate image, it will be used instead. You'll need to provide alternate images for links to internal Pages (such as Contact or Custom) and external URLs. Images should be 1200 x 1200px - but note that the top and bottom of these images may be cropped, depending on where they are in the layout, or on mobile."
+				"content":
+					"Links to Collections, Products, and Blog Entries will use that page's image by default. If you assign an alternate image, it will be used instead. You'll need to provide alternate images for links to internal Pages (such as Contact or Custom) and external URLs. Images should be 1200 x 1200px - but note that the top and bottom of these images may be cropped, depending on where they are in the layout, or on mobile."
 			},
 			{
 				"type": "header",
@@ -304,6 +337,18 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
+				"type": "text",
+				"label": "Cloudinary Video ID",
+				"id": "homepage_block_1_video",
+				"info": "Just the filename, without the extension."
+			},
+			{
+				"type": "checkbox",
+				"label": "Allow audio",
+				"id": "homepage_block_1_audio_enabled",
+				"default": false
+			},
+			{
 				"type": "header",
 				"content": "Featured Block 2"
 			},
@@ -328,6 +373,18 @@
 				"label": "Image",
 				"id": "homepage_block_2_image",
 				"info": "Recommended: 1200 x 1200px"
+			},
+			{
+				"type": "text",
+				"label": "Cloudinary Video ID",
+				"id": "homepage_block_2_video",
+				"info": "Just the filename, without the extension."
+			},
+			{
+				"type": "checkbox",
+				"label": "Allow audio",
+				"id": "homepage_block_2_audio_enabled",
+				"default": false
 			},
 			{
 				"type": "header",
@@ -356,6 +413,18 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
+				"type": "text",
+				"label": "Cloudinary Video ID",
+				"id": "homepage_block_3_video",
+				"info": "Just the filename, without the extension."
+			},
+			{
+				"type": "checkbox",
+				"label": "Allow audio",
+				"id": "homepage_block_3_audio_enabled",
+				"default": false
+			},
+			{
 				"type": "header",
 				"content": "Featured Block 4"
 			},
@@ -380,6 +449,18 @@
 				"label": "Image",
 				"id": "homepage_block_4_image",
 				"info": "Recommended: 1200 x 1200px"
+			},
+			{
+				"type": "text",
+				"label": "Cloudinary Video ID",
+				"id": "homepage_block_4_video",
+				"info": "Just the filename, without the extension."
+			},
+			{
+				"type": "checkbox",
+				"label": "Allow audio",
+				"id": "homepage_block_4_audio_enabled",
+				"default": false
 			},
 			{
 				"type": "header",
@@ -408,6 +489,18 @@
 				"info": "Recommended: 1200 x 1200px"
 			},
 			{
+				"type": "text",
+				"label": "Cloudinary Video ID",
+				"id": "homepage_block_5_video",
+				"info": "Just the filename, without the extension."
+			},
+			{
+				"type": "checkbox",
+				"label": "Allow audio",
+				"id": "homepage_block_5_audio_enabled",
+				"default": false
+			},
+			{
 				"type": "header",
 				"content": "Featured Block 6"
 			},
@@ -432,6 +525,18 @@
 				"label": "Image",
 				"id": "homepage_block_6_image",
 				"info": "Recommended: 1200 x 1200px"
+			},
+			{
+				"type": "text",
+				"label": "Cloudinary Video ID",
+				"id": "homepage_block_6_video",
+				"info": "Just the filename, without the extension."
+			},
+			{
+				"type": "checkbox",
+				"label": "Allow audio",
+				"id": "homepage_block_6_audio_enabled",
+				"default": false
 			}
 		]
 	},
@@ -440,13 +545,15 @@
 		"settings": [
 			{
 				"type": "paragraph",
-				"content": "Visit our [theme instructions pages](http:\/\/support.undergroundmedia.co.uk\/customer\/portal\/articles\/1424803-mailing-list-popup-form)"
+				"content":
+					"Visit our [theme instructions pages](http://support.undergroundmedia.co.uk/customer/portal/articles/1424803-mailing-list-popup-form)"
 			},
 			{
 				"type": "checkbox",
 				"id": "popup",
 				"label": "Show Join Mailing List Popup",
-				"info": "Show mailing list subscribe popup box once every 7 days per customer"
+				"info":
+					"Show mailing list subscribe popup box once every 7 days per customer"
 			},
 			{
 				"type": "checkbox",
@@ -459,7 +566,8 @@
 				"id": "popup-image",
 				"label": "Email Popup image",
 				"max-width": 480,
-				"info": "Upload an email signup popup image. Max width 480px. For best results, use landscape orientation."
+				"info":
+					"Upload an email signup popup image. Max width 480px. For best results, use landscape orientation."
 			},
 			{
 				"type": "text",
@@ -474,7 +582,8 @@
 		"settings": [
 			{
 				"type": "paragraph",
-				"content": "For all social media links, include https:\/\/ at the beginning of the URL."
+				"content":
+					"For all social media links, include https:// at the beginning of the URL."
 			},
 			{
 				"type": "checkbox",

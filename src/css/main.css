@@ -1,7 +1,5 @@
-
-@import "reset";
-@import "mixins";
-
+@import 'reset';
+@import 'mixins';
 
 /*
 // :::Site Variables
@@ -20,11 +18,15 @@ $grey3: rgb(75, 75, 75);
 $grey3: rgb(75, 75, 75);
 $grey4: rgb(33, 33, 33);
 
-.grey3 { color: $grey3; }
+.grey3 {
+	color: $grey3;
+}
 
-@import "type";
-@import "icons";
-@import "ui";
+@import 'type';
+@import 'icons';
+@import 'ui';
+@import 'image-blur';
+@import 'video';
 
 /*
 // :::Global Components
@@ -37,7 +39,8 @@ body {
 	background-color: white;
 }
 
-html.menu-open, html.menu-open body {
+html.menu-open,
+html.menu-open body {
 	overflow: hidden;
 }
 
@@ -54,7 +57,7 @@ html.menu-open, html.menu-open body {
 
 .lazy-src {
 	opacity: 0;
-	transition: .3s;
+	transition: 0.3s;
 
 	&.loaded {
 		opacity: 1;
@@ -78,23 +81,50 @@ body {
 	}
 }
 
+.bar {
+	display: inline-block;
+	width: 14.5rem;
+	height: 1px;
+	background-color: black;
+	position: relative;
+
+	&:before,
+	&:after {
+		content: '';
+		background-color: inherit;
+		position: absolute;
+		width: 3px;
+		height: 3px;
+		top: -1px;
+		border-radius: 3px;
+	}
+
+	&:before {
+		left: 0;
+	}
+	&:after {
+		right: 0;
+	}
+}
+
 /*
 // :::Specific to component or section
 //-------------------------------------------------- */
 
-@import "header";
-@import "cart";
-@import "footer";
-@import "index";
-@import "collection";
-@import "image-zoom";
-@import "product";
-@import "custom";
-@import "blogs";
-@import "pages";
-@import "overlay";
-@import "customer";
-@import "search";
+@import 'header';
+@import 'cart';
+@import 'footer';
+@import 'index';
+@import 'collection';
+@import 'image-zoom';
+@import 'product';
+@import 'custom';
+@import 'blogs';
+@import 'pages';
+@import 'overlay';
+@import 'customer';
+@import 'search';
+@import 'signup';
 
 section.four-oh-four {
 	text-align: center;

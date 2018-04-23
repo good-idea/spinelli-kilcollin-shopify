@@ -1,0 +1,27 @@
+.video__container {
+	position: relative;
+	opacity: 0;
+	transition: opacity 0.3s;
+
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center center;
+	}
+
+	&.visible {
+		opacity: 1;
+	}
+}
+
+.video__container--notouch {
+	pointer-events: none;
+}
+
+.featured__video .video__container {
+	@mixin abs-full-size;
+}

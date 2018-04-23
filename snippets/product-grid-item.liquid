@@ -6,9 +6,12 @@
 <div class="grid__item {% if on_sale %} on-sale{% endif %}">
   <a href="{{ product.url }}">
     <div class="grid__image">
-      {% include 'product-image-srcset',
-         sizes: '(max-width: 860px) 100vw, 50vw'
-         image: product.featured_image %}
+      {% include 'product-image-srcset' with
+         sizes: '(max-width: 860px) 100vw, 380px'
+         image: product.featured_image,
+         preload: true,
+				 lazy: 'true'
+			%}
     </div>
     <div class="grid__caption">
       {% if collection.metafields.c_f.price_hide == 'true' %}

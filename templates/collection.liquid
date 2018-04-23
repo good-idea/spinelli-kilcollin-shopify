@@ -1,13 +1,35 @@
 {% paginate collection.products by 48 %}
 <section class="collection">
-  {% if collection.description != blank %}
-    <div class="collection__description">
-      {{ collection.description }}
+  {% if collection.image != blank %}
+    <div class="collection__hero">
+      {% include 'product-image-srcset' with
+      image: collection.image,
+      sizes: '(max-width: 990px) 200vw, (max-width: 860px) 225vw, 100vw'
+      preload: true
+			%}
+
+      {% if collection.metafields.c_f.video_banner != nil %}
+        {% assign video = collection.metafields.c_f.video_banner %}
+        {% if collection.metafields.c_f.video_audio == 'true' %}
+          {% assign audio = true %}
+        {% else %}
+          {% assign audio = false %}
+        {% endif %}
+        {% include 'video', video: video, audio: audio, autoplay: true, background: true %}
+      {% endif %}
+
+  			{% if collection.description != blank %}
+			<div class="collection__description">
+				<h1 class="collection__description__title">{{ collection.title }}</h1>
+				<div class="bar"></div>
+				<h5 class="collection__description__body">{{ collection.description }}</h5>
+			</div>
+			{% endif %}
     </div>
   {% endif %}
 
   <div class="grid">
-    {% for product in collection.products %}
+    {% for product in collection.products %}{% if product.type == 'Product Fee' %}{% continue %}{% endif %}
       {% include 'product-grid-item' with products_per_row %}
     {% else %}
       <p>There are no products in this view.</p>

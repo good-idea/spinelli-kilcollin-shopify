@@ -14,7 +14,7 @@ Install themekit and `theme watch` to upload changes. Given the current `config.
 
 #### Visual Diffing
 
-Install Backstop: `npm install -g backstop`
+Install Backstop: `npm install -g backstopjs`
 
 Before starting your work, run `backstop reference`. If you forget to do this before you start working, just `git stash`, `backstop reference`, and `git stash apply`. After making your changes, run `backstop test`. The "Failed" tests will show the diffs in any screen captures. These should reflect the changes you intend to make -- look through them to make sure there were no changes you *did not* intend to make.
 
