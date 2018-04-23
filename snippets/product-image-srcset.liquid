@@ -4,7 +4,6 @@
 {% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
 {% if image == nil %}{% assign image = default_image %}{% endif %}
 
-<div style="display: none">{{ something }}</div>
 {% if preload == true %}
 	{% assign class= 'img-preload' %}
 	<div class="img-preload" data-lazy="{{ lazy }}">

@@ -13,6 +13,20 @@
 	{% assign caption = settings[alt_caption_slug] %}
 {% endif %}
 
+{% assign video_slug = 'homepage_featured_' | append:item | append:'_video' %}
+{% if settings[video_slug] == nil or settings[video_slug] == '' %}
+	{% assign video = false %}
+{% else %}
+	{% assign video = settings[video_slug] %}
+{% endif %}
+
+{% assign audio_slug = 'homepage_featured_' | append:item | append:'_audio_enabled' %}
+{% if settings[audio_slug] == true %}
+	{% assign audio = true %}
+{% else %}
+	{% assign audio = false %}
+{% endif %}
+
 {% assign alt_url_slug = 'homepage_featured_' | append:item | append:'_alt_url'%}
 {% if settings[alt_url_slug] == blank %}
 	{% assign url = product.url %}
@@ -26,6 +40,11 @@
 		<div class="featured__image-frame">
 			<a href="{{ url }}">
 				{% include 'product-image-srcset' with image, preload: true %}
+				{% if video != false %}
+					<div class="featured__video">
+						{% include 'video' with video, audio: audio, background: true, autoplay: true %}
+					</div>
+				{% endif %}
 			</a>
 		</div>
 		{% if caption != blank %}

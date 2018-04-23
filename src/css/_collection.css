@@ -1,20 +1,27 @@
 section.collection {
-  padding-bottom: 3rem;
+	padding-bottom: 3rem;
 }
 
 .collection__hero {
-  width: 100%;
-  position: relative;
-  padding-bottom: calc(33% - 1rem);
-  overflow: hidden;
+	width: 100%;
+	position: relative;
+	padding-bottom: calc(33% - 1rem);
+	overflow: hidden;
 	margin-bottom: 6rem;
 
-  img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.video__container {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+	}
 }
 
 .collection__description {
@@ -23,9 +30,9 @@ section.collection {
 	left: 0;
 	width: 100%;
 	height: 100%;
-  padding: 3rem 0;
-  margin: 0 auto;
-  font-size: 1.2rem;
+	padding: 3rem 0;
+	margin: 0 auto;
+	font-size: 1.2rem;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -48,23 +55,23 @@ section.collection {
 }
 
 .grid {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .grid__item {
-  text-align: center;
-  flex-basis: calc(33% - 1rem);
-  margin-bottom: 2rem;
-  position: relative;
+	text-align: center;
+	flex-basis: calc(33% - 1rem);
+	margin-bottom: 2rem;
+	position: relative;
 }
 
 .grid__image {
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  overflow: hidden;
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	overflow: hidden;
 
 	img {
 		@mixin abs-full-size;
@@ -74,62 +81,60 @@ section.collection {
 
 .result__caption,
 .grid__caption {
-  color: $grey3;
-  text-align: center;
-  padding: 1rem;
+	color: $grey3;
+	text-align: center;
+	padding: 1rem;
 }
 
 .pagination {
-  margin: 3rem auto;
-  text-align: center;
-  color: $grey2;
+	margin: 3rem auto;
+	text-align: center;
+	color: $grey2;
 }
 
 .pagination__count {
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 .pagination__link {
-  margin-top: 1rem;
+	margin-top: 1rem;
 
-  & + .pagination__link:before {
-    content: " ";
-    margin-left: 1.5em;
-  }
+	& + .pagination__link:before {
+		content: ' ';
+		margin-left: 1.5em;
+	}
 }
 
 @media screen and (max-width: $break-large) {
-  .grid__item {
-    flex-basis: calc(50% - 1rem);
-  }
-  .collection__hero {
-    padding-bottom: calc(55% - 1rem);
+	.grid__item {
+		flex-basis: calc(50% - 1rem);
+	}
+	.collection__hero {
+		padding-bottom: calc(55% - 1rem);
 
-    img {
-      top: 50%;
-      left: 50%;
-      height: auto;
-      transform: translate(-50%, -50%);
-      width: 190%;
-      max-width: initial;
-      object-fit: initial;
-    }
-  }
-
-
+		img {
+			top: 50%;
+			left: 50%;
+			height: auto;
+			transform: translate(-50%, -50%);
+			width: 190%;
+			max-width: initial;
+			object-fit: initial;
+		}
+	}
 }
 
 @media screen and (max-width: $break-medium) {
-  .grid__item {
-    flex-basis: 100%;
-  }
+	.grid__item {
+		flex-basis: 100%;
+	}
 
 	.collection__hero {
 		padding-bottom: initial;
 	}
-  .collection__hero img {
-    width: 250%;
-  }
+	.collection__hero img {
+		width: 250%;
+	}
 	.collection__description {
 		padding: 3rem 1rem;
 		position: relative;

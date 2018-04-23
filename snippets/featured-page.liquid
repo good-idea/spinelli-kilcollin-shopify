@@ -51,11 +51,33 @@
 	{% assign caption = settings[caption_id] %}
 {% endif %}
 
+{% assign video_slug = slug | append:'_video' %}
+{% if settings[video_slug] == nil or settings[video_slug] == '' %}
+	{% assign video = false %}
+{% else %}
+	{% assign video = settings[video_slug] %}
+{% endif %}
+
+{% assign audio_slug = slug | append:'_audio_enabled' %}
+{% if settings[audio_slug] == true %}
+	{% assign audio = true %}
+{% else %}
+	{% assign audio = false %}
+{% endif %}
+
+
+
 <div class="featured__item watch-in-view">
 	<div class="featured__inner">
 		<div class="featured__image-frame">
 			<a href="{{ url }}">
 				{% include 'product-image-srcset', with image, preload: true, sizes: "max-width(860px) 480px, 50vw" %}
+				{% if video != false %}
+					<div class="featured__video">
+						{% comment %} {% capture poster %}{{ image.src | img_url: }}{% endcapture %} {% endcomment %}
+						{% include 'video' with video, audio: audio, autoplay: true, width: 1200, background: true, lazy: true %}
+					</div>
+				{% endif %}
 			</a>
 		</div>
 		{% if caption != blank %}

@@ -26,6 +26,7 @@ $grey4: rgb(33, 33, 33);
 @import 'icons';
 @import 'ui';
 @import 'image-blur';
+@import 'video';
 
 /*
 // :::Global Components

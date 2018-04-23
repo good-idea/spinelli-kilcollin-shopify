@@ -12,6 +12,7 @@ import { buildCarousels } from './components/carousel'
 import mailerSignup from './components/mailerSignup'
 import articlePages from './components/blog'
 import './components/ajaxifyCart'
+import video from './components/video'
 
 const windo = $(window)
 
@@ -40,6 +41,7 @@ $(() => {
 	watchImages()
 	buildUx(publisher)
 	mailerSignup()
+	video(publisher)
 	// mailerPopup(publisher); // Uncomment to re-enable popup
 })
 

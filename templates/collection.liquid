@@ -8,7 +8,17 @@
       preload: true
 			%}
 
-			{% if collection.description != blank %}
+      {% if collection.metafields.c_f.video_banner != nil %}
+        {% assign video = collection.metafields.c_f.video_banner %}
+        {% if collection.metafields.c_f.video_audio == 'true' %}
+          {% assign audio = true %}
+        {% else %}
+          {% assign audio = false %}
+        {% endif %}
+        {% include 'video', video: video, audio: audio, autoplay: true, background: true %}
+      {% endif %}
+
+  			{% if collection.description != blank %}
 			<div class="collection__description">
 				<h1 class="collection__description__title">{{ collection.title }}</h1>
 				<div class="bar"></div>
