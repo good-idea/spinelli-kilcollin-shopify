@@ -47,28 +47,30 @@
 			<label for="first_name">
 				<h4>First Name</h4>
 			</label>
-			<input id="first_name" name="customer[first_name]">
+			<input id="first_name" name="unverified-customer[first_name]">
 		</div>
 		<div class="form__field">
 			<label for="last_name">
 				<h4>Last Name</h4>
 			</label>
-			<input id="last_name" name="customer[last_name]">
+			<input id="last_name" name="unverified-customer[last_name]">
 		</div>
 		<div class="form__field">
 			<label for="email">
 				<h4>Email Address</h4>
 			</label>
-			<input id="email" type="email" name="customer[email]">
+			<input id="email" type="email" name="unverified-customer[email]">
 		</div>
 		<div class="form__field">
 			<label for="password">
 				<h4>Password</h4>
 			</label>
-			<input id="password" type="password" name="customer[password]">
+			<input id="password" type="password" name="unverified-customer[password]">
 		</div>
+		<input class="form__is-bot-field" type="hidden" name="customer[is_bot]" value="probably">
+		
 		<button
-			class="primary"
+			class="g-recaptcha primary"
 			type="submit"
 			data-sitekey="6LeqD1UUAAAAAGRemNP9WARBLdSG2aQtSXDaf_z2"
 			data-callback="handleRegistrationCaptcha">

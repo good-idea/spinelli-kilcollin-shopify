@@ -9,6 +9,21 @@ section.customer-login {
 	}
 }
 
+#create-customer {
+	width: 35rem;
+	margin: 0 auto;
+	padding-top: 3rem;
+}
+
+#create_customer {
+	margin-top: 1rem;
+
+	input.btn {
+		text-align: center;
+		width: 10rem;
+	}
+}
+
 .customer__form {
 	.help {
 		margin-top: 1.5rem;

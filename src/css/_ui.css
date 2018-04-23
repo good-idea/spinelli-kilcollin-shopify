@@ -13,7 +13,7 @@
 		left: 0;
 		background-color: $grey3;
 		transform-origin: center center;
-		transition: .3s;
+		transition: 0.3s;
 		transform: translateZ(0);
 		position: relative;
 	}
@@ -45,7 +45,6 @@
 	}
 }
 
-
 label {
 	color: $grey2;
 	text-transform: uppercase;
@@ -57,7 +56,7 @@ select {
 	height: 4rem;
 	border: 1px solid $grey1;
 	border-radius: 0;
-	transition: .2s;
+	transition: 0.2s;
 	cursor: pointer;
 
 	&:hover {
@@ -84,7 +83,8 @@ select {
 	}
 }
 
-button, .button-like {
+button,
+.button-like {
 	@mixin flex-center;
 	display: inline-block;
 	padding: 0.25rem 1rem;
@@ -93,19 +93,22 @@ button, .button-like {
 	text-align: center;
 	text-transform: uppercase;
 	color: $grey3;
-	transition: .2s;
+	transition: 0.2s;
 	cursor: pointer;
 
 	&:hover {
 		border-color: $grey2;
 	}
 
-	p, h4, h5, h6 {
+	p,
+	h4,
+	h5,
+	h6 {
 		margin-top: 0.2em;
 	}
 
 	i {
-		margin: -0.1em 0 0 .3em;
+		margin: -0.1em 0 0 0.3em;
 	}
 
 	&.square {
@@ -129,13 +132,14 @@ button, .button-like {
 	display: inline-flex;
 }
 
-input, textarea {
+input,
+textarea {
 	text-align: inherit;
 	/*margin-top: 2rem;*/
 	background: $grey1;
 	color: $grey3;
 	border-radius: 0;
-	padding: .75rem;
+	padding: 0.75rem;
 }
 
 input {
@@ -151,7 +155,7 @@ textarea {
 	resize: none;
 }
 
-input[type="number"] {
+input[type='number'] {
 	text-align: center;
 }
 
@@ -159,11 +163,15 @@ input[type="number"] {
 	cursor: pointer;
 }
 
+#create_customer .large_form,
 .form__field {
 	width: 100%;
 	margin-bottom: 2rem;
 
-	label, input, textarea, select {
+	label,
+	input,
+	textarea,
+	select {
 		display: block;
 		width: 100%;
 	}
@@ -247,21 +255,24 @@ input[type="number"] {
 	}
 }
 
-
 .slider__item-alt {
 	.slide__image {
-		clip-path: url("#clip");
+		clip-path: url('#clip');
 	}
 }
 
-@supports (mask-image: linear-gradient(0deg, #fff, #fff) {
+@supports  {
 	.slider__item-alt {
 		.slide__image {
 			clip-path: initial;
 		}
 	}
 	.slider__overlay {
-		mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(100% - 7px), rgba(0, 0, 0, 0) calc(100%));
+		mask-image: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 1) calc(100% - 7px),
+			rgba(0, 0, 0, 0) calc(100%)
+		);
 		width: 0;
 		height: 100%;
 	}
@@ -287,7 +298,6 @@ input[type="number"] {
 }
 
 .carousel {
-
 	&.carousel--disabled {
 		.carousel__button {
 			display: none;
@@ -302,8 +312,8 @@ input[type="number"] {
 
 .carousel__slides {
 	font-size: 1px;
-	transition: .4s;
-	transition-timing-function: cubic-bezier(.17, .67, .43, .97);
+	transition: 0.4s;
+	transition-timing-function: cubic-bezier(0.17, 0.67, 0.43, 0.97);
 }
 
 .carousel__slide {
@@ -363,7 +373,7 @@ input[type="number"] {
 
 .hasTouchEvents {
 	/*@import "disable-slider";*/
-	@import "touch-slider";
+	@import 'touch-slider';
 }
 
 @media screen and (max-width: $break-large) {
@@ -385,7 +395,7 @@ input[type="number"] {
 }
 
 @media screen and (max-width: $break-small) {
-	@import "touch-slider";
+	@import 'touch-slider';
 	.carousel__frame {
 		width: 100%;
 	}
