@@ -12,6 +12,7 @@ import { buildCarousels } from './components/carousel'
 import mailerSignup from './components/mailerSignup'
 import articlePages from './components/blog'
 import './components/ajaxifyCart'
+import './components/handleRegistrationCaptcha'
 import video from './components/video'
 
 const windo = $(window)
