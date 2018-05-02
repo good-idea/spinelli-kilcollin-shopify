@@ -1,0 +1,48 @@
+{% assign default_sizes = "100vw" %}
+{% assign default_image = product.featured_image %}
+{% assign cloudinary_root = "https://res.cloudinary.com/spinelli-kilcollin/image/upload/" %}
+{% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
+
+{% if preload == true %}
+	{% assign class= 'img-preload' %}
+	<div class="img-preload" data-lazy="{{ lazy }}">
+			<div class="img-preload-initial">
+				<img src="{{ cloudinary_root }}w_100/{{ cloudinary_id }}" alt="">
+			</div>
+			<div class="img-preload-full">
+				<img
+					data-full-src="{{ cloudinary_root }}{{ cloudinary_id }}"
+					sizes="{{ sizes }}"
+					srcset="
+						{{ cloudinary__root }}w_2048/{{ cloudinary_id }} 2048w,
+						{{ cloudinary__root }}w_1024/{{ cloudinary_id }} 1024w,
+						{{ cloudinary__root }}w_600/{{ cloudinary_id }} 600w,
+						{{ cloudinary__root }}w_480/{{ cloudinary_id }} 480w,
+						{{ cloudinary__root }}w_240/{{ cloudinary_id }} 240w,
+						{{ cloudinary__root }}w_160/{{ cloudinary_id }} 160w,
+						{{ cloudinary__root }}w_100/{{ cloudinary_id }} 100w,
+					"
+					lazy="{{ lazy }}"
+					{% if attributes != nil %}{{ attributes }}{% endif %}
+					class=""
+				/>
+			</div>
+	</div>
+
+{% else %}
+		<img
+			src="{{ cloudinary_root }}w_100/{{ cloudinary_id }}"
+			srcset="
+				{{ cloudinary__root }}w_2048/{{ cloudinary_id }} 2048w,
+				{{ cloudinary__root }}w_1024/{{ cloudinary_id }} 1024w,
+				{{ cloudinary__root }}w_600/{{ cloudinary_id }} 600w,
+				{{ cloudinary__root }}w_480/{{ cloudinary_id }} 480w,
+				{{ cloudinary__root }}w_240/{{ cloudinary_id }} 240w,
+				{{ cloudinary__root }}w_160/{{ cloudinary_id }} 160w,
+				{{ cloudinary__root }}w_100/{{ cloudinary_id }} 100w,
+			"
+			sizes="{{ sizes }}"
+			{% if attributes != nil %}{{ attributes }}{% endif %}
+			class="{{ class }}"
+		/>
+{% endif %}
