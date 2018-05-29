@@ -1,0 +1,17 @@
+
+{% assign image = 'findus-banner-2048.jpg' %}
+
+<section class="page--custom">
+	<div class="heros">
+		{% include 'product-image-srcset',
+			image: 'findus-banner-2048.jpg',
+			asset: true,
+			class: "hero hero--desktop" %}
+		{% include 'product-image-srcset',
+			image: 'findus-banner-2048.jpg',
+			asset: true,
+			class: "hero hero--mobile" %}
+	</div>
+	{% include 'findus-contact-form' %}
+	
+</section>

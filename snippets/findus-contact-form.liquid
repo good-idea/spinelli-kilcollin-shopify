@@ -1,0 +1,49 @@
+<div class="contact__form">
+
+	{% form 'contact' %}
+
+		<h2 class="form__title">Find Us or Help Us Find You!</h2>
+  
+  <div>
+ 	<h3> We work with stores around the world and frequently travel to meet our clients. Let us know where you are and we’ll connect with you soon!
+  	</h3>
+    <p>
+      <br><br>
+    </p>
+ </div> 
+		{% if form.posted_successfully? %}
+			<h3 class="form__feedback">{{ 'contact.form.post_success' | t }}</h3>
+		{% elsif form.errors %}
+			<h3 class="form__feedback">{{ 'general.forms.post_error' | t }}</h3>
+		{% endif %}
+		<div class="form__field contact__name">
+			<label>Name</label>
+			<input type="text" name="contact[name]" placeholder="">
+		</div>
+
+		<div class="form__field contact__email">
+			<label>Email</label>
+			<input type="email" name="contact[email]" placeholder="">
+		</div>
+
+		<div class="form__field contact__telephone">
+			<label>Phone Number</label>
+			<input type="tel" name="contact[phone]" placeholder="">
+		</div>
+  
+  		<div class="form__field contact__zip">
+			<label>Zip Code</label>
+			<input type="tel" name="contact[zip]" placeholder="">
+		</div>
+
+		<div class="form__field contact__message">
+			<label>Message</label>
+			<textarea type="text" name="contact[body]" placeholder=""></textarea>
+		</div>
+
+		<div class="form__row">
+			<p class="contact__alternatively">Alternatively, contact <a href="mailto:floriana@spinellikilcollin.com">floriana@spinellikilcollin.com</a> for inquiries.</p>
+			<button class="dark primary" type="submit"><h4>Send</h4></button>
+		</div>
+	{% endform %}
+</div>
