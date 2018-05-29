@@ -5,6 +5,7 @@ section.collection {
 .collection__hero {
 	width: 100%;
 	position: relative;
+	font-family: $sangBleu;
 	padding-bottom: calc(33% - 1rem);
 	overflow: hidden;
 	margin-bottom: 6rem;
@@ -109,11 +110,37 @@ section.collection {
 
 .collection__featured-quote {
 	@mixin flex-center;
+	font-family: $sangBleu;
+	position: relative;
 	flex-direction: column;
 	background-color: $grey1half;
 	font-weight: 100;
 	color: white;
 	text-align: center;
+	overflow: hidden;
+
+	.as-background {
+		@mixin abs-full-size;
+		z-index: 1;
+
+		.img-preload-full {
+			position: static;
+		}
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	h1 {
+		z-index: 10;
+	}
 }
 
 .collection__featured-quote-byline {

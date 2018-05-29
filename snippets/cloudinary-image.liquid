@@ -4,8 +4,7 @@
 {% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
 
 {% if preload == true %}
-	{% assign class= 'img-preload' %}
-	<div class="img-preload" data-lazy="{{ lazy }}">
+	<div class="{{ class }} img-preload" data-lazy="{{ lazy }}">
 			<div class="img-preload-initial">
 				<img src="{{ cloudinary_root }}w_100/{{ cloudinary_id }}" alt="">
 			</div>

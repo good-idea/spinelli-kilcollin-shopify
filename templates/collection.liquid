@@ -4,7 +4,7 @@
     <div class="collection__hero">
       {% include 'product-image-srcset' with
       image: collection.image,
-      sizes: '(max-width: 990px) 200vw, (max-width: 860px) 225vw, 100vw'
+      sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 70vw'
       preload: true
 			%}
 
@@ -35,7 +35,7 @@
       {% 
         include 'cloudinary-image' with
         cloudinary_id: collection.metafields.c_f.image_1,
-        sizes: '(max-width: 990px) 200vw, (max-width: 860px) 225vw, 100vw'
+        sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 70vw'
         preload: true
 			%}
       </div>
@@ -48,7 +48,7 @@
       {% 
         include 'cloudinary-image' with
         cloudinary_id: collection.metafields.c_f.image_2,
-        sizes: '(max-width: 990px) 200vw, (max-width: 860px) 225vw, 100vw'
+        sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 70vw'
         preload: true
 			%}
       </div>
@@ -61,7 +61,7 @@
       {% 
         include 'cloudinary-image' with
         cloudinary_id: collection.metafields.c_f.image_3,
-        sizes: '(max-width: 990px) 200vw, (max-width: 860px) 225vw, 100vw'
+        sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 70vw'
         preload: true
 			%}
       </div>
@@ -70,6 +70,16 @@
 
     {% if collection.metafields.c_f.quote != nil %}
     <div class="grid__item collection__featured-item collection__featured-quote">
+      {% if collection.metafields.c_f.quote_background != nil %}
+        {% 
+          include 'cloudinary-image' with
+          cloudinary_id: collection.metafields.c_f.quote_background,
+          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 70vw',
+          preload: true
+          class: 'as-background'
+        %}
+
+      {% endif %}  
       <h1>“{{collection.metafields.c_f.quote}}”</h1>
       {% if collection.metafields.c_f.quote_byline != nil %}
         <h1 class="collection__featured-quote-byline">—{{collection.metafields.c_f.quote_byline}}</h1>
