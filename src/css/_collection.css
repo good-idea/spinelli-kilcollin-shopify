@@ -6,6 +6,7 @@ section.collection {
 	width: 100%;
 	position: relative;
 	font-family: $sangBleu;
+	font-weight: 300;
 	padding-bottom: calc(33% - 1rem);
 	overflow: hidden;
 	margin-bottom: 6rem;
@@ -71,6 +72,7 @@ section.collection {
 .grid__image {
 	position: relative;
 	width: 100%;
+	min-height: inherit;
 	padding-bottom: 100%;
 	overflow: hidden;
 
@@ -111,6 +113,7 @@ section.collection {
 .collection__featured-quote {
 	@mixin flex-center;
 	font-family: $sangBleu;
+	font-weight: 300;
 	position: relative;
 	flex-direction: column;
 	background-color: $grey1half;
@@ -165,13 +168,13 @@ section.collection {
 
 	.collection__featured-image:nth-of-type(2) {
 		grid-row-start: 3;
-		grid-row-end: 5;
+		grid-row-end: span 2;
 		grid-column-start: 3;
 	}
 
 	.collection__featured-image:nth-of-type(3) {
 		grid-row-start: 4;
-		grid-row-end: 6;
+		grid-row-end: span 2;
 		grid-column-start: 1;
 	}
 
@@ -204,18 +207,18 @@ section.collection {
 
 	.collection__featured-image:nth-of-type(1) {
 		grid-row-start: 2;
-		grid-row-end: 4;
+		grid-row-end: span 2;
 	}
 
 	.collection__featured-image:nth-of-type(2) {
 		grid-row-start: 4;
-		grid-row-end: 6;
+		grid-row-end: span 2;
 		grid-column-start: 2;
 	}
 
 	.collection__featured-image:nth-of-type(3) {
 		grid-row-start: 7;
-		grid-row-end: 9;
+		grid-row-end: span 2;
 	}
 
 	.collection__featured-quote {
