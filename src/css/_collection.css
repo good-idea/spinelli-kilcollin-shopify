@@ -56,6 +56,11 @@ section.collection {
 	margin: 0 auto;
 }
 
+.collection__footer {
+	text-align: center;
+	color: $grey2;
+}
+
 .grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;

@@ -93,9 +93,16 @@
     {% else %}
       <p>There are no products in this view.</p>
     {% endfor %}
+
   </div>
 
-{% include 'pagination' %}
+  {% include 'pagination' %}
+
+  {% if collection.metafields.c_f.footer != nil%}
+    <div class="collection__footer">
+      <h4>{{ collection.metafields.c_f.footer }}</h4>
+    </div>
+  {% endif %}
 
 </section>
 
