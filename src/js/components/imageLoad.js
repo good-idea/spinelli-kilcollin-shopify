@@ -22,7 +22,8 @@ function watchImage(element, onLoadCallback) {
 
 	function loadFullImage() {
 		const src = fullImage.attr('data-full-src')
-		const srcset = fullImage.attr('data-full-srcset')
+		const srcset =
+			fullImage.attr('data-full-srcset') || fullImage.attr('srcset')
 		fullImage.attr('src', src).attr('srcset', srcset)
 		// .removeAttr('data-full-src')
 		// .removeAttr('data-full-srcset')
