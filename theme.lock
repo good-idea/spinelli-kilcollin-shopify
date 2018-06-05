@@ -97,16 +97,16 @@ assets/main copy.js:
   production: 2017-02-13T12:20:05-08:00
 assets/main.css:
   development: 2018-06-04T16:05:32-07:00   ea442536028feeb9d30ce8fce6486dbd
-  production: 2018-05-29T16:53:28-07:00   05995b454ac81bacfe3b2a87a272ec91
+  production: 2018-06-04T16:08:48-07:00   ea442536028feeb9d30ce8fce6486dbd
 assets/main.css.map:
   development: 2018-06-04T16:05:33-07:00   baacf6d49e330c70dae791f5ec12bf69
-  production: 2018-05-29T16:53:34-07:00   284b08386ea90a407c235a8f49dbb89a
+  production: 2018-06-04T16:08:47-07:00   baacf6d49e330c70dae791f5ec12bf69
 assets/main.js:
   development: 2018-06-04T16:22:42-07:00   8ce9e634a529bc0ef6f00567e9e8bc36
-  production: 2018-04-23T15:45:14-07:00   cdfa02264c9e0cbd5a80288a61bad1cd
+  production: 2018-06-04T16:29:44-07:00   d527e88d86a92667be796b147149b4e9
 assets/main.js.map:
   development: 2018-06-04T16:22:44-07:00   6128b965084fbe369b6e4770fc958520
-  production: 2018-04-23T15:45:08-07:00   7141023157599e8d1ed0096cc12cf496
+  production: 2018-06-04T16:29:31-07:00   bbaa02f41ef118c9181c6cda8c4d29ad
 assets/modernizr.custom.js:
   development: 2018-06-04T16:14:49-07:00   1d9f9ca889d3634c89a1e026c7db55e1
   production: 2018-01-03T13:15:14-08:00   09a8d3ced3e35cdf147544e19acb5701
@@ -172,7 +172,7 @@ snippets/article-loop.liquid:
   production: 2017-03-23T18:21:49-07:00   ee803be9255a0ac03831ac19b25ffc05
 snippets/cloudinary-image.liquid:
   development: 2018-06-05T11:44:41-07:00   b6507b69730467a1723ead0be9485c7d
-  production: 2018-05-29T16:53:28-07:00   4a03c6d26c2078b9322cb49f7121f327
+  production: 2018-06-05T12:41:59-07:00   b6507b69730467a1723ead0be9485c7d
 snippets/collection-grid-item.liquid:
   development: 2017-02-13T01:30:46-08:00
   production: 2017-02-13T12:20:07-08:00
@@ -259,7 +259,7 @@ templates/cart.liquid:
   production: 2017-03-02T15:23:48-08:00   76615a4b1acf569947e505106bc96e08
 templates/collection.liquid:
   development: 2018-06-04T16:26:33-07:00   a0adaefc7c010692a3d8f3e0d5a884ce
-  production: 2018-05-29T16:53:48-07:00   92e1f5484b3f68a4ccd57c67d62d9e2d
+  production: 2018-06-04T16:29:03-07:00   a0adaefc7c010692a3d8f3e0d5a884ce
 templates/collection_MW_BACKUP_3026_2.liquid:
   development: 2017-11-16T16:26:27-08:00   d834df588a04142c5dda043838a3f903
   production: 2017-09-27T16:50:46-07:00   d834df588a04142c5dda043838a3f903
