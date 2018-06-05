@@ -10,32 +10,31 @@
 			</div>
 			<div class="img-preload-full">
 				<img
-					data-full-src="{{ cloudinary_root }}{{ cloudinary_id }}"
+					data-full-src="{{ cloudinary_root }}f_auto/{{ cloudinary_id }}"
 					sizes="{{ sizes }}"
-					data-full-srcset="{{ cloudinary_root }}w_2048/{{ cloudinary_id }} 2048w,
-						{{ cloudinary_root }}w_1024/{{ cloudinary_id }} 1024w,
-						{{ cloudinary_root }}w_600/{{ cloudinary_id }} 600w,
-						{{ cloudinary_root }}w_480/{{ cloudinary_id }} 480w,
-						{{ cloudinary_root }}w_240/{{ cloudinary_id }} 240w,
-						{{ cloudinary_root }}w_160/{{ cloudinary_id }} 160w,
-						{{ cloudinary_root }}w_100/{{ cloudinary_id }} 100w"
+					data-full-srcset="{{ cloudinary_root }}w_2048,f_auto/{{ cloudinary_id }} 2048w,
+						{{ cloudinary_root }}w_1024,f_auto/{{ cloudinary_id }} 1024w,
+						{{ cloudinary_root }}w_600,f_auto/{{ cloudinary_id }} 600w,
+						{{ cloudinary_root }}w_480,f_auto/{{ cloudinary_id }} 480w,
+						{{ cloudinary_root }}w_240,f_auto/{{ cloudinary_id }} 240w,
+						{{ cloudinary_root }}w_160,f_auto/{{ cloudinary_id }} 160w,
+						{{ cloudinary_root }}w_100,f_auto/{{ cloudinary_id }} 100w"
 					lazy="{{ lazy }}"
 					{% if attributes != nil %}{{ attributes }}{% endif %}
 					class=""
 				/>
 			</div>
 	</div>
-
 {% else %}
 		<img
-			src="{{ cloudinary_root }}w_100/{{ cloudinary_id }}"
-			srcset="{{ cloudinary_root }}w_2048/{{ cloudinary_id }} 2048w,
-				{{ cloudinary_root }}w_1024/{{ cloudinary_id }} 1024w,
-				{{ cloudinary_root }}w_600/{{ cloudinary_id }} 600w,
-				{{ cloudinary_root }}w_480/{{ cloudinary_id }} 480w,
-				{{ cloudinary_root }}w_240/{{ cloudinary_id }} 240w,
-				{{ cloudinary_root }}w_160/{{ cloudinary_id }} 160w,
-				{{ cloudinary_root }}w_100/{{ cloudinary_id }} 100w"
+			src="{{ cloudinary_root }}w_100,f_auto/{{ cloudinary_id }}"
+			srcset="{{ cloudinary_root }}w_2048,f_auto/{{ cloudinary_id }} 2048w,
+				{{ cloudinary_root }}w_1024,f_auto/{{ cloudinary_id }} 1024w,
+				{{ cloudinary_root }}w_600,f_auto/{{ cloudinary_id }} 600w,
+				{{ cloudinary_root }}w_480,f_auto/{{ cloudinary_id }} 480w,
+				{{ cloudinary_root }}w_240,f_auto/{{ cloudinary_id }} 240w,
+				{{ cloudinary_root }}w_160,f_auto/{{ cloudinary_id }} 160w,
+				{{ cloudinary_root }}w_100,f_auto/{{ cloudinary_id }} 100w"
 			sizes="{{ sizes }}"
 			{% if attributes != nil %}{{ attributes }}{% endif %}
 			class="{{ class }}"

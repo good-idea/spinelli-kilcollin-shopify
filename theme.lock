@@ -171,7 +171,7 @@ snippets/article-loop.liquid:
   development: 2017-05-19T12:39:51-07:00   ee803be9255a0ac03831ac19b25ffc05
   production: 2017-03-23T18:21:49-07:00   ee803be9255a0ac03831ac19b25ffc05
 snippets/cloudinary-image.liquid:
-  development: 2018-06-04T16:27:19-07:00   e190d5d0f7914e6e3d2e580937db6211
+  development: 2018-06-05T11:44:41-07:00   b6507b69730467a1723ead0be9485c7d
   production: 2018-05-29T16:53:28-07:00   4a03c6d26c2078b9322cb49f7121f327
 snippets/collection-grid-item.liquid:
   development: 2017-02-13T01:30:46-08:00
