@@ -155,7 +155,7 @@ section.product {
 	.product__main {
 		display: block;
 
-		.zoom__main {
+		.zoom__frame {
 			pointer-events: none;
 		}
 
@@ -204,6 +204,10 @@ section.product {
 			width: 33%;
 			padding: 0 1rem;
 		}
+	}
+
+	.zoom__thumbs {
+		padding-right: 0;
 	}
 
 	.product__sizing-info {

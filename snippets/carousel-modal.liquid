@@ -1,0 +1,19 @@
+<div class="zoom__carousel-modal" data-modal-id="{{ id }}">
+	<button class="ex"></button>
+	<div class="carousel" data-carousel-id="{{ id }}-carousel" data-pinch-zoom-enabled="true">
+		<div class="carousel__frame">
+			<div class="carousel__slides">
+				{% for image in images %}
+					<div class="carousel__slide slide">
+						{% include 'product-image-srcset' with
+							image: image,
+							preload: true,
+							sizes: "500vw"
+						%}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+

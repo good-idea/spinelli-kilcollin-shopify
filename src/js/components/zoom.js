@@ -72,7 +72,7 @@ function buildZoom(element, publisher) {
 function buildGallery(element, publisher) {
 	const mainContainer = element instanceof $ ? element : $(element)
 	const frames = []
-	const frameDivs = mainContainer.find('.zoom__frame')
+	const frameDivs = mainContainer.find('.zoom__frame-wrapper')
 	const frameThumbs = mainContainer.find('.zoom__thumb')
 	const currentFrame = 0
 

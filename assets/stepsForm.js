@@ -1,2 +1,233 @@
-!function t(e,s,i){function n(o,u){if(!s[o]){if(!e[o]){var a="function"==typeof require&&require;if(!u&&a)return a(o,!0);if(r)return r(o,!0);var l=new Error("Cannot find module '"+o+"'");throw l.code="MODULE_NOT_FOUND",l}var h=s[o]={exports:{}};e[o][0].call(h.exports,function(t){return n(e[o][1][t]||t)},h,h.exports,t,e,s,i)}return s[o].exports}for(var r="function"==typeof require&&require,o=0;o<i.length;o++)n(i[o]);return n}({"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/stepsForm.js":[function(t,e,s){"use strict";!function(t){function e(t,e){for(var s in e)e.hasOwnProperty(s)&&(t[s]=e[s]);return t}function s(t,s){this.el=t,this.options=e({},this.options),e(this.options,s),this._init()}var i={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd",msTransition:"MSTransitionEnd",transition:"transitionend"},n=i[Modernizr.prefixed("transition")],r={transitions:Modernizr.csstransitions};s.prototype.options={onSubmit:function(){return!1}},s.prototype._init=function(){this.current=0,this.questions=[].slice.call(this.el.querySelectorAll("ol.questions > li")),this.questionsCount=this.questions.length,classie.addClass(this.questions[0],"current"),this.ctrlNext=this.el.querySelector("button.next"),this.progress=this.el.querySelector("div.progress"),this.questionStatus=this.el.querySelector("span.number"),this.currentNum=this.questionStatus.querySelector("span.number-current"),this.currentNum.innerHTML=Number(this.current+1),this.totalQuestionNum=this.questionStatus.querySelector("span.number-total"),this.totalQuestionNum.innerHTML=this.questionsCount,this.error=this.el.querySelector("span.error-message"),this._initEvents()},s.prototype._initEvents=function(){var t=this,e=this.questions[this.current].querySelector("input"),s=function s(){e.removeEventListener("focus",s),classie.addClass(t.ctrlNext,"show")};e.addEventListener("focus",s),this.ctrlNext.addEventListener("click",function(e){e.preventDefault(),t._nextQuestion()}),document.addEventListener("keydown",function(e){13===(e.keyCode||e.which)&&(e.preventDefault(),t._nextQuestion())}),this.el.addEventListener("keydown",function(t){9===(t.keyCode||t.which)&&t.preventDefault()})},s.prototype._nextQuestion=function(){if(!this._validade())return!1;this.current===this.questionsCount-1&&(this.isFilled=!0),this._clearError();var t=this.questions[this.current];if(++this.current,this._progress(),!this.isFilled){this._updateQuestionNumber(),classie.addClass(this.el,"show-next");var e=this.questions[this.current];classie.removeClass(t,"current"),classie.addClass(e,"current")}var s=this,i=function t(i){r.transitions&&this.removeEventListener(n,t),s.isFilled?s._submit():(classie.removeClass(s.el,"show-next"),s.currentNum.innerHTML=s.nextQuestionNum.innerHTML,s.questionStatus.removeChild(s.nextQuestionNum),e.querySelector("input").focus())};r.transitions?this.progress.addEventListener(n,i):i()},s.prototype._progress=function(){this.progress.style.width=this.current*(100/this.questionsCount)+"%"},s.prototype._updateQuestionNumber=function(){this.nextQuestionNum=document.createElement("span"),this.nextQuestionNum.className="number-next",this.nextQuestionNum.innerHTML=Number(this.current+1),this.questionStatus.appendChild(this.nextQuestionNum)},s.prototype._submit=function(){this.options.onSubmit(this.el)},s.prototype._validade=function(){return""!==this.questions[this.current].querySelector("input").value||(this._showError("EMPTYSTR"),!1)},s.prototype._showError=function(t){var e="";switch(t){case"EMPTYSTR":e="Please fill the field before continuing";break;case"INVALIDEMAIL":e="Please fill a valid email address"}this.error.innerHTML=e,classie.addClass(this.error,"show")},s.prototype._clearError=function(){classie.removeClass(this.error,"show")},t.stepsForm=s}(window)},{}]},{},["/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/stepsForm.js"]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/stepsForm.js":[function(require,module,exports){
+'use strict';
+
+;(function (window) {
+	'use strict';
+
+	var transEndEventNames = {
+		WebkitTransition: 'webkitTransitionEnd',
+		MozTransition: 'transitionend',
+		OTransition: 'oTransitionEnd',
+		msTransition: 'MSTransitionEnd',
+		transition: 'transitionend'
+	},
+	    transEndEventName = transEndEventNames[Modernizr.prefixed('transition')],
+	    support = { transitions: Modernizr.csstransitions };
+
+	function extend(a, b) {
+		for (var key in b) {
+			if (b.hasOwnProperty(key)) {
+				a[key] = b[key];
+			}
+		}
+		return a;
+	}
+
+	function stepsForm(el, options) {
+		this.el = el;
+		this.options = extend({}, this.options);
+		extend(this.options, options);
+		this._init();
+	}
+
+	stepsForm.prototype.options = {
+		onSubmit: function onSubmit() {
+			return false;
+		}
+	};
+
+	stepsForm.prototype._init = function () {
+		// current question
+		this.current = 0;
+
+		// questions
+		this.questions = [].slice.call(this.el.querySelectorAll('ol.questions > li'));
+		// total questions
+		this.questionsCount = this.questions.length;
+		// show first question
+		classie.addClass(this.questions[0], 'current');
+
+		// next question control
+		this.ctrlNext = this.el.querySelector('button.next');
+
+		// progress bar
+		this.progress = this.el.querySelector('div.progress');
+
+		// question number status
+		this.questionStatus = this.el.querySelector('span.number');
+		// current question placeholder
+		this.currentNum = this.questionStatus.querySelector('span.number-current');
+		this.currentNum.innerHTML = Number(this.current + 1);
+		// total questions placeholder
+		this.totalQuestionNum = this.questionStatus.querySelector('span.number-total');
+		this.totalQuestionNum.innerHTML = this.questionsCount;
+
+		// error message
+		this.error = this.el.querySelector('span.error-message');
+
+		// init events
+		this._initEvents();
+	};
+
+	stepsForm.prototype._initEvents = function () {
+		var self = this,
+
+		// first input
+		firstElInput = this.questions[this.current].querySelector('input'),
+
+		// focus
+		onFocusStartFn = function onFocusStartFn() {
+			firstElInput.removeEventListener('focus', onFocusStartFn);
+			classie.addClass(self.ctrlNext, 'show');
+		};
+
+		// show the next question control first time the input gets focused
+		firstElInput.addEventListener('focus', onFocusStartFn);
+
+		// show next question
+		this.ctrlNext.addEventListener('click', function (ev) {
+			ev.preventDefault();
+			self._nextQuestion();
+		});
+
+		// pressing enter will jump to next question
+		document.addEventListener('keydown', function (ev) {
+			var keyCode = ev.keyCode || ev.which;
+			// enter
+			if (keyCode === 13) {
+				ev.preventDefault();
+				self._nextQuestion();
+			}
+		});
+
+		// disable tab
+		this.el.addEventListener('keydown', function (ev) {
+			var keyCode = ev.keyCode || ev.which;
+			// tab
+			if (keyCode === 9) {
+				ev.preventDefault();
+			}
+		});
+	};
+
+	stepsForm.prototype._nextQuestion = function () {
+		if (!this._validade()) {
+			return false;
+		}
+
+		// check if form is filled
+		if (this.current === this.questionsCount - 1) {
+			this.isFilled = true;
+		}
+
+		// clear any previous error messages
+		this._clearError();
+
+		// current question
+		var currentQuestion = this.questions[this.current];
+
+		// increment current question iterator
+		++this.current;
+
+		// update progress bar
+		this._progress();
+
+		if (!this.isFilled) {
+			// change the current question number/status
+			this._updateQuestionNumber();
+
+			// add class "show-next" to form element (start animations)
+			classie.addClass(this.el, 'show-next');
+
+			// remove class "current" from current question and add it to the next one
+			// current question
+			var nextQuestion = this.questions[this.current];
+			classie.removeClass(currentQuestion, 'current');
+			classie.addClass(nextQuestion, 'current');
+		}
+
+		// after animation ends, remove class "show-next" from form element and change current question placeholder
+		var self = this,
+		    onEndTransitionFn = function onEndTransitionFn(ev) {
+			if (support.transitions) {
+				this.removeEventListener(transEndEventName, onEndTransitionFn);
+			}
+			if (self.isFilled) {
+				self._submit();
+			} else {
+				classie.removeClass(self.el, 'show-next');
+				self.currentNum.innerHTML = self.nextQuestionNum.innerHTML;
+				self.questionStatus.removeChild(self.nextQuestionNum);
+				// force the focus on the next input
+				nextQuestion.querySelector('input').focus();
+			}
+		};
+
+		if (support.transitions) {
+			this.progress.addEventListener(transEndEventName, onEndTransitionFn);
+		} else {
+			onEndTransitionFn();
+		}
+	};
+
+	// updates the progress bar by setting its width
+	stepsForm.prototype._progress = function () {
+		this.progress.style.width = this.current * (100 / this.questionsCount) + '%';
+	};
+
+	// changes the current question number
+	stepsForm.prototype._updateQuestionNumber = function () {
+		// first, create next question number placeholder
+		this.nextQuestionNum = document.createElement('span');
+		this.nextQuestionNum.className = 'number-next';
+		this.nextQuestionNum.innerHTML = Number(this.current + 1);
+		// insert it in the DOM
+		this.questionStatus.appendChild(this.nextQuestionNum);
+	};
+
+	// submits the form
+	stepsForm.prototype._submit = function () {
+		this.options.onSubmit(this.el);
+	};
+
+	// TODO (next version..)
+	// the validation function
+	stepsForm.prototype._validade = function () {
+		// current question´s input
+		var input = this.questions[this.current].querySelector('input').value;
+		if (input === '') {
+			this._showError('EMPTYSTR');
+			return false;
+		}
+
+		return true;
+	};
+
+	// TODO (next version..)
+	stepsForm.prototype._showError = function (err) {
+		var message = '';
+		switch (err) {
+			case 'EMPTYSTR':
+				message = 'Please fill the field before continuing';
+				break;
+			case 'INVALIDEMAIL':
+				message = 'Please fill a valid email address';
+				break;
+			// ...
+		}
+		this.error.innerHTML = message;
+		classie.addClass(this.error, 'show');
+	};
+
+	// clears/hides the current error message
+	stepsForm.prototype._clearError = function () {
+		classie.removeClass(this.error, 'show');
+	};
+
+	// add to global namespace
+	window.stepsForm = stepsForm;
+})(window);
+
+},{}]},{},["/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/stepsForm.js"])
+
 //# sourceMappingURL=stepsForm.js.map

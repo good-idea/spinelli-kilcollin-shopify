@@ -24,6 +24,7 @@ $grey4: rgb(33, 33, 33);
 	color: $grey3;
 }
 
+@import 'zoom';
 @import 'type';
 @import 'icons';
 @import 'ui';
@@ -107,6 +108,10 @@ body {
 	&:after {
 		right: 0;
 	}
+}
+
+.noTransition {
+	transition: initial;
 }
 
 /*

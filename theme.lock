@@ -57,10 +57,10 @@ assets/cart.svg.liquid:
   development: 2017-02-02T13:12:06-08:00   debed3e55e808dd299c78e2ba6f2f4f8
   production: 2017-02-13T12:20:03-08:00   debed3e55e808dd299c78e2ba6f2f4f8
 assets/classie.js:
-  development: 2018-06-04T16:14:49-07:00   a20c2ea3c39fe79c360ecc477d0f6e55
+  development: 2018-06-22T14:06:37-07:00   a20c2ea3c39fe79c360ecc477d0f6e55
   production: 2018-01-03T13:15:16-08:00   5702464d81eeb105c7572489eb964aff
 assets/classie.js.map:
-  development: 2018-06-04T16:14:47-07:00   9ad2bfb2f0fa619e10c70e3ad85ed220
+  development: 2018-06-22T14:06:36-07:00   9ad2bfb2f0fa619e10c70e3ad85ed220
   production: 2018-01-03T13:15:13-08:00   abb6b70f877b299984275defb89d68fe
 assets/close_ico_dropahint.png:
   development: 2017-11-16T16:26:25-08:00   506189c5d029d377076f43397afd73bd
@@ -96,22 +96,22 @@ assets/main copy.js:
   development: 2017-02-02T21:40:39-08:00
   production: 2017-02-13T12:20:05-08:00
 assets/main.css:
-  development: 2018-06-22T12:18:42-07:00   3999e2b17b8e0d069160df34fa42b345
+  development: 2018-06-22T19:08:40-07:00   33105ac488bd65b2f79a3982c00bc82b
   production: 2018-05-29T16:53:28-07:00   05995b454ac81bacfe3b2a87a272ec91
 assets/main.css.map:
-  development: 2018-06-22T12:18:41-07:00   87c63c1acbad210d8aae66b635333a2c
+  development: 2018-06-22T19:08:39-07:00   36f5e5fa8e1c37ba1714210dbca83604
   production: 2018-05-29T16:53:34-07:00   284b08386ea90a407c235a8f49dbb89a
 assets/main.js:
-  development: 2018-06-22T12:18:46-07:00   ea7cf8c244f37e97cf6d9937583ec77d
+  development: 2018-06-22T21:40:45-07:00   9529fc7052850bd6da8225d9a9d9e2ba
   production: 2018-04-23T15:45:14-07:00   cdfa02264c9e0cbd5a80288a61bad1cd
 assets/main.js.map:
-  development: 2018-06-22T12:18:48-07:00   ea6a989c0bd53e40543c38734037a0b0
+  development: 2018-06-22T21:40:44-07:00   eea757bfcdb50f3e987685290bf20c0f
   production: 2018-04-23T15:45:08-07:00   7141023157599e8d1ed0096cc12cf496
 assets/modernizr.custom.js:
-  development: 2018-06-04T16:14:49-07:00   1d9f9ca889d3634c89a1e026c7db55e1
+  development: 2018-06-22T14:06:38-07:00   1d9f9ca889d3634c89a1e026c7db55e1
   production: 2018-01-03T13:15:14-08:00   09a8d3ced3e35cdf147544e19acb5701
 assets/modernizr.custom.js.map:
-  development: 2018-06-04T16:14:49-07:00   d925664edce7ac0f1b746491f279e559
+  development: 2018-06-22T14:06:38-07:00   d925664edce7ac0f1b746491f279e559
   production: 2018-01-03T13:15:15-08:00   bef0e1c587ffdd2f9cac8f58fcde90d5
 assets/modernizr.custom.min.js:
   development: 2017-07-24T15:49:28-07:00   f35ae39393d2a22ebee0b3e2aa45f826
@@ -135,10 +135,10 @@ assets/spk-logotype.svg:
   development: 2017-02-13T00:13:42-08:00   a665d6bdf39f4feca1d48abcb942fb9a
   production: 2017-02-13T12:20:07-08:00   a665d6bdf39f4feca1d48abcb942fb9a
 assets/stepsForm.js:
-  development: 2018-06-04T16:14:50-07:00   12b3edf3f8b07e1e0b1fbb3f7d84773b
+  development: 2018-06-22T14:06:38-07:00   12b3edf3f8b07e1e0b1fbb3f7d84773b
   production: 2018-01-03T13:15:18-08:00   d1f384d4ee2e3c748b2ef813d9045c12
 assets/stepsForm.js.map:
-  development: 2018-06-04T16:14:48-07:00   dd9ba6df075b15a9a6f0aeaefd9f95bf
+  development: 2018-06-22T14:06:36-07:00   dd9ba6df075b15a9a6f0aeaefd9f95bf
   production: 2018-01-03T13:15:18-08:00   d6c05d4853a1d06a954c03a9cb4a7dac
 assets/style.scss.liquid:
   development: 2018-04-23T12:18:47-07:00   15238e7dc4e524e3b148665de0b4943c
@@ -156,7 +156,7 @@ config/settings_schema.json:
   development: 2018-04-23T12:19:02-07:00   d1ad1cc1aa80c2dce482d2437ce35574
   production: 2018-04-23T12:40:35-07:00   d1ad1cc1aa80c2dce482d2437ce35574
 layout/theme.liquid:
-  development: 2018-04-23T13:41:00-07:00   8e15911f693de52b630b7bd673181286
+  development: 2018-06-22T18:08:44-07:00   8e15911f693de52b630b7bd673181286
   production: 2018-04-23T14:07:58-07:00   8e15911f693de52b630b7bd673181286
 locales/en.default.json:
   development: 2017-02-12T22:15:26-08:00   6fe253911c40ea512cdd66cfcb34dfac
@@ -170,6 +170,8 @@ snippets/article-loop-press.liquid:
 snippets/article-loop.liquid:
   development: 2017-05-19T12:39:51-07:00   ee803be9255a0ac03831ac19b25ffc05
   production: 2017-03-23T18:21:49-07:00   ee803be9255a0ac03831ac19b25ffc05
+snippets/carousel-modal.liquid:
+  development: 2018-06-22T19:09:24-07:00   e6503b3b77a8ace7448610806280c326
 snippets/cloudinary-image.liquid:
   development: 2018-06-05T11:44:41-07:00   b6507b69730467a1723ead0be9485c7d
   production: 2018-05-29T16:53:28-07:00   4a03c6d26c2078b9322cb49f7121f327
@@ -219,10 +221,10 @@ snippets/product-grid-item.liquid:
   development: 2018-04-23T12:18:54-07:00   380297b4c15ee520f9023ead071a92cf
   production: 2017-11-14T15:45:07-08:00   380297b4c15ee520f9023ead071a92cf
 snippets/product-image-srcset.liquid:
-  development: 2018-04-23T12:19:23-07:00   17134c53480c92eba2d71a6ac7bfe0f0
+  development: 2018-06-22T17:27:24-07:00   8c5bbb394ce7e49edd481439acc92523
   production: 2018-04-23T12:40:07-07:00   17134c53480c92eba2d71a6ac7bfe0f0
 snippets/product-image-zoom.liquid:
-  development: 2017-02-13T01:25:40-08:00   9016bbec0d1aaac518556e401c45388b
+  development: 2018-06-22T17:05:42-07:00   5f47cd8b9ef03cfabecf2f820e41a82c
   production: 2017-03-13T17:14:45-07:00   9016bbec0d1aaac518556e401c45388b
 snippets/related-items.liquid:
   development: 2017-03-02T14:59:31-08:00   40ba319941681782ecef5961303bf3fe
@@ -291,7 +293,7 @@ templates/product-original.liquid:
   development: 2017-02-08T16:29:12-08:00   3407b598b3614e5fa92e9740c2982d33
   production: 2017-02-13T12:20:08-08:00   3407b598b3614e5fa92e9740c2982d33
 templates/product.liquid:
-  development: 2018-04-23T12:19:13-07:00   e706b57a7d0ced0ab0a7a3d3abaaefdf
+  development: 2018-06-22T16:05:19-07:00   ff7c8cb24ad49d93ac5cbba055e1b510
   production: 2017-11-01T05:46:07-07:00   e706b57a7d0ced0ab0a7a3d3abaaefdf
 templates/search.liquid:
   development: 2017-03-02T14:56:47-08:00   a0f4ae876bd76728a3e4e6e664160294
