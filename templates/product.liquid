@@ -14,7 +14,7 @@
 
 	<div class="product__main">
 		<div class="product__images zoom-gallery">
-			{% include 'carousel-modal' with images: product.images, id: 'product-carousel-modal' %}
+			{% include 'carousel-modal' with images: product.images, carouselId: 'product-carousel-modal' %}
 			{% if product.images.size > 1 %}
 			<div class="zoom__thumbs">
 				{% for image in product.images %}

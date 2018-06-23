@@ -30,6 +30,7 @@ $grey4: rgb(33, 33, 33);
 @import 'ui';
 @import 'image-blur';
 @import 'video';
+@import 'photoswipe';
 
 /*
 // :::Global Components

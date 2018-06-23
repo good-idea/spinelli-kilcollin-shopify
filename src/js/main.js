@@ -14,7 +14,8 @@ import articlePages from './components/blog'
 import './components/ajaxifyCart'
 import './components/handleRegistrationCaptcha'
 import video from './components/video'
-import { buildZoomOverlays } from './components/zoomOverlay'
+// import { buildZoomOverlays } from './components/zoomOverlay'
+import './components/photoSwipe'
 
 const windo = $(window)
 
@@ -44,7 +45,7 @@ $(() => {
 	buildUx(publisher)
 	mailerSignup()
 	video(publisher)
-	buildZoomOverlays(publisher)
+	// buildZoomOverlays(publisher)
 	// mailerPopup(publisher); // Uncomment to re-enable popup
 })
 

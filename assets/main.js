@@ -25935,7 +25935,76 @@ var init = function init() {
 
 exports.default = init;
 
-},{"axios":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/axios/index.js","npm-zepto":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/npm-zepto/index.js"}],"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/product.js":[function(require,module,exports){
+},{"axios":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/axios/index.js","npm-zepto":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/npm-zepto/index.js"}],"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/photoSwipe.js":[function(require,module,exports){
+'use strict';
+
+var _npmZepto = require('npm-zepto');
+
+var _npmZepto2 = _interopRequireDefault(_npmZepto);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _window = window,
+    PhotoSwipe = _window.PhotoSwipe,
+    PhotoSwipeUI_Default = _window.PhotoSwipeUI_Default; /* eslint-disable camelcase */
+
+(0, _npmZepto2.default)(function () {
+	var galleries = (0, _npmZepto2.default)('.pswp[data-pwsp-id]');
+	var allButtons = (0, _npmZepto2.default)('[data-open-carousel-modal]');
+
+	galleries.forEach(function (gallery) {
+		try {
+			var galleryContainer = void 0;
+			var id = gallery.getAttribute('data-pwsp-id');
+			var images = JSON.parse(gallery.getAttribute('data-images').replace(/\s+/g, '').replace('},]', '}]'));
+			var buttons = allButtons.toArray().filter(function (b) {
+				return b.getAttribute('data-open-carousel-modal') === id;
+			}).map(function (b) {
+				return {
+					element: b,
+					index: parseInt(b.getAttribute('data-carousel-image'), 10) - 1
+				};
+			});
+
+			var openGallery = function openGallery() {
+				var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+				galleryContainer = new PhotoSwipe(gallery, PhotoSwipeUI_Default, images, {
+					index: index
+				});
+				console.log(galleryContainer);
+				galleryContainer.init();
+			};
+
+			buttons.forEach(function (b) {
+				b.element.addEventListener('click', function () {
+					openGallery(b.index);
+				});
+			});
+		} catch (err) {
+			console.warn(err);
+		}
+	});
+
+	// $('.pswp').forEach(el => {
+	// 	try {
+	// 		const images = JSON.parse(
+	// 			el
+	// 				.getAttribute('data-images')
+	// 				.replace(/\s+/g, '')
+	// 				.replace('},]', '}]'),
+	// 		)
+	// 		console.log(images)
+	// 		const gallery = new PhotoSwipe(el, PhotoSwipeUI_Default, images, {})
+	// 		console.log(gallery)
+	// 		gallery.init()
+	// 	} catch (err) {
+	// 		console.warn(err)
+	// 	}
+	// })
+});
+
+},{"npm-zepto":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/npm-zepto/index.js"}],"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/product.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26483,62 +26552,6 @@ function buildZooms(publisher) {
 
 exports.default = buildZooms;
 
-},{"npm-zepto":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/npm-zepto/index.js"}],"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/zoomOverlay.js":[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.buildZoomOverlays = buildZoomOverlays;
-
-var _npmZepto = require('npm-zepto');
-
-var _npmZepto2 = _interopRequireDefault(_npmZepto);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var bindCloseButtons = function bindCloseButtons() {
-	var modals = (0, _npmZepto2.default)('.zoom__carousel-modal');
-
-	modals.forEach(function (modal) {
-		var ex = (0, _npmZepto2.default)(modal).find('.ex')[0];
-		ex.addEventListener('click', function () {
-			modal.classList.remove('open');
-		});
-	});
-};
-
-var bindButtons = function bindButtons(publisher) {
-	var buttons = (0, _npmZepto2.default)('[data-open-carousel-modal]').map(function (i, el) {
-		var modalId = el.getAttribute('data-open-carousel-modal');
-		var modal = (0, _npmZepto2.default)('[data-modal-id="' + modalId + '"]');
-		var carousel = modal.find('.carousel');
-		var carouselId = carousel ? carousel[0].getAttribute('data-carousel-id') : null;
-		var imageIndex = el.getAttribute('data-carousel-image') !== null ? parseInt(el.getAttribute('data-carousel-image'), 10) - 1 : null;
-		return {
-			element: el,
-			modal: modal,
-			carouselId: carouselId,
-			imageIndex: imageIndex
-		};
-	});
-
-	buttons.forEach(function (button) {
-		var handleClick = function handleClick() {
-			button.modal[0].classList.add('open');
-			if (button.imageIndex && button.carouselId) {
-				publisher.emit('carouselMovedToImage', button.carouselId, button.imageIndex);
-			}
-		};
-		button.element.addEventListener('click', handleClick);
-	});
-};
-
-function buildZoomOverlays(publisher) {
-	bindButtons(publisher);
-	bindCloseButtons();
-}
-
 },{"npm-zepto":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/npm-zepto/index.js"}],"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/main.js":[function(require,module,exports){
 'use strict';
 
@@ -26592,7 +26605,7 @@ var _video = require('./components/video');
 
 var _video2 = _interopRequireDefault(_video);
 
-var _zoomOverlay = require('./components/zoomOverlay');
+require('./components/photoSwipe');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26603,6 +26616,7 @@ var windo = (0, _npmZepto2.default)(window);
 	Initialization
  */
 
+// import { buildZoomOverlays } from './components/zoomOverlay'
 function testForTouch() {
 	var el = document.createElement('div');
 	el.setAttribute('ontouchstart', 'return;');
@@ -26625,7 +26639,7 @@ document.documentElement.classList.remove('no-js');
 	(0, _uxbits2.default)(_pubSub2.default);
 	(0, _mailerSignup2.default)();
 	(0, _video2.default)(_pubSub2.default);
-	(0, _zoomOverlay.buildZoomOverlays)(_pubSub2.default);
+	// buildZoomOverlays(publisher)
 	// mailerPopup(publisher); // Uncomment to re-enable popup
 });
 
@@ -26656,7 +26670,7 @@ windo.on('resize', function () {
 	}, 250);
 });
 
-},{"./components/ajaxifyCart":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/ajaxifyCart.js","./components/blog":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/blog.js","./components/carousel":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/carousel.js","./components/handleRegistrationCaptcha":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/handleRegistrationCaptcha.js","./components/header":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/header.js","./components/imageLoad":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/imageLoad.js","./components/mailerSignup":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/mailerSignup.js","./components/product":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/product.js","./components/slider":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/slider.js","./components/uxbits":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/uxbits.js","./components/video":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/video.js","./components/zoom":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/zoom.js","./components/zoomOverlay":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/zoomOverlay.js","./tools/pubSub":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/tools/pubSub.js","npm-zepto":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/npm-zepto/index.js"}],"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/tools/pubSub.js":[function(require,module,exports){
+},{"./components/ajaxifyCart":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/ajaxifyCart.js","./components/blog":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/blog.js","./components/carousel":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/carousel.js","./components/handleRegistrationCaptcha":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/handleRegistrationCaptcha.js","./components/header":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/header.js","./components/imageLoad":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/imageLoad.js","./components/mailerSignup":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/mailerSignup.js","./components/photoSwipe":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/photoSwipe.js","./components/product":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/product.js","./components/slider":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/slider.js","./components/uxbits":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/uxbits.js","./components/video":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/video.js","./components/zoom":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/components/zoom.js","./tools/pubSub":"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/tools/pubSub.js","npm-zepto":"/Users/joseph/Sites/spinelli-kilcollin/shopify/node_modules/npm-zepto/index.js"}],"/Users/joseph/Sites/spinelli-kilcollin/shopify/src/js/tools/pubSub.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
