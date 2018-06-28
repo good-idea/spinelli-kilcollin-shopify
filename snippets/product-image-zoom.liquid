@@ -1,11 +1,15 @@
-<div class="zoom__frame {% if index == 1 %}active {% endif %}">
-	{% include 'product-image-srcset',
-		 sizes: '(max-width: 860px) 100vw, 50vw',
-		 class: 'zoom__display'
-		 image: image %}
 
-	{% include 'product-image-srcset',
-		 sizes: '100vw',
-		 class: 'zoom__zoom',
-		 image: image %}
+<div class="zoom__frame-wrapper {% if index == 1 %}active {% endif %}">
+	<div class="zoom__modal-button" data-open-carousel-modal="{{ carouselId }}" data-carousel-image="{{ index }}"></div>
+	<div class="zoom__frame">
+		{% include 'product-image-srcset',
+			sizes: '(max-width: 860px) 100vw, 50vw',
+			class: 'zoom__display'
+			image: image %}
+
+		{% include 'product-image-srcset',
+			sizes: '100vw',
+			class: 'zoom__zoom',
+			image: image %}
+	</div>
 </div>
