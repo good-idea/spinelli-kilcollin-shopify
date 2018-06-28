@@ -25,6 +25,9 @@
 			</div>
 			{% endif %}
 			<div class="zoom__main">
+				<div class="zoom__icon">
+					<img src="{{ 'zoom-icon.svg' | asset_url }}" alt="zoom" />
+				</div>
 				{% for image in product.images %}
 				{% include 'product-image-zoom', image: image, index: forloop.index, carouselId: 'product-carousel-modal' %}
 				{% endfor %}

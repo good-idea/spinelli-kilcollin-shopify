@@ -19,10 +19,6 @@ import './components/photoSwipe'
 
 const windo = $(window)
 
-/*
-	Initialization
- */
-
 function testForTouch() {
 	const el = document.createElement('div')
 	el.setAttribute('ontouchstart', 'return;')
@@ -48,10 +44,6 @@ $(() => {
 	// buildZoomOverlays(publisher)
 	// mailerPopup(publisher); // Uncomment to re-enable popup
 })
-
-/*
-	Events
- */
 
 windo.on('load', () => {
 	publisher.emit('windowLoaded')

@@ -34,8 +34,12 @@ $(() => {
 						index,
 					},
 				)
-				console.log(galleryContainer)
 				galleryContainer.init()
+				const centerPoint = {
+					x: galleryContainer.viewportSize.x / 2,
+					y: galleryContainer.viewportSize.y / 2,
+				}
+				galleryContainer.zoomTo(0.4, centerPoint, 0)
 			}
 
 			buttons.forEach(b => {

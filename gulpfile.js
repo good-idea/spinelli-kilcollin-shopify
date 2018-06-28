@@ -132,11 +132,6 @@ function makeBundle(bundler, entry, production) {
 					? uglify().on('error', mapError)
 					: gutil.noop(),
 			)
-			.pipe(
-				gutil.env.production || production === true
-					? uglify().on('error', mapError)
-					: gutil.noop(),
-			)
 			.pipe(sourcemaps.write('.')) // Set folder for sourcemaps to output to
 			.pipe(gulp.dest('./assets/')) // Set the output folder
 			.pipe(filter('**/*.js'))

@@ -5,7 +5,8 @@ import $ from 'npm-zepto'
 const minMax = (min, max, num) => Math.max(Math.min(num, max), min)
 
 function roundToNearest(precision = 0, value) {
-	const multiplier = 10 ** precision
+	/* eslint-disable-next-line no-restricted-properties */
+	const multiplier = Math.pow(10, precision)
 	return Math.round(value * multiplier) / multiplier
 }
 
@@ -24,8 +25,8 @@ const debounce = (delay = 50, fn) => {
 }
 
 const calcDistance = (x1, x2, y1, y2) => {
-	const xDiff = (x2 - x1) ** 2
-	const yDiff = (y2 - y1) ** 2
+	const xDiff = Math.pow(x2 - x1, 2)
+	const yDiff = Math.pow(y2 - y1, 2)
 	return Math.sqrt(xDiff + yDiff)
 }
 
