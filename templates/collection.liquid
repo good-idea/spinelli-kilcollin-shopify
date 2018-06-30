@@ -18,9 +18,14 @@
         {% include 'video', video: video, audio: audio, autoplay: true, background: true %}
       {% endif %}
 
-  			{% if collection.description != blank %}
+  			{% if collection.description != blank and
+				collection.metafields.c_f.hide_banner_text != 'true' %}
 			<div class="collection__description">
-				<h1 class="collection__description__title">{{ collection.title }}</h1>
+				<h1 class="collection__description__title">
+					{% if collection.metafields.c_f.hide_banner_title != 'true' %}
+						{{ collection.title }}
+					{% endif %}
+				</h1>
 				<div class="bar"></div>
 				<h5 class="collection__description__body">{{ collection.description }}</h5>
 			</div>

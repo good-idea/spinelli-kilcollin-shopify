@@ -261,7 +261,7 @@ input[type='number'] {
 	}
 }
 
-@supports  {
+@supports {
 	.slider__item-alt {
 		.slide__image {
 			clip-path: initial;
