@@ -234,7 +234,7 @@ snippets/product-grid-item.liquid:
   development: 2018-04-23T12:18:54-07:00   380297b4c15ee520f9023ead071a92cf
   production: 2017-11-14T15:45:07-08:00   380297b4c15ee520f9023ead071a92cf
 snippets/product-image-srcset.liquid:
-  development: 2018-07-16T18:01:39-07:00   49a89ab0a227de50a1bd339b61e7d7ae
+  development: 2018-07-18T14:27:07-07:00   d97eecdbd8cededff0f4ccf4ba02efc9
   production: 2018-07-16T18:04:27-07:00   49a89ab0a227de50a1bd339b61e7d7ae
 snippets/product-image-zoom.liquid:
   development: 2018-06-28T13:45:03-07:00   5f47cd8b9ef03cfabecf2f820e41a82c
