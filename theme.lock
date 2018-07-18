@@ -196,7 +196,7 @@ snippets/collection-listing.liquid:
   production: 2017-02-13T12:20:07-08:00
 snippets/contact-form.liquid:
   development: 2018-04-23T12:19:21-07:00   fe3abad582aafdd18edc7e715358eb09
-  production: 2018-04-23T12:39:45-07:00   fe3abad582aafdd18edc7e715358eb09
+  production: 2018-07-18T15:18:43-07:00   93e1ece53f04330e094bd2776139a6a9
 snippets/featured-page.liquid:
   development: 2018-04-23T12:19:22-07:00   5394f152c2bbaa7d34d12aa25fdf5de5
   production: 2018-04-23T12:39:53-07:00   5394f152c2bbaa7d34d12aa25fdf5de5
@@ -235,7 +235,7 @@ snippets/product-grid-item.liquid:
   production: 2017-11-14T15:45:07-08:00   380297b4c15ee520f9023ead071a92cf
 snippets/product-image-srcset.liquid:
   development: 2018-07-18T14:27:07-07:00   d97eecdbd8cededff0f4ccf4ba02efc9
-  production: 2018-07-16T18:04:27-07:00   49a89ab0a227de50a1bd339b61e7d7ae
+  production: 2018-07-18T14:28:35-07:00   d97eecdbd8cededff0f4ccf4ba02efc9
 snippets/product-image-zoom.liquid:
   development: 2018-06-28T13:45:03-07:00   5f47cd8b9ef03cfabecf2f820e41a82c
   production: 2018-06-28T15:06:45-07:00   5f47cd8b9ef03cfabecf2f820e41a82c
