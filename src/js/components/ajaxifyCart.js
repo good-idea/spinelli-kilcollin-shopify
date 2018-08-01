@@ -6,6 +6,10 @@ import axios from 'axios'
  * tailored to SPK. Requires some custom CSS -- See cart.css
  */
 
+if (window.Shopify && Shopify.StorefrontExpressButtons) {
+	Shopify.StorefrontExpressButtons.initialize()
+}
+
 function formatDollars(num) {
 	return (num / 100).toLocaleString('en-US', {
 		style: 'currency',
