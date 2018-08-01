@@ -247,7 +247,7 @@ snippets/site-nav.liquid:
   production: 2017-02-13T12:20:07-08:00   a6d977dc61bd322ced21e2bec7df62ea
 snippets/sizing-info.liquid:
   development: 2018-04-23T12:18:46-07:00   a5cf38b5dd29af48f507c6c507eb150a
-  production: 2017-11-08T12:15:25-08:00   a5cf38b5dd29af48f507c6c507eb150a
+  production: 2018-08-01T14:32:59-07:00   fd89a4867ea30a748dd3662d71e565da
 snippets/social-links.liquid:
   development: 2017-02-02T13:12:06-08:00   4a6dfe2a44e76037b90aa9eafc1c4b62
   production: 2017-04-06T10:45:01-07:00   4a6dfe2a44e76037b90aa9eafc1c4b62
