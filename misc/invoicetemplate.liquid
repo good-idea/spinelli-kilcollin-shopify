@@ -1,0 +1,478 @@
+<style>
+  @font-face {
+    font-family: 'Leitura News Roman';
+    src:  url(https://cdn.shopify.com/s/files/1/1105/2238/t/18/assets/LeituraNewsRoman.woff2);
+    font-style: normal;
+  }
+
+  .border-none{
+      border: none !important;
+      border-bottom:none;
+  }
+
+  .border-none td{
+      border: none;
+      border-bottom:none!important;
+  }
+
+  .border-bottom{
+    border-bottom: 1px solid black!important;
+  }
+
+  table.bottom-row-padding td{
+      padding: .5em 0 .5em 0;
+  }
+
+  .custom-invoice-wrapper * {
+    font-family: 'Leitura News Roman', Helvetica!important;
+    font-size: 11px;
+  }
+
+  .custom-invoice.wrapper td img{
+    max-width: 85%!important;
+  }
+
+  #img img{
+    max-width: 55%;
+  }
+
+  .order-name{
+      margin-bottom: 0;
+  }
+
+  .no-padding-left {
+    padding-left: 0!important;
+  }
+
+  .no-padding-left td{
+    padding-left: 0!important;
+  }
+
+  .no-padding-left tr td{
+    padding-left: 0!important;
+  }
+
+  .no-padding-horizontal td{
+    padding: auto 0 auto 0;
+  }
+
+  .td-padding td{
+    padding-bottom: 1.5em!important;
+  }
+
+  .vertical-padding td{
+    padding-top: 1em!important;
+    padding-bottom: 1em!important;
+  }
+
+  .lg-font {
+    font-size: 14px;
+  }
+
+  .lg-font td{
+    font-size: 14px;
+  }
+
+  .bottom-disclaimer{
+    margin-top: 3em;
+  }
+
+  .bottom-disclaimer p{
+    font-size: 12px!important;
+    color: darkred;
+  }
+
+  .table-highlight{
+    background-color: whitesmoke;
+  }
+
+  .table-highlight td{
+    padding: 1em!important;
+  }
+
+  .skinny-table{
+    width: 90%!important;
+    margin-left: 5%!important;
+  }
+
+</style>
+
+<div class="custom-invoice-wrapper">
+
+<h1>SK</h1>
+
+<table class="table-tabular border-none lg-font"
+       style="margin-bottom: .5em;">
+    <tr>
+        <td colspan="2">
+            <h3 class="order-name">{{ order_name }}</h3>
+             {{ "now" | date: "%B %e %Y at %I:%M %p" }}
+            <br>
+            from {{ shop_name }}
+        </td>
+        <td colspan="2" style="padding-top: 1.5em; display: flex;">
+          <em class="lg-font">{{ fulfillment_status | "capitalize" }}</em>
+        </td>
+    </tr>
+</table>
+
+<!-- item details -->
+
+<table
+  class="table-highlight table-tabular border-none vertical-padding"
+  style="border: 1px solid black!important; margin: 0 0 .5em 0;"
+>
+  <col width=25%><col width=25%><col width=25%><col width=25%>
+  <tbody>
+    {% for line_item in line_items %}
+
+      <tr>
+        <td colspan="2" id="img">
+          {% if line_item.product.featured_image %}
+            {{ line_item.product.featured_image | product_img_url: 'medium' | img_tag }}
+          {% else %}
+            <img src="https://cdn.shopify.com/s/files/1/1105/2238/files/Custom-Block-2.jpg?7648608520343452970" alt="">
+          {% endif %}
+        </td>
+        <td colspan="2" valign="top" style="padding-left: 0;">
+          {% if line_item.product_title contains 'Custom' %}
+            Custom order for {{ customer.name }}
+          {% else %}
+            {{ line_item.product_title }}
+          {% endif %}
+          <br>
+
+          <!-- SIZE -->
+          {% if line_item.variant.option1 %}
+            <br>
+            <em>Options</em>
+            <br>
+            {% if line_item.variant.option1 %}
+              {{line_item.product.options[0]}}:
+              <br>
+              {{ line_item.variant.option1 }}
+            {% endif %}
+            {% if line_item.variant.option2 %}
+              {{line_item.product.options[1]}}:
+              <br>
+              {{ line_item.variant.option2 }}
+            {% endif %}
+
+            {% if line_item.variant.option3 %}
+              {{line_item.product.options[2]}}:
+              <br>
+              {{ line_item.variant.option3 }}
+            {% endif %}
+          {% endif %}
+
+          <br>
+          <br>
+          DESCRIPTION
+          <br>
+          <br>
+          {% if line_item.product_title contains 'Custom' %}
+            {{ line_item.product_title }}
+          {% else %}
+            {% assign description  =  line_item.product.description | split: "All of our jewelry is individually made to order in Los Angeles" %}
+            {{ description[0] }}
+          {% endif %}
+
+        </td>
+      </tr>
+      <tr>
+        <!-- <td colspan="1">&nbsp;</td> -->
+        <td colspan="4" style="padding-bottom: 0!important;">
+          <div style="border-bottom: 1px solid transparent; width: 5%; float: left;"></div>
+          <div style="float: left; margin-left: 0; border-bottom: 1px solid #000!important; width: 90%;"></div>
+          <div style="width: 15%;"></div>
+          &nbsp;
+        </td>
+        <!-- <td colspan="1">&nbsp;</td> -->
+      </tr>
+      <tr>
+        <td colspan="4">
+          ITEM DETAILS
+        </td>
+      </tr>
+      <tr class="td-padding" style="border-bottom: 1px solid black; margin-bottom: .5em;">
+        <td valign="top">
+            <em>Quantity</em>
+            <br>
+            {{ line_item.quantity }} x
+        </td>
+        <td valign="top">
+          <em>Item</em>
+          <br>
+          {% if line_item.product_title contains 'Custom' %}
+            Custom order for {{ customer.name }}
+          {% else %}
+            {{ line_item.product_title }}
+          {% endif %}
+        </td>
+        <td>
+            {% if line_item.variant.option1 %}
+              <em>Options</em>
+              <br>
+              {% if line_item.variant.option1 %}
+                {{line_item.product.options[0]}}:
+                <br>
+                {{ line_item.variant.option1 }}
+              {% endif %}
+              {% if line_item.variant.option2 %}
+                {{line_item.product.options[1]}}:
+                <br>
+                {{ line_item.variant.option2 }}
+              {% endif %}
+
+              {% if line_item.variant.option3 %}
+                {{line_item.product.options[2]}}:
+                <br>
+                {{ line_item.variant.option3 }}
+              {% endif %}
+            {% endif %}
+        </td>
+        <td valign="top">
+           <em>Price</em>
+           <br>
+            {% if line_item.original_price != line_item.price %}
+              <s>{{ line_item.original_price | money }}</s>
+            {% endif %}
+            {{ line_item.price | money }}
+        </td>
+        <!-- <td colspan="2" style="padding-left: 0;">
+            {{ line_item.price | times: line_item.quantity | money }}
+        </td> -->
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- TRANSACTION DETAILS -->
+<table class="skinny-table table-tabular border-none vertical-padding" style="border-bottom: 1px solid black!important;">
+  <col width=25%><col width=25%><col width=25%><col width=25%>
+  <tbody>
+    <tr>
+      <td>TRANSACTION DETAILS</td>
+    </tr>
+    <tr>
+      <td><em>Type</em></td>
+      <td><em>Amount</em></td>
+      <td><em>Kind</em></td>
+      <td><em>Status</em></td>
+    </tr>
+
+    {% for transaction in transactions %}
+    <tr>
+      <td>{{ transaction.gateway | payment_method }}</td>
+      <td>{{ transaction.amount | money }}</td>
+      <td>{{ transaction.kind }}</td>
+      <td>{{ transaction.status }}</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+<!-- PAYMENT DETAILS-->
+
+<table class="skinny-table border-none bottom-row-padding vertical-padding" style="margin: 0 0 1.5em 0; width: 100%;">
+  <col width=25%><col width=25%><col width=25%><col width=25%>
+  <tr>
+    <td>PAYMENT DETAILS</td>
+  </tr>
+  <tr>
+    <td>Subtotal</td>
+    <td>
+    {% assign total_quantity = 0 %}
+    {% for line_item in line_items %}
+        {% assign total_quantity = total_quantity | plus: line_item.quantity %}
+    {% endfor %}
+        {{ total_quantity }} {{ total_quantity | pluralize: 'item', 'items'  }}
+    </td>
+    <td colspan="2">
+        {{ subtotal_price | money }}
+    </td>
+  </tr>
+  {% for discount in discounts %}
+  <tr>
+      <td colspan="3">Includes discount "{{ discount.code }}"</td>
+      <td>-{{ discount.savings | money }}</td>
+  </tr>
+  {% endfor %}
+
+  <tr style="padding: .5em;">
+    <td>
+        Shipping
+    </td>
+    <td>
+        {{ shipping_line.title }}
+    </td>
+    <td colspan="2">
+        {% if shipping_line.price %}
+          {{ shipping_line.price | money }}
+        {% else %}
+          $0.00
+        {% endif %}
+    </td>
+  </tr>
+  <tr style="padding: .5em;">
+    <td>
+        Tax:
+    </td>
+    <td>&nbsp;</td>
+    <td colspan="2">
+        {{ tax_price | money }}
+    </td>
+  </tr>
+  <tr style="padding: .5em;">
+    <td>
+        <strong>Total Price</strong>
+    </td>
+    <td>&nbsp;</td>
+    <td colspan="2">
+        <strong>
+            {{ total_price | money }}
+        </strong>
+    </td>
+  </tr>
+  <tr style="padding: .5em;">
+    <td><strong>Total Paid by Customer</strong></td>
+    <td>&nbsp;</td>
+    <td colspan="2"><strong>{{ total_paid | money }}</strong></td>
+  </tr>
+  <tr class="td-padding" style="padding: .5em; border-bottom: 1px solid black!important;">
+    <td><strong>Outstanding Amount</strong></td>
+    <td>&nbsp;</td>
+    <td colspan="2"><strong>{{ total_price | minus: total_paid | money }}</strong></td>
+  </tr>
+</table>
+
+<!-- NOTE -->
+
+{% if note %}
+<table class="skinny-table table-tabular border-none">
+  <col width=25%><col width=25%><col width=25%><col width=25%>
+  <tr>
+    <td colspan="4">NOTE:</td>
+  </tr>
+  <tr>
+    <td colspan="4">{{ note }}</td>
+  </tr>
+</table>
+{% endif %}
+
+<!-- CUSTOMER INFO -->
+
+<table class="skinny-table table-tabular border-none">
+  <col width=25%><col width=25%><col width=25%><col width=25%>
+  <tr>
+     <td style="padding-left: 0; padding-right: 0;" valign="top">
+            <table class="no-padding-left" style="width: 100%;">
+                <tr><td style="border-bottom: 1px solid black!important;">Customer</td></tr>
+                <tr>
+                    <td>
+                        {{ customer.name }}
+                    </td>
+                </tr>
+                <tr style="margin-top: 25px;">
+                    <td>
+                        {{ customer.orders_count }} {{ customer.orders_count | pluralize: 'order', 'orders' }}
+                    </td>
+                </tr>
+            </table>
+            <table class="no-padding-left" style="margin-top: 25px; width: 100%;">
+                <tr>
+                    <td style="border-bottom: 1px solid black!important;">
+                        Contact
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ customer.email }}
+                    </td>
+                </tr>
+            </table>
+     </td>
+     <td style="padding: 0;">
+        &nbsp;
+     </td>
+     <td valign="top" class="no-padding-left">
+     {% if shipping_address %}
+        <table class="border-none no-padding-left" style="width: 100%;">
+            <tr>
+                <td style="border-bottom: 1px solid black!important;">
+                    Shipping Address
+                </td>
+
+            </tr>
+            {% if shipping_address.company %}
+              <tr>
+                <td>
+                  {{ shipping_address.company }}
+                </td>
+              </tr>
+            {% endif %}
+            {% if shipping_address.street %}
+            <tr>
+              <td>
+                  {{ shipping_address.street }}
+              </td>
+            </tr>
+            {% endif %}
+            {% if shipping_address.city or shipping_address.province_code or shipping_address.zip or shipping_address.country %}
+            <tr>
+                <td>
+                    {{ shipping_address.city }} {{ shipping_address.province_code }} {{ shipping_address.zip }} {{ shipping_address.country }}
+                </td>
+            </tr>
+            {% endif %}
+        </table>
+     {% endif %}
+     </td>
+     <td valign="top" style="padding-right: 0;">
+        <table class="border-none no-padding-horizontal" style="width: 100%;">
+            <tr>
+                <td style="border-bottom: 1px solid black!important;">
+                    Billing Address
+                </td>
+            </tr>
+
+            {% if
+                billing_address.street == shipping_address.street
+               and
+                billing_address.city   == shipping_address.city
+               and
+                billing_address.zip    == shipping_address.zip
+            %}
+            <tr>
+                <td>
+                Same as shipping address
+                </td>
+            </tr>
+
+            {% else %}
+            <tr>
+                <td>
+                {{billing_address.first_name}} {{billing_address.last_name}}
+                <br>
+                {{ billing_address.street }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 {{ billing_address.city }} {{ billing_address.province_code }} {{ billing_address.zip }} {{ billing_address.country }}
+                </td>
+            </tr>
+
+            {% endif %}
+
+        </table>
+     </td>
+  </tr>
+</table>
+
+  <div class="bottom-disclaimer skinny-table">
+    <p>PLEASE NOTE Custom special orders are final sale, therefore not subject to refund, and may only be exchanged within the first two weeks of delivery. Returns, resizes, and adjustments on standard products will be processed free of charge within the first two weeks of delivery. After those two weeks, additional charges may apply. Please contact Spinelli Kilcollin for more information.</p>
+  </div>
+</div>
