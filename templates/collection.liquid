@@ -20,7 +20,11 @@
 
   			{% if collection.description != blank and
 				collection.metafields.c_f.hide_banner_text != 'true' %}
-			<div class="collection__description">
+			<div class="collection__description"
+        {% if collection.metafields.c_f.banner_text_color %}
+          style="color: {{ collection.metafields.c_f.banner_text_color }}"
+        {% endif %}
+      >
 				<h1 class="collection__description__title">
 					{% if collection.metafields.c_f.hide_banner_title != 'true' %}
 						{{ collection.title }}
@@ -33,16 +37,22 @@
     </div>
   {% endif %}
 
-  <div class="grid">
+  <div class="grid {% if collection.metafields.c_f.grid_layout %}collection-grid--{{collection.metafields.c_f.grid_layout}}{% endif %}">
     {% if collection.metafields.c_f.image_1 != nil %}
     <div class="grid__item collection__featured-item collection__featured-image">
       <div class="grid__image">
-      {% 
-        include 'cloudinary-image' with
-        cloudinary_id: collection.metafields.c_f.image_1,
-        sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-        preload: true
-			%}
+
+      {% if collection.metafields.c_f.image_1_type == 'video' %}
+        {% assign video = collection.metafields.c_f.image_1 %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+      {% else %}      
+        {% 
+          include 'cloudinary-image' with
+          cloudinary_id: collection.metafields.c_f.image_1,
+          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
+          preload: true
+        %}
+      {% endif %}
       </div>
     </div>
     {% endif %}
@@ -50,12 +60,17 @@
     {% if collection.metafields.c_f.image_2 != nil %}
     <div class="grid__item collection__featured-item collection__featured-image">
       <div class="grid__image">
-      {% 
-        include 'cloudinary-image' with
-        cloudinary_id: collection.metafields.c_f.image_2,
-        sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-        preload: true
-			%}
+      {% if collection.metafields.c_f.image_2_type == 'video' %}
+        {% assign video = collection.metafields.c_f.image_2 %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+      {% else %}      
+        {% 
+          include 'cloudinary-image' with
+          cloudinary_id: collection.metafields.c_f.image_2,
+          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
+          preload: true
+        %}
+      {% endif %}
       </div>
     </div>
     {% endif %}
@@ -63,12 +78,53 @@
     {% if collection.metafields.c_f.image_3 != nil %}
     <div class="grid__item collection__featured-item collection__featured-image">
       <div class="grid__image">
-      {% 
-        include 'cloudinary-image' with
-        cloudinary_id: collection.metafields.c_f.image_3,
-        sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-        preload: true
-			%}
+      {% if collection.metafields.c_f.image_3_type == 'video' %}
+        {% assign video = collection.metafields.c_f.image_3 %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+      {% else %}      
+        {% 
+          include 'cloudinary-image' with
+          cloudinary_id: collection.metafields.c_f.image_3,
+          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
+          preload: true
+        %}
+      {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if collection.metafields.c_f.image_4 != nil %}
+    <div class="grid__item collection__featured-item collection__featured-image">
+      <div class="grid__image">
+      {% if collection.metafields.c_f.image_4_type == 'video' %}
+        {% assign video = collection.metafields.c_f.image_4 %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+      {% else %}      
+        {% 
+          include 'cloudinary-image' with
+          cloudinary_id: collection.metafields.c_f.image_4,
+          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
+          preload: true
+        %}
+      {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if collection.metafields.c_f.image_5 != nil %}
+    <div class="grid__item collection__featured-item collection__featured-image">
+      <div class="grid__image">
+      {% if collection.metafields.c_f.image_5_type == 'video' %}
+        {% assign video = collection.metafields.c_f.image_5 %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+      {% else %}      
+        {% 
+          include 'cloudinary-image' with
+          cloudinary_id: collection.metafields.c_f.image_5,
+          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
+          preload: true
+        %}
+      {% endif %}
       </div>
     </div>
     {% endif %}
