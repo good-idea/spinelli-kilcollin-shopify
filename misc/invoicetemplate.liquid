@@ -247,7 +247,7 @@
   </tbody>
 </table>
 
-<!-- TRANSACTION DETAILS -->
+<!-- TRANSACTION DETAILS
 <table class="skinny-table table-tabular border-none vertical-padding" style="border-bottom: 1px solid black!important;">
   <col width=25%><col width=25%><col width=25%><col width=25%>
   <tbody>
@@ -272,7 +272,7 @@
 
   </tbody>
 </table>
-
+-->
 
 <!-- PAYMENT DETAILS-->
 
@@ -297,7 +297,7 @@
   {% for discount in discounts %}
   <tr>
       <td colspan="3">Includes discount "{{ discount.code }}"</td>
-      <td>-{{ discount.savings | money }}</td>
+      <td>{{ discount.savings | money }}</td>
   </tr>
   {% endfor %}
 
