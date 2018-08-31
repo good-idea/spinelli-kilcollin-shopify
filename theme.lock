@@ -58,10 +58,10 @@ assets/cart.svg.liquid:
   production: 2017-02-13T12:20:03-08:00   debed3e55e808dd299c78e2ba6f2f4f8
 assets/classie.js:
   development: 2018-08-28T17:41:38-07:00   a20c2ea3c39fe79c360ecc477d0f6e55
-  production: 2018-06-28T15:06:45-07:00   21d581e440857812d75852456aadd926
+  production: 2018-08-31T15:54:44-07:00   21d581e440857812d75852456aadd926
 assets/classie.js.map:
   development: 2018-08-28T17:41:36-07:00   9ad2bfb2f0fa619e10c70e3ad85ed220
-  production: 2018-06-28T15:06:44-07:00   db9d1eded7ce9a439ef7006f699d3ccb
+  production: 2018-08-31T15:54:43-07:00   db9d1eded7ce9a439ef7006f699d3ccb
 assets/close_ico_dropahint.png:
   development: 2017-11-16T16:26:25-08:00   506189c5d029d377076f43397afd73bd
   production: 2017-11-01T05:29:01-07:00   506189c5d029d377076f43397afd73bd
@@ -100,22 +100,22 @@ assets/main copy.js:
   production: 2017-02-13T12:20:05-08:00
 assets/main.css:
   development: 2018-08-31T15:48:12-07:00   e82374fbc3b056c76ac886d2fcab2985
-  production: 2018-07-16T18:04:26-07:00   a64e255ed805f7b8bd52a3f052c104a5
+  production: 2018-08-31T16:10:14-07:00   4eb5ea9eccd099a10beadd33712e02a4
 assets/main.css.map:
   development: 2018-08-31T15:48:12-07:00   ece36804b87af43af660890e82340f42
-  production: 2018-07-16T18:04:28-07:00   8a6497e7d6f2add00e730e44efa35aa3
+  production: 2018-08-31T16:10:15-07:00   7dfc2eb33a25e39bcc9a964e41ffd9ba
 assets/main.js:
   development: 2018-08-31T16:04:04-07:00   4e0a9b7e66f1ef887df60b3c86d6e6f2
-  production: 2018-06-28T15:06:45-07:00   1087cbca9f8fc7979884b7a4b9d8fbf4
+  production: 2018-08-31T16:06:15-07:00   8fca970cadb7c38aa9db7559a0e39ae4
 assets/main.js.map:
   development: 2018-08-31T16:04:07-07:00   43d924af12d103d158e3ca2d9495ad6f
-  production: 2018-06-28T15:06:45-07:00   d7a33fcdc36fdc203f727b6e262f8a4f
+  production: 2018-08-31T16:06:14-07:00   93b16118390fb7684ba069752722758c
 assets/modernizr.custom.js:
   development: 2018-08-28T17:41:38-07:00   1d9f9ca889d3634c89a1e026c7db55e1
-  production: 2018-06-28T15:06:42-07:00   6a9e420fb19c2bae820f0a948e9f3fa1
+  production: 2018-08-31T15:54:43-07:00   6a9e420fb19c2bae820f0a948e9f3fa1
 assets/modernizr.custom.js.map:
   development: 2018-08-28T17:41:37-07:00   d925664edce7ac0f1b746491f279e559
-  production: 2018-06-28T15:06:42-07:00   cdeb0a014a8562766c924e74d8cf92d4
+  production: 2018-08-31T15:54:41-07:00   cdeb0a014a8562766c924e74d8cf92d4
 assets/modernizr.custom.min.js:
   development: 2017-07-24T15:49:28-07:00   f35ae39393d2a22ebee0b3e2aa45f826
   production: 2017-11-14T15:17:22-08:00   f35ae39393d2a22ebee0b3e2aa45f826
@@ -145,13 +145,17 @@ assets/spk-logotype.svg:
   production: 2017-02-13T12:20:07-08:00   a665d6bdf39f4feca1d48abcb942fb9a
 assets/stepsForm.js:
   development: 2018-08-28T17:41:39-07:00   12b3edf3f8b07e1e0b1fbb3f7d84773b
-  production: 2018-06-28T15:06:36-07:00   34c80b73831644557667cb5076dadbbc
+  production: 2018-08-31T15:54:44-07:00   34c80b73831644557667cb5076dadbbc
 assets/stepsForm.js.map:
   development: 2018-08-28T17:41:37-07:00   dd9ba6df075b15a9a6f0aeaefd9f95bf
-  production: 2018-06-28T15:06:37-07:00   6cc3043a3cac31d5067ba56ae2baba57
+  production: 2018-08-31T15:54:45-07:00   6cc3043a3cac31d5067ba56ae2baba57
 assets/style.scss.liquid:
   development: 2018-04-23T12:18:47-07:00   15238e7dc4e524e3b148665de0b4943c
   production: 2017-11-06T18:04:10-08:00   15238e7dc4e524e3b148665de0b4943c
+assets/welcome_mat.css:
+  production: 2018-08-22T15:05:49-07:00   55eddd9041c4c638a37a8237c717fc1f
+assets/welcome_mat.js:
+  production: 2018-08-22T15:05:49-07:00   ce154f02412fc7273262da334cad3ebe
 assets/zoom-icon.svg:
   development: 2018-06-28T14:22:49-07:00   ce2ceadea792ebbdc17a9724741093dd
   production: 2018-06-28T15:06:39-07:00   ce2ceadea792ebbdc17a9724741093dd
@@ -169,7 +173,7 @@ config/settings_schema.json:
   production: 2018-04-23T12:40:35-07:00   d1ad1cc1aa80c2dce482d2437ce35574
 layout/theme.liquid:
   development: 2018-06-22T22:49:16-07:00   85595d844f3985ef7dda6e7a569771ad
-  production: 2018-06-28T15:06:37-07:00   85595d844f3985ef7dda6e7a569771ad
+  production: 2018-08-31T12:57:10-07:00   85595d844f3985ef7dda6e7a569771ad
 locales/en.default.json:
   development: 2017-02-12T22:15:26-08:00   6fe253911c40ea512cdd66cfcb34dfac
   production: 2017-02-13T12:20:07-08:00   6fe253911c40ea512cdd66cfcb34dfac
@@ -199,13 +203,13 @@ snippets/contact-form.liquid:
   production: 2018-07-18T15:18:43-07:00   93e1ece53f04330e094bd2776139a6a9
 snippets/featured-page.liquid:
   development: 2018-08-31T15:05:19-07:00   4053f5e183c39922c9cd131f8976268e
-  production: 2018-04-23T12:39:53-07:00   5394f152c2bbaa7d34d12aa25fdf5de5
+  production: 2018-08-31T15:54:40-07:00   4053f5e183c39922c9cd131f8976268e
 snippets/featured-single.liquid:
   development: 2018-08-31T15:05:00-07:00   fef2b29c40f42f4283a6d628a8c9fd1c
-  production: 2018-04-23T12:40:58-07:00   712f5966852c00debf1f14ca3ea558bd
+  production: 2018-08-31T15:54:38-07:00   fef2b29c40f42f4283a6d628a8c9fd1c
 snippets/featured-slider.liquid:
   development: 2018-08-31T15:01:28-07:00   64fd321d8f716bbf495b4c0da0368fae
-  production: 2018-07-16T18:04:27-07:00   7b10cc89c8d45632c03d42f5aeceb699
+  production: 2018-08-31T15:54:40-07:00   64fd321d8f716bbf495b4c0da0368fae
 snippets/findus-contact-form.liquid:
   development: 2018-06-04T16:08:12-07:00   65b5012dee29b019537a542028ed38e1
   production: 2018-02-20T09:51:20-08:00   65b5012dee29b019537a542028ed38e1
@@ -215,6 +219,8 @@ snippets/footer.liquid:
 snippets/header.liquid:
   development: 2017-05-19T12:40:19-07:00   5d176d8e0feefc7c9bd62edea99daf10
   production: 2017-04-06T10:45:16-07:00   5d176d8e0feefc7c9bd62edea99daf10
+snippets/iglobal.liquid:
+  production: 2018-08-27T09:40:20-07:00   684a7f854b8c81c00cec2a1d0da482e1
 snippets/open-graph-tags.liquid:
   development: 2017-04-06T10:34:45-07:00   f5cf94f947792a6c09235ff7a0ccdbd2
   production: 2017-04-06T10:45:17-07:00   f5cf94f947792a6c09235ff7a0ccdbd2
@@ -235,7 +241,7 @@ snippets/product-grid-item.liquid:
   production: 2017-11-14T15:45:07-08:00   380297b4c15ee520f9023ead071a92cf
 snippets/product-image-srcset.liquid:
   development: 2018-08-31T14:58:47-07:00   82e2f4d6231e91da2efc1638720a7bf8
-  production: 2018-07-18T14:28:35-07:00   d97eecdbd8cededff0f4ccf4ba02efc9
+  production: 2018-08-31T15:54:39-07:00   82e2f4d6231e91da2efc1638720a7bf8
 snippets/product-image-zoom.liquid:
   development: 2018-06-28T13:45:03-07:00   5f47cd8b9ef03cfabecf2f820e41a82c
   production: 2018-06-28T15:06:45-07:00   5f47cd8b9ef03cfabecf2f820e41a82c
@@ -256,7 +262,7 @@ snippets/twitter-card.liquid:
   production: 2017-02-13T12:20:07-08:00   d890500f75624d5697d7181e7b187985
 snippets/video.liquid:
   development: 2018-08-31T16:00:19-07:00   5804a3f9070f26f99e8b37f47ce9aad9
-  production: 2018-04-23T12:39:46-07:00   7731bc650374c0fc78af5727f4077c46
+  production: 2018-08-31T16:06:13-07:00   5804a3f9070f26f99e8b37f47ce9aad9
 templates/404.liquid:
   development: 2017-03-14T13:44:19-07:00   ab25a76ed90009386d0e8c0addc8de62
   production: 2017-06-23T13:09:20-07:00   ab25a76ed90009386d0e8c0addc8de62
@@ -274,7 +280,7 @@ templates/cart.liquid:
   production: 2017-03-02T15:23:48-08:00   76615a4b1acf569947e505106bc96e08
 templates/collection.liquid:
   development: 2018-08-31T15:17:18-07:00   6d90a19837526fe6ac8b27987b2e9657
-  production: 2018-06-28T15:06:38-07:00   45c57ccf21fe3cb1d49c2e1cf3c8739e
+  production: 2018-08-31T15:54:41-07:00   6d90a19837526fe6ac8b27987b2e9657
 templates/collection_MW_BACKUP_3026_2.liquid:
   development: 2017-11-16T16:26:27-08:00   d834df588a04142c5dda043838a3f903
   production: 2017-09-27T16:50:46-07:00   d834df588a04142c5dda043838a3f903
@@ -289,7 +295,7 @@ templates/gift_card.liquid:
   production: 2017-02-13T12:20:08-08:00   b01bce4d6b8a5b4620b34ef67c99071c
 templates/index.liquid:
   development: 2018-08-31T15:48:10-07:00   07b420844020cc81879913d08df3481b
-  production: 2017-12-18T14:48:09-08:00   d0e15492effec415cdf3405bd36cdc7f
+  production: 2018-08-31T15:54:43-07:00   07b420844020cc81879913d08df3481b
 templates/list-collections.liquid:
   development: 2017-02-02T13:12:06-08:00   d011f72b56eebbfce957d52067967a8e
   production: 2017-02-13T12:20:08-08:00   d011f72b56eebbfce957d52067967a8e

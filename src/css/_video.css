@@ -39,8 +39,10 @@ video.video--notouch {
 	bottom: 15px;
 	right: 15px;
 	z-index: 100;
-	background-color: white;
-	color: black;
+	background-color: transparent;
+	color: white;
+	border-color: currentColor;
+	font-size: 1.2rem;
 	opacity: 0;
 	transition: 0.2s;
 }
