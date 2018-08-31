@@ -44,7 +44,7 @@
 
       {% if collection.metafields.c_f.image_1_type == 'video' %}
         {% assign video = collection.metafields.c_f.image_1 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
       {% else %}      
         {% 
           include 'cloudinary-image' with
@@ -62,7 +62,7 @@
       <div class="grid__image">
       {% if collection.metafields.c_f.image_2_type == 'video' %}
         {% assign video = collection.metafields.c_f.image_2 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
       {% else %}      
         {% 
           include 'cloudinary-image' with
@@ -80,7 +80,7 @@
       <div class="grid__image">
       {% if collection.metafields.c_f.image_3_type == 'video' %}
         {% assign video = collection.metafields.c_f.image_3 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
       {% else %}      
         {% 
           include 'cloudinary-image' with
@@ -98,7 +98,7 @@
       <div class="grid__image">
       {% if collection.metafields.c_f.image_4_type == 'video' %}
         {% assign video = collection.metafields.c_f.image_4 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
       {% else %}      
         {% 
           include 'cloudinary-image' with
@@ -116,7 +116,7 @@
       <div class="grid__image">
       {% if collection.metafields.c_f.image_5_type == 'video' %}
         {% assign video = collection.metafields.c_f.image_5 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true %}
+        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
       {% else %}      
         {% 
           include 'cloudinary-image' with

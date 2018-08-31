@@ -99,16 +99,16 @@ assets/main copy.js:
   development: 2017-02-02T21:40:39-08:00
   production: 2017-02-13T12:20:05-08:00
 assets/main.css:
-  development: 2018-08-31T12:48:57-07:00   04e41b35a42ed1a3a4eba4ca517a2b26
+  development: 2018-08-31T15:48:12-07:00   e82374fbc3b056c76ac886d2fcab2985
   production: 2018-07-16T18:04:26-07:00   a64e255ed805f7b8bd52a3f052c104a5
 assets/main.css.map:
-  development: 2018-08-31T12:48:56-07:00   0f02c1d466f974302d9b53d6aa082c15
+  development: 2018-08-31T15:48:12-07:00   ece36804b87af43af660890e82340f42
   production: 2018-07-16T18:04:28-07:00   8a6497e7d6f2add00e730e44efa35aa3
 assets/main.js:
-  development: 2018-08-31T12:48:59-07:00   70c49b44058d2c30705affcd5147e3af
+  development: 2018-08-31T15:50:01-07:00   372c00d965f46205c4e203f5d546b8c2
   production: 2018-06-28T15:06:45-07:00   1087cbca9f8fc7979884b7a4b9d8fbf4
 assets/main.js.map:
-  development: 2018-08-31T12:48:59-07:00   be5842f0a640764cd3bc26dc0384aedf
+  development: 2018-08-31T15:50:01-07:00   696b1f311a5bd4c45aca2851a492ba18
   production: 2018-06-28T15:06:45-07:00   d7a33fcdc36fdc203f727b6e262f8a4f
 assets/modernizr.custom.js:
   development: 2018-08-28T17:41:38-07:00   1d9f9ca889d3634c89a1e026c7db55e1
@@ -198,13 +198,13 @@ snippets/contact-form.liquid:
   development: 2018-08-01T14:46:47-07:00   93e1ece53f04330e094bd2776139a6a9
   production: 2018-07-18T15:18:43-07:00   93e1ece53f04330e094bd2776139a6a9
 snippets/featured-page.liquid:
-  development: 2018-04-23T12:19:22-07:00   5394f152c2bbaa7d34d12aa25fdf5de5
+  development: 2018-08-31T15:05:19-07:00   4053f5e183c39922c9cd131f8976268e
   production: 2018-04-23T12:39:53-07:00   5394f152c2bbaa7d34d12aa25fdf5de5
 snippets/featured-single.liquid:
-  development: 2018-04-23T12:18:54-07:00   712f5966852c00debf1f14ca3ea558bd
+  development: 2018-08-31T15:05:00-07:00   fef2b29c40f42f4283a6d628a8c9fd1c
   production: 2018-04-23T12:40:58-07:00   712f5966852c00debf1f14ca3ea558bd
 snippets/featured-slider.liquid:
-  development: 2018-07-16T17:56:44-07:00   7b10cc89c8d45632c03d42f5aeceb699
+  development: 2018-08-31T15:01:28-07:00   64fd321d8f716bbf495b4c0da0368fae
   production: 2018-07-16T18:04:27-07:00   7b10cc89c8d45632c03d42f5aeceb699
 snippets/findus-contact-form.liquid:
   development: 2018-06-04T16:08:12-07:00   65b5012dee29b019537a542028ed38e1
@@ -234,7 +234,7 @@ snippets/product-grid-item.liquid:
   development: 2018-04-23T12:18:54-07:00   380297b4c15ee520f9023ead071a92cf
   production: 2017-11-14T15:45:07-08:00   380297b4c15ee520f9023ead071a92cf
 snippets/product-image-srcset.liquid:
-  development: 2018-07-18T14:27:07-07:00   d97eecdbd8cededff0f4ccf4ba02efc9
+  development: 2018-08-31T14:58:47-07:00   82e2f4d6231e91da2efc1638720a7bf8
   production: 2018-07-18T14:28:35-07:00   d97eecdbd8cededff0f4ccf4ba02efc9
 snippets/product-image-zoom.liquid:
   development: 2018-06-28T13:45:03-07:00   5f47cd8b9ef03cfabecf2f820e41a82c
@@ -255,7 +255,7 @@ snippets/twitter-card.liquid:
   development: 2017-02-02T13:12:06-08:00   d890500f75624d5697d7181e7b187985
   production: 2017-02-13T12:20:07-08:00   d890500f75624d5697d7181e7b187985
 snippets/video.liquid:
-  development: 2018-01-26T13:50:09-08:00   7731bc650374c0fc78af5727f4077c46
+  development: 2018-08-31T15:45:07-07:00   e700ecd476c4df0d3831ccdfa241bda4
   production: 2018-04-23T12:39:46-07:00   7731bc650374c0fc78af5727f4077c46
 templates/404.liquid:
   development: 2017-03-14T13:44:19-07:00   ab25a76ed90009386d0e8c0addc8de62
@@ -273,7 +273,7 @@ templates/cart.liquid:
   development: 2017-03-02T12:15:37-08:00   76615a4b1acf569947e505106bc96e08
   production: 2017-03-02T15:23:48-08:00   76615a4b1acf569947e505106bc96e08
 templates/collection.liquid:
-  development: 2018-08-28T18:14:22-07:00   3b1a1b9b1720928fb56cf45f476e6c85
+  development: 2018-08-31T15:17:18-07:00   6d90a19837526fe6ac8b27987b2e9657
   production: 2018-06-28T15:06:38-07:00   45c57ccf21fe3cb1d49c2e1cf3c8739e
 templates/collection_MW_BACKUP_3026_2.liquid:
   development: 2017-11-16T16:26:27-08:00   d834df588a04142c5dda043838a3f903
@@ -288,7 +288,7 @@ templates/gift_card.liquid:
   development: 2017-02-02T13:12:07-08:00   b01bce4d6b8a5b4620b34ef67c99071c
   production: 2017-02-13T12:20:08-08:00   b01bce4d6b8a5b4620b34ef67c99071c
 templates/index.liquid:
-  development: 2018-04-23T12:19:09-07:00   d0e15492effec415cdf3405bd36cdc7f
+  development: 2018-08-31T15:48:10-07:00   07b420844020cc81879913d08df3481b
   production: 2017-12-18T14:48:09-08:00   d0e15492effec415cdf3405bd36cdc7f
 templates/list-collections.liquid:
   development: 2017-02-02T13:12:06-08:00   d011f72b56eebbfce957d52067967a8e

@@ -1,10 +1,10 @@
 .video__container {
 	position: relative;
-	opacity: 0;
+	opacity: 1;
 	transition: opacity 0.3s;
 
 	video {
-		position: absolute;
+		display: block;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -24,15 +24,17 @@
 	}
 }
 
-.video__container--notouch {
+video.video--notouch {
 	pointer-events: none;
 }
 
+.featured__image-frame .featured__video,
 .featured__video .video__container {
 	@mixin abs-full-size;
 }
 
 .video__unmute {
+	display: none;
 	position: absolute;
 	bottom: 15px;
 	right: 15px;
@@ -41,4 +43,12 @@
 	color: black;
 	opacity: 0;
 	transition: 0.2s;
+}
+
+.featured-items--primary {
+	.video__contianer--showMuteButton {
+		.video__unmute {
+			display: block;
+		}
+	}
 }

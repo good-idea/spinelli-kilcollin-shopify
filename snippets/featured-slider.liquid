@@ -79,19 +79,20 @@
 	<div class="featured__inner">
 		<div class="slider__item">
 			<div class="slider__image-container">
-				<a href="{{ url_one }}">
+				{% if video_one != false %}
+					<div class="featured__video">
+						{% assign video = video_one %}
+						{% include 'video' with video, audio: audio_one, background: true, autoplay: true, linkTo: url_one %}
+						{% assign video = false %}
+					</div>
+				{% else %}
 					{% include 'product-image-srcset' with
-					class: 'slide__image',
-					image: image_one,
-					preload: true %}
-					{% if video_one != false %}
-						<div class="featured__video">
-							{% assign video = video_one %}
-							{% include 'video' with video, audio: audio_one, background: true, autoplay: true %}
-							{% assign video = false %}
-						</div>
-					{% endif %}
-				</a>
+						class: 'slide__image',
+						image: image_one,
+						preload: true,
+						linkTo: url_one 
+					%}
+				{% endif %}
 			</div>
 			<!-- <div class="featured__caption">
 				<h1>{{ caption_one }}</h1>
@@ -111,20 +112,20 @@
 				</svg>
 
 				<div class="slider__overlay slider-set-width">
-					<a href="{{ url_two }}">
+					{% if video_two != false %}
+						<div class="featured__video">
+							{% assign video = video_two %}
+							{% include 'video' with video, audio: audio_two, background: true, autoplay: true, linkTo: url_two %}
+							{% assign video = false %}
+						</div>
+					{% else %}
 						{% include 'product-image-srcset' with
-						class: 'slide__image',
-						image: image_two,
-						preload: true %}
-						{% if video_two != false %}
-							<div class="featured__video">
-								{% assign video = video_two %}
-								{% include 'video' with video, audio: audio_two, background: true, autoplay: true %}
-								{% assign video = false %}
-							</div>
-						{% endif %}
-
-					</a>
+							class: 'slide__image',
+							image: image_two,
+							preload: true
+							linkTo: url_two
+						%}
+					{% endif %}
 				</div>
 			</div>
 			<!-- <div class="featured__caption">

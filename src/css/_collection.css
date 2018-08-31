@@ -320,7 +320,7 @@ section.collection {
 
 	.collection__featured-image {
 		.grid__image {
-			padding-bottom: calc(200% + 2rem);
+			padding-bottom: 100%;
 		}
 	}
 
@@ -362,6 +362,10 @@ section.collection {
 			grid-row-end: span 2;
 			grid-column-start: initial;
 			grid-column-end: initial;
+
+			.grid__image {
+				padding-bottom: calc(200% + 2rem);
+			}
 		}
 
 		.collection__featured-image:nth-of-type(2) {
@@ -375,6 +379,10 @@ section.collection {
 			grid-column-end: initial;
 			grid-row-start: 16;
 			grid-row-end: span 2;
+
+			.grid__image {
+				padding-bottom: calc(200% + 2rem);
+			}
 		}
 
 		.collection__featured-image:nth-of-type(4) {
@@ -387,6 +395,10 @@ section.collection {
 			grid-column-end: initial;
 			grid-row-start: 27;
 			grid-row-end: span 2;
+
+			.grid__image {
+				padding-bottom: calc(200% + 2rem);
+			}
 		}
 	}
 }

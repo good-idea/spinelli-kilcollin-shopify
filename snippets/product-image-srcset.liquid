@@ -4,6 +4,10 @@
 {% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
 {% if image == nil %}{% assign image = default_image %}{% endif %}
 
+{% if linkTo != nil %}
+	<a href="{{ url }}">
+{% endif %}
+
 {% if preload == true %}
 	<div class="img-preload" data-lazy="{{ lazy }}">
 		{% if asset == true %}
@@ -95,4 +99,8 @@
 		/>
 	{% endif %}
 
+{% endif %}
+
+{% if linkTo != nil %}
+	</a>
 {% endif %}

@@ -70,15 +70,14 @@
 <div class="featured__item watch-in-view">
 	<div class="featured__inner">
 		<div class="featured__image-frame">
-			<a href="{{ url }}">
-				{% include 'product-image-srcset', with image, preload: true, sizes: "max-width(860px) 480px, 50vw" %}
 				{% if video != false %}
 					<div class="featured__video">
 						{% comment %} {% capture poster %}{{ image.src | img_url: }}{% endcapture %} {% endcomment %}
-						{% include 'video' with video, audio: audio, autoplay: true, width: 1200, background: true, lazy: true %}
+						{% include 'video' with video, audio: audio, autoplay: true, width: 1200, background: true, lazy: true, linkTo: url %}
 					</div>
+				{% else %}
+					{% include 'product-image-srcset', with image, preload: true, sizes: "max-width(860px) 480px, 50vw", linkTo: url %}
 				{% endif %}
-			</a>
 		</div>
 		{% if caption != blank %}
 			<div class="featured__caption">

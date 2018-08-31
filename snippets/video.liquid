@@ -4,9 +4,9 @@
 	{% assign src = src | append:"/ac_none" %}
 {% endif %}
 
-{% comment %} set a default width of 1200 unless something else is specified {% endcomment %}
+{% comment %} set a default width of 1920 unless something else is specified {% endcomment %}
 {% if width == nil %}
-	{% assign src = src | append:'/c_scale,w_2000'%}
+	{% assign src = src | append:'/c_scale,w_1920'%}
 {% else %}
 	{% assign src = src | append:'/c_scale,w_' | append: width %}
 {% endif %}
@@ -31,23 +31,27 @@
 	{% assign interaction = false %}
 {% endif %}
 
-<div class="video__container {% if background == true%}video__container--notouch{% endif %}">
-	<video
-		{% if autoplay %}autoplay{% endif %}
-		{% if audio != true%}muted{% endif %}
-		{% if background != true %}controls{% endif %}
-		{% if loop %}loop{% endif %}
-		{% if lazy == true %}data-lazy="true"{% endif %}
-		playsinline
-		poster={{poster}}
-	>
-		<source
-			src={{src_webm}}
-			type="video/webm"
-		/>
-		<source
-			src={{src_mp4}}
-			type="video/mp4"
-		/>
-	</video>
+<div class="video__container {% if audio and autoplay%}video__contianer--showMuteButton{% endif %}">
+	{% if linkTo != nil %}
+		<a href="{{ url }}">
+	{% endif %}
+		<video
+			{% if autoplay %}autoplay{% endif %}
+			{% if audio != true%}muted{% endif %}
+			{% if background != true %}controls{% endif %}
+			{% if loop %}loop{% endif %}
+			{% if lazy == true %}data-lazy="true"{% endif %}
+			playsinline
+			poster={{poster}}
+			class="{% if background == true%}video--notouch{% endif %}"
+		>
+			<source
+				src={{src_mp4}}
+				type="video/mp4"
+			/>
+		</video>
+	{% if linkTo != nil %}
+		</a>
+	{% endif %}
+
 </div>

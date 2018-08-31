@@ -38,14 +38,13 @@
 <div class="featured__item featured__item--single watch-in-view">
 	<div class="featured__inner">
 		<div class="featured__image-frame">
-			<a href="{{ url }}">
-				{% include 'product-image-srcset' with image, preload: true %}
-				{% if video != false %}
-					<div class="featured__video">
-						{% include 'video' with video, audio: audio, background: true, autoplay: true %}
-					</div>
-				{% endif %}
-			</a>
+			{% if video != false %}
+				<div class="featured__video">
+					{% include 'video' with video, audio: audio, background: true, autoplay: true, linkTo: url %}
+				</div>
+			{% else %}
+				{% include 'product-image-srcset' with image, preload: true, linkTo: url %}
+			{% endif %}
 		</div>
 		{% if caption != blank %}
 			<div class="featured__caption">
@@ -56,3 +55,4 @@
 		{% endif %}
 	</div>
 </div>
+
