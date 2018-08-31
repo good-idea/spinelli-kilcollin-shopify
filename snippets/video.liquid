@@ -37,7 +37,7 @@
 	{% endif %}
 		<video
 			{% if autoplay %}autoplay{% endif %}
-			{% if audio != true%}muted{% endif %}
+			{% if audio != true or autoplay %}muted{% endif %}
 			{% if background != true %}controls{% endif %}
 			{% if loop %}loop{% endif %}
 			{% if lazy == true %}data-lazy="true"{% endif %}

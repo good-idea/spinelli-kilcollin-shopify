@@ -105,10 +105,10 @@ assets/main.css.map:
   development: 2018-08-31T15:48:12-07:00   ece36804b87af43af660890e82340f42
   production: 2018-07-16T18:04:28-07:00   8a6497e7d6f2add00e730e44efa35aa3
 assets/main.js:
-  development: 2018-08-31T15:50:01-07:00   372c00d965f46205c4e203f5d546b8c2
+  development: 2018-08-31T16:04:04-07:00   4e0a9b7e66f1ef887df60b3c86d6e6f2
   production: 2018-06-28T15:06:45-07:00   1087cbca9f8fc7979884b7a4b9d8fbf4
 assets/main.js.map:
-  development: 2018-08-31T15:50:01-07:00   696b1f311a5bd4c45aca2851a492ba18
+  development: 2018-08-31T16:04:07-07:00   43d924af12d103d158e3ca2d9495ad6f
   production: 2018-06-28T15:06:45-07:00   d7a33fcdc36fdc203f727b6e262f8a4f
 assets/modernizr.custom.js:
   development: 2018-08-28T17:41:38-07:00   1d9f9ca889d3634c89a1e026c7db55e1
@@ -255,7 +255,7 @@ snippets/twitter-card.liquid:
   development: 2017-02-02T13:12:06-08:00   d890500f75624d5697d7181e7b187985
   production: 2017-02-13T12:20:07-08:00   d890500f75624d5697d7181e7b187985
 snippets/video.liquid:
-  development: 2018-08-31T15:45:07-07:00   e700ecd476c4df0d3831ccdfa241bda4
+  development: 2018-08-31T16:00:19-07:00   5804a3f9070f26f99e8b37f47ce9aad9
   production: 2018-04-23T12:39:46-07:00   7731bc650374c0fc78af5727f4077c46
 templates/404.liquid:
   development: 2017-03-14T13:44:19-07:00   ab25a76ed90009386d0e8c0addc8de62

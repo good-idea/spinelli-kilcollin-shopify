@@ -23,7 +23,7 @@ const buildVideo = (element, publisher) => {
 	}
 
 	const updateMuteButton = () => {
-		if (video.volume === 0) {
+		if (video.muted) {
 			btn.text('Unmute')
 		} else {
 			btn.text('Mute')
@@ -31,13 +31,12 @@ const buildVideo = (element, publisher) => {
 	}
 
 	const handleMuteButton = () => {
-		if (video.volume === 0) {
-			video.volume = 1
-			updateMuteButton()
+		if (video.muted) {
+			video.muted = false
 		} else {
-			video.volume = 0
-			updateMuteButton()
+			video.muted = true
 		}
+		updateMuteButton()
 	}
 
 	const handlePlay = () => {
@@ -67,10 +66,6 @@ const buildVideo = (element, publisher) => {
 			loadVideo()
 		}
 	}
-
-	video.addEventListener('load', () => {
-		console.log('video loaded')
-	})
 
 	if (video.getAttribute('data-lazy') === 'true') {
 		calculate()
