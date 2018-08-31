@@ -89,7 +89,7 @@ body {
 	display: inline-block;
 	width: 14.5rem;
 	height: 1px;
-	background-color: black;
+	background-color: currentColor;
 	position: relative;
 
 	&:before,
