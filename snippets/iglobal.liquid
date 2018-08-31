@@ -1,0 +1,127 @@
+{% if shop.metafields.iglobal.enabled %}
+
+  <script src="https://hello.zonos.com/hello.js?siteKey={{ shop.metafields.iglobal.helloSiteKey }}"></script>
+  <style>.z-intl .additional-checkout-buttons, .z-intl .additional-checkout-button, .z-intl .checkout__icons { display: none; }</style>
+
+  <script>
+    var ig_store = {
+      store: "{{ shop.metafields.iglobal.store }}",
+      live: {{ shop.metafields.iglobal.live | default: "false" }},
+      showForeignCurrency: {{ shop.metafields.iglobal.foreignCurrency | default: "false" }},
+      c: "{{ customer.id }}"
+    };
+    (function() {
+      function n(n,i,t,e){if(o)return o[n];for(i=document.cookie.split("; "),o={},e=i.length-1;e>=0;e--)t=i[e].split("="),o[t[0]]=t[1];return o[n]}var o;
+      typeof ga != 'undefined' && ga(function(t){ig_store.clientId=t.get('clientId')});
+      function h(){
+        var _ajaxGet=function(t,e){var s=new XMLHttpRequest;s.open("GET",t,!0),s.onreadystatechange=function(){4===this.readyState&&this.status>=200&&this.status<400&&e(this.responseText)},s.send(),s=null};
+       _ajaxGet('/cart.json',function(r){
+       var f=document.createElement('form'),g='',d={cart:r,country:n("zCountry"),currency:n("zCurrency"),c:ig_store&&ig_store.c};
+       f.method='post';f.action='/a/iglobal/cart';
+       for(var i in d){var a=document.createElement('input');a.type="hidden";a.name=i;a.value=d[i];f.appendChild(a);}document.querySelector('body').appendChild(f);f.submit();})
+      }window.igcCheckout=h
+
+      if (ig_store.live || window.location.toString().indexOf('iGlobal=true') !== -1 || window.location.toString().indexOf('zonos=true') !== -1) {
+        function igcCheckoutButton(e) {
+          if (!zonos.isDomestic()) {
+            e.preventDefault();
+    		e.stopImmediatePropagation();
+    		e.stopPropagation();
+            if (jQuery('form[action="/cart"]').length) {
+              jQuery.post('/cart', jQuery('form[action="/cart"]').serializeArray(), function(data) {
+                igcCheckout();
+              });
+            } else {
+              igcCheckout();
+            }
+          }
+        }
+
+        function znSideDrawer() {
+          {% comment %}
+          // The drawer element you select must exist on the page immediately after the page loads. 
+          // If it is a cart element that is added dynamically later, there is a chance that the code will load
+          // at the wrong time and be unable to get to checkout.
+          {% endcomment %}
+          var drawer = document.querySelector('.drawer'); 
+
+          drawer && drawer.addEventListener('click', function(e) {
+            if (e.target.name.indexOf('checkout') >= 0 || e.target.value.indexOf('Checkout') >= 0) {
+              igcCheckoutButton(e);
+            }
+          });
+        }
+        
+        function znGetButton() {
+          var buttons = document.querySelectorAll('[name="checkout"], [value="Checkout"], #cart-menu a');
+          [].slice.call(buttons).forEach(function(elem) {
+            elem.addEventListener('click', igcCheckoutButton);
+          });
+          return buttons;
+        }
+
+        // This function will help with currency conversion that your website might have as a result of having any product/cart price loaded via ajax.
+        // It will listen for any ajax request and then call the currency conversion function after the request, helping the currency conversion happen consistently. 
+        // You do not need to enable this method if your site doesn't use ajax requests to load data.
+        // This function doesn't interfere with any existing callback functions that are happing with the ajax requests. 
+        // Alternatively, zonos.displayCurrency(); can be added into the callbacks of the product/cart loading if those locations are known.
+
+        function addListenerForXHR() {
+          var oldXHR = window.XMLHttpRequest;
+        
+          function newXHR() {
+              var realXHR = new oldXHR();
+              realXHR.addEventListener("readystatechange", function() {
+                  if(realXHR.readyState==4 && realXHR.status==200){
+                    setTimeout(function(){zonos.displayCurrency()}, 500); // we want this to run after ajax requests.
+                  }
+              }, false);
+              return realXHR;
+          }
+          window.XMLHttpRequest = newXHR;
+        }
+        addListenerForXHR();
+        
+        zonos.config({currencySelectors: ".money, .cart__menu-item-price, .checkout__price, .checkout__bottom h3, .checkout__total"});
+
+
+        function init() {
+         var buttons = znGetButton();
+          if (buttons.length < 1) {
+          	znSideDrawer();
+          }
+        }
+
+        function onPageLoad(fn) {
+          if (document.readyState != 'loading') {
+            fn();
+          } else if (document.addEventListener) {
+            document.addEventListener('DOMContentLoaded', fn);
+          } else {
+            document.attachEvent('onreadystatechange', function () {
+              if (document.readyState != 'loading')
+                fn();
+            });
+          }
+        }
+        
+        onPageLoad(init);
+
+        {% if product %}
+          zonos.quote({
+            items: [{ price: {{product.price}} / 100, name: "{{product.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{ product.url }}", image: "https:{{ product.featured_image | product_img_url: 'medium' }}"}],
+            currencyCode: '{{ shop.currency }}'
+          });
+        {% elsif request.path == '/cart' %}
+          zonos.quote({
+            items: [
+              {% for item in cart.items %}
+              { price: {{ item.price}} /100, quantity: {{item.quantity}}, name: "{{ item.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{item.url}}", image: "https:{{item.image| product_img_url: 'medium'}}"},
+              {% endfor %}
+            ],currencyCode: '{{ shop.currency }}'});
+        {% endif %}
+      }
+    })();
+  </script>
+
+{% endif %}
