@@ -1,9 +1,14 @@
 import $ from 'npm-zepto'
 
-const buildVideo = (element, publisher) => {
+const buildVideo = element => {
 	const container = element instanceof $ ? element : $(element)
 	const video = container.find('video')[0]
 	// const $video = $(video)
+
+	const createUnmuteButton = () => {
+		const btn = $("<button type='button' class='video__unmute'>Unmute</button")
+		container.append(btn)
+	}
 
 	const show = () => setTimeout(() => container.addClass('visible'), 300)
 	const hide = () => container.removeClass('visible')
@@ -18,6 +23,7 @@ const buildVideo = (element, publisher) => {
 	// 	console.log($video.attr('autoplay'))
 	// 	if ($video.attr('autoplay')) video.play()
 	// }
+	createUnmuteButton()
 
 	video.addEventListener('playing', show)
 	video.addEventListener('error', hide)

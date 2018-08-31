@@ -26390,10 +26390,15 @@ var _npmZepto2 = _interopRequireDefault(_npmZepto);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var buildVideo = function buildVideo(element, publisher) {
+var buildVideo = function buildVideo(element) {
 	var container = element instanceof _npmZepto2.default ? element : (0, _npmZepto2.default)(element);
 	var video = container.find('video')[0];
 	// const $video = $(video)
+
+	var createUnmuteButton = function createUnmuteButton() {
+		var btn = (0, _npmZepto2.default)("<button type='button' class='video__unmute'>Unmute</button");
+		container.append(btn);
+	};
 
 	var show = function show() {
 		return setTimeout(function () {
@@ -26414,6 +26419,7 @@ var buildVideo = function buildVideo(element, publisher) {
 	// 	console.log($video.attr('autoplay'))
 	// 	if ($video.attr('autoplay')) video.play()
 	// }
+	createUnmuteButton();
 
 	video.addEventListener('playing', show);
 	video.addEventListener('error', hide);

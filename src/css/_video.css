@@ -16,6 +16,12 @@
 	&.visible {
 		opacity: 1;
 	}
+
+	&:hover {
+		.video__unmute {
+			opacity: 1;
+		}
+	}
 }
 
 .video__container--notouch {
@@ -24,4 +30,15 @@
 
 .featured__video .video__container {
 	@mixin abs-full-size;
+}
+
+.video__unmute {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	z-index: 100;
+	background-color: white;
+	color: black;
+	opacity: 0;
+	transition: 0.2s;
 }
