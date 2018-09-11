@@ -35,7 +35,7 @@
 			<textarea type="text" name="contact[body]" placeholder=""></textarea>
 		</div>
 
-		{% if product.options %}
+		{% if product.options and product.variants.size > 1 %}
 			<div class="form__field contact__option">
 				<label for="">{{ product.options[0] }}</label>
 				<div class="select__wrapper">
