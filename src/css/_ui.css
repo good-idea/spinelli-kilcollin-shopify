@@ -15,7 +15,8 @@
 		transform-origin: center center;
 		transition: 0.3s;
 		transform: translateZ(0);
-		position: relative;
+		// position: relative;
+		// z-index: 1;
 	}
 
 	.line__double {
@@ -37,7 +38,7 @@
 	}
 
 	.line:nth-of-type(2) {
-		transform: rotate(45deg);
+		transform: rotate(45deg) translateZ(1px);
 	}
 
 	.line__double {

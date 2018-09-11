@@ -57,10 +57,10 @@ assets/cart.svg.liquid:
   development: 2017-02-02T13:12:06-08:00   debed3e55e808dd299c78e2ba6f2f4f8
   production: 2017-02-13T12:20:03-08:00   debed3e55e808dd299c78e2ba6f2f4f8
 assets/classie.js:
-  development: 2018-08-31T16:10:38-07:00   21d581e440857812d75852456aadd926
+  development: 2018-09-10T18:24:50-07:00   21d581e440857812d75852456aadd926
   production: 2018-08-31T15:54:44-07:00   21d581e440857812d75852456aadd926
 assets/classie.js.map:
-  development: 2018-08-31T16:10:37-07:00   db9d1eded7ce9a439ef7006f699d3ccb
+  development: 2018-09-10T18:24:48-07:00   db9d1eded7ce9a439ef7006f699d3ccb
   production: 2018-08-31T15:54:43-07:00   db9d1eded7ce9a439ef7006f699d3ccb
 assets/close_ico_dropahint.png:
   development: 2017-11-16T16:26:25-08:00   506189c5d029d377076f43397afd73bd
@@ -99,22 +99,22 @@ assets/main copy.js:
   development: 2017-02-02T21:40:39-08:00
   production: 2017-02-13T12:20:05-08:00
 assets/main.css:
-  development: 2018-08-31T16:12:04-07:00   4eb5ea9eccd099a10beadd33712e02a4
+  development: 2018-09-05T11:45:03-07:00   56938afbee9826abc6c3add3542a6a6f
   production: 2018-08-31T16:10:14-07:00   4eb5ea9eccd099a10beadd33712e02a4
 assets/main.css.map:
-  development: 2018-08-31T16:12:16-07:00   7dfc2eb33a25e39bcc9a964e41ffd9ba
+  development: 2018-09-05T11:45:05-07:00   1f9736d749ca5e683064d546fedba4f8
   production: 2018-08-31T16:10:15-07:00   7dfc2eb33a25e39bcc9a964e41ffd9ba
 assets/main.js:
-  development: 2018-08-31T16:10:40-07:00   8fca970cadb7c38aa9db7559a0e39ae4
+  development: 2018-09-10T18:24:53-07:00   cf504bffa3a1de8f313d341a29338b17
   production: 2018-08-31T16:06:15-07:00   8fca970cadb7c38aa9db7559a0e39ae4
 assets/main.js.map:
-  development: 2018-08-31T16:10:43-07:00   93b16118390fb7684ba069752722758c
+  development: 2018-09-10T18:24:59-07:00   13ed3cd1a7e19ca5beb0f4dfaf15f40e
   production: 2018-08-31T16:06:14-07:00   93b16118390fb7684ba069752722758c
 assets/modernizr.custom.js:
-  development: 2018-08-31T16:10:41-07:00   6a9e420fb19c2bae820f0a948e9f3fa1
+  development: 2018-09-10T18:24:49-07:00   6a9e420fb19c2bae820f0a948e9f3fa1
   production: 2018-08-31T15:54:43-07:00   6a9e420fb19c2bae820f0a948e9f3fa1
 assets/modernizr.custom.js.map:
-  development: 2018-08-31T16:10:39-07:00   cdeb0a014a8562766c924e74d8cf92d4
+  development: 2018-09-10T18:24:48-07:00   cdeb0a014a8562766c924e74d8cf92d4
   production: 2018-08-31T15:54:41-07:00   cdeb0a014a8562766c924e74d8cf92d4
 assets/modernizr.custom.min.js:
   development: 2017-07-24T15:49:28-07:00   f35ae39393d2a22ebee0b3e2aa45f826
@@ -144,10 +144,10 @@ assets/spk-logotype.svg:
   development: 2017-02-13T00:13:42-08:00   a665d6bdf39f4feca1d48abcb942fb9a
   production: 2017-02-13T12:20:07-08:00   a665d6bdf39f4feca1d48abcb942fb9a
 assets/stepsForm.js:
-  development: 2018-08-31T16:10:40-07:00   34c80b73831644557667cb5076dadbbc
+  development: 2018-09-10T18:24:49-07:00   34c80b73831644557667cb5076dadbbc
   production: 2018-08-31T15:54:44-07:00   34c80b73831644557667cb5076dadbbc
 assets/stepsForm.js.map:
-  development: 2018-08-31T16:10:38-07:00   6cc3043a3cac31d5067ba56ae2baba57
+  development: 2018-09-10T18:24:47-07:00   6cc3043a3cac31d5067ba56ae2baba57
   production: 2018-08-31T15:54:45-07:00   6cc3043a3cac31d5067ba56ae2baba57
 assets/style.scss.liquid:
   development: 2018-04-23T12:18:47-07:00   15238e7dc4e524e3b148665de0b4943c
@@ -219,7 +219,7 @@ snippets/footer.liquid:
   development: 2018-04-23T12:19:18-07:00   d79db1a7461577f4367e6c91bb147325
   production: 2018-01-03T13:15:14-08:00   d79db1a7461577f4367e6c91bb147325
 snippets/header.liquid:
-  development: 2017-05-19T12:40:19-07:00   5d176d8e0feefc7c9bd62edea99daf10
+  development: 2018-09-05T10:40:48-07:00   5d176d8e0feefc7c9bd62edea99daf10
   production: 2017-04-06T10:45:16-07:00   5d176d8e0feefc7c9bd62edea99daf10
 snippets/iglobal.liquid:
   development: 2018-08-31T16:10:36-07:00   684a7f854b8c81c00cec2a1d0da482e1
@@ -264,7 +264,7 @@ snippets/twitter-card.liquid:
   development: 2017-02-02T13:12:06-08:00   d890500f75624d5697d7181e7b187985
   production: 2017-02-13T12:20:07-08:00   d890500f75624d5697d7181e7b187985
 snippets/video.liquid:
-  development: 2018-08-31T16:00:19-07:00   5804a3f9070f26f99e8b37f47ce9aad9
+  development: 2018-09-10T18:17:09-07:00   25c84b9c87c799e96af447154db569e8
   production: 2018-08-31T16:06:13-07:00   5804a3f9070f26f99e8b37f47ce9aad9
 templates/404.liquid:
   development: 2017-03-14T13:44:19-07:00   ab25a76ed90009386d0e8c0addc8de62

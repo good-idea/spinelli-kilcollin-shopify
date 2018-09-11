@@ -39,6 +39,13 @@ const buildVideo = (element, publisher) => {
 		updateMuteButton()
 	}
 
+	const handleLoad = () => {
+		console.log(video.getAttribute('autoplay'))
+		if (video.getAttribute('autoplay')) {
+			video.play()
+		}
+	}
+
 	const handlePlay = () => {
 		updateMuteButton()
 		setTimeout(() => container.addClass('visible'), 300)
@@ -49,31 +56,16 @@ const buildVideo = (element, publisher) => {
 	}
 
 	const loadVideo = () => {
-		const sources = container.find('source')
-		sources.each((i, source) => {
-			const src = source.getAttribute('data-full-src')
-			if (src) {
-				source.setAttribute('src', src)
-			}
-		})
-	}
-
-	function handleScroll(ypos) {
-		// console.log(videoTop < ypos + windowHeight)
-		if (ypos - 500 < videoBottom && videoTop - 500 < ypos + windowHeight) {
-			publisher.unsubscribe('WindowScrolled', handleScroll)
-			publisher.unsubscribe('Calculate', calculate)
-			loadVideo()
+		const w = window.innerWidth
+		const sources = [].slice.call(container.find('source'))
+		const webm = sources.filter(s => s.getAttribute('type') === 'video/webm')[0]
+		const mp4 = sources.filter(s => s.getAttribute('type') === 'video/mp4')[0]
+		const allowWebm = w < 860
+		mp4.setAttribute('src', mp4.getAttribute('data-src'))
+		if (allowWebm && video.canPlayType('video/webm') === 'maybe') {
+			webm.setAttribute('src', webm.getAttribute('data-src'))
 		}
-	}
-
-	if (video.getAttribute('data-lazy') === 'true') {
-		calculate()
-		handleScroll(windo.scrollTop())
-		publisher.subscribe('WindowScrolled', handleScroll)
-		publisher.subscribe('Calculate', calculate)
-	} else {
-		publisher.subscribe('windowLoaded', loadVideo)
+		video.load()
 	}
 
 	// const setLazySrc = () => {
@@ -87,11 +79,13 @@ const buildVideo = (element, publisher) => {
 	// 	if ($video.attr('autoplay')) video.play()
 	// }
 	createUnmuteButton()
-
+	video.addEventListener('load', handleLoad)
 	video.addEventListener('playing', handlePlay)
 	video.addEventListener('error', handleError)
+
 	btn.on('click', handleMuteButton)
-	if (!video.paused) handlePlay()
+
+	loadVideo()
 
 	// if (video.getAttribute('data-lazy') === 'true') {
 	// 	publisher.subscribe('windowLoaded', setLazySrc)

@@ -1,7 +1,7 @@
 {% assign src='https://res.cloudinary.com/spinelli-kilcollin/video/upload' %}
 
 {% if audio != true %}
-	{% assign src = src | append:"/ac_none" %}
+	{% comment %} {% assign src = src | append:"/ac_none" %} {% endcomment %}
 {% endif %}
 
 {% comment %} set a default width of 1920 unless something else is specified {% endcomment %}
@@ -40,15 +40,18 @@
 			{% if audio != true or autoplay %}muted{% endif %}
 			{% if background != true %}controls{% endif %}
 			{% if loop %}loop{% endif %}
-			{% if lazy == true %}data-lazy="true"{% endif %}
 			playsinline
 			poster={{poster}}
 			class="{% if background == true%}video--notouch{% endif %}"
 		>
 			<source
-				src={{src_mp4}}
-				type="video/mp4"
+				type="video/webm"
+				data-src="{{src_webm}}"
 			/>
+			<source
+				type="video/mp4"
+				data-src="{{src_mp4}}"
+			/> 
 		</video>
 	{% if linkTo != nil %}
 		</a>
