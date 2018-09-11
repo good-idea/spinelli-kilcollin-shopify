@@ -82,14 +82,24 @@
         }
         addListenerForXHR();
         
-        zonos.config({currencySelectors: ".money, .cart__menu-item-price, .checkout__price, .checkout__bottom h3, .checkout__total"});
+        zonos.config({currencySelectors: ".money, .checkout__item .checkout__total, .checkout__item .checkout__price, .checkout__bottom h3, .cart__menu-item-price, #cart-total, h3.product__price"});
 
 
         function init() {
+        zonos.displayCurrency();
          var buttons = znGetButton();
           if (buttons.length < 1) {
           	znSideDrawer();
           }
+          
+         document.querySelector('body').addEventListener("click", function(){
+            setTimeout(function(){zonos.displayCurrency();}, 2000);
+        });
+        
+        document.querySelector('.product-update-trigger option').addEventListener("click", function(){
+            setTimeout(function(){zonos.displayCurrency();}, 200);
+            setTimeout(function(){zonos.displayCurrency();}, 500);
+        });
         }
 
         function onPageLoad(fn) {
@@ -107,6 +117,7 @@
         
         onPageLoad(init);
 
+	{% comment %}
         {% if product %}
           zonos.quote({
             items: [{ price: {{product.price}} / 100, name: "{{product.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{ product.url }}", image: "https:{{ product.featured_image | product_img_url: 'medium' }}"}],
@@ -120,6 +131,7 @@
               {% endfor %}
             ],currencyCode: '{{ shop.currency }}'});
         {% endif %}
+    {% endcomment %}
       }
     })();
   </script>

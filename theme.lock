@@ -99,17 +99,17 @@ assets/main copy.js:
   development: 2017-02-02T21:40:39-08:00
   production: 2017-02-13T12:20:05-08:00
 assets/main.css:
-  development: 2018-09-05T11:45:03-07:00   56938afbee9826abc6c3add3542a6a6f
-  production: 2018-08-31T16:10:14-07:00   4eb5ea9eccd099a10beadd33712e02a4
+  development: 2018-09-10T18:28:52-07:00   4eb5ea9eccd099a10beadd33712e02a4
+  production: 2018-09-10T18:30:07-07:00   56938afbee9826abc6c3add3542a6a6f
 assets/main.css.map:
-  development: 2018-09-05T11:45:05-07:00   1f9736d749ca5e683064d546fedba4f8
-  production: 2018-08-31T16:10:15-07:00   7dfc2eb33a25e39bcc9a964e41ffd9ba
+  development: 2018-09-10T18:28:51-07:00   7dfc2eb33a25e39bcc9a964e41ffd9ba
+  production: 2018-09-10T18:30:06-07:00   1f9736d749ca5e683064d546fedba4f8
 assets/main.js:
-  development: 2018-09-10T18:24:53-07:00   cf504bffa3a1de8f313d341a29338b17
-  production: 2018-08-31T16:06:15-07:00   8fca970cadb7c38aa9db7559a0e39ae4
+  development: 2018-09-10T18:28:53-07:00   dda96d5376213deb69b1955273aaf15c
+  production: 2018-09-10T18:30:06-07:00   cf504bffa3a1de8f313d341a29338b17
 assets/main.js.map:
-  development: 2018-09-10T18:24:59-07:00   13ed3cd1a7e19ca5beb0f4dfaf15f40e
-  production: 2018-08-31T16:06:14-07:00   93b16118390fb7684ba069752722758c
+  development: 2018-09-10T18:28:55-07:00   dd6acfafb30bf276901e1b8c787138d0
+  production: 2018-09-10T18:30:08-07:00   13ed3cd1a7e19ca5beb0f4dfaf15f40e
 assets/modernizr.custom.js:
   development: 2018-09-10T18:24:49-07:00   6a9e420fb19c2bae820f0a948e9f3fa1
   production: 2018-08-31T15:54:43-07:00   6a9e420fb19c2bae820f0a948e9f3fa1
@@ -175,7 +175,7 @@ config/settings_schema.json:
   production: 2018-04-23T12:40:35-07:00   d1ad1cc1aa80c2dce482d2437ce35574
 layout/theme.liquid:
   development: 2018-06-22T22:49:16-07:00   85595d844f3985ef7dda6e7a569771ad
-  production: 2018-08-31T12:57:10-07:00   85595d844f3985ef7dda6e7a569771ad
+  production: 2018-09-04T08:34:19-07:00   3e2a444ddf81882dfce370858176005d
 locales/en.default.json:
   development: 2017-02-12T22:15:26-08:00   6fe253911c40ea512cdd66cfcb34dfac
   production: 2017-02-13T12:20:07-08:00   6fe253911c40ea512cdd66cfcb34dfac
@@ -223,7 +223,7 @@ snippets/header.liquid:
   production: 2017-04-06T10:45:16-07:00   5d176d8e0feefc7c9bd62edea99daf10
 snippets/iglobal.liquid:
   development: 2018-08-31T16:10:36-07:00   684a7f854b8c81c00cec2a1d0da482e1
-  production: 2018-08-27T09:40:20-07:00   684a7f854b8c81c00cec2a1d0da482e1
+  production: 2018-09-10T14:06:18-07:00   4dbfffedb1413f9caecec9f0cc05a18f
 snippets/open-graph-tags.liquid:
   development: 2017-04-06T10:34:45-07:00   f5cf94f947792a6c09235ff7a0ccdbd2
   production: 2017-04-06T10:45:17-07:00   f5cf94f947792a6c09235ff7a0ccdbd2
@@ -265,7 +265,7 @@ snippets/twitter-card.liquid:
   production: 2017-02-13T12:20:07-08:00   d890500f75624d5697d7181e7b187985
 snippets/video.liquid:
   development: 2018-09-10T18:17:09-07:00   25c84b9c87c799e96af447154db569e8
-  production: 2018-08-31T16:06:13-07:00   5804a3f9070f26f99e8b37f47ce9aad9
+  production: 2018-09-10T18:30:06-07:00   25c84b9c87c799e96af447154db569e8
 templates/404.liquid:
   development: 2017-03-14T13:44:19-07:00   ab25a76ed90009386d0e8c0addc8de62
   production: 2017-06-23T13:09:20-07:00   ab25a76ed90009386d0e8c0addc8de62
