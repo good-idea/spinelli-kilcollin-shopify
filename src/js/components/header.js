@@ -11,7 +11,9 @@ function buildHeader(publisher) {
 
 	searchOpen.on('click', () => {
 		header.addClass('search-open')
-		searchInput.focus()
+		setTimeout(() => {
+			searchInput.focus()
+		}, 400)
 		searchInput.on('blur', () => {
 			header.removeClass('search-open')
 			searchInput.off('blur')
@@ -35,10 +37,11 @@ function buildHeader(publisher) {
 
 	submenuOrigins.each((i, el) => {
 		const origin = $(el)
-		const link = origin.find('.nav__link')
+		const link = origin.find('.submenu__title')
 		const submenu = origin.find('.nav__submenu')
 		const returnButton = submenu.find('.submenu__return')
 		link.on('click', e => {
+			console.log(origin, link, submenu)
 			if (tabletCheck.css('display') !== 'none') {
 				e.preventDefault()
 				submenu.addClass('visible')

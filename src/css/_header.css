@@ -197,14 +197,14 @@ header .search {
 		perspective: 75rem;
 
 		&:hover {
-			.nav__submenu {
+			.nav__submenu.hover-dropdown {
 				@mixin visible;
 				transform: none;
 			}
 		}
 	}
 
-	.nav__submenu {
+	.nav__submenu.hover-dropdown {
 		@mixin invisible;
 		position: absolute;
 		top: calc(100% - 1px);
@@ -225,43 +225,51 @@ header .search {
 			margin: 0.9rem 0;
 		}
 	}
-}
 
-header .search form {
-	@mixin invisible;
-	@mixin abs-center;
-	width: 0;
-	height: 2.5rem;
-	background: white;
-	transition: 0.4s;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-
-	input {
-		min-height: initial;
-		text-align: center;
-		border-bottom: 1px solid $grey2;
-		padding: 0.1rem 0.3rem;
-		margin-top: 0;
-		width: 100%;
-		background: inherit;
-	}
-
-	button {
+	header .search .submenu__title i,
+	header .search .submenu__return {
 		display: none;
 	}
-}
 
-header.search-open {
-	.search {
-		padding: 0 1rem;
+	header .search form {
+		@mixin invisible;
+		@mixin abs-center;
+		width: 0;
+		height: 2.5rem;
+		background: white;
+		transition: 0.4s;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		input {
+			min-height: initial;
+			text-align: center;
+			border-bottom: 1px solid $grey2;
+			padding: 0.1rem 0.3rem;
+			margin-top: 0;
+			width: 100%;
+			background: inherit;
+		}
+
+		button {
+			display: none;
+		}
 	}
 
-	.search form {
-		transition-delay: 0s;
-		width: calc(100% + 2rem);
-		@mixin visible;
+	header.search-open {
+		.search {
+			padding: 0 1rem;
+		}
+
+		.search form {
+			transition-delay: 0s;
+			width: calc(100% + 2rem);
+			@mixin visible;
+		}
+	}
+	.search__button--text {
+		display: none;
 	}
 }
 
@@ -398,7 +406,6 @@ header {
 		}
 
 		.nav__item.search {
-			flex-order: 1;
 			margin-bottom: 4rem;
 		}
 
@@ -434,33 +441,33 @@ header {
 		}
 	}
 
-	header .search form {
-		right: calc(50% - 12rem);
-		top: -1rem;
-		width: 24rem;
-		height: 100%;
-		flex-direction: row;
-		justify-content: center;
-
-		input {
-			text-align: left;
-			width: 100%;
-			padding: 0.3rem 2rem;
+	header .search {
+		.nav__submenu {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
+		form {
+			width: calc(100% - 7rem);
+			max-width: 350px;
+			margin: 0 auto;
+		}
+
+		input {
+			width: 100%;
+		}
+
+		input,
 		button {
 			display: block;
-			min-width: 4rem;
-			width: 4rem;
-			margin-top: 0;
-			transition: 0.3s;
+			margin: 10px auto;
 		}
 	}
 
-	header.search-open .search {
-		form {
-			width: 24rem;
-		}
+	.search__button--arrow {
+		display: none;
 	}
 }
 
