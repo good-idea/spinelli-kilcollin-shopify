@@ -3,13 +3,14 @@
   <script src="https://hello.zonos.com/hello.js?siteKey={{ shop.metafields.iglobal.helloSiteKey }}"></script>
   <style>.z-intl .additional-checkout-buttons, .z-intl .additional-checkout-button, .z-intl .checkout__icons { display: none; }</style>
 
-  <script>
+  <script>   
     var ig_store = {
       store: "{{ shop.metafields.iglobal.store }}",
       live: {{ shop.metafields.iglobal.live | default: "false" }},
       showForeignCurrency: {{ shop.metafields.iglobal.foreignCurrency | default: "false" }},
       c: "{{ customer.id }}"
     };
+    
     (function() {
       function n(n,i,t,e){if(o)return o[n];for(i=document.cookie.split("; "),o={},e=i.length-1;e>=0;e--)t=i[e].split("="),o[t[0]]=t[1];return o[n]}var o;
       typeof ga != 'undefined' && ga(function(t){ig_store.clientId=t.get('clientId')});
@@ -86,6 +87,8 @@
 
 
         function init() {
+          zonos.config({currencySelectors: '.money, .product__price'});
+          document.querySelector('.product-update-trigger').onchange = zonos.displayCurrency;
          var buttons = znGetButton();
           if (buttons.length < 1) {
           	znSideDrawer();
@@ -107,6 +110,7 @@
         
         onPageLoad(init);
 
+        {% comment %}
         {% if product %}
           zonos.quote({
             items: [{ price: {{product.price}} / 100, name: "{{product.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{ product.url }}", image: "https:{{ product.featured_image | product_img_url: 'medium' }}"}],
@@ -120,6 +124,7 @@
               {% endfor %}
             ],currencyCode: '{{ shop.currency }}'});
         {% endif %}
+        {% endcomment %}
       }
     })();
   </script>
