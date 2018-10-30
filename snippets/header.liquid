@@ -65,21 +65,33 @@
 			<h2 class="logotype--sk"><a href="/">SK</a></h2>
 			{% for link in linklists.main-menu.links %}
 				{% capture child_list_handle %}{{ link.title | handleize }}{% endcapture %}
-				{% assign children = (linklists[child_list_handle].links.size) %}
-				<div class="nav__item {% if children > 0 %}has-submenu {% endif %}">
+				{% assign children = (linklists[child_list_handle].links) %}
+				{% assign links = link.links %}
+				{% if children.size > 0 or links.size > 0 %}
+					{% assign hasChildren = true %}
+				{% else %}
+					{% assign hasChildren = false %}
+				{% endif %}
+
+				<div class="nav__item {% if hasChildren %}has-submenu {% endif %}" data-hasChildren="{{ hasChildren }}" data-children="{{ children.size }}" data-links="{{ links.size }}">
 					<h4>
-						<a class="nav__link {% if children > 0 %}submenu__title {% endif %}" href="{{ link.url }}">{{ link.title }}</a>
-						{% if children > 0 %}
+						<a class="nav__link {% if hasChildren %}submenu__title {% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+						{% if hasChildren %}
 						<i class="icon-angle-down submenu__open"></i>
 						{% endif %}
 					</h4>
-					{% if children > 0 %}
+					{% if hasChildren %}
 					<div class="nav__submenu hover-dropdown">
 						<h4><i class="submenu__return icon-angle-down"></i></h4>
-						{% for child in linklists[child_list_handle].links %}
-						<h4 class="nav__item">
-							<a class="nav__link--submenu" href="{{ child.url }}">{{ child.title }}</a>
-						</h4>
+						{% for child in children %}
+							<h4 class="nav__item">
+								<a class="nav__link--submenu" href="{{ child.url }}">{{ child.title }}</a>
+							</h4>
+						{% endfor %}
+						{% for link in links %}
+							<h4 class="nav__item">
+								<a class="nav__link--submenu" href="{{ link.url }}">{{ link.title }}</a>
+							</h4>
 						{% endfor %}
 					</div>
 					{% endif %}
