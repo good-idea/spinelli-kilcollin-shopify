@@ -29,10 +29,15 @@ function buildHeader(publisher) {
 	const tabletCheck = $('#bp-medium')
 	const submenuOrigins = header.find('.nav__item.has-submenu')
 	const mainMenu = header.find('.nav__inner')
+	const submenus = header.find('.nav__submenu')
 
 	burger.on('click', () => {
 		html.toggleClass('menu-open nav-open')
 		mainMenu.removeClass('submenu-open')
+		/* Let the CSS transitions finish before removing the class */
+		setTimeout(() => {
+			submenus.removeClass('visible')
+		}, 300)
 	})
 
 	submenuOrigins.each((i, el) => {
@@ -41,7 +46,6 @@ function buildHeader(publisher) {
 		const submenu = origin.find('.nav__submenu')
 		const returnButton = submenu.find('.submenu__return')
 		link.on('click', e => {
-			console.log(origin, link, submenu)
 			if (tabletCheck.css('display') !== 'none') {
 				e.preventDefault()
 				submenu.addClass('visible')
