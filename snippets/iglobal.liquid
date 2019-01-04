@@ -6,8 +6,8 @@
   // If Zonos Hello is in test mode, then use the znLoadHello function to load Hello. 
   // This process ensures Hello can load fast when live and be hidden when in test mode
   {% endcomment %}
-  
-  {% if shop.metafields.iglobal.live == 'true' %}
+
+  {% if shop.metafields.iglobal.live == "true" %}
     <script src="https://hello.zonos.com/hello.js?siteKey={{ shop.metafields.iglobal.helloSiteKey }}"></script>
   {% endif %}
 
@@ -18,17 +18,20 @@
   {% endcomment %}
   <style>.z-intl .additional-checkout-buttons, .z-intl .additional-checkout-button, .z-intl .gpay-iframe { display: none; }</style>
 
-  {% if shop.metafields.iglobal.foreignCurrency %}
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/arrive/2.4.1/arrive.min.js"></script>
+  {% if shop.metafields.iglobal.foreignCurrency == "true" %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/arrive/2.4.1/arrive.min.js"></script>
   {% endif %}
 
   <script>
     var z_store = {
       store: "{{ shop.metafields.iglobal.store }}",
-      live: {{ shop.metafields.iglobal.live | default: "false" }},
-      showForeignCurrency: {{ shop.metafields.iglobal.foreignCurrency | default: "false" }},
-      c: "{{ customer.id }}",
-      currencySelectors: ".money, .checkout__bottom h3, .cart__menu-item-price, #cart-total, .checkout__item .checkout__total, .checkout__item .checkout__price, .product__price"
+      live: {{ shop.metafields.iglobal.live | default: false }},
+      foreignCurrency: {{ shop.metafields.iglobal.foreignCurrency | default: false }},
+      currencySelectors: "{{ shop.metafields.iglobal.currencySelectors | default: '.money' }}",
+      quoteProduct: {{ shop.metafields.zonos.quoteProduct | default: false }} && {% if product %} true {% else %} false {% endif %},
+      quoteCart: {{ shop.metafields.zonos.quoteCart | default: false }},
+      path: "{{ request.path }}",
+      c: "{{ customer.id }}"
     };
 
   {% comment %}
@@ -41,7 +44,16 @@
     document.head.appendChild(script);
   }
 
-  if (!z_store.live && (window.location.toString().indexOf('iGlobal=true') !== -1 || window.location.toString().indexOf('zonos=true') !== -1)) {
+  const zTestModeUrlIndex = window.location.toString().indexOf('zTestMode');
+
+  if (zTestModeUrlIndex !== -1) {
+    const setTo = window.location.toString()[zTestModeUrlIndex + 10] === 't' ? 'true' : 'false';
+    document.cookie = `zTestMode=${setTo}`;
+  }
+
+  const testModeParam = window.location.toString().indexOf('iGlobal=true') !== -1 || window.location.toString().indexOf('zonos=true') !== -1;
+  const testModeCookie = document.cookie.indexOf('zTestMode=true') !== -1;
+  if (!z_store.live && (testModeParam || testModeCookie)) {
     znLoadHello();
   }
 
@@ -63,7 +75,11 @@
     {% endcomment %} 
     zonosCheckout = function(event) {
       if ((n("zCountry") || n("igCountry")) && zonos && !zonos.isDomestic(n("zCountry") || n("igCountry"))) {
-        event && event.preventDefault();
+        if (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+        }
         znCheckout();
         return false;
       } else {
@@ -75,7 +91,6 @@
     }
 
     {% comment %}
-    {% endcomment %}
     // This function will help with currency conversion issues that your website might have as a result of having any product/cart price loaded via ajax.
     // It will listen for any ajax request and then call the currency conversion function 'zonos.display()' after the request, helping the currency conversion happen consistently. 
     // You do not need to enable this method if your site doesn't use ajax requests to load data.
@@ -83,6 +98,7 @@
     // Alternatively, zonos.displayCurrency(); can be added into the callbacks of the product/cart loading if those locations are known.
 
     // Place the call for addListenerForXHR() in zonosCustomizations to make sure zonos is defined before calling zonos.displayCurrency
+
     function addListenerForXHR() {
       var oldXHR = window.XMLHttpRequest;
 
@@ -90,44 +106,109 @@
         var realXHR = new oldXHR();
         realXHR.addEventListener("readystatechange", function() {
           if(realXHR.readyState==4 && realXHR.status==200){
-            setTimeout(zonos.displayCurrency, 500); // we want this to run after ajax requests.
+            setTimeout(znDisplayCurrency, 500); // we want this to run after ajax requests.
           }
         }, false);
         return realXHR;
       }
       window.XMLHttpRequest = newXHR;
     }
+    
+    addListenerForXHR();
+    {% endcomment %}
 
-
-    function zonosCustomizations() {
-      znCurrencyConversionEnabled();
-    }
-      {% comment %}
-      {% endcomment %}
-    function znCurrencyConversionEnabled() {
-      // All calls to Zonos should be made in this function to guarantee that Zonos hello has been loaded.
-      addListenerForXHR();
-
-// TODO - cleanup currency
-// set currencySelectors up here
-      {% if z_store.showForeignCurrency %}
-        document.arrive(z_store.currencySelectors, function() {
-          setCurrencySelectors();
+    function znDutyTaxEstimateOnDetailPage() {
+      if (z_store.quoteProduct) {
+        zonos.quote({
+          items: [{ price: {{ product.price | divided_by: 100 }}, name: "{{product.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{ product.url }}", image: "https:{{ product.featured_image | product_img_url: 'medium' }}"}],
+          currencyCode: '{{ shop.currency }}'
         });
-      {% endif %}
-    }
-
-// Write comment saying how this is only used when calling currency selectors directly on the money tags
-    var intervalID = null;
-    setCurrencySelectors = function() {
-      if (zonos && zonos.config) {
-        zonos.config({currencySelectors: z_store.currencySelectors});
-        intervalID && scope.clearInterval(intervalID);
-      } else {
-        intervalID = scope.setInterval(setCurrencySelectors, 100);
       }
     }
 
+    function znDutyTaxEstimateOnCartPage() {
+      if (z_store.quoteCart && z_store.path.indexOf("cart") >= 0) {
+        zonos.quote({
+          items: [
+            {% for item in cart.items %}
+            { price: {{ item.price}} /100, quantity: {{item.quantity}}, name: "{{ item.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{item.url}}", image: "https:{{item.image| product_img_url: 'medium'}}"},
+            {% endfor %}
+          ],currencyCode: '{{ shop.currency }}'});
+      }
+    }
+
+    function zonosCustomizations() {
+      {% comment %}
+      // All calls to Zonos should be made in this function to guarantee that Zonos hello has been loaded.
+      {% endcomment %}
+      znCurrencyConversionEnabled();
+
+      znDutyTaxEstimateOnCartPage();
+      znDutyTaxEstimateOnDetailPage();
+    }
+
+    {% comment %}
+    // znCurrencyConversionEnabled waits for the money on the site to load and then converts them
+    // that way there are no race conditions.
+    // If you prefer to manually call znDisplayCurrency, then you can comment out this function.
+    {% endcomment %}
+    function znCurrencyConversionEnabled() {
+      if (showForeignCurrency()) {
+        znDisplayCurrency();
+        document.arrive(z_store.currencySelectors, znDisplayCurrency);
+        [].slice.call(document.querySelectorAll('.product-update-trigger')).forEach(function(elem) { 
+          elem.setAttribute('onchange', 'setTimeout(znDisplayCurrency, 1000)');
+        });
+      }
+    }
+
+    function showForeignCurrency() {
+      return z_store && z_store.foreignCurrency == true && z_store.currencySelectors;
+    }
+
+    {% comment %}
+    // znDisplayCurrency can be called throughout the Shopify code. So if you want currency conversion to be more accurate,
+    // add znDisplayCurrency() to any money HTML tags to call it directly. This will insure that converison happens as soon as money is loaded.
+    // Add the following code: <script>window.onload = function() { znDisplayCurrency(); };</script>
+    {% endcomment %}
+    var intervalID = null;
+    znDisplayCurrency = function() {
+      if (showForeignCurrency()) {
+        znSetCurrencySelectors();
+      }
+      if (zonos && zonos.config) {
+        znSetCurrencySelectors();
+        intervalID && clearInterval(intervalID);
+      } else if (intervalID === null) {
+        intervalID = setInterval(znDisplayCurrency, 100);
+      }
+    }
+
+	function znCustomConverter(formatter, converter) {
+      if (this.currencySelectors && this.currencySelectors.length > 0){
+        var money = document.querySelectorAll(this.currencySelectors);
+        for (var i = 0; i < money.length; i++) {
+          var j = money[i];
+          if (!j.textContent || j.textContent.indexOf("$0.00") >= 0) {
+            continue;
+          }
+          if (!j.getAttribute('data-USD')) {
+            j.setAttribute('data-USD', j.textContent.replace(/[^\d.]/g, ''));
+          }
+          j.setAttribute('data-zIntl', converter(j.getAttribute('data-USD')));
+          j.textContent = formatter(j.getAttribute('data-USD'));
+        }
+      }
+    }
+
+    function znSetCurrencySelectors() {
+      if (showForeignCurrency()) {
+		zonos.config({currencyConverter: znCustomConverter});
+        zonos.config({currencySelectors: z_store.currencySelectors});
+      } else {
+        zonos.config({currencySelectors: ""});
+      }
+    }
 
     {% comment %}
       // If your store has a sidecart that is not available in your Shopify 
@@ -151,7 +232,6 @@
 
       listenForCountryChange = false;
       zonosCustomizations();
-      setInterval(function(){ zonos.displayCurrency(); }, 900);
     }
 
     function onPageLoad() {
@@ -159,10 +239,6 @@
     }
     
     onPageLoad();
-      
-    window.onload = function() {
-     setCurrencySelectors();
-    };
 
   })();
   </script>
