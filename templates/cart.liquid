@@ -35,7 +35,7 @@
 						<p>Please leave special instructions below:</p>
 						<textarea name="note">{{ cart.note }}</textarea>
 					</div>
-					<button type="submit" name="checkout" class="primary"><h4>Checkout</h4></button>
+					<button type="submit" name="checkout" onclick="zonosCheckout(event)" class="primary"><h4>Checkout</h4></button>
 					{% if additional_checkout_buttons %}
 						<div class="checkout__icons">
 							{{ content_for_additional_checkout_buttons }}

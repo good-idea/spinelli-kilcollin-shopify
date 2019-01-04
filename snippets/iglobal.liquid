@@ -1,132 +1,170 @@
 {% if shop.metafields.iglobal.enabled %}
 
-  <script src="https://hello.zonos.com/hello.js?siteKey={{ shop.metafields.iglobal.helloSiteKey }}"></script>
-  <style>.z-intl .additional-checkout-buttons, .z-intl .additional-checkout-button, .z-intl .checkout__icons { display: none; }</style>
+  {% comment %}
+  // When Zonos Hello is live, it will be loaded via the script tag below, 
+  // which is wrapped in a check for the live setting.
+  // If Zonos Hello is in test mode, then use the znLoadHello function to load Hello. 
+  // This process ensures Hello can load fast when live and be hidden when in test mode
+  {% endcomment %}
+  
+  {% if shop.metafields.iglobal.live == 'true' %}
+    <script src="https://hello.zonos.com/hello.js?siteKey={{ shop.metafields.iglobal.helloSiteKey }}"></script>
+  {% endif %}
 
-  <script>   
-    var ig_store = {
+  {% comment %}
+  // Place the .z-intl selector before the element you want to style.
+  // .z-intl will style the selector to the specifications placed below when
+  // Zonos Hello is on a non-domestic country.
+  {% endcomment %}
+  <style>.z-intl .additional-checkout-buttons, .z-intl .additional-checkout-button, .z-intl .gpay-iframe { display: none; }</style>
+
+  {% if shop.metafields.iglobal.foreignCurrency %}
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/arrive/2.4.1/arrive.min.js"></script>
+  {% endif %}
+
+  <script>
+    var z_store = {
       store: "{{ shop.metafields.iglobal.store }}",
       live: {{ shop.metafields.iglobal.live | default: "false" }},
       showForeignCurrency: {{ shop.metafields.iglobal.foreignCurrency | default: "false" }},
-      c: "{{ customer.id }}"
+      c: "{{ customer.id }}",
+      currencySelectors: ".money, .checkout__bottom h3, .cart__menu-item-price, #cart-total, .checkout__item .checkout__total, .checkout__item .checkout__price, .product__price"
     };
-    
-    (function() {
-      function n(n,i,t,e){if(o)return o[n];for(i=document.cookie.split("; "),o={},e=i.length-1;e>=0;e--)t=i[e].split("="),o[t[0]]=t[1];return o[n]}var o;
-      typeof ga != 'undefined' && ga(function(t){ig_store.clientId=t.get('clientId')});
-      function h(){
-        var _ajaxGet=function(t,e){var s=new XMLHttpRequest;s.open("GET",t,!0),s.onreadystatechange=function(){4===this.readyState&&this.status>=200&&this.status<400&&e(this.responseText)},s.send(),s=null};
-       _ajaxGet('/cart.json',function(r){
-       var f=document.createElement('form'),g='',d={cart:r,country:n("zCountry"),currency:n("zCurrency"),c:ig_store&&ig_store.c};
-       f.method='post';f.action='/a/iglobal/cart';
-       for(var i in d){var a=document.createElement('input');a.type="hidden";a.name=i;a.value=d[i];f.appendChild(a);}document.querySelector('body').appendChild(f);f.submit();})
-      }window.igcCheckout=h
 
-      if (ig_store.live || window.location.toString().indexOf('iGlobal=true') !== -1 || window.location.toString().indexOf('zonos=true') !== -1) {
-        function igcCheckoutButton(e) {
-          if (!zonos.isDomestic()) {
-            e.preventDefault();
-    		e.stopImmediatePropagation();
-    		e.stopPropagation();
-            if (jQuery('form[action="/cart"]').length) {
-              jQuery.post('/cart', jQuery('form[action="/cart"]').serializeArray(), function(data) {
-                igcCheckout();
-              });
-            } else {
-              igcCheckout();
-            }
-          }
-        }
+  {% comment %}
+    // The znLoadHello function loads Zonos Hello while in test mode and ensures that Hello
+    // can be hidden when Hello is not live.
+  {% endcomment %}
+  function znLoadHello() {
+    var script = document.createElement('script');
+    script.src = "https://hello.zonos.com/hello.js?siteKey={{ shop.metafields.iglobal.helloSiteKey }}";
+    document.head.appendChild(script);
+  }
 
-        function znSideDrawer() {
-          {% comment %}
-          // The drawer element you select must exist on the page immediately after the page loads. 
-          // If it is a cart element that is added dynamically later, there is a chance that the code will load
-          // at the wrong time and be unable to get to checkout.
-          {% endcomment %}
-          var drawer = document.querySelector('.drawer'); 
+  if (!z_store.live && (window.location.toString().indexOf('iGlobal=true') !== -1 || window.location.toString().indexOf('zonos=true') !== -1)) {
+    znLoadHello();
+  }
 
-          drawer && drawer.addEventListener('click', function(e) {
-            if (e.target.name.indexOf('checkout') >= 0 || e.target.value.indexOf('Checkout') >= 0) {
-              igcCheckoutButton(e);
-            }
-          });
-        }
-        
-        function znGetButton() {
-          var buttons = document.querySelectorAll('[name="checkout"], [value="Checkout"], #cart-menu a');
-          [].slice.call(buttons).forEach(function(elem) {
-            elem.addEventListener('click', igcCheckoutButton);
-          });
-          return buttons;
-        }
+  (function() {
+    function n(n,i,t,e,o){for(i=document.cookie.split("; "),o={},e=i.length-1;e>=0;e--)t=i[e].split("="),o[t[0]]=t[1];return o[n]}
+    typeof ga != 'undefined' && ga(function(t){z_store.clientId=t.get('clientId')});
+    function h(){
+      var _ajaxGet=function(t,e){var s=new XMLHttpRequest;s.open("GET",t,!0),s.onreadystatechange=function(){4===this.readyState&&this.status>=200&&this.status<400&&e(this.responseText)},s.send(),s=null};
+      _ajaxGet('/cart.json',function(r){
+      var f=document.createElement('form'),g='',d={cart:r,country:n("zCountry") || n("igCountry"),currency:n("zCurrency") || n("igCurrency"),c:z_store&&z_store.c};
+      f.method='post';f.action='/a/iglobal/cart';
+      for(var i in d){var a=document.createElement('input');a.type="hidden";a.name=i;a.value=d[i];f.appendChild(a);}document.querySelector('body').appendChild(f);f.submit();})
+    }window.znCheckout=h
 
-        // This function will help with currency conversion that your website might have as a result of having any product/cart price loaded via ajax.
-        // It will listen for any ajax request and then call the currency conversion function after the request, helping the currency conversion happen consistently. 
-        // You do not need to enable this method if your site doesn't use ajax requests to load data.
-        // This function doesn't interfere with any existing callback functions that are happing with the ajax requests. 
-        // Alternatively, zonos.displayCurrency(); can be added into the callbacks of the product/cart loading if those locations are known.
-
-        function addListenerForXHR() {
-          var oldXHR = window.XMLHttpRequest;
-        
-          function newXHR() {
-              var realXHR = new oldXHR();
-              realXHR.addEventListener("readystatechange", function() {
-                  if(realXHR.readyState==4 && realXHR.status==200){
-                    setTimeout(function(){zonos.displayCurrency()}, 500); // we want this to run after ajax requests.
-                  }
-              }, false);
-              return realXHR;
-          }
-          window.XMLHttpRequest = newXHR;
-        }
-        addListenerForXHR();
-        
-        zonos.config({currencySelectors: ".money, .cart__menu-item-price, .checkout__price, .checkout__bottom h3, .checkout__total"});
-
-
-        function init() {
-          zonos.config({currencySelectors: '.money, .product__price'});
-          document.querySelector('.product-update-trigger').onchange = zonos.displayCurrency;
-         var buttons = znGetButton();
-          if (buttons.length < 1) {
-          	znSideDrawer();
-          }
-        }
-
-        function onPageLoad(fn) {
-          if (document.readyState != 'loading') {
-            fn();
-          } else if (document.addEventListener) {
-            document.addEventListener('DOMContentLoaded', fn);
-          } else {
-            document.attachEvent('onreadystatechange', function () {
-              if (document.readyState != 'loading')
-                fn();
-            });
-          }
-        }
-        
-        onPageLoad(init);
-
-        {% comment %}
-        {% if product %}
-          zonos.quote({
-            items: [{ price: {{product.price}} / 100, name: "{{product.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{ product.url }}", image: "https:{{ product.featured_image | product_img_url: 'medium' }}"}],
-            currencyCode: '{{ shop.currency }}'
-          });
-        {% elsif request.path == '/cart' %}
-          zonos.quote({
-            items: [
-              {% for item in cart.items %}
-              { price: {{ item.price}} /100, quantity: {{item.quantity}}, name: "{{ item.title | replace: '"', '\"'}}", url: "{{ shop.secure_url }}{{item.url}}", image: "https:{{item.image| product_img_url: 'medium'}}"},
-              {% endfor %}
-            ],currencyCode: '{{ shop.currency }}'});
-        {% endif %}
-        {% endcomment %}
+    {% comment %}
+      In your Shopify theme files, place the onclick="zonosCheckout(event)" atrribute 
+      on any buttons you would like to redirect to the Zonos International Checkout.
+      If your button is a type submit inside a form, remove the type="submit" and put your submit code in the designated area.
+    {% endcomment %} 
+    zonosCheckout = function(event) {
+      if ((n("zCountry") || n("igCountry")) && zonos && !zonos.isDomestic(n("zCountry") || n("igCountry"))) {
+        event && event.preventDefault();
+        znCheckout();
+        return false;
+      } else {
+        window.location.href = '/checkout';
       }
-    })();
+    {% comment %}
+      // Place your custom store checkout code here.
+    {% endcomment %} 
+    }
+
+    {% comment %}
+    {% endcomment %}
+    // This function will help with currency conversion issues that your website might have as a result of having any product/cart price loaded via ajax.
+    // It will listen for any ajax request and then call the currency conversion function 'zonos.display()' after the request, helping the currency conversion happen consistently. 
+    // You do not need to enable this method if your site doesn't use ajax requests to load data.
+    // This function doesn't interfere with any existing callback functions that are happening with the ajax requests. 
+    // Alternatively, zonos.displayCurrency(); can be added into the callbacks of the product/cart loading if those locations are known.
+
+    // Place the call for addListenerForXHR() in zonosCustomizations to make sure zonos is defined before calling zonos.displayCurrency
+    function addListenerForXHR() {
+      var oldXHR = window.XMLHttpRequest;
+
+      function newXHR() {
+        var realXHR = new oldXHR();
+        realXHR.addEventListener("readystatechange", function() {
+          if(realXHR.readyState==4 && realXHR.status==200){
+            setTimeout(zonos.displayCurrency, 500); // we want this to run after ajax requests.
+          }
+        }, false);
+        return realXHR;
+      }
+      window.XMLHttpRequest = newXHR;
+    }
+
+
+    function zonosCustomizations() {
+      znCurrencyConversionEnabled();
+    }
+      {% comment %}
+      {% endcomment %}
+    function znCurrencyConversionEnabled() {
+      // All calls to Zonos should be made in this function to guarantee that Zonos hello has been loaded.
+      addListenerForXHR();
+
+// TODO - cleanup currency
+// set currencySelectors up here
+      {% if z_store.showForeignCurrency %}
+        document.arrive(z_store.currencySelectors, function() {
+          setCurrencySelectors();
+        });
+      {% endif %}
+    }
+
+// Write comment saying how this is only used when calling currency selectors directly on the money tags
+    var intervalID = null;
+    setCurrencySelectors = function() {
+      if (zonos && zonos.config) {
+        zonos.config({currencySelectors: z_store.currencySelectors});
+        intervalID && scope.clearInterval(intervalID);
+      } else {
+        intervalID = scope.setInterval(setCurrencySelectors, 100);
+      }
+    }
+
+
+    {% comment %}
+      // If your store has a sidecart that is not available in your Shopify 
+      // theme files go to main.js, and add the following line to the bottom of
+      // the Shopify.getCart function:
+      // document.dispatchEvent(new CustomEvent("side-cart-loaded"));
+
+      // Uncomment the following code and query the correct selector for your side cart 
+      // checkout button.
+      document.addEventListener('side-cart-loaded', function (e) { 
+        document.querySelector('.cart-controls a[href*="/checkout"]').setAttribute("onclick", "zonosCheckout(event)");
+      }, false);
+    {% endcomment %}
+
+    var listenForCountryChange = true;
+    function zonosLoaded() {
+      if (!listenForCountryChange) {
+        document.removeEventListener ('z-country-change', zonosLoaded);
+        return;
+      }
+
+      listenForCountryChange = false;
+      zonosCustomizations();
+      setInterval(function(){ zonos.displayCurrency(); }, 900);
+    }
+
+    function onPageLoad() {
+      document.addEventListener('z-country-change', zonosLoaded);
+    }
+    
+    onPageLoad();
+      
+    window.onload = function() {
+     setCurrencySelectors();
+    };
+
+  })();
   </script>
 
 {% endif %}
