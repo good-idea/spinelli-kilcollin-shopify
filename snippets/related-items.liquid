@@ -17,7 +17,24 @@
 					{% for item in collection.products limit: 24 %}
 						<a href="{{ item.url }}">
 							<div class="carousel__slide slide">
-								<img src="{{ item.featured_image | product_img_url: 'large' }}" alt="" class="related__image">
+								<div class="carousel__image--wrapper">
+									{% include 'product-image-srcset' with
+										sizes: '200px'
+										image: item.featured_image,
+										preload: true,
+										lazy: 'true'
+										class: 'carousel__image'
+									%}
+							      {% if item.images.size > 1 %}
+										{% include 'product-image-srcset' with
+											sizes: '200px'
+											image: item.images[1],
+											preload: true,
+											lazy: 'true'
+											class: 'carousel__image--hover'
+										%}
+      							{% endif %}
+								</div>
 								<h4>{{ item.title }}</h4>
 							</div>
 						</a>

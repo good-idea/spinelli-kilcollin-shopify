@@ -294,6 +294,26 @@ input[type='number'] {
 	width: 100%;
 }
 
+.carousel__image--wrapper {
+	position: relative;
+	padding-bottom: 100%;
+
+	&:hover .carousel__image--hover {
+		opacity: 1;
+	}
+}
+
+.carousel__image--hover {
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.carousel__image,
+.carousel__image--hover {
+	position: absolute;
+	overflow: hidden;
+}
+
 .carousel__frame {
 	width: calc(100% - 6rem);
 	margin: 0 auto;
