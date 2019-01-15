@@ -91,6 +91,18 @@ section.collection {
 		width: 100%;
 		height: 100%;
 	}
+
+	&:hover .grid__image--hover {
+		opacity: 1;
+	}
+}
+
+.grid__image--hover {
+	position: absolute;
+	padding-bottom: initial;
+	height: 100%;
+	opacity: 0;
+	transition: opacity 0.2s;
 }
 
 .result__caption,

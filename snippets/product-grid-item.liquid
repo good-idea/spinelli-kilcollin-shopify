@@ -12,6 +12,16 @@
          preload: true,
 				 lazy: 'true'
 			%}
+      {% if product.images.size > 1 %}
+        <div class="grid__image grid__image--hover">
+          {% include 'product-image-srcset' with
+            sizes: '(max-width: 860px) 100vw, 380px'
+            image: product.images[1],
+            preload: true,
+            lazy: 'true'
+          %}
+        </div>
+      {% endif %}
     </div>
     <div class="grid__caption">
       {% if collection.metafields.c_f.price_hide == 'true' %}
