@@ -84,6 +84,18 @@
 			"readyEvent": null,
 			"delay": 500,
 			"misMatchThreshold": 0.1
+		},
+		{
+			"label": "Search Page",
+			"url":
+				"https://www.spinellikilcollin.com/search?q=astral&preview_theme_id=159401539",
+			"hideSelectors": [],
+			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"selectorExpansion": true,
+			"selectors": ["document"],
+			"readyEvent": null,
+			"delay": 500,
+			"misMatchThreshold": 0.1
 		}
 	],
 	"paths": {
