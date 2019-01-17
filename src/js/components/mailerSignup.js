@@ -2,13 +2,10 @@ import $ from 'npm-zepto'
 import axios from 'axios'
 // import Cookies from 'js-cookie'
 
-const emailRegex = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,})$/
-
 const ajaxifyMailer = inputContainer => {
 	const container =
 		inputContainer instanceof $ ? inputContainer : $(inputContainer)
 	const form = container.find('form.signup__form')
-	const input = form.find('input[name="EMAIL"]')
 	const errors = container.find('.signup__errors')
 
 	const forceSubmit = () => {
@@ -18,19 +15,13 @@ const ajaxifyMailer = inputContainer => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		const email = input.val()
-		if (!emailRegex.test(email)) {
-			errors.text('Please enter a valid email address')
-			return
-		}
+		console.log(e)
+		const formData = form.serialize()
 		errors.text('')
 		container.addClass('thinking')
 		setTimeout(() => {
 			axios
-				.post('https://ms.good-idea.studio/mailchimp/subscribe', {
-					email,
-					listName: 'spk',
-				})
+				.post('https://ms.good-idea.studio/mailchimp/subscribe', formData)
 				.then(response => {
 					if (response.status !== 200) {
 						forceSubmit()
@@ -38,8 +29,9 @@ const ajaxifyMailer = inputContainer => {
 					}
 					container.addClass('success')
 				})
-				.catch(() => {
-					forceSubmit()
+				.catch(e => {
+					console.log(e)
+					// forceSubmit()
 				})
 		}, 2800)
 	}
@@ -48,7 +40,7 @@ const ajaxifyMailer = inputContainer => {
 }
 
 const init = () => {
-	const forms = $('.signup')
+	const forms = $('.ajax-form')
 
 	forms.map((index, element) => {
 		ajaxifyMailer(element)

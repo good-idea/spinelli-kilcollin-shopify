@@ -54,7 +54,7 @@ label {
 
 select {
 	text-align-last: center;
-	height: 4rem;
+	height: 5rem;
 	border: 1px solid $grey1;
 	border-radius: 0;
 	transition: 0.2s;
@@ -176,6 +176,11 @@ input[type='number'] {
 		display: block;
 		width: 100%;
 	}
+}
+
+.form__field--half {
+	width: calc(50% - 1rem);
+	flex-basis: calc(50% - 1rem);
 }
 
 .form__row {
