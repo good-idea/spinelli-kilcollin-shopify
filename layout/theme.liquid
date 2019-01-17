@@ -54,7 +54,7 @@
   {% if template contains 'product' %} {% for image in product.images limit:3 %} <meta property="product-image" content="http:{{ image.src | product_img_url: 'grande' }}"> {% endfor %} {% endif %}
 </head>
 
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} body--{{ page_title | handle }}" >
   <div id="bp-medium"></div>
   <div id="bp-small"></div>
   {% include 'iglobal' %}

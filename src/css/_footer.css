@@ -37,16 +37,17 @@ footer .column {
 		margin-top: 0;
 	}
 
-	input[type="email"] {
+	input[type='email'] {
 		background-color: $grey1;
 		width: calc(100% - 14rem);
 
-		&::placeholder, &::-webkit-placeholder {
+		&::placeholder,
+		&::-webkit-placeholder {
 			color: $grey3;
 		}
 	}
 
-	button[type="submit"] {
+	button[type='submit'] {
 		margin-top: 0;
 		width: 14rem;
 	}
@@ -88,8 +89,8 @@ footer .column {
 		form {
 			flex-direction: column;
 		}
-		input[type="email"],
-		button[type="submit"] {
+		input[type='email'],
+		button[type='submit'] {
 			width: 100%;
 		}
 	}

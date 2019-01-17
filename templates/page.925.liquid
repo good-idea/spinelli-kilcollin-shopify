@@ -1,0 +1,69 @@
+<section class="page article page--{{ page.handle }}">
+	<div class="column--narrow">
+		<div class="article__body rte">{{ page.content }}</div>
+	</div>
+	<div class="column--xNarrow">
+
+    <div class="signup ajax-form magazine-form">
+      <form id="magazine-form" method="post" action="https://ms.good-idea.studio/mailchimp/subscribe" class="validate signup__form">
+				<input type="hidden" name="listName" value="spk-magazine">
+				<div class="form__field">
+					<label for="FNAME">First Name</label>
+					<input type="text" name="FNAME" required>
+				</div>
+				<div class="form__field">
+					<label for="LNAME">Last Name</label>
+					<input type="text" name="LNAME" required>
+				</div>
+				<div class="form__field">
+					<label for="EMAIL">Email Address</label>
+					<input type="email" name="EMAIL" required>
+				</div>
+				<div class="form__field">
+					<label for="ADDRESS.addr1">Mailing Address Line 1</label>
+					<input name="ADDRESS.addr1" required></textarea>
+				</div>
+				<div class="form__field">
+					<label for="ADDRESS.addr2">Mailing Address Line 2</label>
+					<input name="ADDRESS.addr2"></textarea>
+				</div>	
+				<div class="form__field">
+					<label for="ADDRESS.city">City</label>
+					<input name="ADDRESS.city" required></textarea>
+				</div>
+				<div class="form__field">
+					<label for="ADDRESS.state">State</label>
+					<input name="ADDRESS.state" required></textarea>
+				</div>
+				<div class="form__field form__field--half">
+					<label for="ADDRESS.zip">Postal Code</label>
+					<input name="ADDRESS.zip" required></textarea>
+				</div>
+				<div class="form__field form__field--half">
+					<label for="ADDRESS.country">Country</label>
+					<select value="US" name="ADDRESS.country" required>
+						{% include 'country-options' %}
+					</select>
+				</div>
+				<div class="button-container">
+					<button class="primary" type="submit">
+						<h4 class="signup__buttonText">Submit</h4>
+						<div class="signup__thinking">
+							<div class="thinking__line">
+								<div class="thinking__dot"></div>
+								<div class="thinking__dot"></div>
+							</div>
+							<div class="thinking__line">
+								<div class="thinking__dot"></div>
+							</div>
+						</div>
+					</button>
+					<div class="signup__messages">
+						<h4 class="signup__message">THANK YOU!</h4>
+					</div>
+				</div>
+      </form>
+      <h4 class="signup__errors"></h4>
+    </div>
+	</div>
+</section>

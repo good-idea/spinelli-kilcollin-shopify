@@ -10,9 +10,11 @@
     </div>
     {% endif %}
 
-    <div class="footer__signup signup">
+    <div class="footer__signup signup ajax-form">
       <form action="{{ settings.mailchimp }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate signup__form">
         <input type="email" name="EMAIL" required placeholder="email address">
+        <input type="hidden" name="listName" value="spk">
+
         <button class="primary" type="submit">
           <h4 class="signup__buttonText">Join</h4>
           <div class="signup__thinking">

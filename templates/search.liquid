@@ -1,10 +1,9 @@
 {% paginate search.results by 48 %}
 <section class="collection search-results">
   {% if search.performed %}
-    <p class="collection__description">
+    <p class="search-results__description">
       Search results for '{{ search.terms }}'
     </p>
-
     <div class="grid">
       {% for item in search.results %}
         <div class="grid__item search__result search__result--{{ item.object_type }}">

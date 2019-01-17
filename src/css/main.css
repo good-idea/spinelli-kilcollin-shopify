@@ -38,7 +38,6 @@ $grey4: rgb(33, 33, 33);
 
 html,
 body {
-	height: 100%;
 	position: relative;
 	background-color: white;
 }
@@ -57,6 +56,11 @@ html.menu-open body {
 .column--narrow {
 	@extend .column;
 	max-width: 70rem;
+}
+
+.column--xNarrow {
+	@extend .column;
+	max-width: 50rem;
 }
 
 .lazy-src {

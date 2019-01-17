@@ -146,6 +146,7 @@
 	transition: 0.3s;
 	transition-delay: 0.2s;
 	opacity: 0;
+	background-color: white;
 
 	.signup__message {
 		transition-delay: inherit;
@@ -157,7 +158,8 @@
 .signup.success {
 	input,
 	button {
-		opacity: 0;
+		color: #9c9c9c;
+		pointer-events: none;
 	}
 
 	.signup__messages {

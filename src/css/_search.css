@@ -15,6 +15,11 @@ section.search-results {
 	color: $grey2;
 }
 
+.search-results__description {
+	padding: 15px;
+	font-style: italic;
+}
+
 .search__result--page {
 	.result__text {
 		padding: 0;
