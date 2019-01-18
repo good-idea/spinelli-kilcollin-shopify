@@ -92,7 +92,7 @@ header.initialized {
 
 header nav {
 	position: absolute;
-	z-index: 100;
+	z-index: 110;
 	bottom: 0;
 	left: 0;
 	height: $nav-height;
