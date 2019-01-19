@@ -8,7 +8,7 @@
       preload: true
 			%}
 
-      {% if collection.metafields.c_f.video_banner != nil %}
+      {% if collection.metafields.c_f.video_banner != nil and collection.metafields.c_f.video_banner != 'null' %}
         {% assign video = collection.metafields.c_f.video_banner %}
         {% if collection.metafields.c_f.video_audio == 'true' %}
           {% assign audio = true %}
@@ -21,6 +21,7 @@
   			{% if collection.description != blank and
 				collection.metafields.c_f.hide_banner_text != 'true' %}
 			<div class="collection__description"
+
         {% if collection.metafields.c_f.banner_text_color %}
           style="color: {{ collection.metafields.c_f.banner_text_color }}"
         {% endif %}
