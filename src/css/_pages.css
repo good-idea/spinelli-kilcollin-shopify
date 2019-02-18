@@ -61,7 +61,18 @@ section.page {
 		h3,
 		h4 {
 			font-family: $sangBleu;
+			line-height: 1.4em;
 		}
+
+		img {
+			margin-bottom: 2rem;
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.page--925-magazine .article__body h2 {
+		font-size: 1.8rem;
 	}
 }
 /* 

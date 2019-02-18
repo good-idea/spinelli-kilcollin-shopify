@@ -51,6 +51,10 @@ html.menu-open body {
 	width: calc(100% - 4rem);
 	max-width: 120rem;
 	margin: 0 auto;
+
+	@media screen and (max-width: 500px) {
+		width: calc(100% - 3rem);
+	}
 }
 
 .column--narrow {
