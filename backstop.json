@@ -22,8 +22,10 @@
 			"height": 700
 		}
 	],
-	"onBeforeScript": "puppet/onBefore.js",
+	"onBeforeScript": "../../backstop_config/onBefore.js",
 	"onReadyScript": "puppet/onReady.js",
+	"readyEvent": "backstopjs_ready",
+	"cookiePath": "backstop_data/engine_scripts/cookies.json",
 	"scenarios": [
 		{
 			"label": "Homepage",
@@ -41,6 +43,42 @@
 			"label": "Collection Page",
 			"url":
 				"https://spinellikilcollin.myshopify.com/collections/core-collection?preview_theme_id=159401539",
+			"hideSelectors": [],
+			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"selectorExpansion": true,
+			"selectors": ["document"],
+			"readyEvent": null,
+			"delay": 500,
+			"misMatchThreshold": 0.1
+		},
+		{
+			"label": "Collection Page (special layout 1)",
+			"url":
+				"https://spinellikilcollin.myshopify.com/collections/spinelli-kilcollin-emily-ratajkowski?preview_theme_id=159401539",
+			"hideSelectors": [],
+			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"selectorExpansion": true,
+			"selectors": ["document"],
+			"readyEvent": null,
+			"delay": 500,
+			"misMatchThreshold": 0.1
+		},
+		{
+			"label": "Collection Page (special layout 2)",
+			"url":
+				"https://spinellikilcollin.myshopify.com/collections/zodiac-collection?preview_theme_id=159401539",
+			"hideSelectors": [],
+			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"selectorExpansion": true,
+			"selectors": ["document"],
+			"readyEvent": null,
+			"delay": 500,
+			"misMatchThreshold": 0.1
+		},
+		{
+			"label": "Collection Page (special layout 3)",
+			"url":
+				"https://spinellikilcollin.myshopify.com/collections/development-do-not-publish?preview_theme_id=159401539",
 			"hideSelectors": [],
 			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
 			"selectorExpansion": true,
