@@ -198,15 +198,14 @@ header .search {
 
 		&:hover {
 			.nav__submenu.hover-dropdown {
-				@mixin visible;
+				@extend %visible;
 				transform: none;
 			}
 		}
 	}
 
 	.nav__submenu.hover-dropdown {
-		@mixin fixed-full-size;
-		@mixin invisible;
+		@extend %invisible;
 		position: absolute;
 		top: calc(100% - 1px);
 		left: calc(50% - 10rem);
@@ -233,8 +232,8 @@ header .search {
 	}
 
 	header .search form {
-		@mixin invisible;
-		@mixin abs-center;
+		@extend %invisible;
+		@extend %abs-center;
 		width: 0;
 		height: 2.5rem;
 		background: white;
@@ -266,7 +265,7 @@ header .search {
 		.search form {
 			transition-delay: 0s;
 			width: calc(100% + 2rem);
-			@mixin visible;
+			@extend %visible;
 		}
 	}
 	.search__button--text {
@@ -358,7 +357,7 @@ header {
 		}
 
 		nav {
-			@mixin invisible;
+			@extend %invisible;
 			transition: 0.3s;
 			background: white;
 			bottom: initial;
@@ -438,7 +437,7 @@ header {
 
 	.nav-open header {
 		nav {
-			@mixin visible;
+			@extend %visible;
 		}
 	}
 

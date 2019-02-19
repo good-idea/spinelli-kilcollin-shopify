@@ -82,7 +82,7 @@ section.collection {
 	overflow: hidden;
 
 	img {
-		@mixin abs-full-size;
+		@extend %abs-full-size;
 		object-fit: cover;
 	}
 
@@ -134,7 +134,7 @@ section.collection {
 }
 
 .grid__image--textOverlay {
-	@mixin flex-center;
+	@extend %flex-center;
 	position: absolute;
 	z-index: 10;
 	top: 0;
@@ -151,7 +151,7 @@ section.collection {
 }
 
 .collection__featured-quote {
-	@mixin flex-center;
+	@extend %flex-center;
 	font-family: $sangBleu;
 	position: relative;
 	flex-direction: column;
@@ -162,7 +162,7 @@ section.collection {
 	overflow: hidden;
 
 	.as-background {
-		@mixin abs-full-size;
+		@extend %abs-full-size;
 		z-index: 1;
 
 		.img-preload-full {

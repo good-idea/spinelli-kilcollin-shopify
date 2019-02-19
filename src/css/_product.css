@@ -106,7 +106,7 @@ section.product .contact__form {
 }
 
 .product__sizing-info {
-	@mixin invisible;
+	@extend %invisible;
 	min-height: 11rem;
 	transform: translateY(-1rem);
 	transition: 0.2s;
@@ -118,7 +118,7 @@ section.product .contact__form {
 	}
 
 	.product__sizing-info {
-		@mixin visible;
+		@extend %visible;
 		transform: none;
 	}
 }

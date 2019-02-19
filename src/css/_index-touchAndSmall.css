@@ -15,8 +15,8 @@
 		color: white;
 
 		a {
-			@mixin abs-full-size;
-			@mixin flex-center;
+			@extend %abs-full-size;
+			@extend %flex-center;
 		}
 	}
 
@@ -50,8 +50,8 @@
 		color: white;
 
 		a {
-			@mixin abs-full-size;
-			@mixin flex-center;
+			@extend %abs-full-size;
+			@extend %flex-center;
 		}
 	}
 

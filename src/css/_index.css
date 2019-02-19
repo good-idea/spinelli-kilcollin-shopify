@@ -43,7 +43,7 @@
 }
 
 .featured__image-frame {
-	@mixin abs-full-size;
+	@extend %abs-full-size;
 	overflow: hidden;
 }
 
@@ -74,8 +74,8 @@
 }
 
 .featured__item .featured__caption {
-	@mixin abs-full-size;
-	@mixin flex-center;
+	@extend %abs-full-size;
+	@extend %flex-center;
 	z-index: 10;
 	color: white;
 	opacity: 0;

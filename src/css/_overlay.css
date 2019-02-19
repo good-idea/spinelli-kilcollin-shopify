@@ -1,18 +1,18 @@
 .overlay {
-	@mixin invisible;
-	@mixin fixed-full-size;
-	@mixin flex-center;
+	@extend %invisible;
+	@extend %fixed-full-size;
+	@extend %flex-center;
 	z-index: 500;
 	transition: .3s;
 
 
 	&.visible {
-		@mixin visible;
+		@extend %visible;
 	}
 }
 
 .overlay__background {
-	@mixin abs-full-size;
+	@extend %abs-full-size;
 	z-index: 0;
 	background-color: rgba(0,0,0,0.5);
 	cursor: pointer;
@@ -30,7 +30,7 @@
 }
 
 .overlay__ex {
-	@mixin flex-center;
+	@extend %flex-center;
 	cursor: pointer;
 	position: absolute;
 	top: 0rem;

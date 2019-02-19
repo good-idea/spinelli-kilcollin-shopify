@@ -17,14 +17,14 @@
 		position: relative;
 
 		h4 {
-			@mixin abs-full-size;
-			@mixin flex-center;
-			@mixin invisible;
+			@extend %abs-full-size;
+			@extend %flex-center;
+			@extend %invisible;
 			transition: 0.2s;
 		}
 
 		h4.add {
-			@mixin visible;
+			@extend %visible;
 		}
 
 		&[data-state='thinking'] {
@@ -49,7 +49,7 @@
 }
 
 .cart__menu {
-	@mixin invisible;
+	@extend %invisible;
 	display: none;
 	position: absolute;
 	top: 100%;
@@ -67,7 +67,7 @@
 
 .cart:hover {
 	.cart__menu {
-		@mixin visible;
+		@extend %visible;
 	}
 }
 

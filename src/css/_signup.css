@@ -9,8 +9,8 @@
 }
 
 .signup__thinking {
-	@mixin abs-full-size;
-	@mixin flex-center;
+	@extend %abs-full-size;
+	@extend %flex-center;
 	padding: 0 5%;
 	opacity: 0;
 	transition: 0.3s;
@@ -138,8 +138,8 @@
 	}
 }
 .signup__messages {
-	@mixin abs-full-size;
-	@mixin flex-center;
+	@extend %abs-full-size;
+	@extend %flex-center;
 	pointer-events: none;
 	position: absolute;
 	outline: 1px solid $grey3;

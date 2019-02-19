@@ -30,7 +30,7 @@ video.video--notouch {
 
 .featured__image-frame .featured__video,
 .featured__video .video__container {
-	@mixin abs-full-size;
+	@extend %abs-full-size;
 }
 
 .video__unmute {

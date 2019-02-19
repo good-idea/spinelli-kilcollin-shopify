@@ -30,7 +30,7 @@ section.search-results {
 	}
 
 	.result__title {
-		@mixin flex-center;
+		@extend %flex-center;
 		position: relative;
 		width: 100%;
 		padding-bottom: 100%;
@@ -39,7 +39,7 @@ section.search-results {
 	}
 
 	.result__title-inner {
-		@mixin abs-center;
+		@extend %abs-center;
 		font-size: 2.4rem;
 	}
 }

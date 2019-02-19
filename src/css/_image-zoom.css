@@ -46,7 +46,7 @@
 }
 
 .zoom__frame {
-	@mixin abs-full-size;
+	@extend %abs-full-size;
 }
 
 .zoom__thumbs {
