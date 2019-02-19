@@ -1,6 +1,6 @@
 development:
   password: 1655af638136d9a8b53e608d7528e639
-  theme_id: "159401539"
+  theme_id: '159401539'
   store: spinellikilcollin.myshopify.com
   timeout: 60s
   ignore_files:
@@ -15,7 +15,7 @@ development:
     - backstop_data
 production:
   password: 1655af638136d9a8b53e608d7528e639
-  theme_id: "160214531"
+  theme_id: '160214531'
   store: spinellikilcollin.myshopify.com
   timeout: 60s
   ignore_files:
@@ -28,7 +28,6 @@ production:
     - config/settings_data.json
     - backstop.json
     - backstop_data
-
 # development-archive:
 #   password: 1655af638136d9a8b53e608d7528e639
 #   theme_id: "156385027"

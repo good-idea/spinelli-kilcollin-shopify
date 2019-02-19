@@ -1,8 +1,10 @@
 var fs = require('fs')
+var path = require('path')
 
 module.exports = async (page, scenario, c) => {
 	var cookies = []
-	var cookiePath = scenario.cookiePath || 'backstop_config/cookies.json'
+	var cookiePath =
+		scenario.cookiePath || path.resolve(__dirname, 'cookies.json')
 
 	// READ COOKIES FROM FILE IF EXISTS
 	if (fs.existsSync(cookiePath)) {
@@ -26,5 +28,5 @@ module.exports = async (page, scenario, c) => {
 		)
 	}
 	await setCookies()
-	console.log('Cookie state restored with:', JSON.stringify(cookies, null, 2))
+	console.log(`Cookie state restored with: ${cookies.length} cookies`)
 }

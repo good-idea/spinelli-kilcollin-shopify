@@ -23,7 +23,7 @@
 		}
 	],
 	"onBeforeScript": "../../backstop_config/onBefore.js",
-	"onReadyScript": "puppet/onReady.js",
+	"onReadyScript": "../../backstop_config/onReady.js",
 	"readyEvent": "backstopjs_ready",
 	"cookiePath": "backstop_data/engine_scripts/cookies.json",
 	"scenarios": [
@@ -32,7 +32,14 @@
 			"url":
 				"https://spinellikilcollin.myshopify.com?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -44,7 +51,14 @@
 			"url":
 				"https://spinellikilcollin.myshopify.com/collections/core-collection?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -56,7 +70,14 @@
 			"url":
 				"https://spinellikilcollin.myshopify.com/collections/spinelli-kilcollin-emily-ratajkowski?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -68,7 +89,14 @@
 			"url":
 				"https://spinellikilcollin.myshopify.com/collections/zodiac-collection?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -80,7 +108,14 @@
 			"url":
 				"https://spinellikilcollin.myshopify.com/collections/development-do-not-publish?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -92,7 +127,14 @@
 			"url":
 				"https://www.spinellikilcollin.com/products/sonny-gold?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -104,7 +146,14 @@
 			"url":
 				"https://www.spinellikilcollin.com/blogs/news/sk-field-trips-spiral-jetty?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -116,7 +165,14 @@
 			"url":
 				"https://www.spinellikilcollin.com/pages/custom?preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
@@ -128,7 +184,14 @@
 			"url":
 				"https://www.spinellikilcollin.com/search?q=astral&preview_theme_id=159401539",
 			"hideSelectors": [],
-			"removeSelectors": [".shopify-preview-bar", "#newsletter-overlay"],
+			"removeSelectors": [
+				"#zonos",
+				"#intercom-widget",
+				"#intercom-container",
+				"#intercom-frame",
+				"#preview-bar-iframe",
+				"#newsletter-overlay"
+			],
 			"selectorExpansion": true,
 			"selectors": ["document"],
 			"readyEvent": null,
