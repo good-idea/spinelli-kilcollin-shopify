@@ -26,8 +26,6 @@ function testForTouch() {
 	return 'ountouchstart' in window || navigator.msMaxTouchPoints
 }
 
-console.log('Good Idea :)')
-
 const hasTouchEvents = testForTouch()
 if (hasTouchEvents) document.documentElement.classList.add('hasTouchEvents')
 document.documentElement.classList.remove('no-js')
