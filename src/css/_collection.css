@@ -267,7 +267,7 @@ section.collection {
 		.collection__featured-image:nth-of-type(2) {
 			grid-row-start: 3;
 			grid-column-start: 1;
-			grid-column-end: span 2;
+			grid-row-end: span 2;
 		}
 	}
 }
