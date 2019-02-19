@@ -1,32 +1,69 @@
-.featured__item .featured__caption {
-	display: flex;
-	position: absolute;
-	top: initial;
-	bottom: -4rem;
-	height: 100%;
-	opacity: 0;
-	color: $grey3;
-	pointer-events: initial;
-	padding: 1rem;
-	opacity: 0;
-	transition: 0.4s;
-	transition-delay: 0.3s;
-	color: white;
+.hasTouchEvents {
+	.featured__item .featured__caption {
+		display: flex;
+		position: absolute;
+		top: initial;
+		bottom: -4rem;
+		height: 100%;
+		opacity: 0;
+		color: $grey3;
+		pointer-events: initial;
+		padding: 1rem;
+		opacity: 0;
+		transition: 0.4s;
+		transition-delay: 0.3s;
+		color: white;
 
-	a {
-		@mixin abs-full-size;
-		@mixin flex-center;
+		a {
+			@mixin abs-full-size;
+			@mixin flex-center;
+		}
+	}
+
+	.featured__item.in-view,
+	.featured__item:hover {
+		.featured__caption {
+			opacity: 1;
+			bottom: 0;
+		}
+	}
+
+	.featured__item:hover .featured__caption {
+		transition-delay: 0s;
 	}
 }
 
-.featured__item.in-view,
-.featured__item:hover {
-	.featured__caption {
-		opacity: 1;
-		bottom: 0;
-	}
-}
+@media screen and (max-width: $break-small) {
+	.featured__item .featured__caption {
+		display: flex;
+		position: absolute;
+		top: initial;
+		bottom: -4rem;
+		height: 100%;
+		opacity: 0;
+		color: $grey3;
+		pointer-events: initial;
+		padding: 1rem;
+		opacity: 0;
+		transition: 0.4s;
+		transition-delay: 0.3s;
+		color: white;
 
-.featured__item:hover .featured__caption {
-	transition-delay: 0s;
+		a {
+			@mixin abs-full-size;
+			@mixin flex-center;
+		}
+	}
+
+	.featured__item.in-view,
+	.featured__item:hover {
+		.featured__caption {
+			opacity: 1;
+			bottom: 0;
+		}
+	}
+
+	.featured__item:hover .featured__caption {
+		transition-delay: 0s;
+	}
 }

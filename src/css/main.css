@@ -1,36 +1,27 @@
-@import 'reset';
-@import 'mixins';
-
-/*
-// :::Site Variables
-//-------------------------------------------------- */
-
-$break-xl: 1220px;
-$break-large-min: 991px;
-$break-large: 990px;
-$break-medium-min: 861px;
-$break-medium: 860px;
-$break-small: 550px;
-$break-vsmall: 360px;
-
-$grey1: rgb(241, 241, 241);
-$grey1half: rgb(184, 184, 184);
-$grey2: rgb(119, 119, 119);
-$grey3: rgb(75, 75, 75);
-$grey3: rgb(75, 75, 75);
-$grey4: rgb(33, 33, 33);
-
-.grey3 {
-	color: $grey3;
-}
-
-@import 'zoom';
-@import 'type';
-@import 'icons';
-@import 'ui';
-@import 'image-blur';
-@import 'video';
-@import 'photoswipe';
+@import '_variables';
+@import '_reset';
+@import '_mixins';
+@import '_zoom';
+@import '_type';
+@import '_icons';
+@import '_ui';
+@import '_image-blur';
+@import '_video';
+@import '_photoswipe';
+@import '_header';
+@import '_cart';
+@import '_footer';
+@import '_index';
+@import '_collection';
+@import '_image-zoom';
+@import '_product';
+@import '_custom';
+@import '_blogs';
+@import '_pages';
+@import '_overlay';
+@import '_customer';
+@import '_search';
+@import '_signup';
 
 /*
 // :::Global Components
@@ -126,21 +117,6 @@ body {
 /*
 // :::Specific to component or section
 //-------------------------------------------------- */
-
-@import 'header';
-@import 'cart';
-@import 'footer';
-@import 'index';
-@import 'collection';
-@import 'image-zoom';
-@import 'product';
-@import 'custom';
-@import 'blogs';
-@import 'pages';
-@import 'overlay';
-@import 'customer';
-@import 'search';
-@import 'signup';
 
 section.four-oh-four {
 	text-align: center;

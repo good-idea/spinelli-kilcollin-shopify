@@ -39,96 +39,42 @@
   {% endif %}
 
   <div class="grid {% if collection.metafields.c_f.grid_layout %}collection-grid--{{collection.metafields.c_f.grid_layout}}{% endif %}">
-    {% if collection.metafields.c_f.image_1 != nil %}
-    <div class="grid__item collection__featured-item collection__featured-image">
-      <div class="grid__image">
+    {% for i in (1..5) %}
+      {% capture imageField %}image_{{i}}{% endcapture %}
+      {% capture imageType %}image_{{i}}_type{% endcapture %}
+      {% capture imageText %}image_{{i}}_text{% endcapture %} 
+      {% capture imageTextColor %}image_{{i}}_textColor{% endcapture %} 
 
-      {% if collection.metafields.c_f.image_1_type == 'video' %}
-        {% assign video = collection.metafields.c_f.image_1 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
-      {% else %}      
-        {% 
-          include 'cloudinary-image' with
-          cloudinary_id: collection.metafields.c_f.image_1,
-          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-          preload: true
-        %}
-      {% endif %}
-      </div>
-    </div>
-    {% endif %}
+      {% if collection.metafields.c_f[imageField] != nil and collection.metafields.c_f[imageField] != '' %}
+          <div class="grid__item collection__featured-item collection__featured-image">
+            <div class="grid__image">
+              {% if collection.metafields.c_f[imageText] %}
+                <div
+                  class="grid__image--textOverlay"
+                  style="color: {{ collection.metafields.c_f[imageTextColor] }}"
+                >
+                  <h2>{{collection.metafields.c_f[imageText]}}</h2>
+                </div>
+              {% endif %}
 
-    {% if collection.metafields.c_f.image_2 != nil %}
-    <div class="grid__item collection__featured-item collection__featured-image">
-      <div class="grid__image">
-      {% if collection.metafields.c_f.image_2_type == 'video' %}
-        {% assign video = collection.metafields.c_f.image_2 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
-      {% else %}      
-        {% 
-          include 'cloudinary-image' with
-          cloudinary_id: collection.metafields.c_f.image_2,
-          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-          preload: true
-        %}
-      {% endif %}
-      </div>
-    </div>
-    {% endif %}
 
-    {% if collection.metafields.c_f.image_3 != nil %}
-    <div class="grid__item collection__featured-item collection__featured-image">
-      <div class="grid__image">
-      {% if collection.metafields.c_f.image_3_type == 'video' %}
-        {% assign video = collection.metafields.c_f.image_3 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
-      {% else %}      
-        {% 
-          include 'cloudinary-image' with
-          cloudinary_id: collection.metafields.c_f.image_3,
-          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-          preload: true
-        %}
-      {% endif %}
-      </div>
-    </div>
-    {% endif %}
+              {% if collection.metafields.c_f[imageType] == 'video' %}
+                {% assign video = collection.metafields.c_f[imageField] %}
+                {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
+              {% else %}      
+                {% 
+                  include 'cloudinary-image' with
+                  cloudinary_id: collection.metafields.c_f[imageField],
+                  sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
+                  preload: true
+                %}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
 
-    {% if collection.metafields.c_f.image_4 != nil %}
-    <div class="grid__item collection__featured-item collection__featured-image">
-      <div class="grid__image">
-      {% if collection.metafields.c_f.image_4_type == 'video' %}
-        {% assign video = collection.metafields.c_f.image_4 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
-      {% else %}      
-        {% 
-          include 'cloudinary-image' with
-          cloudinary_id: collection.metafields.c_f.image_4,
-          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-          preload: true
-        %}
-      {% endif %}
-      </div>
-    </div>
-    {% endif %}
+    {% endfor %}
 
-    {% if collection.metafields.c_f.image_5 != nil %}
-    <div class="grid__item collection__featured-item collection__featured-image">
-      <div class="grid__image">
-      {% if collection.metafields.c_f.image_5_type == 'video' %}
-        {% assign video = collection.metafields.c_f.image_5 %}
-        {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
-      {% else %}      
-        {% 
-          include 'cloudinary-image' with
-          cloudinary_id: collection.metafields.c_f.image_5,
-          sizes: '(max-width: 990px) 50vw, (max-width: 860px) 100vw, 30vw'
-          preload: true
-        %}
-      {% endif %}
-      </div>
-    </div>
-    {% endif %}
 
     {% if collection.metafields.c_f.quote != nil %}
     <div class="grid__item collection__featured-item collection__featured-quote">
