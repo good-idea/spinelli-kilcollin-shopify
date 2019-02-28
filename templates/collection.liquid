@@ -43,6 +43,8 @@
       {% capture imageField %}image_{{i}}{% endcapture %}
       {% capture imageType %}image_{{i}}_type{% endcapture %}
       {% capture imageText %}image_{{i}}_text{% endcapture %} 
+      {% capture imageTextLinkLabel %}image_{{i}}_text_link_label{% endcapture %} 
+      {% capture imageTextLinkUrl %}image_{{i}}_text_link_url{% endcapture %} 
       {% capture imageTextColor %}image_{{i}}_textColor{% endcapture %} 
 
       {% if collection.metafields.c_f[imageField] != nil and collection.metafields.c_f[imageField] != '' %}
@@ -54,6 +56,13 @@
                   style="color: {{ collection.metafields.c_f[imageTextColor] }}"
                 >
                   <h2>{{collection.metafields.c_f[imageText]}}</h2>
+                  {% if collection.metafields.c_f[imageTextLinkLabel] and collection.metafields.c_f[imageTextLinkUrl] %}
+                    <h3>
+                      <a href="{{ collection.metafields.c_f[imageTextLinkUrl] }}">
+                        {{ collection.metafields.c_f[imageTextLinkLabel] }}
+                      </a>
+                    </h3>
+                  {% endif %}
                 </div>
               {% endif %}
 
