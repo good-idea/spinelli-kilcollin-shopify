@@ -8,7 +8,7 @@
       preload: true
 			%}
 
-      {% if collection.metafields.c_f.video_banner != nil and collection.metafields.c_f.video_banner != 'null' %}
+      {% if collection.metafields.c_f.video_banner != nil and collection.metafields.c_f.video_banner != '' %}
         {% assign video = collection.metafields.c_f.video_banner %}
         {% if collection.metafields.c_f.video_audio == 'true' %}
           {% assign audio = true %}
@@ -60,7 +60,7 @@
 
               {% if collection.metafields.c_f[imageType] == 'video' %}
                 {% assign video = collection.metafields.c_f[imageField] %}
-                {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
+                {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 600, lazy: true %}
               {% else %}      
                 {% 
                   include 'cloudinary-image' with

@@ -148,6 +148,14 @@ section.collection {
 	color: white;
 	text-align: center;
 	overflow: hidden;
+
+	h2 + p {
+		margin-top: 1em;
+	}
+
+	p a {
+		color: inherit;
+	}
 }
 
 .collection__featured-quote {

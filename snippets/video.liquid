@@ -1,5 +1,4 @@
 {% assign src='https://res.cloudinary.com/spinelli-kilcollin/video/upload' %}
-
 {% if audio != true %}
 	{% comment %} {% assign src = src | append:"/ac_none" %} {% endcomment %}
 {% endif %}
@@ -58,3 +57,9 @@
 	{% endif %}
 
 </div>
+
+{% assign poster = nil %}
+{% assign width = nil %}
+{% assign video = nil %}
+{% assign lazy= nil %}
+{% assign loop= nil %}
