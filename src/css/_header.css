@@ -22,7 +22,7 @@ header {
 }
 
 .header__top.with-cart {
-	z-index: 110;
+	z-index: 115;
 }
 
 .header__top {
@@ -99,6 +99,7 @@ header nav {
 	width: 100%;
 	perspective: 15rem;
 	transition: 0.3s;
+	background-color: white;
 
 	.logotype--sk {
 		position: absolute;
@@ -121,7 +122,6 @@ header nav {
 	align-items: center;
 	text-transform: uppercase;
 	color: $grey3;
-	background: white;
 
 	&:after {
 		content: '';
@@ -299,7 +299,7 @@ header {
 		width: 100%;
 		padding: 0 1rem;
 		z-index: 300;
-		background: white;
+		background-color: white;
 
 		&:before {
 			content: '';
@@ -321,9 +321,6 @@ header {
 			left: 2rem;
 			display: flex;
 			z-index: 100;
-		}
-
-		.logotype a {
 		}
 
 		.logotype {
@@ -359,7 +356,6 @@ header {
 		nav {
 			@extend %invisible;
 			transition: 0.3s;
-			background: white;
 			bottom: initial;
 			top: $nav-height;
 			height: calc(100vh - $nav-height);

@@ -19,9 +19,10 @@ section.page {
 .body--925-magazine {
 	background-color: #f5f3f3;
 
-	.nav__inner {
+	header nav {
 		background-color: #f5f3f3;
 	}
+
 	.nav__inner:before {
 		background: linear-gradient(
 			0deg,
@@ -40,6 +41,12 @@ section.page {
 	select {
 		text-align: center;
 		padding: 10px;
+	}
+
+	@media screen and (max-width: $break-medium) {
+		header {
+			background-color: #f5f3f3;
+		}
 	}
 }
 
