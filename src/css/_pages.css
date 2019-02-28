@@ -19,6 +19,7 @@ section.page {
 .body--925-magazine {
 	background-color: #f5f3f3;
 
+	header,
 	.nav__inner {
 		background-color: #f5f3f3;
 	}
