@@ -43,10 +43,10 @@
 			poster={{poster}}
 			class="{% if background == true%}video--notouch{% endif %}"
 		>
-			<source
+			{% comment %} <source
 				type="video/webm"
 				data-src="{{src_webm}}"
-			/>
+			/> {% endcomment %}
 			<source
 				type="video/mp4"
 				data-src="{{src_mp4}}"

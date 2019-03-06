@@ -69,7 +69,7 @@
 
               {% if collection.metafields.c_f[imageType] == 'video' %}
                 {% assign video = collection.metafields.c_f[imageField] %}
-                {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 600, lazy: true %}
+                {% include 'video', autoplay: true, audio: false, video: video, background: true, width: 1200, lazy: true %}
               {% else %}      
                 {% 
                   include 'cloudinary-image' with

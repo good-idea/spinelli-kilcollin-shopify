@@ -51,7 +51,9 @@ const buildVideo = (element, publisher) => {
 		setTimeout(() => container.addClass('visible'), 300)
 	}
 
-	const handleError = () => {
+	const handleError = e => {
+		console.log('Video error:')
+		console.log(e)
 		container.removeClass('visible')
 	}
 
@@ -62,7 +64,7 @@ const buildVideo = (element, publisher) => {
 		const mp4 = sources.filter(s => s.getAttribute('type') === 'video/mp4')[0]
 		const allowWebm = w < 860
 		mp4.setAttribute('src', mp4.getAttribute('data-src'))
-		if (allowWebm && video.canPlayType('video/webm') === 'maybe') {
+		if (webm && allowWebm && video.canPlayType('video/webm') === 'maybe') {
 			webm.setAttribute('src', webm.getAttribute('data-src'))
 		}
 		video.load()
