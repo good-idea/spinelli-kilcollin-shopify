@@ -50,12 +50,12 @@ const watchImage = element =>
 			}
 		}
 
-		const observer = new IntersectionObserver(handleIntersection, {
-			rootMargin: '200px 0px 200px 0px',
-		})
+		// const observer = new IntersectionObserver(handleIntersection, {
+		// 	rootMargin: '200px 0px 200px 0px',
+		// })
 
 		if (!skipLazy && mainContainer.attr('data-lazy') === 'true') {
-			if (window.IntersectionObserver) {
+			if (window.IntersectionObserver && false) {
 				observer.observe(mainContainer[0])
 			} else {
 				// Otherwise, watch for the scroll
