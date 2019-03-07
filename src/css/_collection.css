@@ -403,9 +403,6 @@ section.collection {
 		}
 	}
 
-	.collection__hero {
-		padding-bottom: initial;
-	}
 	.collection__hero img {
 		width: 250%;
 	}

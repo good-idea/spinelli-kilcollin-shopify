@@ -94,6 +94,10 @@
 		flex-basis: 100%;
 	}
 
+	.featured__caption.mobile--disabled {
+		display: none;
+	}
+
 	.featured__item--slider,
 	.featured__item.featured__item--single,
 	.featured__item:nth-of-type(4n + 2),
@@ -111,12 +115,9 @@
 	}
 }
 
-.hasTouchEvents {
-}
-
 @media screen and (max-width: $break-small) {
 	.featured__caption h1 {
-		font-size: 2.4rem;
+		font-size: 2.3rem;
 	}
 
 	.homepage__cta {

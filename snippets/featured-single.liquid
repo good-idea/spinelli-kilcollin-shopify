@@ -7,11 +7,19 @@
 	{% assign image = settings[alt_image_slug] %}
 {% endif %}
 {% assign alt_caption_slug = 'homepage_featured_' | append:item | append:'_caption'%}
+
+{% assign disable_slug = 'homepage_featured_' | append:item | append:'_disable_caption'%}
+{% assign disable_caption = settings[disable_slug] %}
+{% assign arr = url | split: '/' %}
+{% assign type = arr[1] %}
+
 {% if settings[alt_caption_slug] == blank %}
 	{% assign caption = product.title %}
 {% else %}
 	{% assign caption = settings[alt_caption_slug] %}
 {% endif %}
+
+
 
 {% assign video_slug = 'homepage_featured_' | append:item | append:'_video' %}
 {% if settings[video_slug] == nil or settings[video_slug] == '' %}
@@ -35,7 +43,7 @@
 {% endif %}
 
 
-<div class="featured__item featured__item--single watch-in-view">
+<div class="featured__item featured__item--single watch-in-view" data-type="{{disable_caption}}">
 	<div class="featured__inner">
 		<div class="featured__image-frame">
 			{% if video != false %}
@@ -47,7 +55,7 @@
 			{% endif %}
 		</div>
 		{% if caption != blank %}
-			<div class="featured__caption">
+			<div class="featured__caption {% if disable_caption == true %}mobile--disabled{% endif %}">
 				<h1>
 					<a href="{{ url }}">{{ caption }}</a>
 				</h1>
