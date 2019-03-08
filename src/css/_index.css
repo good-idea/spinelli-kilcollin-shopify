@@ -1,5 +1,3 @@
-@import '_index-touchAndSmall';
-
 .featured-items {
 	width: 100%;
 	display: flex;
@@ -94,7 +92,7 @@
 		flex-basis: 100%;
 	}
 
-	.featured__caption.mobile--disabled {
+	.featured__item .featured__caption.mobile--disabled {
 		display: none;
 	}
 
@@ -112,6 +110,39 @@
 		.featured__inner {
 			padding-bottom: 100%;
 		}
+	}
+
+	.featured__item .featured__caption {
+		display: flex;
+		position: absolute;
+		top: initial;
+		bottom: -4rem;
+		height: 100%;
+		opacity: 0;
+		color: $grey3;
+		pointer-events: initial;
+		padding: 1rem;
+		opacity: 0;
+		transition: 0.4s;
+		transition-delay: 0.3s;
+		color: white;
+
+		a {
+			@extend %abs-full-size;
+			@extend %flex-center;
+		}
+	}
+
+	.featured__item.in-view,
+	.featured__item:hover {
+		.featured__caption {
+			opacity: 1;
+			bottom: 0;
+		}
+	}
+
+	.featured__item:hover .featured__caption {
+		transition-delay: 0s;
 	}
 }
 
