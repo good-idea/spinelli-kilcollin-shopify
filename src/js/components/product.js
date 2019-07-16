@@ -12,6 +12,16 @@ function updateInput(value) {
 }
 
 function updateText(value) {
+	const dataUsd = this.element.attr('data-usd')
+
+	if (dataUsd) {
+		this.element.attr(
+			'data-usd',
+			value()
+				.replace(/^\$/, '')
+				.replace(/,/g, ''),
+		)
+	}
 	this.element.text(value)
 }
 

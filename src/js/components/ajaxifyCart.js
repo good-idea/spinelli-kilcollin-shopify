@@ -44,7 +44,6 @@ function appendToCart(newItem) {
 	if (newItem.quantity > 1) quantityElement.addClass('has-quantity')
 
 	const src = newItem.image.replace('.jpg', '_medium.jpg')
-	console.log(newItem.image, src)
 	item.find('img').attr('src', src)
 	if (isNew) {
 		item.prependTo(cartItems)
