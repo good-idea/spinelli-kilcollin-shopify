@@ -43,6 +43,7 @@
 					{% if product.price < product.compare_at_price %}
 						<h3 class="product__sale-price" itemprop="price">{{ product.compare_at_price | money }}</h3>
 					{% endif %}
+          <p class="affirm-as-low-as" data-page-type="product" data-amount="{{product.price}}"></p>
 				{% endunless %}
 			</div>
 
@@ -68,10 +69,16 @@
 					<div class="product__option product__select">
 						<label for="product-select-{{ product.id }}"><h5>{{ product.options[0] }}</h5></label>
 						<div class="select__wrapper">
-							<select id="product-select-{{ product.id }}" class="product-update-trigger" data-trigger-field="price" data-trigger-value="option" name='id'>
+              <select id="product-select-{{ product.id }}"
+                class="product-update-trigger"
+                data-trigger-field="price"
+                data-trigger-value="option"
+                name='id'
+              >
 								{% for variant in product.variants %}
 								<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
 									value="{{ variant.id }}" data-sku="{{ variant.sku }}"
+									data-variant-price="{{ variant.price }}"
 									data-trigger-option-value="{{ variant.price | money | strip_html }}"
 									>{{ variant.title }}</option>
 								{% endfor %}
@@ -130,6 +137,22 @@
       clearInterval(labelsInterval);
     }
   },100); 
+</script>
+
+<script>
+  var selectCallback = function(variant, selector) {
+     
+    //Affirm Promos: Monthly Payment Messaging, dynamic pricing embed code
+    //
+    //NOTE: This Affirm embed code is only needed if you are using product variants.
+    //'selectCallback' might not be in your product.liquid template if product variants are not used or supported.
+    //If you are using product variants in your shop, use the following code to dynamically update your Monthly Payment Messaging when the customer selects a different product variant.
+    
+    $('.affirm-as-low-as').attr('data-amount',variant.price);
+    affirm.ui.refresh();
+     
+  };
+ 
 </script>
 <style>
   .drophint-link a{ padding: 10px 0; text-align: center;  border: 1px solid #000; width: 100%; margin-top: 5px;}

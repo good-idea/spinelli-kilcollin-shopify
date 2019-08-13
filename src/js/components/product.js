@@ -82,6 +82,21 @@ function buildTrigger(element) {
 	trigger.element = element instanceof $ ? element : $(element)
 	trigger.value = valueFunctions[valueType].bind(trigger) || valueType
 
+	if (valueType === 'option') {
+		trigger.callback = () => {
+			if (window.affirm && window.affirm.ui) {
+				const triggerElement = trigger.element[0]
+				const index = triggerElement.selectedIndex
+				const selectedOption = triggerElement.options[index]
+				const variantPrice = selectedOption.getAttribute('data-variant-price')
+				if (!variantPrice) return
+				$('.affirm-as-low-as').attr('data-amount', variantPrice)
+				console.log('updating', variantPrice)
+				affirm.ui.refresh()
+			}
+		}
+	}
+
 	const elementType = (element.tagName || element.nodeName).toLowerCase()
 	trigger.event =
 		elementType === 'input' || elementType === 'select' ? 'change' : 'click'
@@ -92,7 +107,6 @@ function buildTrigger(element) {
 function watchProduct(element) {
 	const mainContainer = element instanceof $ ? element : $(element)
 	const product = {}
-
 	const fields = []
 	const triggers = []
 
@@ -105,14 +119,13 @@ function watchProduct(element) {
 		const trigger = buildTrigger(el)
 		const targetId = trigger.element.attr('data-trigger-field')
 		trigger.target = fields.find(field => field.id === targetId)
-		trigger.applyValue = function applyValue() {
+
+		trigger.element.on(trigger.event, () => {
 			trigger.target.update(trigger.value)
-		}
-		trigger.element.on(trigger.event, trigger.applyValue)
+			if (trigger.callback) trigger.callback()
+		})
 		triggers.push(trigger)
 	})
-
-	return product
 }
 
 function watchProducts() {

@@ -30,6 +30,7 @@
 				</div>
 				<div class="checkout__bottom">
 					<h3>Subtotal: ${{ cart.total_price | money_without_currency }}</h3>
+          <p class="affirm-as-low-as" data-page-type="cart" data-amount="{{cart.total_price}}"></p>
 					<button type="submit" name="update"><h4>Update Cart</h4></button>
 					<div class="checkout__instructions">
 						<p>Please leave special instructions below:</p>

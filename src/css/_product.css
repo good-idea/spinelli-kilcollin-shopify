@@ -32,6 +32,10 @@
 	margin-top: 1rem;
 }
 
+.affirm-as-low-as {
+	min-height: 23px;
+}
+
 .product__form {
 	width: 100%;
 	max-width: 19rem;
