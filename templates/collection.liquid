@@ -106,7 +106,12 @@
 
 
     {% for product in collection.products %}{% if product.type == 'Product Fee' %}{% continue %}{% endif %}
-      {% include 'product-grid-item' with products_per_row %}
+      {%
+        include 'product-grid-item' with
+        products_per_row,
+        index: forloop.index,
+        layout: collection.metafields.c_f.grid_layout
+      %}
     {% else %}
       <p>There are no products in this view.</p>
     {% endfor %}

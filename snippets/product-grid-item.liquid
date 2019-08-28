@@ -1,13 +1,18 @@
 {% if product.price < product.compare_at_price %}
   {% assign on_sale = true %}
 {% endif %}
+{% if index == 2 and layout == '4' %}
+  {% assign sizes = '(max-width: 860px) 100vw, 1200px' %}
+{% else %}
+  {% assign sizes = '(max-width: 860px) 100vw, 380px' %}
+{% endif %}
 
 
 <div class="grid__item {% if on_sale %} on-sale{% endif %}">
   <a href="{{ product.url }}">
     <div class="grid__image">
       {% include 'product-image-srcset' with
-         sizes: '(max-width: 860px) 100vw, 380px'
+         sizes: sizes
          image: product.featured_image,
          preload: true,
 				 lazy: 'true'
@@ -15,7 +20,7 @@
       {% if product.images.size > 1 %}
         <div class="grid__image grid__image--hover">
           {% include 'product-image-srcset' with
-            sizes: '(max-width: 860px) 100vw, 380px'
+            sizes: sizes
             image: product.images[1],
             preload: true,
             lazy: 'true'
