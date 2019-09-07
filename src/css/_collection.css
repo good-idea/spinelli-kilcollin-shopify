@@ -404,11 +404,23 @@ section.collection {
 	}
 }
 
+.grid__image--mobile {
+	display: none;
+}
+
 @media screen and (max-width: $break-medium) {
 	.grid {
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-column-gap: 0;
+	}
+
+	.grid__image--mobile + .grid__image--main {
+		display: none;
+	}
+
+	.grid__image--mobile {
+		display: block;
 	}
 
 	.grid__item {

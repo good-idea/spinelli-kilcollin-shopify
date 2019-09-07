@@ -11,13 +11,28 @@
 <div class="grid__item {% if on_sale %} on-sale{% endif %}">
   <a href="{{ product.url }}">
     <div class="grid__image">
+      {% if product.metafields.images.mobile_thumbnail %}
+
+        {%
+          include 'cloudinary-image' with
+          sizes: sizes,
+          cloudinary_id: product.metafields.images.mobile_thumbnail,
+          class: 'grid__image--mobile'
+          preload: true,
+          lazy: 'true'
+        %}
+
+      {% endif %}
+ 
       {% include 'product-image-srcset' with
          sizes: sizes
          image: product.featured_image,
+         mobile_thumbnail: product.metafields.images.mobile_thumbnail,
          preload: true,
 				 lazy: 'true'
+         class: 'grid__image--main'
 			%}
-      {% if product.images.size > 1 %}
+     {% if product.images.size > 1 %}
         <div class="grid__image grid__image--hover">
           {% include 'product-image-srcset' with
             sizes: sizes
