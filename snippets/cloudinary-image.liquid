@@ -2,7 +2,6 @@
 {% assign default_image = product.featured_image %}
 {% assign cloudinary_root = "https://res.cloudinary.com/spinelli-kilcollin/image/upload/" %}
 {% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
-
 {% if preload == true %}
 	<div class="{{ class }} img-preload" data-lazy="{{ lazy }}">
 			<div class="img-preload-initial">

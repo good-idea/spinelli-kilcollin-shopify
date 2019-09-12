@@ -1,13 +1,33 @@
 {% paginate collection.products by 48 %}
+{% if collection.metafields.c_f.banner_mobile_text_v_alignment %}
+  {% capture alignmentClass %}mobile-align--{{collection.metafields.c_f.banner_mobile_text_v_alignment }}{% endcapture%}
+{% endif %}
+
+{% if collection.metafields.c_f.banner_image_mobile_ratio %}
+  {% capture imageRatioClass %}ratio--{{collection.metafields.c_f.banner_image_mobile_ratio }}{% endcapture%}
+{% endif %}
+
 <section class="collection">
   {% if collection.image != blank %}
-    <div class="collection__hero">
-      {% include 'product-image-srcset' with
-      image: collection.image,
-      sizes: '(max-width: 990px) 190vw, (max-width: 860px) 250vw, 70vw'
-      preload: true
-			%}
+    <div class="collection__hero {{ imageRatioClass }}">
+      {% if collection.metafields.c_f.banner_image_mobile != nil and collection.metafields.c_f.banner_image_mobile != '' %}
+        {%
+          include 'cloudinary-image' with
+          sizes: '(max-width: 990px) 190vw, (max-width: 860px) 250vw, 70vw'
+          cloudinary_id: collection.metafields.c_f.banner_image_mobile,
+          class: 'collection__hero--bannerImage--mobile'
+          preload: true,
+          lazy: 'true'
+        %}
+      {% endif %}
 
+      {% include 'product-image-srcset' with
+        image: collection.image,
+        sizes: '(max-width: 990px) 190vw, (max-width: 860px) 250vw, 70vw'
+        preload: true,
+        class: 'collection__hero--bannerImage'
+			%}
+      
       {% if collection.metafields.c_f.video_banner != nil and collection.metafields.c_f.video_banner != '' %}
         {% assign video = collection.metafields.c_f.video_banner %}
         {% if collection.metafields.c_f.video_audio == 'true' %}
@@ -20,7 +40,7 @@
 
   			{% if collection.description != blank and
 				collection.metafields.c_f.hide_banner_text != 'true' %}
-			<div class="collection__description"
+        <div class="collection__description {{alignmentClass}}"
 
         {% if collection.metafields.c_f.banner_text_color %}
           style="color: {{ collection.metafields.c_f.banner_text_color }}"
