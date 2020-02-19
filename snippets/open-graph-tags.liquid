@@ -9,12 +9,19 @@
   <meta property="og:title" content="{{ product.title | strip_html | escape }} ">
   <meta property="og:url" content="{{ canonical_url }}">
   <meta property="og:description" content="{{ product.description | strip_html | escape }} ">
+  {% if product.available %}
+    <meta property="og:availability" content="instock" />
+  {% else %}
+    <meta property="og:availability" content="preorder" />
+  {% endif %}
   {% for image in product.images limit:3 %}
     <meta property="og:image" content="http:{{ image.src | img_url: 'grande' }}">
     <meta property="og:image:secure_url" content="https:{{ image.src | img_url: 'grande' }}">
   {% endfor %}
   {% unless price_override %}
     {% assign price = product.selected_or_first_available_variant.price %}
+    <meta property="product:price:amount" content="{{ price | money_without_currency | strip_html | escape }}" />
+    <meta property="product:price:currency" content="{{ shop.currency }}" />
     <meta property="og:price:amount" content="{{ price | money_without_currency | strip_html | escape }}">
     <meta property="og:price:currency" content="{{ shop.currency }}">
   {% endunless %}
