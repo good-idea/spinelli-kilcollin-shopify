@@ -64,6 +64,22 @@
   // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
   </script>
   <!-- End Affirm -->
+  <!-- Begin Pinterest tag -->
+  <script type="text/javascript">
+    !function(e){if(!window.pintrk){window.pintrk=function()
+    {window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+    n=window.pintrk;n.queue=[],n.version="3.0";var
+    t=document.createElement("script");t.async=!0,t.src=e;var
+    r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}
+    ("https://s.pinimg.com/ct/core.js"); 
+
+    pintrk('load','2613624654029', { em: '{{ customer.email }}', });
+    pintrk('page');
+  </script> 
+  <noscript> 
+    <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?tid=2613624654029&noscript=1" /> 
+  </noscript>
+  <!-- End Pinterest tag -->
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} body--{{ page_title | handle }}" >
