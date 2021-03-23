@@ -1,7 +1,6 @@
 const postCssImport = require('postcss-import')
 const extend = require('postcss-extend-rule')
 const precss = require('precss')
-const autoprefixer = require('autoprefixer')
 const cssnext = require('postcss-cssnext')
 const mixins = require('postcss-mixins')
 const cssnano = require('cssnano')
