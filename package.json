@@ -13,7 +13,8 @@
 		"build:css": "postcss src/css/main.css -o assets/main.css",
 		"sync-config": "theme download -e production --no-ignore config/settings_data.json && theme deploy -e development --no-ignore config/settings_data.json",
 		"backstop:test": "backstop test",
-		"backstop:approve": "backstop approve"
+		"backstop:approve": "backstop approve",
+		"deploy": "theme upload -e production"
 	},
 	"repository": {
 		"type": "git",
