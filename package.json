@@ -14,7 +14,8 @@
 		"sync-config": "theme download -e production --no-ignore config/settings_data.json && theme deploy -e development --no-ignore config/settings_data.json",
 		"backstop:test": "backstop test",
 		"backstop:approve": "backstop approve",
-		"deploy": "theme deploy -p=\"$THEMEKIT_SECRET\" -e production --allow-live"
+		"deploy": "theme deploy -p=\"$THEMEKIT_SECRET\" -e production --allow-live",
+		"deploy:staging": "theme deploy -p=\"$THEMEKIT_SECRET\" -e development"
 	},
 	"repository": {
 		"type": "git",
