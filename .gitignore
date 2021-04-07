@@ -2,3 +2,8 @@ node_modules
 theme.lock
 config.yml
 !backstop_data/engine_scripts
+
+assets/main.js
+assets/main.js.map
+assets/main.css
+assets/main.css.map
