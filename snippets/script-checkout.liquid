@@ -1,0 +1,56 @@
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(event) {
+    var RESTRICT = ["United Kingdom"];
+    var THRESHOLD = 200;
+    var $stepFooter = document.querySelector('.step__footer');
+    var $parent = $stepFooter.parentNode;
+    var $submit = document.getElementById('continue_button');
+    var $country = document.getElementById('checkout_shipping_address_country');
+
+    // initialization
+    var $stepMsg = document.createElement('div');
+    $stepMsg.className = 'step__footer-message hide';
+    $stepMsg.appendChild(document.createTextNode('Orders shipping to UK must be over $' + THRESHOLD + 'USD in order to comply with new Brexit rules'));
+    $parent.insertBefore($stepMsg, $stepFooter);
+    // end initialization
+
+    var enable = function($el, bool) {
+      $el.disabled = !bool;
+      if (bool) {
+        $el.classList.remove('btn--disabled');
+      } else {
+        $el.classList.add('btn--disabled');
+      }
+    }
+    var conditional = function () {
+      var estimated = Shopify && Shopify.Checkout && Shopify.Checkout.estimatedPrice;
+      return estimated < THRESHOLD;
+    }
+
+    $country.addEventListener('change', (e) => {
+        var country = e.target.value;
+        if (conditional() && RESTRICT.indexOf(country) > -1 ) {
+          enable($submit, false);
+          $stepMsg.classList.remove('hide');
+        } else {
+          enable($submit, true);
+          $stepMsg.classList.add('hide');
+        }
+    });
+  });
+</script>
+
+<style>
+.step__footer-message {
+  margin-top: 0.5rem;
+  display: block;
+  color: #c33;
+}
+.step__footer-message.hide {
+  display: none;
+}
+.anyflexbox .step__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+</style>
